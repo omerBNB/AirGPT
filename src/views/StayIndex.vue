@@ -1,47 +1,47 @@
 <template>
-  <div class="container home">
+  <!-- <StayFilter /> -->
+  <StayList :stays="stays" />
+  <!-- <div class="container home">
     <ul class="stay-list">
       <li v-for="stay in stays" :key="stay._id">
         <p>
           {{ stay.vendor }}
         </p>
-        <p>
-          ${{ stay.price?.toLocaleString() }}
-        </p>
+        <p>${{ stay.price?.toLocaleString() }}</p>
         <button @click="removeStay(stay._id)">x</button>
         <button @click="updateStay(stay)">Update</button>
         <hr />
         <button @click="addStayMsg(stay._id)">Add stay msg</button>
         <button @click="printStayToConsole(stay)">Print msgs to console</button>
-
       </li>
     </ul>
-    <hr />
-    <form @submit.prevent="addStay()">
+  </div> -->
+  <!-- <form @submit.prevent="addStay()">
       <h2>Add stay</h2>
       <input type="text" v-model="stayToAdd.vendor" />
       <button>Save</button>
-    </form>
-  </div>
+    </form> -->
 </template>
 
 <script>
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service.local'
 import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
+import StayList from '../cmps/StayList.vue'
 export default {
   data() {
     return {
-      stayToAdd: stayService.getEmptyStay()
+      // stays: [{ name: 'lulu' }, { name: 'gaga' }],
+      stayToAdd: stayService.getEmptyStay(),
     }
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser
     },
-    stays() {
-      return this.$store.getters.stays
-    }
+    // stays() {
+    //   return this.$store.getters.stays
+    // },
   },
   created() {
     this.$store.dispatch({ type: 'loadStays' })
@@ -61,7 +61,6 @@ export default {
       try {
         await this.$store.dispatch(getActionRemoveStay(stayId))
         showSuccessMsg('stay removed')
-
       } catch (err) {
         console.log(err)
         showErrorMsg('Cannot remove stay')
@@ -73,7 +72,6 @@ export default {
         stay.price = +prompt('New price?', stay.price)
         await this.$store.dispatch(getActionUpdateStay(stay))
         showSuccessMsg('stay updated')
-
       } catch (err) {
         console.log(err)
         showErrorMsg('Cannot update stay')
@@ -90,7 +88,10 @@ export default {
     },
     printStayToConsole(stay) {
       console.log('stay msgs:', stay.msgs)
-    }
-  }
+    },
+  },
+  components: {
+    StayList,
+  },
 }
 </script>

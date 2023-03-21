@@ -1,6 +1,6 @@
 <template>
   <!-- main layout -->
-  <section>
+  <section class="main-container">
     <AppHeader />
     <RouterView />
     <UserMsg />
@@ -21,7 +21,7 @@ export default {
   },
   components: {
     AppHeader,
-    UserMsg
+    UserMsg,
   },
 }
 </script>

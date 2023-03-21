@@ -1,6 +1,8 @@
-header {
-  background-color: $clr5;
-  padding: 10px;
+.main-header {
+  // background-color: $clr5;
+  border: 1px solid black;
+  padding: 0px;
+  // height: 80px;
   display: flex;
   justify-content: space-between;
 
@@ -11,7 +13,7 @@ header {
     align-self: flex-end;
     color: whitesmoke;
     span {
-      background-color: $clr2; 
+      background-color: $clr2;
       padding: 4px;
       margin: 10px;
       border-radius: 50%;
