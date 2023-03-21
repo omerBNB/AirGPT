@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import { userService } from './user.service'
+import { userService } from './user.service.js'
 
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
@@ -106,7 +106,6 @@ function createDummySocketService() {
   window.listenersMap = listenersMap
   return socketService
 }
-
 
 // Basic Tests
 // function cb(x) {console.log('Socket Test - Expected Puk, Actual:', x)}
