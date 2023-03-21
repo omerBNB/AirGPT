@@ -5,14 +5,13 @@ header {
   justify-content: space-between;
 
   .loggedin-user {
-    // background-color: $clr1;
-    background-color: pink;
+    background-color: $clr1;
     padding: 2px 8px;
     border-radius: 1em;
     align-self: flex-end;
     color: whitesmoke;
     span {
-      background-color: green;
+      background-color: $clr2; 
       padding: 4px;
       margin: 10px;
       border-radius: 50%;
