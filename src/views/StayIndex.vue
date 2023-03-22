@@ -1,26 +1,28 @@
 <template>
-  <!-- <StayFilter /> -->
-  <StayList :stays="stays" />
-  <!-- <div class="container home">
-    <ul class="stay-list">
-      <li v-for="stay in stays" :key="stay._id">
-        <p>
-          {{ stay.vendor }}
-        </p>
-        <p>${{ stay.price?.toLocaleString() }}</p>
-        <button @click="removeStay(stay._id)">x</button>
-        <button @click="updateStay(stay)">Update</button>
-        <hr />
-        <button @click="addStayMsg(stay._id)">Add stay msg</button>
+  <div class="main-container">
+    <!-- <StayFilter /> -->
+    <StayList :stays="stays" />
+    <!-- <div class="container home">
+      <ul class="stay-list">
+        <li v-for="stay in stays" :key="stay._id">
+          <p>
+            {{ stay.vendor }}
+          </p>
+          <p>${{ stay.price?.toLocaleString() }}</p>
+          <button @click="removeStay(stay._id)">x</button>
+          <button @click="updateStay(stay)">Update</button>
+          <hr />
+          <button @click="addStayMsg(stay._id)">Add stay msg</button>
         <button @click="printStayToConsole(stay)">Print msgs to console</button>
       </li>
     </ul>
   </div> -->
-  <!-- <form @submit.prevent="addStay()">
-      <h2>Add stay</h2>
-      <input type="text" v-model="stayToAdd.vendor" />
-      <button>Save</button>
-    </form> -->
+    <!-- <form @submit.prevent="addStay()">
+    <h2>Add stay</h2>
+    <input type="text" v-model="stayToAdd.vendor" />
+    <button>Save</button>
+  </form> -->
+  </div>
 </template>
 
 <script>

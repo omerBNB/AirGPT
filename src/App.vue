@@ -1,10 +1,7 @@
 <template>
-  <!-- main layout -->
-  <!-- <section class="main-container"> -->
   <AppHeader />
   <RouterView />
   <UserMsg />
-  <!-- </section> -->
 </template>
 
 <script>

@@ -1,5 +1,7 @@
 <template>
-  <h1>Stay Details</h1>
+  <div class="details-layout">
+    <h1>Stay Details</h1>
+  </div>
 </template>
 
 <script>
@@ -10,7 +12,7 @@ export default {
   },
   methods: {},
   computed: {},
-  created() {},
+  created() { },
   components: {},
 }
 </script>
