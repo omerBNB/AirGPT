@@ -1,9 +1,9 @@
 <template>
   <div class="details-layout">
-    <main class="stay-details">
+    <main v-if="stay" class="stay-details">
       <!-- stay-review -->
       <section class="stay-review flex column">
-        <h1>Great location in Barcelona</h1>
+        <h1>{{ stay.name }}</h1>
         <section class="flex space-between">
           <div class="flex">
             <span>⭐4.9</span>
@@ -42,25 +42,27 @@
           </div>
           <div class="ferrites-main">
             <div class="line">
-              <span>🚽</span>
+              <img src="../../ferrites_imgs/superhost.svg" />
               <div class="text">
-                <h4>Dedicated workspace</h4>
-                <p>A private room with wifi that's well-suited for working.</p>
+                <h4>Nazife is a Superhost</h4>
+                <p>
+                  Superhosts are experienced, highly rated hosts who are committed to providing
+                  great stays for guests.
+                </p>
               </div>
             </div>
             <div class="line">
-              <span>🚽</span>
+              <img src="../../ferrites_imgs/checkin.svg" />
               <div class="text">
-                <h4>Dedicated workspace</h4>
-                <p>A private room with wifi that's well-suited for working.</p>
+                <h4>Great check-in experience</h4>
+                <p>100% of recent guests gave the check-in process a 5-star rating.</p>
               </div>
             </div>
 
             <div class="line">
-              <span>🚽</span>
+              <img src="../../ferrites_imgs/location.svg" />
               <div class="text">
-                <h4>Dedicated workspace</h4>
-                <p>A private room with wifi that's well-suited for working.</p>
+                <h4>Free cancellation for 48 hours.</h4>
               </div>
             </div>
           </div>
@@ -109,14 +111,22 @@
 
 <script>
 import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
+import { storageService } from '../services/async-storage.service.js'
 export default {
   name: '',
   data() {
-    return {}
+    return {
+      stay: null,
+    }
   },
   methods: {},
   computed: {},
-  created() {},
+  created() {
+    const { stayId } = this.$route.params
+    storageService.get('stay', stayId).then((stay) => {
+      this.stay = stay
+    })
+  },
   mounted() {
     const currRoute = this.$route.path
     if (currRoute === '/stay') {
