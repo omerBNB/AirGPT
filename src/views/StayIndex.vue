@@ -41,6 +41,12 @@ export default {
       stayToAdd: stayService.getEmptyStay(),
     }
   },
+  mounted() {
+    const currRoute = this.$route.path
+    if (currRoute === '/') {
+      document.getElementById('main-app').classList.value = 'main-container'
+    }
+  },
   methods: {
     async addStay() {
       try {
