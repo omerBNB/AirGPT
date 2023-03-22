@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header">
+  <header>
     <nav>
       <RouterLink to="/">
         <span role="img" aria-label="logo">AirBnb</span>
