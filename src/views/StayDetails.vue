@@ -130,7 +130,7 @@ export default {
   },
   mounted() {
     const currRoute = this.$route.path
-    if (currRoute === '/stay') {
+    if (currRoute.includes('stay')) {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
   },

@@ -6,10 +6,17 @@ $clr4: #574f7d;
 $clr5: #95adbe;
 $clr6: #dff0ea;
 $clr7: #000000;
-// Breakpoints
+// Breakpoints main (home)
 $mobile-breakpoint: 502px;
 $mobile-big-breakpoint: 696px;
 $tablet-breakpoint: 902px;
 $narrow-breakpoint: 1048px;
 $normal-breakpoint: 1360px;
 $wide-breakpoint: 1720px;
+// Breakpoints details (stay)
+$mobile-details-breakpoint: 502px;
+$mobile-details-big-breakpoint: 696px;
+$tablet-details-breakpoint: 902px;
+$narrow-details-breakpoint: 1048px;
+$normal-details-breakpoint: 1360px;
+$wide-details-breakpoint: 1720px;
