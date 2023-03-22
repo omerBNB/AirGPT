@@ -29,7 +29,7 @@
     // background-color: blue;
     grid-template-columns:
       minmax(24px, 1fr)
-      minmax(auto, $mobile-breakpoint)
+      minmax(auto, $tablet-breakpoint)
       minmax(24px, 1fr);
   }
 
@@ -37,7 +37,7 @@
     // background-color: red;
     grid-template-columns:
       minmax(40px, 1fr)
-      minmax(auto, $mobile-breakpoint)
+      minmax(auto, $narrow-breakpoint)
       minmax(40px, 1fr);
   }
 
@@ -45,7 +45,7 @@
     // background-color: purple;
     grid-template-columns:
       minmax(40px, 1fr)
-      minmax(auto, $narrow-breakpoint)
+      minmax(auto, $normal-breakpoint)
       minmax(40px, 1fr);
   }
 
@@ -53,7 +53,7 @@
     // background-color: yellow;
     grid-template-columns:
       minmax(80px, 1fr)
-      minmax(auto, $normal-breakpoint)
+      minmax(auto, $wide-breakpoint)
       minmax(80px, 1fr);
   }
 }
