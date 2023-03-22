@@ -1,51 +1,32 @@
 <template>
-    <carousel :itemsToShow="1">
-        <slide v-for="img in imgs" :key="img">
+    <el-carousel :interval="0" :loop="false" >
+        <el-carousel-item v-for="img in imgs" :key="img">
             <img :src="img">
-        </slide>
-        <template #addons>
-            <Navigation />
-            <pagination />
-        </template>
-    </carousel>
+        </el-carousel-item>
+    </el-carousel>
 </template>
-  
-<script>
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
-import 'vue3-carousel/dist/carousel.css'
 
+<script>
 export default ({
     name: 'StayImgPreview',
     props: { imgs: Array },
-    components: {
-        Carousel,
-        Slide,
-        Pagination,
-        Navigation,
-    },
 })
 </script>
   
-<style>
-.carousel__item {
-    min-height: 200px;
-    background-color: var(--vc-clr-primary);
-    color: var(--vc-clr-white);
-    font-size: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+<style scoped>
+.el-carousel__item h3 {
+    color: #475669;
+    opacity: 0.75;
+    line-height: 300px;
+    margin: 0;
+    text-align: center;
 }
 
-.carousel__slide {
-    padding: 10px;
+.el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
 }
 
-.carousel__prev,
-.carousel__next {
-    box-sizing: content-box;
-    border: 5px solid white;
+.el-carousel__item:nth-child(2n + 1) {
+    background-color: #d3dce6;
 }
 </style>
-  

@@ -1,7 +1,9 @@
 <template>
   <div class="main-container">
     <!-- <StayFilter /> -->
-    <StayList :stays="stays" />
+    <div class="stay-list">
+      <StayList :stays="stays" />
+    </div>
     <!-- <div class="container home">
       <ul class="stay-list">
         <li v-for="stay in stays" :key="stay._id">
