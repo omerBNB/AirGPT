@@ -2,7 +2,7 @@
   display: flex;
   height: 80px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   .flex {
     align-items: center;
     justify-content: space-between;
@@ -68,6 +68,7 @@
     border-radius: 50px;
   }
   .loggedin-user {
+    position: relative;
     width: 77px;
     height: 42px;
     background-color: #fff;
@@ -92,7 +93,7 @@
       border-radius: 50%;
     }
   }
-
+  
   //   .loggedin-user {
   //     background-color: $clr1;
   //     padding: 2px 8px;
@@ -123,4 +124,21 @@
   //   nav .active {
   //     color: $clr1;
   //   }
+}
+
+.inner-header-user{
+  display: flex;
+  width: 280px;
+  justify-content: space-between;
+  align-items: center;
+  .i18-btn{
+    color: $clr7;
+    padding: 12px;
+    cursor: pointer;
+  }
+  .i18-btn:hover{
+     background: #f7f7f7;
+    text-decoration: none;
+    border-radius: 50px;
+  }
 }
