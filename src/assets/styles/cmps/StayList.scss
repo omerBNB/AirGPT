@@ -1,9 +1,14 @@
 .stay-list {
   .el-carousel__item {
+    .fa-heart {
+      background: none;
+    }
+
     img {
       object-fit: cover;
     }
 
     border-radius: 10px;
+
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="cards-layout ">
+  <div class="cards-layout grid">
     <StayPreview v-for="stay in stays" :key="stay._id" :stay="stay" />
     <!-- <p>${{ stay.price?.toLocaleString() }}</p>
         <button @click="removeStay(stay._id)">x</button>
