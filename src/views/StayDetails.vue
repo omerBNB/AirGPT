@@ -6,8 +6,11 @@
       <section class="flex space-between">
         <div class="flex">
           <span>⭐4.9</span>
+          <span>.</span>
           <span>2 reviews</span>
+          <span>.</span>
           <span>🥇 Superhost</span>
+          <span>.</span>
           <span>Barcelona, Spain</span>
         </div>
 
@@ -60,14 +63,50 @@
             </div>
           </div>
         </div>
+
+        <div class="aircover">
+          <h2>aircover</h2>
+          <p>
+            Every booking includes free protection from Host cancellations, listing inaccuracies,
+            and other issues like trouble checking in.
+          </p>
+          <a href="">Learn more</a>
+        </div>
+
+        <div class="ameneties">
+          <h2>What this place offers</h2>
+          <div class="offers">
+            <div class="offer">
+              <p>♥</p>
+              <p>Internet</p>
+            </div>
+            <div class="offer">
+              <p>♥</p>
+              <p>Air conditioning</p>
+            </div>
+            <div class="offer">
+              <p>♥</p>
+              <p>Kitchen</p>
+            </div>
+            <div class="offer">
+              <p>♥</p>
+              <p>Smoking allowed</p>
+            </div>
+            <div class="offer">
+              <p>♥</p>
+              <p>Elevator</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="sticky-container"></div>
+      <DetailsOrderBox />
     </section>
   </main>
 </template>
 
 <script>
+import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
 export default {
   name: '',
   data() {
@@ -76,7 +115,9 @@ export default {
   methods: {},
   computed: {},
   created() {},
-  components: {},
+  components: {
+    DetailsOrderBox,
+  },
 }
 </script>
 

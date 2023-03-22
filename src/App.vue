@@ -10,6 +10,7 @@
 import { userService } from './services/user.service'
 import { store } from './store/store'
 import AppHeader from './cmps/AppHeader.vue'
+import UserOptions from './cmps/UserOptions.vue'
 import UserMsg from './cmps/UserMsg.vue'
 
 export default {
@@ -21,6 +22,7 @@ export default {
   components: {
     AppHeader,
     UserMsg,
+    UserOptions
   },
 }
 </script>
