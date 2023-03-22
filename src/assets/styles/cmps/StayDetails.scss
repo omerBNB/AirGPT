@@ -1,0 +1,44 @@
+.stay-details {
+  border: 1px solid black;
+}
+
+@media (min-width: 550px) {
+  .stay-details {
+    grid-template-areas:
+      'img-container'
+      'stay-review'
+      'details-container'
+      'details-map'
+      'reviews';
+    grid-template-columns: minmax(502px, auto);
+  }
+}
+
+@media (min-width: 750px) {
+  .stay-details {
+    margin-right: 5%;
+    margin-left: 5%;
+    grid-template-areas:
+      'stay-review'
+      'img-container'
+      'details-container'
+      'reviews'
+      'details-map';
+  }
+}
+
+@media (min-width: 950px) {
+  .stay-details {
+    margin-right: 5%;
+    margin-left: 5%;
+    grid-template-columns: minmax(auto, 1048px);
+  }
+}
+
+@media (min-width: 1128px) {
+  .stay-details {
+    margin-right: 0%;
+    margin-left: 0%;
+    grid-template-columns: minmax(110px, 1fr) minmax(auto, 1120px) minmax(110px, 1fr);
+  }
+}
