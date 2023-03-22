@@ -100,7 +100,6 @@
         </div>
       </div>
 
-      <!-- <div class="sticky-container"></div> -->
       <DetailsOrderBox />
     </section>
   </main>
