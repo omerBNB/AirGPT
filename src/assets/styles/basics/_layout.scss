@@ -7,7 +7,8 @@
   display: grid;
   grid-template-columns: 10px 1fr 10px;
   padding: 0;
-  background-color: beige;
+  border: 1px solid black;
+  // background-color: beige;
 
   > * {
     grid-column: 2;
@@ -18,7 +19,7 @@
   }
 
   @include for-mobile-layout {
-    background-color: black;
+    // background-color: black;
     grid-template-columns:
       minmax(24px, 1fr)
       minmax(auto, $mobile-breakpoint)
@@ -26,7 +27,7 @@
   }
 
   @include for-tablet-layout {
-    background-color: blue;
+    // background-color: blue;
     grid-template-columns:
       minmax(24px, 1fr)
       minmax(auto, $mobile-breakpoint)
@@ -34,7 +35,7 @@
   }
 
   @include for-narrow-layout {
-    background-color: red;
+    // background-color: red;
     grid-template-columns:
       minmax(40px, 1fr)
       minmax(auto, $mobile-breakpoint)
@@ -42,7 +43,7 @@
   }
 
   @include for-normal-layout {
-    background-color: purple;
+    // background-color: purple;
     grid-template-columns:
       minmax(40px, 1fr)
       minmax(auto, $narrow-breakpoint)
@@ -50,7 +51,7 @@
   }
 
   @include for-wide-layout {
-    background-color: yellow;
+    // background-color: yellow;
     grid-template-columns:
       minmax(80px, 1fr)
       minmax(auto, $normal-breakpoint)

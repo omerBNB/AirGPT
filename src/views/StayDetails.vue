@@ -1,7 +1,19 @@
 <template>
-  <div class="details-layout">
-    <h1>Stay Details</h1>
-  </div>
+  <main class="stay-review">
+    <section class="stay-info">
+      <h1>Name Something cool</h1>
+      <div>
+        <span>⭐4.9</span>
+        <span>2 reviews</span>
+        <span>Barcelona, Spain</span>
+      </div>
+
+      <div>
+        <span>💿Share</span>
+        <span>♥Save</span>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -12,7 +24,7 @@ export default {
   },
   methods: {},
   computed: {},
-  created() { },
+  created() {},
   components: {},
 }
 </script>
