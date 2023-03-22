@@ -1,23 +1,25 @@
 <template>
-  <pre>{{ stay.name }}</pre>
+  <section>
+    <StayImgPreview :imgs="stay.imgUrls" />
+    <h1>{{ stay.loc.city }}, {{ stay.loc.country }}</h1>
+    <h1>{{ stay.price }} per night</h1>
+  </section>
 </template>
 
 <script>
+import StayImgPreview from '../cmps/StayImgPreview.vue'
 export default {
   name: 'StayPreview',
   props: {
-    stay: {
-      type: Object,
-      required: true,
-    },
+    stay: Object,
   },
   data() {
     return {}
   },
   methods: {},
   computed: {},
-  created() {},
-  components: {},
+  created() { },
+  components: { StayImgPreview },
 }
 </script>
 
