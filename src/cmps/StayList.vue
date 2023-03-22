@@ -21,7 +21,6 @@ export default {
   methods: {},
   computed: {},
   created() {
-    console.log('this.stays', this.stays)
   },
   components: {
     StayPreview,
