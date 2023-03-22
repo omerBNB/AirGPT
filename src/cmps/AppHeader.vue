@@ -3,7 +3,7 @@
     <nav>
       <RouterLink class="flex" to="/">
         <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo" />
-        <h1 role="img" aria-label="logo">AirGpt</h1>
+        <h1 role="img" aria-label="logo">Airgpt</h1>
       </RouterLink>
     </nav>
     <section class="main-filter-header">
@@ -92,17 +92,17 @@ export default {
     showWideView() {
       this.isWide = false
     },
-    unWideView(){
-      console.log('ev',ev)
-    }
+    unWideView() {
+      console.log('ev', ev)
+    },
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser
     },
-    isWideView(){
+    isWideView() {
       return this.isWide
-    }
+    },
   },
   components: {
     UserOptions,
