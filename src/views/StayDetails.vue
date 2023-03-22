@@ -119,8 +119,8 @@ export default {
   created() {},
   mounted() {
     const currRoute = this.$route.path
-    if (currRoute.includes('stay')) {
-      document.getElementById('main-app').classList.add('details-grid')
+    if (currRoute === '/stay') {
+      document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
   },
   components: {
