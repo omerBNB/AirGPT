@@ -1,24 +1,62 @@
 <template>
   <header class="main-header">
     <nav>
-      <RouterLink to="/">
-        <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo">
-        <h1 role="img" aria-label="logo">AirGPT</h1>
+      <RouterLink class="flex" to="/">
+        <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo" />
+        <h1 role="img" aria-label="logo">AirGpt</h1>
       </RouterLink>
     </nav>
-      <!-- <RouterLink to="/stay">Stays</RouterLink> -->
-      <!-- <RouterLink to="/review">Reviews</RouterLink> -->
-      <!-- <RouterLink to="/chat">Chat</RouterLink> -->
-      <!-- <RouterLink to="/login">Login / Signup</RouterLink> -->
+    <section class="main-filter-header">
+      <button class="main-filter-btn">Anywhere</button>
+      <div class="border-line"></div>
+      <button class="main-filter-btn">Any week</button>
+      <div class="border-line"></div>
+      <button class="main-filter-btn guests">Add guests</button>
+      <button class="search-btn">
+        <div data-testid="little-search-icon">
+          <svg
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="presentation"
+            focusable="false"
+            style="
+              display: block;
+              fill: none;
+              height: 12px;
+              width: 12px;
+              stroke: currentcolor;
+              stroke-width: 5.33333;
+              overflow: visible;
+            ">
+            <g fill="none">
+              <path
+                d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"></path>
+            </g>
+          </svg>
+        </div>
+      </button>
+    </section>
+    <a class="airgpt-your-home-link" href=""> Airgpt your home </a>
+    <!-- <RouterLink to="/stay">Stays</RouterLink> -->
+    <!-- <RouterLink to="/review">Reviews</RouterLink> -->
+    <!-- <RouterLink to="/chat">Chat</RouterLink> -->
+    <!-- <RouterLink to="/login">Login / Signup</RouterLink> -->
 
-      <!-- <OmerComponent/>> -->
-    <!-- <section class="loggedin-user" v-if="loggedInUser">
-      <RouterLink :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
-      </RouterLink>
-      <span>{{ loggedInUser.score.toLocaleString() }}</span>
-      <img :src="loggedInUser.imgUrl" />
-    </section> -->
+    <section class="loggedin-user">
+      <img
+        class="burger-img"
+        src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png"
+        alt="" />
+      <!-- <RouterLink :to="`/user/${loggedInUser._id}`"> -->
+      <!-- {{ loggedInUser.fullname }} -->
+      <!-- </RouterLink> -->
+      <!-- <span>{{ loggedInUser.score.toLocaleString() }}</span> -->
+      <!-- <img :src="loggedInUser.imgUrl" /> -->
+      <div class="user-mini-section">
+        <img class="user-img" src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" />
+      </div>
+    </section>
   </header>
 </template>
 <script>

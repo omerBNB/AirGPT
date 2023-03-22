@@ -10,7 +10,6 @@
 html {
     font-family: montserrat;
     line-height: 1.6;
-    color: $clr2;
 }
 
 body {
@@ -41,7 +40,10 @@ p {
 a {
     text-decoration: none;
 }
-a:hover {
-    text-decoration: underline;
-}
+// a:hover {
+//     text-decoration: underline;
+// }
 
+.logo{
+    height: 32px;
+}
