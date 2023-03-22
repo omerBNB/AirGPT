@@ -22,9 +22,8 @@
 .main-container {
   &.details-grid {
     display: grid;
-    grid-template-columns: 50px 1fr 50px;
+    grid-template-columns: minmax(100px, 300px) 1fr minmax(100px, 300px);
     padding: 0;
-    border: 1px solid black;
   }
 
   // display: grid;
@@ -32,7 +31,7 @@
   // padding: 0;
   // border: 1px solid black;
 
-  >* {
+  > * {
     grid-column: 2;
 
     &.full {
@@ -45,7 +44,7 @@
     grid-template-columns: 50px 1fr 50px;
     padding: 0;
 
-    >* {
+    > * {
       grid-column: 2;
 
       &.full {
@@ -78,5 +77,11 @@
 .cards-layout {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.cards-layout {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 20px;
 }
