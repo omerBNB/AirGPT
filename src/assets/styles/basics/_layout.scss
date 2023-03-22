@@ -2,6 +2,7 @@
   max-width: 1500px;
   padding: 10px;
 }
+
 // #main-app {
 //   &.details-grid {
 //     .main-container {
@@ -24,6 +25,7 @@
     grid-template-columns: minmax(100px, 300px) 1fr minmax(100px, 300px);
     padding: 0;
   }
+
   // display: grid;
   // grid-template-columns: 10px 1fr 10px;
   // padding: 0;
@@ -34,6 +36,20 @@
 
     &.full {
       grid-column: 1 /-1;
+    }
+  }
+
+  .details-layout {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    padding: 0;
+
+    > * {
+      grid-column: 2;
+
+      &.full {
+        grid-column: 1 /-1;
+      }
     }
   }
 
@@ -60,17 +76,12 @@
 
 .cards-layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 20px;
 }
 
-.stay-card {
-  .carousel {
-    width: 100% !important;
-
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-  }
+.cards-layout {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
 }
