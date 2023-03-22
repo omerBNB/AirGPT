@@ -1,11 +1,10 @@
 .flex-inner-header{
     position: absolute;
-    top: 10%;
+    top: 80px;
     width: 100%;
     background-color: #fff;
     height: 91px;
     z-index: 11;
-    grid-column: 1/-1;
     transition: 1s;
 .inner-header-container {
   position: fixed;
