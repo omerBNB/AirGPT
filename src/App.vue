@@ -1,8 +1,8 @@
 <template>
   <section class="main-container">
-  <AppHeader />
-  <RouterView />
-  <UserMsg />
+    <AppHeader />
+    <RouterView />
+    <UserMsg />
   </section>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   components: {
     AppHeader,
     UserMsg,
-    UserOptions
+    UserOptions,
   },
 }
 </script>
