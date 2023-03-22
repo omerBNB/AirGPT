@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <!-- <StayFilter /> -->
     <StayList :stays="stays" />
     <!-- <div class="container home">
@@ -28,25 +28,16 @@
 <script>
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service.local'
-import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
+// import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 import StayList from '../cmps/StayList.vue'
 export default {
-  data() {
-    return {
-      // stays: [{ name: 'lulu' }, { name: 'gaga' }],
-      stayToAdd: stayService.getEmptyStay(),
-    }
-  },
-  computed: {
-    loggedInUser() {
-      return this.$store.getters.loggedinUser
-    },
-    // stays() {
-    //   return this.$store.getters.stays
-    // },
-  },
   created() {
     this.$store.dispatch({ type: 'loadStays' })
+  },
+  data() {
+    return {
+      stayToAdd: stayService.getEmptyStay(),
+    }
   },
   methods: {
     async addStay() {
@@ -90,6 +81,14 @@ export default {
     },
     printStayToConsole(stay) {
       console.log('stay msgs:', stay.msgs)
+    },
+  },
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedinUser
+    },
+    stays() {
+      return this.$store.getters.stays
     },
   },
   components: {

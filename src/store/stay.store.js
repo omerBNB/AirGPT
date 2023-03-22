@@ -1,34 +1,34 @@
 // import { stayService } from '../services/stay.service.local'
-import { stayService } from '../services/stay.service'
+import { stayService } from '../services/stay.service.local'
 
-export function getActionRemoveStay(stayId) {
-    return {
-        type: 'removeStay',
-        stayId
-    }
-}
+// export function getActionRemoveStay(stayId) {
+//     return {
+//         type: 'removeStay',
+//         stayId
+//     }
+// }
 
-export function getActionAddStay(stay) {
-    return {
-        type: 'addStay',
-        stay
-    }
-}
+// export function getActionAddStay(stay) {
+//     return {
+//         type: 'addStay',
+//         stay
+//     }
+// }
 
-export function getActionUpdateStay(stay) {
-    return {
-        type: 'updateStay',
-        stay
-    }
-}
+// export function getActionUpdateStay(stay) {
+//     return {
+//         type: 'updateStay',
+//         stay
+//     }
+// }
 
-export function getActionAddStayMsg(stayId) {
-    return {
-        type: 'addStayMsg',
-        stayId,
-        txt: 'Stam txt'
-    }
-}
+// export function getActionAddStayMsg(stayId) {
+//     return {
+//         type: 'addStayMsg',
+//         stayId,
+//         txt: 'Stam txt'
+//     }
+// }
 
 export const stayStore = {
     state: {
@@ -58,30 +58,30 @@ export const stayStore = {
         },
     },
     actions: {
-        async addStay(context, { stay }) {
+        async addStay({ commit }, { stay }) {
             try {
                 stay = await stayService.save(stay)
-                context.commit(getActionAddStay(stay))
+                commit(getActionAddStay(stay))
                 return stay
             } catch (err) {
                 console.log('stayStore: Error in addStay', err)
                 throw err
             }
         },
-        async updateStay(context, { stay }) {
+        async updateStay({ commit }, { stay }) {
             try {
                 stay = await stayService.save(stay)
-                context.commit(getActionUpdateStay(stay))
+                commit(getActionUpdateStay(stay))
                 return stay
             } catch (err) {
                 console.log('stayStore: Error in updateStay', err)
                 throw err
             }
         },
-        async loadStays(context) {
+        async loadStays({ commit }) {
             try {
                 const stays = await stayService.query()
-                context.commit({ type: 'setStays', stays })
+                commit({ type: 'setStays', stays })
             } catch (err) {
                 console.log('stayStore: Error in loadStays', err)
                 throw err

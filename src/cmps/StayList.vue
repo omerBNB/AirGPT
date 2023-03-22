@@ -19,12 +19,7 @@
 import StayPreview from '../cmps/StayPreview.vue'
 export default {
   name: 'StayList',
-  props: {
-    stays: {
-      type: Array,
-      required: true,
-    },
-  },
+  props: { stays: Array },
   data() {
     return {}
   },

@@ -22,7 +22,7 @@ const gStays = [
     type: 'House',
     imgUrls: [
       'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
-      'otherImg.jpg',
+      'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large'
     ],
     price: 80.0,
     // in preview!
@@ -107,7 +107,7 @@ const users = [
 _createStays()
 
 async function query(filterBy = { txt: '', price: 0 }) {
-  var stays = await storageService.query(STORAGE_KEY)
+  let stays = await storageService.query(STORAGE_KEY)
   // if (filterBy.txt) {
   //   const regex = new RegExp(filterBy.txt, 'i')
   //   stays = stays.filter((stay) => regex.test(stay.vendor) || regex.test(stay.description))
