@@ -1,6 +1,7 @@
 <template>
-    <el-carousel :interval="0" :loop="false" >
+    <el-carousel :interval="0" :loop="false">
         <el-carousel-item v-for="img in imgs" :key="img">
+            <i class="fa-regular fa-heart"></i>
             <img :src="img">
         </el-carousel-item>
     </el-carousel>

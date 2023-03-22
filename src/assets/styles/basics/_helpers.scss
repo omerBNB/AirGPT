@@ -31,12 +31,10 @@
   text-align: center;
 }
 
-// flex helpers
-
 .flex {
   display: flex;
 
-  > *.full {
+  >*.full {
     flex: 1;
   }
 
@@ -56,6 +54,7 @@
 .flex.space-between {
   justify-content: space-between;
 }
+
 .column {
   flex-direction: column;
 }
@@ -63,8 +62,6 @@
 .grid {
   display: grid;
 }
-
-// Media helpers
 
 .square-ratio {
   @include aspect-ratio(1, 1);
