@@ -1,8 +1,16 @@
+.widerheader{
+  padding-bottom: 91px;
+  transition: 1s;
+  z-index: 10;
+}
 .main-header {
   display: flex;
   height: 80px;
   align-items: center;
   justify-content: space-between;
+  transition: 1s;
+  border-bottom: solid 1px #dddddd;
+
 
   .flex {
     align-items: center;

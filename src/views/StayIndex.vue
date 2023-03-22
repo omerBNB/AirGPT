@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <!-- <StayFilter /> -->
     <StayList :stays="stays" />
     <!-- <div class="container home">

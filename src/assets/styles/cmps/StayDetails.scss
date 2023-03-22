@@ -1,8 +1,9 @@
 .stay-details {
-  // border: 1px solid black;
+  border: 1px solid black;
   border-bottom: 1px solid rgba(128, 128, 128, 0.3);
   margin-top: 110px;
   display: grid;
+
   margin-bottom: 50px;
   h1 {
     font-size: 26px;
@@ -11,7 +12,8 @@
 
 .img-container {
   display: grid;
-  border: 1px solid salmon;
+  border-radius: 15px;
+  overflow: hidden;
   padding: 0;
   max-width: 100%;
   gap: 10px;
