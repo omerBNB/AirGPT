@@ -3,6 +3,8 @@ import { createApp } from 'vue'
 import { router } from './router.js'
 import { store } from './store/store.js'
 
+import './assets/styles/setup/_typography.scss'
+
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
