@@ -35,10 +35,11 @@
         <div class="stay-ferrites">
           <div class="ferrites-header">
             <div class="header-text">
-              <h3>Entire amazing views hosted by Marina E Mickael</h3>
+              <h3>Entire amazing views hosted by {{ stay.host.fullname }}</h3>
               <p>5 guests · 5 bedrooms · 10 beds · 3 baths</p>
             </div>
             <img src="../../imgs_test/ido_test.jpg" />
+            <!-- <img src="stay.host.imgUrl" /> -->
           </div>
           <div class="ferrites-main">
             <div class="line">
