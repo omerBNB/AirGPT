@@ -50,12 +50,14 @@
 }
 
 .stay-card {
-
+  // width: 400px;
+  
   .carousel {
     width: 100% !important;
-
+    
     img {
       object-fit: cover;
+      // height: 200px;
       width: 100%;
     }
   }
