@@ -14,6 +14,7 @@
     // grid-template-columns: minmax(100px, 300px) 1fr minmax(100px, 300px);
     grid-template-columns: minmax(24px, 1fr) minmax(auto, 1120px) minmax(24px, 1fr);
   }
+
   padding: 0;
 
   >* {
@@ -29,17 +30,14 @@
   }
 
   @include for-tablet-layout {
-    background-color: burlywood;
     grid-template-columns: minmax(24px, 1fr) minmax(auto, $tablet-breakpoint) minmax(24px, 1fr);
   }
 
   @include for-narrow-layout {
-    background-color: pink;
     grid-template-columns: minmax(40px, 1fr) minmax(auto, $narrow-breakpoint) minmax(40px, 1fr);
   }
 
   @include for-normal-layout {
-    background-color: aquamarine;
     grid-template-columns: minmax(40px, 1fr) minmax(auto, $normal-breakpoint) minmax(40px, 1fr);
   }
 
