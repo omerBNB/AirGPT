@@ -1,26 +1,14 @@
-<template>
-<h1>Hi</h1>
-</template>
+<template></template>
 
 <script>
 export default {
-name: '',
-data() {
-return {
-
-}
-},
-methods: {
-
-},
-computed: {
-
-},
-created() {
-
-},
-components: {
-
-},
+  name: '',
+  data() {
+    return {}
+  },
+  methods: {},
+  computed: {},
+  created() {},
+  components: {},
 }
 </script>
