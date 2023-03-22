@@ -5,13 +5,13 @@
         <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo">
         <h1 role="img" aria-label="logo">AirGPT</h1>
       </RouterLink>
+    </nav>
       <!-- <RouterLink to="/stay">Stays</RouterLink> -->
       <!-- <RouterLink to="/review">Reviews</RouterLink> -->
       <!-- <RouterLink to="/chat">Chat</RouterLink> -->
       <!-- <RouterLink to="/login">Login / Signup</RouterLink> -->
 
       <!-- <OmerComponent/>> -->
-    </nav>
     <!-- <section class="loggedin-user" v-if="loggedInUser">
       <RouterLink :to="`/user/${loggedInUser._id}`">
         {{ loggedInUser.fullname }}
