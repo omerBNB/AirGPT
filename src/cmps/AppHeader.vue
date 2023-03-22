@@ -1,8 +1,9 @@
 <template>
-  <header>
+  <header class="main-header">
     <nav>
       <RouterLink to="/">
-        <span role="img" aria-label="logo">AirBnb</span>
+        <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo">
+        <h1 role="img" aria-label="logo">AirGPT</h1>
       </RouterLink>
       <!-- <RouterLink to="/stay">Stays</RouterLink> -->
       <!-- <RouterLink to="/review">Reviews</RouterLink> -->
