@@ -5,7 +5,7 @@
 
 .main-container {
   display: grid;
-  grid-template-columns: 20px 1fr 20px;
+  grid-template-columns: 10px 1fr 10px;
   padding: 0;
   background-color: beige;
 
@@ -18,18 +18,23 @@
   }
 
   @include for-narrow-layout {
+    background-color: blue($color: #000000);
     grid-template-columns:
       minmax(20px, 1fr)
       minmax(auto, $mobile-breakpoint)
       minmax(20px, 1fr);
   }
+
   @include for-normal-layout {
+    background-color: purple;
     grid-template-columns:
       minmax(20px, 1fr)
       minmax(auto, $narrow-breakpoint)
       minmax(20px, 1fr);
   }
+
   @include for-wide-layout {
+    background-color: yellow;
     grid-template-columns:
       minmax(20px, 1fr)
       minmax(auto, $normal-breakpoint)
