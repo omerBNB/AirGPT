@@ -136,7 +136,7 @@
         </div>
       </div>
     </section>
-    <p class="footer">Report this listing</p>
+    <!-- <p class="footer">Report this listing</p> -->
   </main>
 </template>
 
