@@ -115,6 +115,12 @@ export default {
   methods: {},
   computed: {},
   created() {},
+  mounted() {
+    const currRoute = this.$route.path
+    if (currRoute.includes('stay')) {
+      document.getElementById('main-app').classList.add('details-grid')
+    }
+  },
   components: {
     DetailsOrderBox,
   },

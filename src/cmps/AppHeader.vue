@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header" :class="headerWider">
+  <header class="main-header" >
     <nav>
       <RouterLink class="flex" to="/">
         <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo" />
@@ -7,12 +7,12 @@
       </RouterLink>
     </nav>
     <section class="main-filter-header">
-      <button class="main-filter-btn">Anywhere</button>
+      <button @click="showWideView" class="main-filter-btn">Anywhere</button>
       <div class="border-line"></div>
-      <button class="main-filter-btn">Any week</button>
+      <button @click="showWideView" class="main-filter-btn">Any week</button>
       <div class="border-line"></div>
-      <button class="main-filter-btn guests">Add guests</button>
-      <button class="search-btn">
+      <button @click="showWideView" class="main-filter-btn guests">Add guests</button>
+      <button @click="showWideView" class="search-btn">
         <div data-testid="little-search-icon">
           <svg
             viewBox="0 0 32 32"
@@ -77,13 +77,20 @@
       </section>
     </div>
   </header>
+  <InnerHeader/>
 </template>
 <script>
 import UserOptions from './UserOptions.vue'
+import InnerHeader from './InnerHeader.vue'
 export default {
   data() {
     return {
       isWide: false,
+    }
+  },
+  methods:{
+    showWideView(){
+      this.isWide = true
     }
   },
   computed: {
@@ -92,13 +99,13 @@ export default {
     },
     headerWider() {
       return {
-        widedisplay: this.isWide === true
-
+        'widerheader': this.isWide === true
       }
     },
   },
   components: {
     UserOptions,
+    InnerHeader
   },
 }
 </script>
