@@ -1,3 +1,12 @@
+.flex-inner-header{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    background-color: #fff;
+    height: 91px;
+    z-index: 11;
+    grid-column: 1/-1;
+    transition: 1s;
 .inner-header-container {
   position: fixed;
   display: flex;
@@ -12,6 +21,8 @@
   padding-bottom: 0;
   width: 848px;
   border-radius: 50px;
+  justify-content: space-between;
+  transition: 1s;
   .border-inner-header {
     width: 0;
     margin-left: 8px;
@@ -30,7 +41,7 @@
     background-color: #ebebeb;
     text-align: left;
     padding-left: 24px;
-
+    margin: -1px -3.1px -1px;
     div {
       margin: 0;
     }
@@ -42,20 +53,23 @@
   }
   .where-to-btn:hover {
     background-color: #ddd;
+    input {
+      background-color: #ddd;
+    }
   }
-
   .inner-header-dates-btn {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
     padding-left: 10px;
     padding-right: 25px;
     margin: 0;
     align-self: center;
     display: grid;
-    grid-template-columns: 69px 1fr;
-    grid-template-rows: 25px 1fr;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 20px 1fr;
     border-radius: 50px;
     background-color: #ebebeb;
+    margin-left: -3px;
     cursor: pointer;
     div:nth-child(1) {
       color: $clr7;
@@ -70,4 +84,34 @@
   .inner-header-dates-btn:hover {
     background-color: #ddd;
   }
+  .inner-header-search-btn {
+    display: flex;
+    justify-content: space-between;
+    width: 260px;
+    border-radius: 50px;
+    .inner-header-search-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin: auto;
+      background-color: #ff385c;
+      border-radius: 50px;
+      width: 105px;
+      height: 50px;
+      cursor: pointer;
+      &.big {
+        display: flex;
+        font-size: 16px;
+      }
+    }
+  }
+  .isActive{
+    background-color: white;
+    box-shadow: 0 0 0 1px #0000000a, 0 5px 16px #00000026;
+    input{
+        background-color: white;
+    }
+  }
+}
 }

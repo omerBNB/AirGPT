@@ -11,15 +11,17 @@
   transition: 1s;
   border-bottom: solid 1px #dddddd;
 
-
   .flex {
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
+    gap: 7px;
     width: 110px;
     color: $clr2;
 
     h1 {
       margin: 0;
+      font-weight: bold;
+      font-size: 20px;
     }
 
     a:hover {

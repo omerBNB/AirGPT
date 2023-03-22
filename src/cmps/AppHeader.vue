@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header" >
+  <header class="main-header">
     <nav>
       <RouterLink class="flex" to="/">
         <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo" />
@@ -76,8 +76,8 @@
         </div>
       </section>
     </div>
+    <InnerHeader :hidden="isWideView" />
   </header>
-  <InnerHeader/>
 </template>
 <script>
 import UserOptions from './UserOptions.vue'
@@ -85,27 +85,28 @@ import InnerHeader from './InnerHeader.vue'
 export default {
   data() {
     return {
-      isWide: false,
+      isWide: true,
     }
   },
-  methods:{
-    showWideView(){
-      this.isWide = true
+  methods: {
+    showWideView() {
+      this.isWide = false
+    },
+    unWideView(){
+      console.log('ev',ev)
     }
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser
     },
-    headerWider() {
-      return {
-        'widerheader': this.isWide === true
-      }
-    },
+    isWideView(){
+      return this.isWide
+    }
   },
   components: {
     UserOptions,
-    InnerHeader
+    InnerHeader,
   },
 }
 </script>

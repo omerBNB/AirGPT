@@ -1,7 +1,8 @@
 <template>
-  <section id="main-app" class="main-container">
-    <AppHeader />
-    <RouterView />
+  <section  id="main-app" class="main-container">
+    <AppHeader 
+    @showBackdrop="showbackdrop"/>
+    <RouterView/>
     <UserMsg />
   </section>
 </template>
@@ -23,6 +24,11 @@ export default {
     console.log('Vue App created')
     const user = userService.getLoggedinUser()
     if (user) store.commit({ type: 'setLoggedinUser', user })
+  },
+  methods:{
+    showbackdrop(){
+      this.$refs.test.classList += ' back-drop'
+    }
   },
   computed: {
     currentLayout() {
