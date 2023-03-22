@@ -1,5 +1,5 @@
 <template>
-  <section class="main-container">
+  <section id="main-app" class="main-container">
     <AppHeader />
     <RouterView />
     <UserMsg />
@@ -14,10 +14,22 @@ import UserOptions from './cmps/UserOptions.vue'
 import UserMsg from './cmps/UserMsg.vue'
 
 export default {
+  data() {
+    return {
+      currLayout: null,
+    }
+  },
   created() {
     console.log('Vue App created')
     const user = userService.getLoggedinUser()
     if (user) store.commit({ type: 'setLoggedinUser', user })
+  },
+  computed: {
+    currentLayout() {
+      return {
+        'main-container': this.currLayout,
+      }
+    },
   },
   components: {
     AppHeader,

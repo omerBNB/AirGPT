@@ -1,8 +1,17 @@
+.widerheader{
+  padding-bottom: 91px;
+  transition: 1s;
+  z-index: 10;
+}
 .main-header {
   display: flex;
   height: 80px;
   align-items: center;
   justify-content: space-between;
+  transition: 1s;
+  border-bottom: solid 1px #dddddd;
+
+
   .flex {
     align-items: center;
     justify-content: space-between;
@@ -12,13 +21,16 @@
     h1 {
       margin: 0;
     }
+
     a:hover {
       text-decoration: none;
     }
   }
+
   .main-filter-header:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
   }
+
   .main-filter-header {
     display: flex;
     width: 352px;
@@ -38,6 +50,7 @@
       color: #717171;
       font-weight: normal;
     }
+
     .search-btn {
       background-color: $clr2;
       border-radius: 50%;
@@ -45,6 +58,7 @@
       height: 32px;
       cursor: pointer;
     }
+
     .border-line {
       width: 0;
       margin-left: 8px;
@@ -55,6 +69,7 @@
       margin: 0;
     }
   }
+
   .airgpt-your-home-link {
     color: $clr7;
     align-self: center;
@@ -62,11 +77,13 @@
     font-size: 14px;
     padding: 7px 15px;
   }
+
   .airgpt-your-home-link:hover {
     background: #f7f7f7;
     text-decoration: none;
     border-radius: 50px;
   }
+
   .loggedin-user {
     position: relative;
     width: 77px;
@@ -80,11 +97,13 @@
     display: grid;
     grid-template-columns: 27px 30px;
     grid-template-rows: 31px;
+
     .burger-img {
       width: 20px;
       height: 20px;
       align-self: center;
     }
+
     .user-img {
       width: 30px;
       height: 30px;
@@ -93,7 +112,7 @@
       border-radius: 50%;
     }
   }
-  
+
   //   .loggedin-user {
   //     background-color: $clr1;
   //     padding: 2px 8px;
@@ -126,18 +145,20 @@
   //   }
 }
 
-.inner-header-user{
+.inner-header-user {
   display: flex;
   width: 280px;
   justify-content: space-between;
   align-items: center;
-  .i18-btn{
+
+  .i18-btn {
     color: $clr7;
     padding: 12px;
     cursor: pointer;
   }
-  .i18-btn:hover{
-     background: #f7f7f7;
+
+  .i18-btn:hover {
+    background: #f7f7f7;
     text-decoration: none;
     border-radius: 50px;
   }
