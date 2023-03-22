@@ -1,9 +1,8 @@
 <template>
-    <carousel :items-to-show="1.5">
+    <carousel :itemsToShow="1">
         <slide v-for="img in imgs" :key="img">
             <img :src="img">
         </slide>
-
         <template #addons>
             <Navigation />
             <pagination />
@@ -12,11 +11,10 @@
 </template>
   
 <script>
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
-export default {
+export default ({
     name: 'StayImgPreview',
     props: { imgs: Array },
     components: {
@@ -25,6 +23,29 @@ export default {
         Pagination,
         Navigation,
     },
-}
+})
 </script>
+  
+<style>
+.carousel__item {
+    min-height: 200px;
+    background-color: var(--vc-clr-primary);
+    color: var(--vc-clr-white);
+    font-size: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel__slide {
+    padding: 10px;
+}
+
+.carousel__prev,
+.carousel__next {
+    box-sizing: content-box;
+    border: 5px solid white;
+}
+</style>
   

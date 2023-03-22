@@ -9,7 +9,7 @@
   padding: 0;
   border: 1px solid black;
 
-  > * {
+  >* {
     grid-column: 2;
 
     &.full {
@@ -20,48 +20,48 @@
   @include for-mobile-layout {
     // background-color: black;
     grid-template-columns:
-      minmax(24px, 1fr)
-      minmax(auto, $mobile-breakpoint)
-      minmax(24px, 1fr);
+      minmax(24px, 1fr) minmax(auto, $mobile-breakpoint) minmax(24px, 1fr);
   }
 
   @include for-tablet-layout {
     // background-color: blue;
     grid-template-columns:
-      minmax(24px, 1fr)
-      minmax(auto, $mobile-breakpoint)
-      minmax(24px, 1fr);
+      minmax(24px, 1fr) minmax(auto, $mobile-breakpoint) minmax(24px, 1fr);
   }
 
   @include for-narrow-layout {
     // background-color: red;
     grid-template-columns:
-      minmax(40px, 1fr)
-      minmax(auto, $mobile-breakpoint)
-      minmax(40px, 1fr);
+      minmax(40px, 1fr) minmax(auto, $mobile-breakpoint) minmax(40px, 1fr);
   }
 
   @include for-normal-layout {
     // background-color: purple;
     grid-template-columns:
-      minmax(40px, 1fr)
-      minmax(auto, $narrow-breakpoint)
-      minmax(40px, 1fr);
+      minmax(40px, 1fr) minmax(auto, $narrow-breakpoint) minmax(40px, 1fr);
   }
 
   @include for-wide-layout {
     // background-color: yellow;
     grid-template-columns:
-      minmax(80px, 1fr)
-      minmax(auto, $normal-breakpoint)
-      minmax(80px, 1fr);
+      minmax(80px, 1fr) minmax(auto, $normal-breakpoint) minmax(80px, 1fr);
   }
 }
 
-// .details-layout{}
-
-.card-grid {
+.cards-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+}
+
+.stay-card {
+
+  .carousel {
+    width: 100% !important;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
 }
