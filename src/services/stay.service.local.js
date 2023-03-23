@@ -36,7 +36,8 @@ const gStays = [
     host: {
       _id: 'u101',
       fullname: 'Ido Tsehori',
-      imgUrl: '../../imgs_test/ido_test.jpg',
+      // imgUrl: '../../imgs_test/ido_test.jpg',
+      imgUrl: '../../src/imgs/imgs_test/ido_test.jpg',
     },
     loc: {
       country: 'Portugal',
@@ -480,7 +481,7 @@ function labels() {
       key: 'Countryside',
       url: 'https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg',
     },
-  ];
+  ]
 }
 
 // ;(async () => {

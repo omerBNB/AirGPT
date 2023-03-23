@@ -2,7 +2,7 @@
   <header class="main-header">
     <nav>
       <RouterLink class="flex" to="/">
-        <img class="logo" src="../../amenities/bdcvkjwqkucgzr2bka5x.svg" alt="logo" />
+        <img class="logo" src="../../src/imgs/Airbnb logo/airbnblogo.svg" alt="logo" />
         <h1 role="img" aria-label="logo">Airgpt</h1>
       </RouterLink>
     </nav>
@@ -78,7 +78,7 @@
     </div>
     <InnerHeader :hidden="isWideView" />
   </header>
-  <hr class="hr" v-if="isWideView"/>
+  <hr class="hr" v-if="isWideView" />
 </template>
 <script>
 import UserOptions from './UserOptions.vue'
