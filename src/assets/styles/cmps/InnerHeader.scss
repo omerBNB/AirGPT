@@ -298,6 +298,29 @@
   z-index: 8;
   background-color: #fff;
   display: grid;
+  gap: 1px;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 1px 1fr 1px 1fr 1px 1fr;
+  font-size: 10px;
+  .add-guest-button{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    color: #717171;
+    border: 1px solid;
+    border-color: #b0b0b0;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .flex-inner-search-btns{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.search-inner-header-cotainer>* {
+    padding: 24px 0;   
 }

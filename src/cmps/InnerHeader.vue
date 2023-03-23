@@ -149,7 +149,7 @@
         :class="{ isActive: acitveModalInner === 'checkin' }">
         <div>Check in</div>
         <div>Add dates</div>
-        <section class="calender-container" v-if="acitveModalInner === 'checkin' || 'checkout'">
+        <section class="calender-container" v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout' ">
           <!-- <el-calendar class="calendar-inner-section" v-model="value" /> -->
           <div class="el-calendar calendar-inner-section">
             <div class="el-calendar__header">
@@ -320,7 +320,7 @@
               role="presentation"
               focusable="false"
               style="
-                display: block;
+                display: block; 
                 fill: none;
                 height: 16px;
                 width: 16px;
@@ -341,7 +341,7 @@
             <h2>Adults</h2>
             <p>Ages 13 or above</p>
           </div>
-          <div class="flex row space-between">
+          <div class="flex-inner-search-btns">
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
@@ -364,7 +364,57 @@
               </span>
             </button>
             <span class="add-guest-span">1</span>
-            <button class="add-guest-btn">
+            <button class="add-guest-button">
+              <span class="_8ovatg"
+                ><svg
+                  class="svg"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28m-14-14v28"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div>
+            <h2>Adults</h2>
+            <p>Ages 13 or above</p>
+          </div>    
+          <div class="flex-inner-search-btns">
+            <button class="add-guest-button disabled">
+              <span class="_8ovatg"
+                ><svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28"></path>
+                </svg>
+              </span>
+            </button>
+            <span class="add-guest-span">1</span>
+            <button class="add-guest-button">
               <span class="_8ovatg"
                 ><svg
                   class="svg"
@@ -391,7 +441,7 @@
             <h2>Adults</h2>
             <p>Ages 13 or above</p>
           </div>
-          <div class="flex row space-between">
+          <div class="flex-inner-search-btns">
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
@@ -414,7 +464,7 @@
               </span>
             </button>
             <span class="add-guest-span">1</span>
-            <button class="add-guest-btn">
+            <button class="add-guest-button">
               <span class="_8ovatg"
                 ><svg
                   class="svg"
@@ -441,7 +491,7 @@
             <h2>Adults</h2>
             <p>Ages 13 or above</p>
           </div>
-          <div class="flex row space-between">
+          <div class="flex-inner-search-btns">
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
@@ -464,57 +514,7 @@
               </span>
             </button>
             <span class="add-guest-span">1</span>
-            <button class="add-guest-btn">
-              <span class="_8ovatg"
-                ><svg
-                  class="svg"
-                  viewBox="0 0 32 32"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                  role="presentation"
-                  focusable="false"
-                  style="
-                    display: block;
-                    fill: none;
-                    height: 12px;
-                    width: 12px;
-                    stroke: currentcolor;
-                    stroke-width: 5.33333;
-                    overflow: visible;
-                  ">
-                  <path d="m2 16h28m-14-14v28"></path>
-                </svg>
-              </span>
-            </button>
-          </div>
-          <div>
-            <h2>Adults</h2>
-            <p>Ages 13 or above</p>
-          </div>
-          <div class="flex row space-between">
-            <button class="add-guest-button disabled">
-              <span class="_8ovatg"
-                ><svg
-                  viewBox="0 0 32 32"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                  role="presentation"
-                  focusable="false"
-                  style="
-                    display: block;
-                    fill: none;
-                    height: 12px;
-                    width: 12px;
-                    stroke: currentcolor;
-                    stroke-width: 5.33333;
-                    overflow: visible;
-                  ">
-                  <path d="m2 16h28"></path>
-                </svg>
-              </span>
-            </button>
-            <span class="add-guest-span">1</span>
-            <button class="add-guest-btn">
+            <button class="add-guest-button">
               <span class="_8ovatg"
                 ><svg
                   class="svg"

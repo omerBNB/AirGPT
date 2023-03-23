@@ -2,7 +2,7 @@
   <header class="main-header">
     <nav>
       <RouterLink class="flex" to="/">
-        <img class="logo" src="../../src/imgs/Airbnb logo/airbnblogo.svg" alt="logo" />
+        <img class="logo" src="../../src/imgs/Airbnb_logo/airbnblogo.svg" alt="logo" />
         <h1 role="img" aria-label="logo">Airgpt</h1>
       </RouterLink>
     </nav>
