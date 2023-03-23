@@ -1,9 +1,14 @@
 <template>
   <section class="stay-card">
     <StayImgPreview :imgs="stay.imgUrls" />
-    <h1 class="stay-name">{{ stay.name }}</h1>
-    <h1>{{ stay.loc.city }}, {{ stay.loc.country }}</h1>
-    <h1>{{ stay.capacity }} bads</h1>
+    <h1 class="stay-name flex">
+      {{ stay.name }}
+      <p class="rate flex">{{ stay.reviews[0].rate }} ({{ stay.reviews.length }}) (stars)</p>
+    </h1>
+    <main>
+      <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
+      <p>{{ stay.capacity }} bads</p>
+    </main>
     <h1 class="cost"><span class="price">${{ stay.price }}</span> night</h1>
   </section>
 </template>
@@ -16,11 +21,10 @@ export default {
     stay: Object,
   },
   data() {
-    return {}
+    return {
+      rate: ''
+    }
   },
-  methods: {},
-  computed: {},
-  created() { },
   components: { StayImgPreview },
 }
 </script>

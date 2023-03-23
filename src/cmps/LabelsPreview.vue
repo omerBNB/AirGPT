@@ -1,9 +1,9 @@
 <template>
-    <Carousel :settings="settings" :breakpoints="breakpoints">
+    <Carousel :settings="settings" :breakpoints="breakpoints" :itemsToShow="8">
         <Slide v-for="label in labels" :key="label.key">
-            <div class="flex flex-column">
+            <div class="label flex flex-column">
                 <img :src="label.url">
-                <h3 class="label-title">{{ label.key }}</h3>
+                <p>{{ label.key }}</p>
             </div>
         </Slide>
         <template #addons>
@@ -41,11 +41,10 @@ export default ({
             },
             // 1024 and up
             1024: {
-                itemsToShow: 5,
+                itemsToShow: 15,
                 snapAlign: 'start',
             },
         },
     }),
 })
 </script>
-  
