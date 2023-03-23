@@ -3,7 +3,6 @@
   margin-top: 0.5em;
   display: grid;
 
-  margin-bottom: 25px;
   h1 {
     font-family: Airbnb_Cereal-Book;
     font-size: 30px;
@@ -147,6 +146,8 @@
     }
   }
 }
+
+////////////////////////////////
 // @media (min-width: 550px) {
 //   .stay-details {
 //     grid-template-areas:
