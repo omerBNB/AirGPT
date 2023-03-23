@@ -7,46 +7,14 @@
   display: grid;
   grid-template-columns: 20px 1fr 20px;
   padding: 0;
-  // border: 1px solid black;
 
   &.details-grid {
-    // display: grid;
-    // // grid-template-columns: minmax(100px, 300px) 1fr minmax(100px, 300px);
-    // grid-template-columns: minmax(24px, 1fr) minmax(auto, 1120px) minmax(24px, 1fr);
     grid-template-columns: minmax(24px, 1fr) minmax(auto, 1120px) minmax(24px, 1fr);
-    // @include test{
-    //   grid-template-columns: minmax(24px, 1fr) minmax(auto, 960px) minmax(24px, 1fr);
-    // }
-
-    // @include for-mobile-layout {
-    //   grid-template-columns: 24px minmax(320px, $mobile-details-breakpoint) 24px;
-    // }
-
-    // @include for-mobile-big-layout {
-    //   grid-template-columns: 24px minmax(550px, mobile-details-big-breakpoint) 24px;
-    // }
-
-    // @include for-tablet-layout {
-    //   grid-template-columns: 24px minmax(744px, $tablet-details-breakpoint) 24px;
-    // }
-
-    // @include for-narrow-layout {
-    //   grid-template-columns: 40px minmax(950px, $narrow-details-breakpoint) 40px;
-    // }
-
-    // @include for-normal-layout {
-    //   grid-template-columns: minmax(40px,1fr) minmax(1128px, $normal-details-breakpoint) minmax(40px,1fr);
-    // }
-
-    // @include for-details-wide-layout {
-    //   grid-template-columns: minmax(1fr,160px) minmax(980px, $wide-details-breakpoint) minmax(1fr,160px);
-    // }
-
   }
 
   padding: 0;
 
-  >* {
+  > * {
     grid-column: 2;
 
     &.full {
@@ -54,68 +22,15 @@
     }
   }
 
-  // @include for-mobile-layout {
-  //   grid-template-columns: 24px minmax(320px, $mobile-breakpoint) 24px;
-  // }
-
-  // @include for-mobile-big-layout {
-  //   grid-template-columns: 24px minmax(550px, $mobile-big-breakpoint) 24px;
-  // }
-
-  // @include for-tablet-layout {
-  //   grid-template-columns: 24px minmax(744px, $tablet-breakpoint) 24px;
-  // }
-
-  // @include for-narrow-layout {
-  //   grid-template-columns: 40px minmax(950px, $narrow-breakpoint) 40px;
-  // }
-
   @include for-normal-layout {
     grid-template-columns: minmax(40px, 1fr) minmax(1128px, $normal-breakpoint) minmax(40px, 1fr);
   }
-
-  // @include for-wide-layout {
-  //   background-color: #1c1010;
-  //   grid-template-columns: 80px minmax(auto, $wide-breakpoint) 80px;
-  // }
 }
 
 .cards-layout {
   grid-template-columns: repeat(4, 1fr);
+
+  // .stay-card {
+  //   width: 280px;
+  // }
 }
-
-// @media screen and (max-width: $mobile-breakpoint) {
-//   .cards-layout {
-//     grid-template-columns: 1;
-//   }
-// }
-
-// @media screen and (min-width: $mobile-breakpoint) {
-//   .cards-layout {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// }
-
-// @media screen and (min-width: $tablet-breakpoint) {
-//   .cards-layout {
-//     grid-template-columns: repeat(3, 1fr);
-//   }
-// }
-
-// @media screen and (min-width: $narrow-breakpoint) {
-//   .cards-layout {
-//     grid-template-columns: repeat(4, 1fr);
-//   }
-// }
-
-// @media screen and (min-width: $normal-breakpoint) {
-//   .cards-layout {
-//     grid-template-columns: repeat(5, 1fr);
-//   }
-// }
-
-// @media screen and (min-width: $wide-breakpoint) {
-//   .cards-layout {
-//     grid-template-columns: repeat(6, 1fr);
-//   }
-// }
