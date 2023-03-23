@@ -32,7 +32,7 @@ import { stayService } from '../services/stay.service.local'
 
 export const stayStore = {
     state: {
-        stays: []
+        stays: [],
     },
     getters: {
         stays({ stays }) { return stays },

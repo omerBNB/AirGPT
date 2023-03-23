@@ -24,16 +24,16 @@
 }
 
 @mixin for-normal-layout {
-    @media (max-width: calc($normal-breakpoint + 80px)) {
-        @content;
-    }
-}
-
-@mixin for-wide-layout {
     @media (max-width: calc($wide-breakpoint + 80px)) {
         @content;
     }
 }
+
+// @mixin for-wide-layout {
+//     @media (max-width: calc($wide-breakpoint + 80px)) {
+//         @content;
+//     }
+// }
 // details
 
 @mixin for-details-mobile-layout {
