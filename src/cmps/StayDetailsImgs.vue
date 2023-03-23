@@ -10,7 +10,7 @@ export default {
   name: 'StayDetailsImgs',
   props: {
     stay: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },

@@ -1,6 +1,6 @@
 <template>
-  <div class="details-layout">
-    <main v-if="stay" class="stay-details">
+  <div v-if="stay" class="details-layout">
+    <main class="stay-details">
       <!-- Stay-review -->
       <section class="stay-review flex column">
         <h1>{{ stay.name }}</h1>
@@ -147,7 +147,7 @@
         <DetailsOrderBox />
       </section>
     </main>
-    <DetailsReviews />
+    <DetailsReviews :stay="stay" />
     <!-- <section>Reviews</section> -->
   </div>
 </template>
