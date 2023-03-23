@@ -1,9 +1,7 @@
 <template>
   <div>
-    <!-- <StayFilter /> -->
-    <div class="stay-list">
-      <StayList :stays="stays" />
-    </div>
+    <StayFilter />
+    <StayList :stays="stays" />
     <!-- <div class="container home">
       <ul class="stay-list">
         <li v-for="stay in stays" :key="stay._id">
@@ -32,6 +30,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service.local'
 // import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 import StayList from '../cmps/StayList.vue'
+import StayFilter from '../views/StayFilter.vue'
 export default {
   created() {
     this.$store.dispatch({ type: 'loadStays' })
@@ -101,6 +100,7 @@ export default {
   },
   components: {
     StayList,
+    StayFilter
   },
 }
 </script>

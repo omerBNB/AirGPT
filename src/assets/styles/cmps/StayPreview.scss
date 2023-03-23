@@ -1,0 +1,25 @@
+.stay-card {
+    font-family: CircularAir-Light;
+    color: $clr9;
+    font-size: 15px;
+    line-height: 1.125rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: fit-content;
+    padding-block-start: 1px;
+    margin: 0;
+
+    .stay-name {
+        font-family: Airbnb_Cereal-Medium;
+        color: $clr8;
+    }
+
+    .cost {
+        font-family: AirbnbCereal-Book;
+        color: $clr8;
+
+        .price {
+            font-family: Airbnb_Cereal-Medium;
+        }
+    }
+}
