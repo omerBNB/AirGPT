@@ -54,29 +54,29 @@
     }
   }
 
-  @include for-mobile-layout {
-    grid-template-columns: 24px minmax(320px, $mobile-breakpoint) 24px;
-  }
+  // @include for-mobile-layout {
+  //   grid-template-columns: 24px minmax(320px, $mobile-breakpoint) 24px;
+  // }
 
-  @include for-mobile-big-layout {
-    grid-template-columns: 24px minmax(550px, mobile-big-breakpoint) 24px;
-  }
+  // @include for-mobile-big-layout {
+  //   grid-template-columns: 24px minmax(550px, $mobile-big-breakpoint) 24px;
+  // }
 
-  @include for-tablet-layout {
-    grid-template-columns: 24px minmax(744px, $tablet-breakpoint) 24px;
-  }
+  // @include for-tablet-layout {
+  //   grid-template-columns: 24px minmax(744px, $tablet-breakpoint) 24px;
+  // }
 
-  @include for-narrow-layout {
-    grid-template-columns: 40px minmax(950px, $narrow-breakpoint) 40px;
-  }
+  // @include for-narrow-layout {
+  //   grid-template-columns: 40px minmax(950px, $narrow-breakpoint) 40px;
+  // }
 
-  @include for-normal-layout {
-    grid-template-columns: minmax(40px,1fr) minmax(1128px, $normal-breakpoint) minmax(40px,1fr);
-  }
+  // @include for-normal-layout {
+  //   grid-template-columns: minmax(40px,1fr) minmax(1128px, $normal-breakpoint) minmax(40px,1fr);
+  // }
 
-  @include for-wide-layout {
-    grid-template-columns: minmax(80px,1fr) minmax(1360px, $wide-breakpoint) minmax(80px,1fr);
-  }
+  // @include for-wide-layout {
+  //   grid-template-columns: minmax(80px,1fr) minmax(1360px, $wide-breakpoint) minmax(80px,1fr);
+  // }
 }
 
 @media screen and (max-width: $mobile-breakpoint) {

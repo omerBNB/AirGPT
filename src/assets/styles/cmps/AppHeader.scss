@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   transition: 1s;
-  border-bottom: solid 1px #dddddd;
+  // border-bottom: solid 1px #dddddd;
   position: relative;
   .flex {
     align-items: center;
@@ -23,7 +23,7 @@
     h1 {
       margin: 0;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 22px;
     }
 
     a:hover {
@@ -38,16 +38,20 @@
   .main-filter-header {
     display: flex;
     width: 352px;
+    height: 48px;
     border-radius: 50px;
     border: solid 1px #dddddd;
     box-shadow: 0 1px 2px #00000014, 0 4px 12px #0000000d;
     padding: 5px 10px;
     align-items: center;
+    margin-inline-start: 12.1%;
 
     .main-filter-btn {
       color: $clr7;
       font-weight: bold;
+      font-family: CircularAir-Light;
       cursor: pointer;
+      font-size: 14.7px;
     }
 
     .guests {
@@ -61,15 +65,18 @@
       width: 32px;
       height: 32px;
       cursor: pointer;
+      svg{
+        margin: -5px;
+      }
     }
 
     .border-line {
       width: 0;
-      margin-left: 8px;
-      padding-right: 8px;
+      // margin-left: 11px;
+      // padding-right: 8px;
       height: 24px;
       align-self: center;
-      border-left: solid 1px #dddddd;
+      border-left: solid 1.5px #dddddd;
       margin: 0;
     }
   }
@@ -78,8 +85,10 @@
     color: $clr7;
     align-self: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
     padding: 7px 15px;
+    font-weight: bold;
+    font-family: CircularAir-Light;
   }
 
   .airgpt-your-home-link:hover {
@@ -117,36 +126,6 @@
     }
   }
 
-  //   .loggedin-user {
-  //     background-color: $clr1;
-  //     padding: 2px 8px;
-  //     border-radius: 1em;
-  //     align-self: flex-end;
-  //     color: whitesmoke;
-  //     span {
-  //       background-color: $clr2;
-  //       padding: 4px;
-  //       margin: 10px;
-  //       border-radius: 50%;
-  //     }
-  //     img {
-  //       width: 2em;
-  //       height: 2em;
-  //       border-radius: 50%;
-  //     }
-  //   }
-  //   nav {
-  //     background-color: $clr4;
-  //     padding: 5px 0;
-  //   }
-  //   nav a:not(:first-child) {
-  //     border-top: 1px solid $clr1;
-  //     padding: 0 5px;
-  //     margin: 10px;
-  //   }
-  //   nav .active {
-  //     color: $clr1;
-  //   }
 }
 
 .inner-header-user {
@@ -155,15 +134,22 @@
   justify-content: space-between;
   align-items: center;
 
-  .i18-btn {
-    color: $clr7;
-    padding: 12px;
-    cursor: pointer;
-  }
+  // .i18-btn {
+  //   color: $clr7;
+  //   padding: 12px;
+  //   cursor: pointer;
+  // }
 
-  .i18-btn:hover {
-    background: #f7f7f7;
-    text-decoration: none;
-    border-radius: 50px;
-  }
+  // .i18-btn:hover {
+  //   background: #f7f7f7;
+  //   text-decoration: none;
+  //   border-radius: 50px;
+  // }
+}
+
+.hr{
+  grid-column: 1/-1;
+  width: 99%;
+  opacity: .3;
+  margin: 0;
 }
