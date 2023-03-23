@@ -1,8 +1,7 @@
 <template>
-  <section  id="main-app" class="main-container">
-    <AppHeader 
-    @showBackdrop="showbackdrop"/>
-    <RouterView/>
+  <section id="main-app" class="main-container">
+    <AppHeader @onShowBackDrop="showBackDrop" />
+    <RouterView ref="test" :class="showBackDropHome" />
     <UserMsg />
   </section>
 </template>
@@ -18,6 +17,7 @@ export default {
   data() {
     return {
       currLayout: null,
+      backDropisLive: false,
     }
   },
   created() {
@@ -26,14 +26,19 @@ export default {
     if (user) store.commit({ type: 'setLoggedinUser', user })
   },
   methods:{
-    showbackdrop(){
-      this.$refs.test.classList += ' back-drop'
+    showBackDrop(){
+      this.backDropisLive = true
     }
   },
   computed: {
     currentLayout() {
       return {
         'main-container': this.currLayout,
+      }
+    },
+    showBackDropHome(){
+      return {
+        'screen-shadow': this.backDropisLive === true
       }
     },
   },

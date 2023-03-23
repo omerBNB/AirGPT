@@ -51,7 +51,7 @@
       font-weight: bold;
       font-family: CircularAir-Light;
       cursor: pointer;
-      font-size: 14.7px;
+      font-size: 14.2px;
     }
 
     .guests {
@@ -152,4 +152,14 @@
   width: 99%;
   opacity: .3;
   margin: 0;
+}
+
+.screen-shadow {
+    position: fixed;
+    top: 155px;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #71717168;
+    z-index: 3;
 }

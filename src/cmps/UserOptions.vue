@@ -1,10 +1,10 @@
 <template>
   <div class="user-nav" >
-    <div class="user-options">
-      <div>Login</div>
-      <div>Sign up</div>
+    <div class="user-options-container">
+      <div class="user-options">Login</div>
+      <div class="user-options">Sign up</div>
       <span class="user-line"></span>
-      <div>Airgpt your home</div>
+      <div class="user-options" >Airgpt your home</div>
     </div>
   </div>
 </template>
