@@ -46,11 +46,17 @@
 
         .rate {
             gap: 0.4em;
+            align-items: center;
         }
     }
 
-    main p {
-        margin: 0;
+    main {
+        padding: 0;
+
+        p {
+            margin: 0;
+            justify-content: start;
+        }
     }
 
     .cost {
@@ -59,6 +65,7 @@
 
         .price {
             font-family: Airbnb_Cereal-Medium;
+            color: $clr7;
         }
     }
 }
