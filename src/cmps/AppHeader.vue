@@ -7,12 +7,12 @@
       </RouterLink>
     </nav>
     <section class="main-filter-header" v-if="isWideView">
-      <button @click="showWideView" class="main-filter-btn" >Anywhere</button>
+      <button @click="showCurrModal('where')" class="main-filter-btn">Anywhere</button>
       <div class="border-line"></div>
-      <button @click="showWideView" class="main-filter-btn">Any week</button>
+      <button @click="showCurrModal('checkin')" class="main-filter-btn">Any week</button>
       <div class="border-line"></div>
-      <button @click="showWideView" class="main-filter-btn guests">Add guests</button>
-      <button @click="showWideView" class="search-btn">
+      <button @click="showCurrModal('search')" class="main-filter-btn guests">Add guests</button>
+      <button class="search-btn">
         <div data-testid="little-search-icon">
           <svg
             viewBox="0 0 32 32"
@@ -57,7 +57,7 @@
         </div>
       </section>
     </div>
-    <InnerHeader :hidden="isWideView" />
+    <InnerHeader v-if="!isWideView" :activeModal="activateModal"/>
   </header>
   <hr class="hr" v-if="isWideView" />
 </template>
@@ -65,25 +65,25 @@
 import UserOptions from './UserOptions.vue'
 import InnerHeader from './InnerHeader.vue'
 export default {
+  props: {
+    isWide: Boolean,
+  },
   data() {
+    // props
     return {
-      isWide: true,
       isInUserView: true,
       currChoice: 'none',
+      activateModal: null
     }
   },
   methods: {
-    showWideView(ev) {
-      this.$emit('onShowBackDrop')
-      this.isWide = false
-      this.currChoice = ev.target.__vnode.children
-    },
-    unWideView() {
-      console.log('check')
-    },
     toggleUserOptions() {
       this.isInUserView = !this.isInUserView
     },
+    showCurrModal(modalName){
+       this.$emit('onShowBackDrop')
+      this.activateModal = modalName
+    }
   },
   computed: {
     loggedInUser() {
@@ -95,7 +95,9 @@ export default {
     UserInView() {
       return this.isInUserView
     },
-  
+    currModalState(){
+      return this.activateModal
+    }
   },
   components: {
     UserOptions,

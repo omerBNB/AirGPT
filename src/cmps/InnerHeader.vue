@@ -5,12 +5,12 @@
         class="where-to-btn"
         ref="where"
         @click="setActiveModal('where')"
-        :class="{ isActive: activeModal === 'where' }">
+        :class="{ isActive: acitveModalInner === 'where' }">
         <form action="">
           <div>Where</div>
           <input class="where-to-input" type="search" placeholder="Search destination" />
         </form>
-        <section class="grid stay-where-search" v-if="activeModal === 'where'">
+        <section class="grid stay-where-search" v-if="acitveModalInner === 'where'">
           <div>
             <h2>Trending destinations</h2>
             <section class="counries-search-container">
@@ -146,18 +146,159 @@
         class="inner-header-dates-btn"
         ref="checkin"
         @click="setActiveModal('checkin')"
-        :class="{ isActive: activeModal === 'checkin' }">
+        :class="{ isActive: acitveModalInner === 'checkin' }">
         <div>Check in</div>
         <div>Add dates</div>
-        <section class="calender-container" v-if="activeModal === 'checkin'">
-          <el-calendar class="calendar-inner-section" v-model="value" />
+        <section class="calender-container" v-if="acitveModalInner === 'checkin' || 'checkout'">
+          <!-- <el-calendar class="calendar-inner-section" v-model="value" /> -->
+          <div class="el-calendar calendar-inner-section">
+            <div class="el-calendar__header">
+              <div class="el-calendar__title">2023 March</div>
+              <!-- <div class="el-calendar__button-group">
+                <div class="el-button-group">
+                  
+                </div>
+              </div> -->
+            </div>
+            <div class="el-calendar__body">
+              <table class="el-calendar-table" cellspacing="0" cellpadding="0">
+                <thead>
+                  <th>Su</th>
+                  <th>Mo</th>
+                  <th>Tu</th>
+                  <th>We</th>
+                  <th>Th</th>
+                  <th>Fr</th>
+                  <th>Sa</th>
+                </thead>
+                <tbody>
+                  <tr class="el-calendar-table__row">
+                    <td class="prev">
+                      <div class="el-calendar-day"><span>26</span></div>
+                    </td>
+                    <td class="prev">
+                      <div class="el-calendar-day"><span>27</span></div>
+                    </td>
+                    <td class="prev">
+                      <div class="el-calendar-day"><span>28</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>1</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>2</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>3</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>4</span></div>
+                    </td>
+                  </tr>
+                  <tr class="el-calendar-table__row">
+                    <td class="current">
+                      <div class="el-calendar-day"><span>5</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>6</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>7</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>8</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>9</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>10</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>11</span></div>
+                    </td>
+                  </tr>
+                  <tr class="el-calendar-table__row">
+                    <td class="current">
+                      <div class="el-calendar-day"><span>12</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>13</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>14</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>15</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>16</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>17</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>18</span></div>
+                    </td>
+                  </tr>
+                  <tr class="el-calendar-table__row">
+                    <td class="current">
+                      <div class="el-calendar-day"><span>19</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>20</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>21</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>22</span></div>
+                    </td>
+                    <td class="current is-selected is-today">
+                      <div class="el-calendar-day"><span>23</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>24</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>25</span></div>
+                    </td>
+                  </tr>
+                  <tr class="el-calendar-table__row">
+                    <td class="current">
+                      <div class="el-calendar-day"><span>26</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>27</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>28</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>29</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>30</span></div>
+                    </td>
+                    <td class="current">
+                      <div class="el-calendar-day"><span>31</span></div>
+                    </td>
+                    <td class="next">
+                      <div class="el-calendar-day"><span>1</span></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
         </section>
       </button>
       <div class="border-inner-header"></div>
       <button
         class="inner-header-dates-btn"
         @click="setActiveModal('checkout')"
-        :class="{ isActive: activeModal === 'checkout' }">
+        :class="{ isActive: acitveModalInner === 'checkout' }">
         <div ref="checkout">Check out</div>
         <div>Add dates</div>
       </button>
@@ -165,7 +306,7 @@
       <div
         class="inner-header-search-btn-container"
         @click="setActiveModal('search')"
-        :class="{ isActive: activeModal === 'search' }">
+        :class="{ isActive: acitveModalInner === 'search' }">
         <button class="inner-header-dates-btn-search" ref="search">
           <div>Who</div>
           <div>Add guests</div>
@@ -195,6 +336,208 @@
           </div>
           <div>Search</div>
         </button>
+        <section class="search-inner-header-cotainer" v-if="acitveModalInner === 'search'">
+          <div>
+            <h2>Adults</h2>
+            <p>Ages 13 or above</p>
+          </div>
+          <div class="flex row space-between">
+            <button class="add-guest-button disabled">
+              <span class="_8ovatg"
+                ><svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28"></path>
+                </svg>
+              </span>
+            </button>
+            <span class="add-guest-span">1</span>
+            <button class="add-guest-btn">
+              <span class="_8ovatg"
+                ><svg
+                  class="svg"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28m-14-14v28"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div>
+            <h2>Adults</h2>
+            <p>Ages 13 or above</p>
+          </div>
+          <div class="flex row space-between">
+            <button class="add-guest-button disabled">
+              <span class="_8ovatg"
+                ><svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28"></path>
+                </svg>
+              </span>
+            </button>
+            <span class="add-guest-span">1</span>
+            <button class="add-guest-btn">
+              <span class="_8ovatg"
+                ><svg
+                  class="svg"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28m-14-14v28"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div>
+            <h2>Adults</h2>
+            <p>Ages 13 or above</p>
+          </div>
+          <div class="flex row space-between">
+            <button class="add-guest-button disabled">
+              <span class="_8ovatg"
+                ><svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28"></path>
+                </svg>
+              </span>
+            </button>
+            <span class="add-guest-span">1</span>
+            <button class="add-guest-btn">
+              <span class="_8ovatg"
+                ><svg
+                  class="svg"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28m-14-14v28"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div>
+            <h2>Adults</h2>
+            <p>Ages 13 or above</p>
+          </div>
+          <div class="flex row space-between">
+            <button class="add-guest-button disabled">
+              <span class="_8ovatg"
+                ><svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28"></path>
+                </svg>
+              </span>
+            </button>
+            <span class="add-guest-span">1</span>
+            <button class="add-guest-btn">
+              <span class="_8ovatg"
+                ><svg
+                  class="svg"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="
+                    display: block;
+                    fill: none;
+                    height: 12px;
+                    width: 12px;
+                    stroke: currentcolor;
+                    stroke-width: 5.33333;
+                    overflow: visible;
+                  ">
+                  <path d="m2 16h28m-14-14v28"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </section>
       </div>
     </section>
   </section>
@@ -205,11 +548,14 @@ import { ref } from 'vue'
 
 export default {
   name: '',
+  props: {
+    activeModal: String,
+  },
   data() {
     return {
       isActive: false,
       value: ref(new Date()),
-      activeModal: null,
+      acitveModalInner: this.activeModal,
     }
   },
   methods: {
@@ -217,18 +563,14 @@ export default {
       this.isActive = true
     },
     setActiveModal(btnName) {
-      console.log('btnName', btnName)
-      this.activeModal = btnName
+      this.acitveModalInner = btnName
+      // this.acitveModalInner = btnName
     },
   },
-  computed: {
-    // buttonIsActive() {
-    //   return {
-    //     isActive: this.isActive,
-    //   }
-    // },
+  computed: {},
+  created() {
+    this.acitveModalInner = this.activeModal
   },
-  created() {},
   components: {},
 }
 </script>

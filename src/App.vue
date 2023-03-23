@@ -1,7 +1,7 @@
 <template>
-  <section id="main-app" class="main-container">
-    <AppHeader @onShowBackDrop="showBackDrop" />
-    <RouterView ref="test" :class="showBackDropHome" />
+  <section id="main-app" class="main-container" >
+    <AppHeader @onShowBackDrop="showBackDrop" :isWide="isWide"/>
+    <RouterView ref="test"  :class="showBackDropHome" @click="showFullScreeen" />
     <UserMsg />
   </section>
 </template>
@@ -18,6 +18,7 @@ export default {
     return {
       currLayout: null,
       backDropisLive: false,
+      isWide:true
     }
   },
   created() {
@@ -27,7 +28,12 @@ export default {
   },
   methods:{
     showBackDrop(){
+      this.isWide = false
       this.backDropisLive = true
+    },
+    showFullScreeen(){
+      this.isWide = true
+      this.backDropisLive = false
     }
   },
   computed: {

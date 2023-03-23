@@ -12,6 +12,7 @@
   transition: 1s;
   // border-bottom: solid 1px #dddddd;
   position: relative;
+  z-index: 7;
   .flex {
     align-items: center;
     // justify-content: space-between;
@@ -160,6 +161,6 @@
     right: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #71717168;
+    background-color: rgba(113, 113, 113, 0.408);
     z-index: 3;
 }

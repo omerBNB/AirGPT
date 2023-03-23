@@ -227,17 +227,20 @@
         background-color: white;
       }
     }
-    .isActive:hover{
+    .isActive:hover {
       background-color: white;
       input {
         background-color: white;
       }
     }
-    .inner-header-dates-btn-search {
-        &.isActive{
+    .inner-header-search-btn-container {
+      &.isActive {
+        background-color: white;
+        .inner-header-dates-btn-search{
           background-color: white;
         }
       }
+    }
   }
 }
 .calender-container {
@@ -252,8 +255,49 @@
   border-radius: 32px;
   z-index: 8;
   background-color: #fff;
-  .calendar-inner-section{
-    width: 700px;
-    height: 560px;
+  .el-calendar__body {
+    height: 100%;
+    width: 300px;
   }
+  .el-calendar {
+    --el-calendar-cell-width: 50px;
+  }
+  .current {
+    border-radius: 50%;
+  }
+  .prev {
+    border-radius: 50%;
+  }
+  .el-calendar-table {
+    height: 150px;
+    width: 300px;
+  }
+  .el-calendar-table .el-calendar-day:hover {
+    cursor: pointer;
+    background-color: var(--el-calendar-selected-bg-color);
+    border-radius: 50%;
+  }
+  .el-calendar-table .el-calendar-day {
+    height: 40px;
+  }
+  .el-calendar-day {
+    padding: 0;
+  }
+}
+
+.search-inner-header-cotainer {
+  position: absolute;
+  box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
+  top: 81px;
+  width: 403px;
+  height: 403px;
+  right: calc(50% - 125px);
+  height: 410px;
+  padding: 16px 32px;
+  border-radius: 32px;
+  z-index: 8;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1px 1fr 1px 1fr 1px 1fr;
 }
