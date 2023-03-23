@@ -1,12 +1,13 @@
 .user-nav {
     position: absolute;
+    font-family: Airbnb_Cereal-Book;
     top: 50px;
     right: 0px;
     width: 240px;
     padding-top: 11px;
     padding-bottom: 11px;
     border-radius: 10px;
-    z-index: 11;
+    z-index: 13;
     background-color: #fff;
     box-shadow: 1px 1px 11px 1px #00000014, 0 4px 12px #0000000d;
     .user-options {
