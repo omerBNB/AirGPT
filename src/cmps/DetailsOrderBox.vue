@@ -135,6 +135,31 @@
           </button>
         </div>
       </div>
+      <div>
+        <p class="text-center">You won't be charged yet</p>
+      </div>
+
+      <section class="price-info">
+        <div class="price-per-night flex space-between">
+          <p>$31 X 9 nights</p>
+          <p>$279</p>
+        </div>
+
+        <div class="service-fee flex space-between">
+          <p>Cleaning fee</p>
+          <p>$53</p>
+        </div>
+
+        <div class="service-fee flex space-between">
+          <p>Service fee</p>
+          <p>$48.15</p>
+        </div>
+      </section>
+      <hr />
+      <div class="total flex space-between">
+        <p>Total</p>
+        <p>$327.15</p>
+      </div>
     </section>
     <!-- <p class="footer">Report this listing</p> -->
   </main>

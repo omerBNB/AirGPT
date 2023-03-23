@@ -34,7 +34,7 @@
 .flex {
   display: flex;
 
-  >*.full {
+  > *.full {
     flex: 1;
   }
 
@@ -63,6 +63,9 @@
   display: grid;
 }
 
+.underline {
+  text-decoration: underline;
+}
 .square-ratio {
   @include aspect-ratio(1, 1);
 }
