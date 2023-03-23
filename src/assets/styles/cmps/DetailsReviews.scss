@@ -1,0 +1,23 @@
+.reviews-container {
+  border: 1px solid black;
+}
+
+.reviews-rate {
+  border: 1px solid salmon;
+}
+
+.rating {
+  grid-template-columns: repeat(2, 1fr);
+  progress {
+    height: 4px;
+    border-radius: 40px;
+  }
+  progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+
+  progress[value]::-webkit-progress-value {
+    background-color: black;
+  }
+}

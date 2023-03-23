@@ -81,11 +81,8 @@
         </section>
       </section>
 
-      <!-- Img-container -->
-      <section class="img-container">
-        <img class="main-img" :src="stay.imgUrls[0]" alt="img" />
-        <img v-for="img in stay.imgUrls" :src="img" />
-      </section>
+      <!-- Img-component -->
+      <StayDetailsImgs :stay="stay" />
 
       <!-- Details-container -->
       <section class="details-container">
@@ -100,7 +97,7 @@
           </div>
           <div class="ferrites-main">
             <div class="line">
-              <img src="../../ferrites_imgs/superhost.svg" />
+              <img src="../../src/imgs/ferrites_imgs/superhost.svg" />
               <div class="text">
                 <h4>{{ stay.host.fullname }} is a Superhost</h4>
                 <p>
@@ -110,7 +107,7 @@
               </div>
             </div>
             <div class="line">
-              <img src="../../ferrites_imgs/checkin.svg" />
+              <img src="../../src/imgs/ferrites_imgs/checkin.svg" />
               <div class="text">
                 <h4>Great check-in experience</h4>
                 <p>100% of recent guests gave the check-in process a 5-star rating.</p>
@@ -118,7 +115,7 @@
             </div>
 
             <div class="line">
-              <img src="../../ferrites_imgs/location.svg" />
+              <img src="../../src/imgs/ferrites_imgs/location.svg" />
               <div class="text">
                 <h4>Free cancellation for 48 hours.</h4>
               </div>
@@ -126,34 +123,39 @@
           </div>
 
           <!-- aircover -->
-          <div class="aircover">
-            <img src="../../imgs_test/aircover_logo.webp" alt="" srcset="" />
+          <section class="aircover">
+            <!-- <img src="../../imgs_test/aircover_logo.webp" alt="" srcset="" /> -->
+            <img src="../../src/imgs/aircover_logo/aircover_logo.webp" alt="aircover" />
             <p>
               Every booking includes free protection from Host cancellations, listing inaccuracies,
               and other issues like trouble checking in.
             </p>
             <a href="">Learn more</a>
-          </div>
+          </section>
           <!-- ameneties -->
-          <div class="ameneties">
+          <section class="ameneties">
             <h3>What this place offers</h3>
             <div class="offers grid">
               <div v-for="amenitie in stay.amenities" class="offer">
-                <img :src="'../../amenities/' + amenitie.toLowerCase() + '.svg'" />
+                <img :src="'../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'" />
                 <p>{{ amenitie }}</p>
               </div>
             </div>
-          </div>
+          </section>
         </div>
 
         <DetailsOrderBox />
       </section>
     </main>
+    <DetailsReviews />
+    <!-- <section>Reviews</section> -->
   </div>
 </template>
 
 <script>
 import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
+import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
+import DetailsReviews from '../cmps/DetailsReviews.vue'
 import { storageService } from '../services/async-storage.service.js'
 export default {
   name: '',
@@ -178,6 +180,8 @@ export default {
   },
   components: {
     DetailsOrderBox,
+    StayDetailsImgs,
+    DetailsReviews,
   },
 }
 </script>
