@@ -20,21 +20,12 @@
     }
 
     .el-carousel__item {
-        .fa-heart {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: rgba(0, 0, 0, 0.259);
-        }
-
         img {
             object-fit: cover;
         }
 
         border-radius: 10px;
     }
-
-    // margin: 0;
 
     .stay-name {
         // font-family: Airbnb_Cereal-Medium;
@@ -45,10 +36,13 @@
         white-space: nowrap;
 
         .rate {
-            margin-inline-end: 0;
+            gap: 0.4em;
         }
     }
 
+    main p {
+        margin: 0;
+    }
 
     .cost {
         font-family: AirbnbCereal-Book;
