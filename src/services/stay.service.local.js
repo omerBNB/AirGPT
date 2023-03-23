@@ -13,6 +13,7 @@ export const stayService = {
   addStayMsg,
   labels,
 }
+
 window.cs = stayService
 
 // TEST DATA
@@ -243,7 +244,8 @@ const gStays = [
       },
     ],
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
-  }, {
+  },
+  {
     _id: 'ido123',
     name: 'Ribeira Charming Duplex',
     type: 'House',
