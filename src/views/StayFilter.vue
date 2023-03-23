@@ -1,5 +1,7 @@
 <template>
-    <LabelsPreview :labels="labels" />
+    <div class="labels">
+        <LabelsPreview :labels="labels" />
+    </div>
 </template>
   
 <script>
