@@ -1,7 +1,7 @@
 <template>
     <Carousel :settings="settings" :breakpoints="breakpoints">
         <Slide v-for="label in labels" :key="label.key">
-            <div class="flex flex-column space-between">
+            <div class="flex flex-column">
                 <img :src="label.url">
                 <h3 class="label-title">{{ label.key }}</h3>
             </div>
@@ -17,7 +17,7 @@ import { Carousel, Navigation, Slide } from 'vue3-carousel'
 
 import 'vue3-carousel/dist/carousel.css'
 
-export default ({g
+export default ({
     name: 'LabelsPreview',
     props: { labels: Object },
     components: {
