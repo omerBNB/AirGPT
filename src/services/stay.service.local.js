@@ -22,10 +22,10 @@ const gStays = [
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
-      'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
-      'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
-      'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
-      'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
+      '../../src/imgs/imgs_test/ListImgsTest/a/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/4.webp',
     ],
     price: 80.0,
     // in preview!
@@ -36,7 +36,6 @@ const gStays = [
     host: {
       _id: 'u101',
       fullname: 'Ido Tsehori',
-      // imgUrl: '../../imgs_test/ido_test.jpg',
       imgUrl: '../../src/imgs/imgs_test/ido_test.jpg',
     },
     loc: {
@@ -49,13 +48,44 @@ const gStays = [
     },
     reviews: [
       {
-        id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
+        id: 'madeId1',
+        txt: `Good place bad host`,
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 'madeId2',
+        txt: `Shitty place, Fuck you Ido!`,
+        rate: 7,
+        by: {
+          _id: 'u10inon',
+          fullname: 'Inon',
+          imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+        },
+      },
+      {
+        id: 'madeId3',
+        txt: `Great place, the host Ido is very bad`,
+        rate: 8,
+        by: {
+          _id: 'u10yuval',
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
+
+      {
+        id: 'madeId4',
+        txt: `Ido is the best`,
+        rate: 10,
+        by: {
+          _id: 'u10ido',
+          fullname: 'Ido',
+          imgUrl: '../../src/imgs/imgs_test/ido.jpg',
         },
       },
     ],
