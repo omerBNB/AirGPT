@@ -104,6 +104,9 @@ export const stayStore = {
                 console.log('stayStore: Error in addStayMsg', err)
                 throw err
             }
+        }, async setFilterBy({ commit }, { filter }) {
+            const stays = await stayService.query(filter)
+            commit({ type: 'setStays', stays })
         },
     }
 }

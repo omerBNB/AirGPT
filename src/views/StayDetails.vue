@@ -3,7 +3,6 @@
     <main class="stay-details">
       <StayHeaderInfo :stay="stay" />
       <StayDetailsImgs :stay="stay" />
-
       <!-- Details-container -->
       <section class="details-container">
         <!-- ferrites -->
@@ -77,7 +76,7 @@ import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
 import StayHeaderInfo from '../cmps/StayHeaderInfo.vue'
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviews from '../cmps/DetailsReviews.vue'
-import { storageService } from '../services/async-storage.service.js'
+import { stayService } from '../services/stay.service.local'
 
 export default {
   name: 'StayDetails',
@@ -87,10 +86,7 @@ export default {
     }
   },
   created() {
-    const { stayId } = this.$route.params
-    storageService.get('stay', stayId).then((stay) => {
-      this.stay = stay
-    })
+    this.loadStay()
   },
   mounted() {
     const currRoute = this.$route.path
@@ -98,11 +94,20 @@ export default {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
   },
-  components: {
-    DetailsOrderBox,
-    StayDetailsImgs,
-    DetailsReviews,
-    StayHeaderInfo,
-  },
+  methods: {
+    async loadStay() {
+      const { stayId } = this.$route.params
+      if (stayId) {
+        let stay = await stayService.getById(stayId)
+        if (stay) this.stay = stay
+      }
+    },
+    components: {
+      DetailsOrderBox,
+      StayDetailsImgs,
+      DetailsReviews,
+      StayHeaderInfo,
+    },
+  }
 }
 </script>

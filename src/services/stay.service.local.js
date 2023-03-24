@@ -65,8 +65,8 @@ const gStays = [
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
-    _id: '10006546',
-    name: 'Ribeira Charming Duplex',
+    _id: "98425306",
+    name: "Cozy Cottage in the Woods",
     type: 'House',
     imgUrls: [
       '../../src/imgs/imgs_test/ListImgsTest/b/3.webp',
@@ -75,43 +75,40 @@ const gStays = [
       '../../src/imgs/imgs_test/ListImgsTest/b/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/b/5.webp',
     ],
-    price: 80.0,
-    // in preview!
-    summary:
-      'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
-    capacity: 8, // guest number
-    amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    price: "1200",
+    summary: "Escape to this charming cabin surrounded by trees and wildlife. Perfect for a weekend getaway or a long-term stay. Enjoy the peace and quiet of nature, while still being close to all the amenities of town.",
+    capacity: 4,
+    amenities: ["Fireplace", "Hot tub", "WiFi", "Kitchen"],
+    labels: ["Trending", "Play", "Tropical"],
     host: {
-      _id: 'u101',
-      fullname: 'Davit Pok',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+      _id: "84659731",
+      fullname: "John Doe",
+      imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
     },
     loc: {
-      country: 'Portugal',
-      countryCode: 'PT',
-      city: 'Porto',
-      address: '17 Kombo st',
-      lat: -8.61308,
-      lng: 41.1413,
+      country: "United States",
+      countryCode: "US",
+      city: "Seattle",
+      address: "1234 Forest Way",
+      lat: 47.6062,
+      lng: -122.3321
     },
     reviews: [
       {
-        id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
-        rate: 4,
+        id: "43215",
+        txt: "We had a great time staying at this cabin. It was so peaceful and quiet, just what we needed. The hot tub was a nice bonus.",
+        rate: 5,
         by: {
-          _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
-        },
-      },
+          _id: "265489",
+          fullname: "Jane Smith",
+          imgUrl: "/img/img1.jpg"
+        }
+      }
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: ["user1", "user3"]
   },
   {
-    _id: '10006546',
+    _id: '10106546',
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
@@ -121,7 +118,7 @@ const gStays = [
       '../../src/imgs/imgs_test/ListImgsTest/c/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
     ],
-    price: 80.0,
+    price: 80,
     // in preview!
     summary:
       'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
@@ -157,8 +154,8 @@ const gStays = [
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
-    _id: '10006546',
-    name: 'Ribeira Charming Duplex',
+    _id: "27783059",
+    name: "Luxury Loft in the City",
     type: 'House',
     imgUrls: [
       '../../src/imgs/imgs_test/ListImgsTest/d/4.webp',
@@ -167,43 +164,40 @@ const gStays = [
       '../../src/imgs/imgs_test/ListImgsTest/d/3.webp',
       '../../src/imgs/imgs_test/ListImgsTest/d/5.webp',
     ],
-    price: 80.0,
-    // in preview!
-    summary:
-      'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
-    capacity: 8, // guest number
-    amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    price: "3000",
+    summary: "Experience city living at its finest in this modern and spacious loft. With floor-to-ceiling windows and stunning views of downtown, you'll feel like you're living in a movie.",
+    capacity: 2,
+    amenities: ["Gym", "Pool", "WiFi", "Kitchen", "Smart TV"],
+    labels: ["Top of the world", "Play", "Tropical"],
     host: {
-      _id: 'u101',
-      fullname: 'Davit Pok',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+      _id: "73148925",
+      fullname: "Maria Rodriguez",
+      imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
     },
     loc: {
-      country: 'Portugal',
-      countryCode: 'PT',
-      city: 'Porto',
-      address: '17 Kombo st',
-      lat: -8.61308,
-      lng: 41.1413,
+      country: "United States",
+      countryCode: "US",
+      city: "New York",
+      address: "5678 Broadway",
+      lat: 40.7128,
+      lng: -74.006
     },
     reviews: [
       {
-        id: 'madeId',
-        txt: 'Very helpful hosts. Cooked traditional...',
-        rate: 4,
+        id: "43215",
+        txt: "We had a great time staying at this cabin. It was so peaceful and quiet, just what we needed. The hot tub was a nice bonus.",
+        rate: 5,
         by: {
-          _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
-        },
-      },
+          _id: "265489",
+          fullname: "Jane Smith",
+          imgUrl: "/img/img1.jpg"
+        }
+      }
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: ["user1", "user3"]
   },
   {
-    _id: '10006546',
+    _id: '10086546',
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
@@ -319,6 +313,154 @@ const gStays = [
     ],
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
+  {
+    _id: '14123456',
+    name: 'Oceanfront Beach House',
+    type: 'House',
+    imgUrls: [
+      '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/4.webp',
+    ],
+    price: 200,
+    summary: 'Beautiful 3 bedroom beach house located on the oceanfront with stunning views of the water.',
+    capacity: 6,
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Washer/Dryer', 'Outdoor Grill'],
+    labels: ['Beachfront', 'Relaxation', 'Family-Friendly', 'Surfing'],
+    host: {
+      _id: 'u201',
+      fullname: 'Anna Smith',
+      imgUrl: 'https://www.example.com/img/host-anna-smith.jpg',
+    },
+    loc: {
+      country: 'USA',
+      countryCode: 'US',
+      city: 'Malibu',
+      address: '123 Oceanfront Drive',
+      lat: 34.0407,
+      lng: -118.6536,
+    },
+    reviews: [
+      {
+        id: 'madeId1',
+        txt: `Good place bad host`,
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 'madeId2',
+        txt: `Shitty place, Fuck you Ido!`,
+        rate: 7,
+        by: {
+          _id: 'u10inon',
+          fullname: 'Inon',
+          imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+        },
+      },
+      {
+        id: 'madeId3',
+        txt: `Great place, the host Ido is very bad`,
+        rate: 8,
+        by: {
+          _id: 'u10yuval',
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
+
+      {
+        id: 'madeId4',
+        txt: `Ido is the best`,
+        rate: 10,
+        by: {
+          _id: 'u10ido',
+          fullname: 'Ido',
+          imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+        },
+      },
+    ],
+    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+  },
+  {
+    _id: '17234367',
+    name: 'Cozy Mountain Cabin',
+    type: 'Cabin',
+    imgUrls: [
+      '../../src/imgs/imgs_test/ListImgsTest/a/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/5.webp',
+    ],
+    price: 150,
+    summary: 'Quaint 2 bedroom cabin nestled in the mountains, perfect for a peaceful getaway.',
+    capacity: 4,
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Fireplace', 'Outdoor Firepit'],
+    labels: ['Secluded', 'Nature', 'Romantic', 'Hiking'],
+    host: {
+      _id: 'u401',
+      fullname: 'Mark Johnson',
+      imgUrl: 'https://www.example.com/img/host-mark-johnson.jpg',
+    },
+    loc: {
+      country: 'Canada',
+      countryCode: 'CA',
+      city: 'Whistler',
+      address: '456 Mountain View Road',
+      lat: 50.1163,
+      lng: -122.9574,
+    },
+    reviews: [
+      {
+        id: 'madeId1',
+        txt: `Good place bad host`,
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'Omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 'madeId2',
+        txt: `Shitty place, Fuck you Ido!`,
+        rate: 7,
+        by: {
+          _id: 'u10inon',
+          fullname: 'Inon',
+          imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+        },
+      },
+      {
+        id: 'madeId3',
+        txt: `Great place, the host Ido is very bad`,
+        rate: 8,
+        by: {
+          _id: 'u10yuval',
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
+
+      {
+        id: 'madeId4',
+        txt: `Ido is the best`,
+        rate: 10,
+        by: {
+          _id: 'u10ido',
+          fullname: 'Ido',
+          imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+        },
+      },
+    ],
+    likedByUsers: ['mini-user'], // for user-wishlist : use $in  
+  }
 ]
 
 const orders = [
@@ -368,6 +510,9 @@ _createStays()
 
 async function query(filterBy = { txt: '', price: 0 }) {
   let stays = await storageService.query(STORAGE_KEY)
+  if (filterBy.label) {
+    stays = stays.filter((stay) => stay.labels.includes(filterBy.label))
+  }
   // if (filterBy.txt) {
   //   const regex = new RegExp(filterBy.txt, 'i')
   //   stays = stays.filter((stay) => regex.test(stay.vendor) || regex.test(stay.description))
