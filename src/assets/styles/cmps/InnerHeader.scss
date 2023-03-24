@@ -236,7 +236,7 @@
     .inner-header-search-btn-container {
       &.isActive {
         background-color: white;
-        .inner-header-dates-btn-search{
+        .inner-header-dates-btn-search {
           background-color: white;
         }
       }
@@ -300,9 +300,9 @@
   display: grid;
   gap: 1px;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1px 1fr 1px 1fr 1px 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   font-size: 10px;
-  .add-guest-button{
+  .add-guest-button {
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -313,14 +313,27 @@
     width: 32px;
     height: 32px;
     margin: 5px;
-    padding: 5px;
+    padding-left: 9px;
     cursor: pointer;
   }
-  .flex-inner-search-btns{
+  .add-guest-span {
+    align-self: center;
+    height: 30px;
+    font-size: 15px;
+  }
+  .flex-inner-search-btns {
     display: flex;
     justify-content: space-between;
   }
 }
-.search-inner-header-cotainer>* {
-    padding: 24px 0;   
+.search-inner-header-cotainer > * {
+  padding: 24px 0;
+}
+
+.flex-inner-header
+  .inner-header-container
+  .inner-header-search-btn-container
+  .search-inner-header-cotainer
+  button:nth-child(1) {
+  padding-left: 0px;
 }
