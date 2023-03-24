@@ -1,4 +1,5 @@
 .stay-card {
+    cursor: pointer;
     font-family: CircularAir-Light;
     color: $clr9;
     font-size: 15px;
@@ -26,6 +27,7 @@
     }
 
     .el-carousel__item {
+
         img {
             object-fit: cover;
             width: 100%;

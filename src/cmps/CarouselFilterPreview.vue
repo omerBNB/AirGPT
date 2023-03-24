@@ -1,7 +1,8 @@
 <template>
     <Carousel :settings="settings" :breakpoints="breakpoints" :itemsToShow="8">
         <Slide v-for="label in labels" :key="label.key">
-            <div class="label flex flex-column" @click="$emit('setFilterBy', label.key)" :title="label.key">
+            <div :class="{ 'label flex flex-column': true, 'isActive': activeModalInner === label.key }" @click="$emit('setFilterBy', label.key);
+            setActiveModal(label.key);" :title="label.key">
                 <img :src="label.url">
                 <p>{{ label.key }}</p>
             </div>
@@ -46,7 +47,13 @@ export default {
                     snapAlign: 'start',
                 },
             },
+            activeModalInner: null,
         }
+    },
+    methods: {
+        setActiveModal(labelKey) {
+            this.activeModalInner = labelKey
+        },
     },
     emits: ['setFilterBy']
 }
