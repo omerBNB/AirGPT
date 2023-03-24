@@ -86,7 +86,6 @@ export default {
       stay: null,
     }
   },
-
   created() {
     const { stayId } = this.$route.params
     storageService.get('stay', stayId).then((stay) => {

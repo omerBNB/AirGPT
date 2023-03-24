@@ -243,6 +243,7 @@
     }
   }
 }
+
 .calender-container {
   position: absolute;
   display: grid;
@@ -254,36 +255,75 @@
   padding-bottom: 24px;
   border-radius: 32px;
   z-index: 8;
+  grid-template-columns: repeat(2, 1fr);
   background-color: #fff;
-  .el-calendar__body {
-    height: 100%;
-    width: 300px;
-  }
-  .el-calendar {
-    --el-calendar-cell-width: 50px;
-  }
-  .current {
-    border-radius: 50%;
-  }
-  .prev {
-    border-radius: 50%;
-  }
-  .el-calendar-table {
-    height: 150px;
-    width: 300px;
-  }
-  .el-calendar-table .el-calendar-day:hover {
-    cursor: pointer;
-    background-color: var(--el-calendar-selected-bg-color);
-    border-radius: 50%;
-  }
-  .el-calendar-table .el-calendar-day {
-    height: 40px;
-  }
-  .el-calendar-day {
-    padding: 0;
-  }
+  align-items: center;
+  justify-items: left;
 }
+// .calender-container {
+//   position: absolute;
+//   display: grid;
+//   top: 81px;
+//   width: 848px;
+//   right: calc(50% - 420px);
+//   height: 450px;
+//   padding: 16px 32px;
+//   padding-bottom: 24px;
+//   border-radius: 32px;
+//   z-index: 8;
+//   grid-template-columns: repeat(2, 1fr);
+//   background-color: #fff;
+//   align-items: center;
+//   justify-items: left;
+//   .el-calendar{
+//     &.calendar-inner-section-1{
+//       width: 100%;
+//       grid-column: 1;
+//       grid-row: 2;
+//       margin-inline-start: 40px;
+//     }
+//   } 
+//   .el-calendar{
+//     &.calendar-inner-section-2{
+//       width: 90%;
+//       grid-column: 2;
+//       grid-row: 2;
+//       margin-inline-start: 40px;
+//     }
+//   } 
+//   .el-calendar__header{
+//     width: 300px;
+//   }
+//   .el-calendar__body {
+//     height: 100%;
+//     width: 300px;
+//     margin: 0;
+//   }
+//   .el-calendar {
+//     --el-calendar-cell-width: 50px;
+//   }
+//   .current {
+//     border-radius: 50%;
+//   }
+//   .prev {
+//     border-radius: 50%;
+//   }
+//   .el-calendar-table {
+//     height: 150px;
+//     width: 300px;
+//   }
+//   .el-calendar-table .el-calendar-day:hover {
+//     cursor: pointer;
+//     background-color: var(--el-calendar-selected-bg-color);
+//     border-radius: 50%;
+//   }
+//   .el-calendar-table .el-calendar-day {
+//     height: 40px;
+//   }
+//   .el-calendar-day {
+//     padding: 0;
+//   }
+// }
 
 .search-inner-header-cotainer {
   position: absolute;
@@ -293,7 +333,7 @@
   height: 403px;
   right: calc(50% - 125px);
   height: 410px;
-  padding: 16px 32px;
+  padding: 10px 32px;
   border-radius: 32px;
   z-index: 8;
   background-color: #fff;
@@ -301,7 +341,8 @@
   gap: 1px;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  font-size: 10px;
+  font-size: 12px;
+  font-family: CircularAir-Light;
   .add-guest-button {
     display: flex;
     align-items: center;
@@ -318,12 +359,20 @@
   }
   .add-guest-span {
     align-self: center;
-    height: 30px;
+    height: 34px;
     font-size: 15px;
   }
   .flex-inner-search-btns {
     display: flex;
     justify-content: space-between;
+  }
+  .plus-animals{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .search-inner-header-cotainer-p{
+    font-size: 14px;
+    margin: 0;
   }
 }
 .search-inner-header-cotainer > * {

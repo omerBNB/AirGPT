@@ -149,148 +149,11 @@
         :class="{ isActive: acitveModalInner === 'checkin' }">
         <div>Check in</div>
         <div>Add dates</div>
-        <section class="calender-container" v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout' ">
-          <!-- <el-calendar class="calendar-inner-section" v-model="value" /> -->
-          <div class="el-calendar calendar-inner-section">
-            <div class="el-calendar__header">
-              <div class="el-calendar__title">2023 March</div>
-              <!-- <div class="el-calendar__button-group">
-                <div class="el-button-group">
-                  
-                </div>
-              </div> -->
-            </div>
-            <div class="el-calendar__body">
-              <table class="el-calendar-table" cellspacing="0" cellpadding="0">
-                <thead>
-                  <th>Su</th>
-                  <th>Mo</th>
-                  <th>Tu</th>
-                  <th>We</th>
-                  <th>Th</th>
-                  <th>Fr</th>
-                  <th>Sa</th>
-                </thead>
-                <tbody>
-                  <tr class="el-calendar-table__row">
-                    <td class="prev">
-                      <div class="el-calendar-day"><span>26</span></div>
-                    </td>
-                    <td class="prev">
-                      <div class="el-calendar-day"><span>27</span></div>
-                    </td>
-                    <td class="prev">
-                      <div class="el-calendar-day"><span>28</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>1</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>2</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>3</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>4</span></div>
-                    </td>
-                  </tr>
-                  <tr class="el-calendar-table__row">
-                    <td class="current">
-                      <div class="el-calendar-day"><span>5</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>6</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>7</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>8</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>9</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>10</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>11</span></div>
-                    </td>
-                  </tr>
-                  <tr class="el-calendar-table__row">
-                    <td class="current">
-                      <div class="el-calendar-day"><span>12</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>13</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>14</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>15</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>16</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>17</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>18</span></div>
-                    </td>
-                  </tr>
-                  <tr class="el-calendar-table__row">
-                    <td class="current">
-                      <div class="el-calendar-day"><span>19</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>20</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>21</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>22</span></div>
-                    </td>
-                    <td class="current is-selected is-today">
-                      <div class="el-calendar-day"><span>23</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>24</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>25</span></div>
-                    </td>
-                  </tr>
-                  <tr class="el-calendar-table__row">
-                    <td class="current">
-                      <div class="el-calendar-day"><span>26</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>27</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>28</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>29</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>30</span></div>
-                    </td>
-                    <td class="current">
-                      <div class="el-calendar-day"><span>31</span></div>
-                    </td>
-                    <td class="next">
-                      <div class="el-calendar-day"><span>1</span></div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <section
+          class="calender-container"
+          v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout'">
+          <!-- <el-calendar class="calendar-inner-section-1" v-model="value" />
+          <el-calendar class="calendar-inner-section-2" v-model="value" /> -->
           
         </section>
       </button>
@@ -314,13 +177,13 @@
         <button class="inner-header-search-btn big">
           <div data-icon="true" data-testid="little-search-icon">
             <svg
-              viewBox="-22 0 32 32"
+              viewBox="0 0 32 32"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
               role="presentation"
               focusable="false"
               style="
-                display: block; 
+                display: block;
                 fill: none;
                 height: 16px;
                 width: 16px;
@@ -339,13 +202,13 @@
         <section class="search-inner-header-cotainer" v-if="acitveModalInner === 'search'">
           <div>
             <h2>Adults</h2>
-            <p>Ages 13 or above</p>
+            <p class="search-inner-header-cotainer-p">Ages 13 or above</p>
           </div>
           <div class="flex-inner-search-btns">
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="-22 0 32 32"
+                  viewBox="-24 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"
@@ -388,14 +251,14 @@
             </button>
           </div>
           <div>
-            <h2>Adults</h2>
-            <p>Ages 13 or above</p>
-          </div>    
+            <h2>Children</h2>
+            <p class="search-inner-header-cotainer-p">Ages 2-12</p>
+          </div>
           <div class="flex-inner-search-btns">
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="-22 0 32 32"
+                  viewBox="-23 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"
@@ -438,14 +301,14 @@
             </button>
           </div>
           <div>
-            <h2>Adults</h2>
-            <p>Ages 13 or above</p>
+            <h2>Infants</h2>
+            <p class="search-inner-header-cotainer-p">Under 2</p>
           </div>
           <div class="flex-inner-search-btns">
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="-22 0 32 32"
+                  viewBox="-23 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"
@@ -488,14 +351,14 @@
             </button>
           </div>
           <div>
-            <h2>Adults</h2>
-            <p>Ages 13 or above</p>
+            <h2>Pets</h2>
+            <p class="plus-animals search-inner-header-cotainer-p">Bringing a service animal?</p>
           </div>
           <div class="flex-inner-search-btns">
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="-22 0 32 32"
+                  viewBox="-23 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"

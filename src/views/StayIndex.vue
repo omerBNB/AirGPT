@@ -1,6 +1,6 @@
 <template>
   <div>
-    <StayFilter @setFilterBy="setFilterBy" />
+    <CarouselFilter @setFilterBy="setFilterBy" />
     <StayList :stays="stays" />
     <!-- <div class="container home">
       <ul class="stay-list">
@@ -30,7 +30,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service.local'
 // import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 import StayList from '../cmps/StayList.vue'
-import StayFilter from '../views/StayFilter.vue'
+import CarouselFilter from '../views/CarouselFilter.vue'
 export default {
   created() {
     this.$store.dispatch({ type: 'loadStays' })
@@ -103,7 +103,7 @@ export default {
   },
   components: {
     StayList,
-    StayFilter
+    CarouselFilter,
   },
 }
 </script>

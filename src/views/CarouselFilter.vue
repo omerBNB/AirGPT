@@ -1,12 +1,12 @@
 <template>
     <div class="labels">
-        <LabelsPreview :labels="labels" @setFilterBy="setFilterBy" />
+        <CarouselFilterPreview :labels="labels" @setFilterBy="setFilterBy" />
     </div>
 </template>
   
 <script>
 import { stayService } from '../services/stay.service.local'
-import LabelsPreview from '../cmps/LabelsPreview.vue'
+import CarouselFilterPreview from '../cmps/CarouselFilterPreview.vue'
 
 export default {
     name: 'StayFilter',
@@ -28,7 +28,7 @@ export default {
     created() {
     },
     components: {
-        LabelsPreview,
+        CarouselFilterPreview,
     },
     emits: ['setFilterBy']
 }
