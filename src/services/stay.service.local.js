@@ -38,9 +38,8 @@ const gStays = [
     labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
-      fullname: 'Davit Pok',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+      fullname: 'Inon',
+      imgUrl: '../../src/imgs/imgs_test/inon.jpg',
     },
     loc: {
       country: 'Portugal',
@@ -58,15 +57,15 @@ const gStays = [
         by: {
           _id: 'u102',
           fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
         },
       },
     ],
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
-    _id: "98425306",
-    name: "Cozy Cottage in the Woods",
+    _id: '98425306',
+    name: 'Cozy Cottage in the Woods',
     type: 'House',
     imgUrls: [
       '../../src/imgs/imgs_test/ListImgsTest/b/3.webp',
@@ -75,45 +74,46 @@ const gStays = [
       '../../src/imgs/imgs_test/ListImgsTest/b/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/b/5.webp',
     ],
-    price: "1200",
-    summary: "Escape to this charming cabin surrounded by trees and wildlife. Perfect for a weekend getaway or a long-term stay. Enjoy the peace and quiet of nature, while still being close to all the amenities of town.",
+    price: '1200',
+    summary:
+      'Escape to this charming cabin surrounded by trees and wildlife. Perfect for a weekend getaway or a long-term stay. Enjoy the peace and quiet of nature, while still being close to all the amenities of town.',
     capacity: 4,
-    amenities: ["Fireplace", "Hot tub", "WiFi", "Kitchen"],
-    labels: ["Trending", "Play", "Tropical"],
+    amenities: ['Fireplace', 'Hot tub', 'WiFi', 'Kitchen'],
+    labels: ['Trending', 'Play', 'Tropical'],
     host: {
-      _id: "84659731",
-      fullname: "John Doe",
-      imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+      _id: '84659731',
+      fullname: 'Omer',
+      imgUrl: '../../src/imgs/imgs_test/omer.jpg',
     },
     loc: {
-      country: "United States",
-      countryCode: "US",
-      city: "Seattle",
-      address: "1234 Forest Way",
+      country: 'United States',
+      countryCode: 'US',
+      city: 'Seattle',
+      address: '1234 Forest Way',
       lat: 47.6062,
-      lng: -122.3321
+      lng: -122.3321,
     },
     reviews: [
       {
-        id: "43215",
-        txt: "We had a great time staying at this cabin. It was so peaceful and quiet, just what we needed. The hot tub was a nice bonus.",
+        id: '43215',
+        txt: 'We had a great time staying at this cabin. It was so peaceful and quiet, just what we needed. The hot tub was a nice bonus.',
         rate: 5,
         by: {
-          _id: "265489",
-          fullname: "Jane Smith",
-          imgUrl: "/img/img1.jpg"
-        }
-      }
+          _id: '265489',
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
     ],
-    likedByUsers: ["user1", "user3"]
+    likedByUsers: ['user1', 'user3'],
   },
   {
     _id: '10106546',
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
-      '../../src/imgs/imgs_test/ListImgsTest/c/2.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/2.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/3.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
@@ -127,9 +127,8 @@ const gStays = [
     labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
-      fullname: 'Davit Pok',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+      fullname: 'Yuval',
+      imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
     },
     loc: {
       country: 'Portugal',
@@ -146,16 +145,16 @@ const gStays = [
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
         },
       },
     ],
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
-    _id: "27783059",
-    name: "Luxury Loft in the City",
+    _id: '27783059',
+    name: 'Luxury Loft in the City',
     type: 'House',
     imgUrls: [
       '../../src/imgs/imgs_test/ListImgsTest/d/4.webp',
@@ -164,45 +163,49 @@ const gStays = [
       '../../src/imgs/imgs_test/ListImgsTest/d/3.webp',
       '../../src/imgs/imgs_test/ListImgsTest/d/5.webp',
     ],
-    price: "3000",
-    summary: "Experience city living at its finest in this modern and spacious loft. With floor-to-ceiling windows and stunning views of downtown, you'll feel like you're living in a movie.",
+    price: '3000',
+    summary:
+      "Experience city living at its finest in this modern and spacious loft. With floor-to-ceiling windows and stunning views of downtown, you'll feel like you're living in a movie.",
     capacity: 2,
-    amenities: ["Gym", "Pool", "WiFi", "Kitchen", "Smart TV"],
-    labels: ["Top of the world", "Play", "Tropical"],
+    amenities: ['Gym', 'Pool', 'WiFi', 'Kitchen', 'Smart TV'],
+    labels: ['Top of the world', 'Play', 'Tropical'],
     host: {
-      _id: "73148925",
-      fullname: "Maria Rodriguez",
-      imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+      _id: '73148925',
+      fullname: 'Ido',
+      imgUrl: '../../src/imgs/imgs_test/ido.jpg',
     },
     loc: {
-      country: "United States",
-      countryCode: "US",
-      city: "New York",
-      address: "5678 Broadway",
+      country: 'United States',
+      countryCode: 'US',
+      city: 'New York',
+      address: '5678 Broadway',
       lat: 40.7128,
-      lng: -74.006
+      lng: -74.006,
     },
     reviews: [
       {
-        id: "43215",
-        txt: "We had a great time staying at this cabin. It was so peaceful and quiet, just what we needed. The hot tub was a nice bonus.",
+        id: '43215',
+        txt: 'We had a great time staying at this cabin. It was so peaceful and quiet, just what we needed. The hot tub was a nice bonus.',
         rate: 5,
         by: {
-          _id: "265489",
-          fullname: "Jane Smith",
-          imgUrl: "/img/img1.jpg"
-        }
-      }
+          _id: '265489',
+          fullname: 'Ido',
+          imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+        },
+      },
     ],
-    likedByUsers: ["user1", "user3"]
+    likedByUsers: ['user1', 'user3'],
   },
   {
     _id: '10086546',
-    name: 'Ribeira Charming Duplex',
+    name: 'Lalala Hotel',
     type: 'House',
     imgUrls: [
-      'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
-      'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
+      '../../src/imgs/imgs_test/ListImgsTest/c/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
     ],
     price: 80.0,
     // in preview!
@@ -213,9 +216,8 @@ const gStays = [
     labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
-      fullname: 'Davit Pok',
-      imgUrl:
-        'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+      fullname: 'Inon',
+      imgUrl: '../../src/imgs/imgs_test/inon.jpg',
     },
     loc: {
       country: 'Portugal',
@@ -232,8 +234,8 @@ const gStays = [
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'Omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
         },
       },
     ],
@@ -244,10 +246,11 @@ const gStays = [
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
-      '../../src/imgs/imgs_test/ListImgsTest/a/1.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/a/2.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/a/3.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/a/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/b/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/b/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/b/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/b/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/b/5.webp',
     ],
     price: 80.0,
     // in preview!
@@ -318,21 +321,22 @@ const gStays = [
     name: 'Oceanfront Beach House',
     type: 'House',
     imgUrls: [
-      '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/c/2.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/2.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/3.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
     ],
     price: 200,
-    summary: 'Beautiful 3 bedroom beach house located on the oceanfront with stunning views of the water.',
+    summary:
+      'Beautiful 3 bedroom beach house located on the oceanfront with stunning views of the water.',
     capacity: 6,
     amenities: ['TV', 'Wifi', 'Kitchen', 'Washer/Dryer', 'Outdoor Grill'],
     labels: ['Beachfront', 'Relaxation', 'Family-Friendly', 'Surfing'],
     host: {
       _id: 'u201',
-      fullname: 'Anna Smith',
-      imgUrl: 'https://www.example.com/img/host-anna-smith.jpg',
+      fullname: 'Yuval',
+      imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
     },
     loc: {
       country: 'USA',
@@ -345,7 +349,7 @@ const gStays = [
     reviews: [
       {
         id: 'madeId1',
-        txt: `Good place bad host`,
+        txt: `Good place`,
         rate: 4,
         by: {
           _id: 'u102',
@@ -355,7 +359,7 @@ const gStays = [
       },
       {
         id: 'madeId2',
-        txt: `Shitty place, Fuck you Ido!`,
+        txt: `Good place`,
         rate: 7,
         by: {
           _id: 'u10inon',
@@ -365,7 +369,7 @@ const gStays = [
       },
       {
         id: 'madeId3',
-        txt: `Great place, the host Ido is very bad`,
+        txt: `Great place`,
         rate: 8,
         by: {
           _id: 'u10yuval',
@@ -405,8 +409,8 @@ const gStays = [
     labels: ['Secluded', 'Nature', 'Romantic', 'Hiking'],
     host: {
       _id: 'u401',
-      fullname: 'Mark Johnson',
-      imgUrl: 'https://www.example.com/img/host-mark-johnson.jpg',
+      fullname: 'Inon',
+      imgUrl: '../../src/imgs/imgs_test/inon.jpg',
     },
     loc: {
       country: 'Canada',
@@ -459,8 +463,8 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in  
-  }
+    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+  },
 ]
 
 const orders = [

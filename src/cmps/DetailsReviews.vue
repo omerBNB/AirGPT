@@ -45,23 +45,23 @@
         <progress max="5" value="4"></progress>
       </section>
     </section>
-
-    <section class="reviews-container">
-      <!-- <pre>{{ currStay }}</pre> -->
-      <article v-for="review in currStay.reviews" class="review flex">
-        <div class="mini-user-details flex">
-          <img :src="review.by.imgUrl" />
-          <div>
-            <h4>{{ review.by.fullname }}</h4>
-            <span>11/5/2023</span>
+    <section>
+      <!-- Guest Reviews -->
+      <section class="guest-reviews-container">
+        <article v-for="review in currStay.reviews" class="review flex">
+          <div class="mini-user-details flex">
+            <img :src="review.by.imgUrl" />
+            <div>
+              <h4>{{ review.by.fullname }}</h4>
+              <span>11/5/2023</span>
+            </div>
           </div>
-        </div>
-        <div>
-          <p>{{ review.txt }}</p>
-        </div>
-
-        <!-- <p class="txt">{{ review.txt }}</p> -->
-      </article>
+          <div>
+            <p>{{ review.txt }}</p>
+          </div>
+        </article>
+      </section>
+      <!--  -->
     </section>
   </main>
 </template>
