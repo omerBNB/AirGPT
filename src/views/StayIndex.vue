@@ -1,6 +1,6 @@
 <template>
-  <div> 
-    <StayFilter />
+  <div>
+    <StayFilter @setFilterBy="setFilterBy" />
     <StayList :stays="stays" />
     <!-- <div class="container home">
       <ul class="stay-list">
@@ -88,6 +88,9 @@ export default {
     },
     printStayToConsole(stay) {
       console.log('stay msgs:', stay.msgs)
+    },
+    setFilterBy(filter) {
+      this.$store.dispatch({ type: "setFilterBy", filter });
     },
   },
   computed: {

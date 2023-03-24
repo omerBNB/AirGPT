@@ -1,6 +1,6 @@
 <template>
     <div class="labels">
-        <LabelsPreview :labels="labels" />
+        <LabelsPreview :labels="labels" @setFilterBy="setFilterBy" />
     </div>
 </template>
   
@@ -12,15 +12,24 @@ export default {
     name: 'StayFilter',
     data() {
         return {
-            labels: stayService.labels()
+            labels: stayService.labels(),
+            filter: {
+                label: ''
+            }
         }
     },
-    methods: {},
+    methods: {
+        setFilterBy(key) {
+            this.filter.label = key
+            this.$emit('setFilterBy', this.filter)
+        }
+    },
     computed: {},
     created() {
     },
     components: {
         LabelsPreview,
     },
+    emits: ['setFilterBy']
 }
 </script>
