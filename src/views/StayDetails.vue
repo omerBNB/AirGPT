@@ -77,7 +77,7 @@ import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
 import StayHeaderInfo from '../cmps/StayHeaderInfo.vue'
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviews from '../cmps/DetailsReviews.vue'
-import { stayService } from '../services/stay.service.local'
+import { storageService } from '../services/async-storage.service.js'
 
 export default {
   name: 'StayDetails',
@@ -87,7 +87,10 @@ export default {
     }
   },
   created() {
-    this.loadStay()
+    const { stayId } = this.$route.params
+    storageService.get('stay', stayId).then((stay) => {
+      this.stay = stay
+    })
   },
   mounted() {
     const currRoute = this.$route.path
@@ -95,20 +98,11 @@ export default {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
   },
-  methods: {
-    async loadStay() {
-      const { stayId } = this.$route.params
-      if (stayId) {
-        let stay = await stayService.getById(stayId)
-        if (stay) this.stay = stay
-      }
-    },
-    components: {
-      DetailsOrderBox,
-      StayDetailsImgs,
-      DetailsReviews,
-      StayHeaderInfo,
-    },
-  }
+  components: {
+    DetailsOrderBox,
+    StayDetailsImgs,
+    DetailsReviews,
+    StayHeaderInfo,
+  },
 }
 </script>
