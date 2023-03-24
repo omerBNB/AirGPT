@@ -314,7 +314,7 @@
         <button class="inner-header-search-btn big">
           <div data-icon="true" data-testid="little-search-icon">
             <svg
-              viewBox="0 0 32 32"
+              viewBox="-22 0 32 32"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
               role="presentation"
@@ -345,7 +345,7 @@
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="0 0 32 32"
+                  viewBox="-22 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"
@@ -395,7 +395,7 @@
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="0 0 32 32"
+                  viewBox="-22 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"
@@ -445,7 +445,7 @@
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="0 0 32 32"
+                  viewBox="-22 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"
@@ -495,7 +495,7 @@
             <button class="add-guest-button disabled">
               <span class="_8ovatg"
                 ><svg
-                  viewBox="0 0 32 32"
+                  viewBox="-22 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   role="presentation"
