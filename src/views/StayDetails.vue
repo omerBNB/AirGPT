@@ -3,7 +3,6 @@
     <main class="stay-details">
       <StayHeaderInfo :stay="stay" />
       <StayDetailsImgs :stay="stay" />
-
       <!-- Details-container -->
       <section class="details-container">
         <!-- ferrites -->
