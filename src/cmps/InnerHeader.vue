@@ -154,7 +154,11 @@
           v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout'">
           <!-- <el-calendar class="calendar-inner-section-1" v-model="value" />
           <el-calendar class="calendar-inner-section-2" v-model="value" /> -->
-          
+          <VDatePicker v-model.range="range" :columns="columns"/>
+          <!-- <VDatePicker v-model.range="range" :columns="columns"/> -->
+          <!-- <VCalendar :columns="columns" />     
+          <VCalendar :columns="columns" />  -->
+          <!-- <VCalendar :rows="2" :step="1" v-model.range="range"/> -->
         </section>
       </button>
       <div class="border-inner-header"></div>
@@ -408,7 +412,7 @@
 
 <script>
 import { ref } from 'vue'
-
+import { useScreens } from 'vue-screen-utils'
 export default {
   name: '',
   props: {
@@ -419,6 +423,8 @@ export default {
       isActive: false,
       value: ref(new Date()),
       acitveModalInner: this.activeModal,
+      columns: null,
+      expanded: null,
     }
   },
   methods: {
@@ -433,7 +439,11 @@ export default {
   computed: {},
   created() {
     this.acitveModalInner = this.activeModal
+    const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
+    this.columns = mapCurrent({ lg: 2 },1)
+    // this.expanded = mapCurrent({ lg: false }, true)
   },
   components: {},
 }
 </script>
+
