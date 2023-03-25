@@ -317,6 +317,10 @@
     height: 34px;
     font-size: 15px;
   }
+  .add-guest-button.disabled {
+    cursor: auto;
+    border-color: #ebebeb;
+}
   .flex-inner-search-btns {
     display: flex;
     justify-content: space-between;

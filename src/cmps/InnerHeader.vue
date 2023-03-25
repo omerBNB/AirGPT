@@ -4,17 +4,21 @@
       <button
         class="where-to-btn"
         ref="where"
-        @click="setActiveModal('where')"
+        @click="setActiveModalWhere('where')"
         :class="{ isActive: acitveModalInner === 'where' }">
         <form action="">
           <div>Where</div>
-          <input class="where-to-input" type="search" placeholder="Search destination" />
+          <input
+            class="where-to-input"
+            type="search"
+            placeholder="Search destination"
+            :value="innerHeaderFilter.where" />
         </form>
         <section class="grid stay-where-search" v-if="acitveModalInner === 'where'">
           <div>
             <h2>Trending destinations</h2>
             <section class="counries-search-container">
-              <div class="flex">
+              <div class="flex" @click.stop="setActiveModalWhere('checkin', 'Paris')">
                 <div>
                   <svg
                     viewBox="0 0 32 32"
@@ -29,7 +33,7 @@
                 </div>
                 <span>Paris</span>
               </div>
-              <div class="flex">
+              <div class="flex" @click.stop="setActiveModalWhere('checkin', 'New York')">
                 <div>
                   <svg
                     viewBox="0 0 32 32"
@@ -44,7 +48,7 @@
                 </div>
                 <span>New York</span>
               </div>
-              <div class="flex">
+              <div class="flex" @click.stop="setActiveModalWhere('checkin', 'Madrid')">
                 <div>
                   <svg
                     viewBox="0 0 32 32"
@@ -59,7 +63,7 @@
                 </div>
                 <span>Madrid</span>
               </div>
-              <div class="flex">
+              <div class="flex" @click.stop="setActiveModalWhere('checkin', 'Tel-Aviv')">
                 <div>
                   <svg
                     viewBox="0 0 32 32"
@@ -74,7 +78,7 @@
                 </div>
                 <span>Tel-Aviv</span>
               </div>
-              <div class="flex">
+              <div class="flex" @click.stop="setActiveModalWhere('checkin', 'New Zealand')">
                 <div>
                   <svg
                     viewBox="0 0 32 32"
@@ -95,42 +99,42 @@
           <div>
             <h2>Search by region</h2>
             <section class="chose-mainland">
-              <div>
+              <div @click.stop="setActiveModalWhere('checkin', '')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832788/ypxaozgl8ypv41zcslzr.jpg"
                   alt="" />
-                <div>I'm flexible</div>
+                <div @click="">I'm flexible</div>
               </div>
-              <div>
+              <div @click.stop="setActiveModalWhere('checkin', 'Europe')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832796/jmoewtj22cydhrxv8igw.webp"
                   alt="" />
                 <div>Europe</div>
               </div>
-              <div>
+              <div @click.stop="setActiveModalWhere('checkin', 'France')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832694/iyey3ugv4rrfebpqq4ri.jpg"
                   alt="" />
                 <div>France</div>
               </div>
-              <div>
+              <div @click.stop="setActiveModalWhere('checkin', 'United States')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832626/rmbkbzyewogvanzfehex.jpg"
                   alt="" />
                 <div>United States</div>
               </div>
-              <div>
+              <div @click.stop="setActiveModalWhere('checkin', 'United Kingdom')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832717/cxz8hpbk9uuotl3arwni.jpg"
                   alt="" />
                 <div>United Kingdom</div>
               </div>
-              <div>
+              <div @click.stop="setActiveModalWhere('checkin', 'South America')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832771/vgliecdhjbr1pjdqdrl0.jpg"
@@ -145,16 +149,19 @@
       <button
         class="inner-header-dates-btn"
         ref="checkin"
-        @click="setActiveModal('checkin')"
+        @click="setActiveModalDates('checkin')"
         :class="{ isActive: acitveModalInner === 'checkin' }">
         <div>Check in</div>
-        <div>Add dates</div>
+        <div>{{ innerHeaderFilter.range.start ? innerHeaderFilter.range.start.getDay() : 'Add dates' }}</div>
         <section
           class="calender-container"
           v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout'">
           <!-- <el-calendar class="calendar-inner-section-1" v-model="value" />
           <el-calendar class="calendar-inner-section-2" v-model="value" /> -->
-          <VDatePicker v-model.range="range" :columns="columns"/>
+          <VDatePicker
+            v-model.range="innerHeaderFilter.range"
+            :columns="columns"
+            @click.stop="setActiveModalDates('checkout')" />
           <!-- <VDatePicker v-model.range="range" :columns="columns"/> -->
           <!-- <VCalendar :columns="columns" />     
           <VCalendar :columns="columns" />  -->
@@ -164,19 +171,19 @@
       <div class="border-inner-header"></div>
       <button
         class="inner-header-dates-btn"
-        @click="setActiveModal('checkout')"
+        @click="setActiveModalDates('checkout')"
         :class="{ isActive: acitveModalInner === 'checkout' }">
         <div ref="checkout">Check out</div>
-        <div>Add dates</div>
+        <div>{{ innerHeaderFilter.range.end ? innerHeaderFilter.range.end.getDay() : 'Add dates' }}</div>
       </button>
       <div class="border-inner-header"></div>
       <div
         class="inner-header-search-btn-container"
-        @click="setActiveModal('search')"
+        @click="setActiveModalsearch('search')"
         :class="{ isActive: acitveModalInner === 'search' }">
         <button class="inner-header-dates-btn-search" ref="search">
           <div>Who</div>
-          <div>Add guests</div>
+          <div>{{ innerHeaderFilter.guests? innerHeaderFilter.guests : 'Add guests' }}</div>
         </button>
         <button class="inner-header-search-btn big">
           <div data-icon="true" data-testid="little-search-icon">
@@ -230,7 +237,7 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">1</span>
+            <span class="add-guest-span">0</span>
             <button class="add-guest-button">
               <span class="_8ovatg"
                 ><svg
@@ -280,7 +287,7 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">1</span>
+            <span class="add-guest-span">0</span>
             <button class="add-guest-button">
               <span class="_8ovatg"
                 ><svg
@@ -330,7 +337,7 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">1</span>
+            <span class="add-guest-span">0</span>
             <button class="add-guest-button">
               <span class="_8ovatg"
                 ><svg
@@ -380,7 +387,7 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">1</span>
+            <span class="add-guest-span">0</span>
             <button class="add-guest-button">
               <span class="_8ovatg"
                 ><svg
@@ -425,25 +432,36 @@ export default {
       acitveModalInner: this.activeModal,
       columns: null,
       expanded: null,
+      innerHeaderFilter: { where: '' ,range: { start: null, end: null }, guests: 0},
+      // date:null
     }
   },
   methods: {
     showWhere() {
       this.isActive = true
     },
-    setActiveModal(btnName) {
+    setActiveModalWhere(btnName, whereto) {
       this.acitveModalInner = btnName
+      this.innerHeaderFilter.where = whereto
       // this.acitveModalInner = btnName
+    },
+    setActiveModalDates(btnName) {
+      this.acitveModalInner = btnName
+    },
+    setActiveModalsearch(btnName) {
+      this.acitveModalInner = btnName
+    },
+    filterByUserPick() {
+      console.log('innerHeaderFilter', this.innerHeaderFilter)
     },
   },
   computed: {},
   created() {
     this.acitveModalInner = this.activeModal
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
-    this.columns = mapCurrent({ lg: 2 },1)
+    this.columns = mapCurrent({ lg: 2 }, 1)
     // this.expanded = mapCurrent({ lg: false }, true)
   },
   components: {},
 }
 </script>
-
