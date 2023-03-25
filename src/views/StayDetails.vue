@@ -72,6 +72,14 @@
 
     <DetailsReviews :stay="stay" />
   </div>
+  <div>
+    <!-- <datepicker v-model="date"></datepicker> -->
+    <!-- <VDatePicker v-model.range="range" :columns="columns" /> -->
+    <!-- <datepicker></datepicker> -->
+    <!-- <Datepicker /> -->
+    <!-- <datepicker placeholder="Select Date" /> -->
+    <!-- <code> &lt;datepicker placeholder="Select Date"&gt;&lt;/datepicker&gt; </code> -->
+  </div>
 </template>
 
 <script>
@@ -80,12 +88,15 @@ import StayHeaderInfo from '../cmps/StayHeaderInfo.vue'
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviews from '../cmps/DetailsReviews.vue'
 import { storageService } from '../services/async-storage.service.js'
+// import Datepicker from 'vuejs-datepicker'
+// import Datepicker from '../../src/src/components/Datepicker.vue'
 // import { stayService } from '../services/stay.service.local.js'
 
 export default {
   name: 'StayDetails',
   data() {
     return {
+      date: null,
       stay: null,
     }
   },
@@ -114,6 +125,7 @@ export default {
     StayDetailsImgs,
     DetailsReviews,
     StayHeaderInfo,
+    // Datepicker,
   },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <section id="main-app" class="main-container" >
-    <AppHeader @onShowBackDrop="showBackDrop" :isWide="isWide"/>
-    <RouterView ref="test"  :class="showBackDropHome" @click="showFullScreeen" />
+  <section id="main-app" class="main-container">
+    <AppHeader @onShowBackDrop="showBackDrop" :isWide="isWide" />
+    <RouterView ref="test" :class="showBackDropHome" @click="showFullScreeen" />
     <UserMsg />
   </section>
 </template>
@@ -12,13 +12,16 @@ import { store } from './store/store'
 import AppHeader from './cmps/AppHeader.vue'
 import UserOptions from './cmps/UserOptions.vue'
 import UserMsg from './cmps/UserMsg.vue'
+//
+// import Datepicker from '../src/src/components/Datepicker.vue'
+// import * as lang from '../src/src/locale/index'
 
 export default {
   data() {
     return {
       currLayout: null,
       backDropisLive: false,
-      isWide:true
+      isWide: true,
     }
   },
   created() {
@@ -26,15 +29,15 @@ export default {
     const user = userService.getLoggedinUser()
     if (user) store.commit({ type: 'setLoggedinUser', user })
   },
-  methods:{
-    showBackDrop(){
+  methods: {
+    showBackDrop() {
       this.isWide = false
       this.backDropisLive = true
     },
-    showFullScreeen(){
+    showFullScreeen() {
       this.isWide = true
       this.backDropisLive = false
-    }
+    },
   },
   computed: {
     currentLayout() {
@@ -42,9 +45,9 @@ export default {
         'main-container': this.currLayout,
       }
     },
-    showBackDropHome(){
+    showBackDropHome() {
       return {
-        'screen-shadow': this.backDropisLive === true
+        'screen-shadow': this.backDropisLive === true,
       }
     },
   },
