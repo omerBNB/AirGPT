@@ -21,8 +21,10 @@
               fill-rule="evenodd"></path>
           </svg>
         </span>
-        <span>5.0 •</span>
-        <span><a href="">9 reviews</a></span>
+        <span class="bold-font">{{ currStay.rate }}</span>
+        <span
+          ><a class="bold-font" href="">({{ currStay.reviews.length }} reviews)</a></span
+        >
       </section>
 
       <section class="rating grid">

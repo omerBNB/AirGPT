@@ -2,8 +2,14 @@
   <main>
     <section class="order-container">
       <div class="order-form-header">
-        <p><span class="cost">$150</span> / night</p>
-        <p>4.38 <span class="reviews">(4 reviews)</span></p>
+        <p>
+          <span class="cost">${{ stay.price }}</span> night
+        </p>
+        <p class="fs14 bold-font">
+          <img src="../imgs/svg_symbols/black_star.svg" />
+          {{ stay.rate }}
+          <span class="reviews">({{ stay.reviews.length }} reviews)</span>
+        </p>
       </div>
 
       <div class="order-data">
@@ -28,7 +34,7 @@
         </div>
       </div>
 
-      <div class="btn-container">
+      <div class="btn-container" @click="submitOrder">
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
@@ -136,22 +142,22 @@
         </div>
       </div>
       <div>
-        <p class="text-center">You won't be charged yet</p>
+        <p class="text-center fs14">You won't be charged yet</p>
       </div>
 
       <section class="price-info">
         <div class="price-per-night flex space-between">
-          <p>$31 X 9 nights</p>
+          <p class="underline">$31 X 9 nights</p>
           <p>$279</p>
         </div>
 
         <div class="service-fee flex space-between">
-          <p>Cleaning fee</p>
+          <p class="underline">Cleaning fee</p>
           <p>$53</p>
         </div>
 
         <div class="service-fee flex space-between">
-          <p>Service fee</p>
+          <p class="underline">Service fee</p>
           <p>$48.15</p>
         </div>
       </section>
@@ -168,13 +174,27 @@
 <script>
 export default {
   name: 'DetailsOrderBox',
-  data() {
-    return {}
+  props: {
+    stay: {
+      type: Object,
+      required: true,
+    },
   },
-  methods: {},
-  computed: {},
-  created() {},
-  components: {},
+  data() {
+    return {
+      stayId: null,
+    }
+  },
+
+  created() {
+    this.stayId = this.stay._id
+  },
+
+  methods: {
+    submitOrder() {
+      this.$router.push('/book/' + this.stayId)
+    },
+  },
 }
 </script>
 

@@ -10,14 +10,35 @@
 }
 
 .stay-review {
+  h1 {
+    margin-bottom: 0.1em;
+  }
   div {
-    gap: 0.5em;
+    align-content: center;
     margin-bottom: 0.6em;
   }
   span {
     font-size: 14px;
     font-family: Airbnb_Cereal-Book;
     color: black;
+  }
+  img {
+    width: 12px;
+  }
+
+  .info {
+    gap: 0.4em;
+  }
+  .btns {
+    gap: 1em;
+    margin: 0;
+    div {
+      align-items: center;
+      gap: 0.4em;
+      img {
+        width: 16px;
+      }
+    }
   }
 }
 
@@ -28,7 +49,7 @@
   padding: 0;
   max-width: 100%;
   gap: 7px;
-  height: 455px;
+  height: 440px;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas:
@@ -45,18 +66,18 @@
     grid-area: main-img;
   }
 
-  img-1 {
-    grid-area: img-1;
-  }
-  img-2 {
-    grid-area: img-2;
-  }
-  img-3 {
-    grid-area: img-3;
-  }
-  img-4 {
-    grid-area: img-4;
-  }
+  // img-1 {
+  //   grid-area: img-1;
+  // }
+  // img-2 {
+  //   grid-area: img-2;
+  // }
+  // img-3 {
+  //   grid-area: img-3;
+  // }
+  // img-4 {
+  //   grid-area: img-4;
+  // }
 }
 
 .details-container {

@@ -29,17 +29,18 @@ const gStays = [
       '../../src/imgs/imgs_test/ListImgsTest/a/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/a/5.webp',
     ],
-    price: 80.0,
-    // in preview!
+    price: 80.0, // in preview!
     summary:
       'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
     capacity: 8, // guest number
+    equipment: { bedroomNum: 5, bedsNum: 11, bathNum: 4 },
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
     labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Inon',
       imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+      isSuperHost: true,
     },
     loc: {
       country: 'Portugal',
@@ -60,7 +61,28 @@ const gStays = [
           imgUrl: '../../src/imgs/imgs_test/omer.jpg',
         },
       },
+      {
+        id: 'madeId',
+        txt: 'Very helpful hosts. Cooked traditional...',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'user2',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 'u103',
+        txt: 'nice...',
+        rate: 9,
+        by: {
+          _id: 'u102yuval',
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
     ],
+
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
@@ -78,12 +100,14 @@ const gStays = [
     summary:
       'Escape to this charming cabin surrounded by trees and wildlife. Perfect for a weekend getaway or a long-term stay. Enjoy the peace and quiet of nature, while still being close to all the amenities of town.',
     capacity: 4,
+    equipment: { bedroomNum: 2, bedsNum: 2, bathNum: 1 },
     amenities: ['Fireplace', 'Hot tub', 'WiFi', 'Kitchen'],
     labels: ['Trending', 'Play', 'Tropical'],
     host: {
       _id: '84659731',
       fullname: 'Omer',
       imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+      isSuperHost: true,
     },
     loc: {
       country: 'United States',
@@ -104,6 +128,16 @@ const gStays = [
           imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
         },
       },
+      {
+        id: '4321325',
+        txt: 'We had a great time staying at this cabin. It was so peaceful and quiet, just what we needed. The hot tub was a nice bonus.',
+        rate: 2,
+        by: {
+          _id: '265489',
+          fullname: 'Ido',
+          imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+        },
+      },
     ],
     likedByUsers: ['user1', 'user3'],
   },
@@ -118,17 +152,19 @@ const gStays = [
       '../../src/imgs/imgs_test/ListImgsTest/c/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
     ],
-    price: 80,
+    price: 180,
     // in preview!
     summary:
       'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
-    capacity: 8, // guest number
+    capacity: 2, // guest number
+    equipment: { bedroomNum: 5, bedsNum: 2, bathNum: 8 },
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
     labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Yuval',
       imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+      isSuperHost: false,
     },
     loc: {
       country: 'Portugal',
@@ -167,12 +203,14 @@ const gStays = [
     summary:
       "Experience city living at its finest in this modern and spacious loft. With floor-to-ceiling windows and stunning views of downtown, you'll feel like you're living in a movie.",
     capacity: 2,
-    amenities: ['Gym', 'Pool', 'WiFi', 'Kitchen', 'Smart TV'],
+    equipment: { bedroomNum: 1, bedsNum: 1, bathNum: 1 },
+    amenities: ['Gym', 'Pool', 'WiFi', 'Kitchen', 'TV'],
     labels: ['Top of the world', 'Play', 'Tropical'],
     host: {
       _id: '73148925',
       fullname: 'Ido',
       imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+      isSuperHost: true,
     },
     loc: {
       country: 'United States',
@@ -212,12 +250,14 @@ const gStays = [
     summary:
       'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
     capacity: 8, // guest number
+    equipment: { bedroomNum: 4, bedsNum: 8, bathNum: 3 },
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
     labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Inon',
       imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+      isSuperHost: true,
     },
     loc: {
       country: 'Portugal',
@@ -238,6 +278,16 @@ const gStays = [
           imgUrl: '../../src/imgs/imgs_test/omer.jpg',
         },
       },
+      {
+        id: 'luul',
+        txt: 'Gooood!',
+        rate: 5,
+        by: {
+          _id: 'uyuval',
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
     ],
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
@@ -255,13 +305,15 @@ const gStays = [
     price: 80.0,
     // in preview!
     summary: 'Fantastic bla bla bla bla bla bla bla bla bla bla ...',
-    capacity: 8, // guest number
+    capacity: 3, // guest number
+    equipment: { bedroomNum: 1, bedsNum: 3, bathNum: 2 },
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
     labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Ido Tsehori',
       imgUrl: '../../src/imgs/imgs_test/ido_test.jpg',
+      isSuperHost: false,
     },
     loc: {
       country: 'Portugal',
@@ -331,12 +383,14 @@ const gStays = [
     summary:
       'Beautiful 3 bedroom beach house located on the oceanfront with stunning views of the water.',
     capacity: 6,
-    amenities: ['TV', 'Wifi', 'Kitchen', 'Washer/Dryer', 'Outdoor Grill'],
+    equipment: { bedroomNum: 3, bedsNum: 6, bathNum: 3 },
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Washer', 'Outdoor Grill'],
     labels: ['Beachfront', 'Relaxation', 'Family-Friendly', 'Surfing'],
     host: {
       _id: 'u201',
       fullname: 'Yuval',
       imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+      isSuperHost: true,
     },
     loc: {
       country: 'USA',
@@ -405,12 +459,14 @@ const gStays = [
     price: 150,
     summary: 'Quaint 2 bedroom cabin nestled in the mountains, perfect for a peaceful getaway.',
     capacity: 4,
-    amenities: ['TV', 'Wifi', 'Kitchen', 'Fireplace', 'Outdoor Firepit'],
+    equipment: { bedroomNum: 3, bedsNum: 6, bathNum: 3 },
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Fireplace'],
     labels: ['Secluded', 'Nature', 'Romantic', 'Hiking'],
     host: {
       _id: 'u401',
       fullname: 'Inon',
       imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+      isSuperHost: true,
     },
     loc: {
       country: 'Canada',
@@ -467,6 +523,13 @@ const gStays = [
   },
 ]
 
+// rate: this.reviews.reduce(
+//   acc,
+//   (review) => {
+//     return acc + review.rate
+//   },
+//   0
+// ),
 const orders = [
   {
     _id: 'o1225',
@@ -510,7 +573,18 @@ const users = [
   },
 ]
 
+_AddTotalRateForEachStay()
 _createStays()
+
+function _AddTotalRateForEachStay() {
+  gStays.forEach((stay) => {
+    const total = stay.reviews.reduce((acc, review) => {
+      return (acc += review.rate)
+    }, 0)
+    const rateAvg = total / stay.reviews.length
+    stay.rate = +rateAvg.toFixed(2).replace(/\.00$/, '').replace(/\.0$/, '')
+  })
+}
 
 async function query(filterBy = { txt: '', price: 0 }) {
   let stays = await storageService.query(STORAGE_KEY)
