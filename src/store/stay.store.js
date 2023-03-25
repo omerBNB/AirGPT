@@ -87,10 +87,10 @@ export const stayStore = {
                 throw err
             }
         },
-        async removeStay(context, { stayId }) {
+        async removeStay({ commit }, { stayId }) {
             try {
                 await stayService.remove(stayId)
-                context.commit(getActionRemoveStay(stayId))
+                commit(getActionRemoveStay(stayId))
             } catch (err) {
                 console.log('stayStore: Error in removeStay', err)
                 throw err
@@ -107,6 +107,9 @@ export const stayStore = {
         }, async setFilterBy({ commit }, { filter }) {
             const stays = await stayService.query(filter)
             commit({ type: 'setStays', stays })
+        }, async getStay({ id }) {
+            const stay = await stayService.getById(id)
+            return stay
         },
     }
 }
