@@ -1,0 +1,73 @@
+.stay-reservation {
+  // text-align: center;
+  margin-block-start: 1.5em;
+  padding: 2em;
+  .title {
+    font-size: 2em;
+  }
+}
+
+.reservation-info-container {
+  display: flex;
+
+  .info {
+    width: 90vw;
+    .btn-container {
+      width: 200px;
+      padding: 1.5em;
+      button span {
+        font-size: larger;
+        font-weight: bolder;
+      }
+    }
+    .ground-rules {
+      ul {
+        list-style-type: circle;
+      }
+    }
+  }
+  .info > * {
+    margin-block-start: 2.5em;
+    border-bottom: 1px solid rgb(190, 189, 194);
+  }
+
+  .sticky-modal {
+    width: 100%;
+
+    .reservation-modal-header {
+      grid-template-areas:
+        'img title'
+        'img reviews';
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 2fr 1fr;
+      gap: 0.5em;
+
+      img {
+        grid-area: img;
+        width: 100%;
+        grid-row: span 2;
+      }
+
+      p {
+        grid-area: title;
+        text-align: center;
+      }
+      div {
+        display: flex;
+        gap: 0.3em;
+        align-items: center;
+        justify-content: center;
+        grid-area: reviews;
+        img {
+          width: 15px;
+        }
+      }
+    }
+
+    .order-protected {
+      img {
+        width: 60px;
+      }
+    }
+  }
+}

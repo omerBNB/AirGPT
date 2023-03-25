@@ -6,6 +6,7 @@ import ReviewIndex from './views/ReviewIndex.vue'
 import LoginSignup from './views/LoginSignup.vue'
 import UserDetails from './views/UserDetails.vue'
 import StayDetails from './views/StayDetails.vue'
+import StayReservation from './views/StayReservation.vue'
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
     path: '/stay/:stayId?',
     name: 'StayDetails',
     component: StayDetails,
+  },
+  {
+    path: '/book/:stayId',
+    name: 'StayReservation',
+    component: StayReservation,
   },
   {
     path: '/review',

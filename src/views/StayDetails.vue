@@ -1,5 +1,5 @@
 <template>
-  <div v-if="stay" class="details-layout">
+  <div v-if="stay">
     <main class="stay-details">
       <StayHeaderInfo :stay="stay" />
       <StayDetailsImgs :stay="stay" />
@@ -10,12 +10,15 @@
           <div class="ferrites-header">
             <div class="header-text">
               <h3>Entire amazing views hosted by {{ stay.host.fullname }}</h3>
-              <p>5 guests • 5 bedrooms • 10 beds • 3 baths</p>
+              <p>
+                {{ stay.capacity }} guests • {{ stay.equipment.bedroomNum }} bedrooms •
+                {{ stay.equipment.bedsNum }} beds • {{ stay.equipment.bathNum }} baths
+              </p>
             </div>
             <img :src="stay.host.imgUrl" />
           </div>
           <div class="ferrites-main">
-            <div class="line">
+            <div v-if="stay.host.isSuperHost" class="line">
               <img src="../../src/imgs/ferrites_imgs/superhost.svg" />
               <div class="text">
                 <h4>{{ stay.host.fullname }} is a Superhost</h4>
@@ -63,7 +66,7 @@
           </section>
         </div>
 
-        <DetailsOrderBox />
+        <DetailsOrderBox :stay="stay" />
       </section>
     </main>
 
@@ -87,10 +90,7 @@ export default {
     }
   },
   created() {
-    const { stayId } = this.$route.params
-    storageService.get('stay', stayId).then((stay) => {
-      this.stay = stay
-    })
+    this.loadStay()
   },
 
   mounted() {
@@ -101,12 +101,13 @@ export default {
   },
 
   methods: {
-    // async loadStay() {
-    //   const { stayId } = this.$route.params
-    //   if (stayId) {
-    //     let stay = await stayService.getById(stayId)
-    //     if (stay) this.stay = stay
-    //   }
+    async loadStay() {
+      const { stayId } = this.$route.params
+      if (stayId) {
+        const stay = await storageService.get('stay', stayId)
+        if (stay) this.stay = stay
+      }
+    },
   },
   components: {
     DetailsOrderBox,
