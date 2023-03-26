@@ -1,7 +1,9 @@
 <template>
-  <section id="main-app" class="main-container">
-    <AppHeader @onShowBackDrop="showBackDrop" :isWide="isWide" />
-    <RouterView ref="test" :class="showBackDropHome" @click="showFullScreeen" />
+  <section id="main-app" class="main-container" >
+    <AppHeader v-if="!this.$route.path.includes('/stay')" @onShowBackDrop="showBackDrop" :isWide="isWide" />
+    <AppHeaderDetails v-if="this.$route.path.includes('/stay')" @onShowBackDrop="showBackDrop" :isWide="isWide" />
+    <RouterView ref="test" @click="showFullScreeen" :class="showBackDropHome"/>
+    <AppFooter/>
     <UserMsg />
   </section>
 </template>
@@ -12,6 +14,8 @@ import { store } from './store/store'
 import AppHeader from './cmps/AppHeader.vue'
 import UserOptions from './cmps/UserOptions.vue'
 import UserMsg from './cmps/UserMsg.vue'
+import AppHeaderDetails from './cmps/AppHeaderDetails.vue'
+import AppFooter from './cmps/AppFooter.vue'
 //
 // import Datepicker from '../src/src/components/Datepicker.vue'
 // import * as lang from '../src/src/locale/index'
@@ -25,6 +29,7 @@ export default {
     }
   },
   created() {
+    console.log('this.$router.params',this.$route.path)
     console.log('Vue App created')
     const user = userService.getLoggedinUser()
     if (user) store.commit({ type: 'setLoggedinUser', user })
@@ -47,14 +52,16 @@ export default {
     },
     showBackDropHome() {
       return {
-        'screen-shadow': this.backDropisLive === true,
+        'screen-shadow': this.backDropisLive,
       }
     },
   },
   components: {
     AppHeader,
+    AppHeaderDetails,
     UserMsg,
     UserOptions,
+    AppFooter
   },
 }
 </script>

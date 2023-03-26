@@ -66,6 +66,11 @@
         z-index: 8;
         background-color: #fff;
         grid-template-columns: 1fr 35.5px 0.8fr;
+
+        .stay-where-search-h2{
+          padding-left: 31px;
+          font-size: 16px;
+        }
         .counries-search-container > * {
           padding: 8px 8px 8px 24px;
           width: 100%;
@@ -91,6 +96,7 @@
         }
         .counries-search-container > * > span {
           align-self: center;
+          font-size: 16px;
         }
         .line-between-where-search {
           height: 100%;
@@ -106,15 +112,19 @@
           .mainland-img {
             width: 122px;
             height: 122px;
+            border: 1px solid rgb(128, 128, 128,.3);
             cursor: pointer;
             padding: 0;
-            margin: 0;
+            margin-bottom: 4px;
             border-radius: 10px;
             box-sizing: inherit;
-            border: rgba(34, 34, 34, 0) solid 1px;
           }
           .mainland-img:hover {
             border-color: #222;
+          }
+          .region-mainland-choice{
+            font-size: 15px;
+            font-weight:500;
           }
         }
       }
@@ -185,13 +195,15 @@
           display: flex;
           font-size: 16px;
           color: white;
+          font-family: CircularAir-Light;
+          font-weight: bold;
         }
       }
       .inner-header-dates-btn-search {
         padding-top: 13px;
         padding-bottom: 13px;
         padding-left: 25px;
-        padding-right: 23px;
+        // padding-right: 23px;
         margin: 0;
         text-align: left;
         align-self: center;
@@ -211,6 +223,9 @@
           color: #777777;
           font-weight: normal;
           grid-row: 2;
+           &.bold-inner-search{
+            font-weight: bold;
+           }
         }
       }
     }
@@ -261,6 +276,9 @@
   background-color: #fff;
   align-items: center;
   justify-items: left;
+  .vc-pane-layout{
+    display: flex;
+  }
 }
 
 // .calendar {
@@ -299,6 +317,10 @@
   grid-template-rows: 1fr 1fr 1fr 1fr;
   font-size: 12px;
   font-family: CircularAir-Light;
+  // .bold-inner-search{
+  //   font-weight: bold;
+  //   font-size: 15px;
+  // }
   .add-guest-button {
     display: flex;
     align-items: center;

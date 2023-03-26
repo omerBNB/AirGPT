@@ -1,0 +1,33 @@
+.main-filter-header:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.search-btn-details {
+  background-color: $clr2;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-inline-start: 36%;
+  cursor: pointer;
+  svg {
+    margin: -5px;
+  }
+}
+.main-filter-header-details {
+  display: flex;
+  width: 292px;
+  height: 48px;
+  border-radius: 50px;
+  border: solid 1px #dddddd;
+  box-shadow: 0 1px 2px #00000014, 0 4px 12px #0000000d;
+  padding: 5px 10px;
+  align-items: center;
+  margin-inline-start: 12.1%;
+  .main-filter-btn-details {
+      color: $clr7;
+      font-weight: bold;
+      font-family: CircularAir-Light;
+      cursor: pointer;
+      font-size: 14.1px;
+    }
+}

@@ -1,6 +1,7 @@
 <template>
   <div>
     <CarouselFilter @setFilterBy="setFilterBy" />
+    <h5 class="stay-explore-h5" v-if="stays.length">Over {{stays.length}} homes</h5>
     <StayList :stays="stays" />
   </div>
 </template>

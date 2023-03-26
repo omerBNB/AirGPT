@@ -20,6 +20,8 @@
 @import 'cmps/CarouselFilterPreview.scss';
 @import 'cmps/UserNav';
 @import 'cmps/InnerHeader';
+@import 'cmps/AppHeaderDetails';
+@import 'cmps/AppFooter';
 
 // Detalis
 @import 'cmps/StayDetails';
@@ -28,3 +30,7 @@
 
 // Reservation Page
 @import 'cmps/StayReservation';
+
+
+// explore
+@import 'cmps/StayExplore'

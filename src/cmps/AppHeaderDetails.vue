@@ -6,13 +6,13 @@
         <h1 role="img" aria-label="logo">Airgpt</h1>
       </RouterLink>
     </nav>
-    <section class="main-filter-header" v-if="isWideView">
-      <button @click="showCurrModal('where')" class="main-filter-btn">Anywhere</button>
-      <div class="border-line"></div>
+    <section class="main-filter-header-details" v-if="isWideView">
+      <button @click="showCurrModal('where')" class="main-filter-btn-details">Start Your Search</button>
+      <!-- <div class="border-line"></div>
       <button @click="showCurrModal('checkin')" class="main-filter-btn">Any week</button>
       <div class="border-line"></div>
-      <button @click="showCurrModal('search')" class="main-filter-btn guests">Add guests</button>
-      <button class="search-btn">
+      <button @click="showCurrModal('search')" class="main-filter-btn guests">Add guests</button> -->
+      <button class="search-btn-details">
         <div data-testid="little-search-icon">
           <svg viewBox="0 0 32 32" xmlns="https://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
             focusable="false" style="

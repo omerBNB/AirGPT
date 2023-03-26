@@ -1,0 +1,28 @@
+.app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    border-top: 1px solid #dddddd;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    font-family: Airbnb_Cereal-Book;
+    font-size: 1em;
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-inline-start: 4.2%;
+        .coffeerights {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #222;
+        font-size: .875em;
+        p{
+            margin: 0;
+        }
+    }
+    }
+}

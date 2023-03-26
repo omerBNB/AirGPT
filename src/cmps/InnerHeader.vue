@@ -16,7 +16,7 @@
         </form>
         <section class="grid stay-where-search" v-if="acitveModalInner === 'where'">
           <div>
-            <h2>Trending destinations</h2>
+            <h2 class="stay-where-search-h2">Trending destinations</h2>
             <section class="counries-search-container">
               <div class="flex" @click.stop="setActiveModalWhere('checkin', 'Paris')">
                 <div>
@@ -104,42 +104,42 @@
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832788/ypxaozgl8ypv41zcslzr.jpg"
                   alt="" />
-                <div @click="">I'm flexible</div>
+                <div class="region-mainland-choice" @click="">I'm flexible</div>
               </div>
               <div @click.stop="setActiveModalWhere('checkin', 'Europe')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832796/jmoewtj22cydhrxv8igw.webp"
                   alt="" />
-                <div>Europe</div>
+                <div class="region-mainland-choice">Europe</div>
               </div>
               <div @click.stop="setActiveModalWhere('checkin', 'France')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832694/iyey3ugv4rrfebpqq4ri.jpg"
                   alt="" />
-                <div>France</div>
+                <div class="region-mainland-choice">France</div>
               </div>
               <div @click.stop="setActiveModalWhere('checkin', 'United States')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832626/rmbkbzyewogvanzfehex.jpg"
                   alt="" />
-                <div>United States</div>
+                <div class="region-mainland-choice">United States</div>
               </div>
               <div @click.stop="setActiveModalWhere('checkin', 'United Kingdom')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832717/cxz8hpbk9uuotl3arwni.jpg"
                   alt="" />
-                <div>United Kingdom</div>
+                <div class="region-mainland-choice">United Kingdom</div>
               </div>
               <div @click.stop="setActiveModalWhere('checkin', 'South America')">
                 <img
                   class="mainland-img"
                   src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669832771/vgliecdhjbr1pjdqdrl0.jpg"
                   alt="" />
-                <div>South America</div>
+                <div class="region-mainland-choice">South America</div>
               </div>
             </section>
           </div>
@@ -152,7 +152,7 @@
         @click="setActiveModalDates('checkin')"
         :class="{ isActive: acitveModalInner === 'checkin' }">
         <div>Check in</div>
-        <div>
+        <div :class="innerHeaderFilter.range.start ? 'bold-inner-search' : ''">
           {{
             innerHeaderFilter.range.start
               ? this.innerHeaderFilter.range.start.toDateString().substring(4, 11)
@@ -180,7 +180,7 @@
         @click="setActiveModalDates('checkout')"
         :class="{ isActive: acitveModalInner === 'checkout' }">
         <div ref="checkout">Check out</div>
-        <div>
+        <div :class="innerHeaderFilter.range.end ? 'bold-inner-search' : ''">
           {{
             innerHeaderFilter.range.end
               ? this.innerHeaderFilter.range.end.toDateString().substring(4, 11)
@@ -195,10 +195,10 @@
         :class="{ isActive: acitveModalInner === 'search' }">
         <button class="inner-header-dates-btn-search" ref="search">
           <div>Who</div>
-          <div>
+          <div :class="innerHeaderFilter.guests.adults ? 'bold-inner-search' : ''">
             {{
               innerHeaderFilter.guests.adults
-                ? innerHeaderFilter.guests.adults + innerHeaderFilter.guests.children
+                ? innerHeaderFilter.guests.adults + innerHeaderFilter.guests.children + ' guests'
                 : 'Add guests'
             }}
           </div>
@@ -206,7 +206,7 @@
         <button class="inner-header-search-btn big" @click="searchDestination">
           <div data-icon="true" data-testid="little-search-icon">
             <svg
-              viewBox="0 0 32 32"
+              viewBox="7 0 32 32"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
               role="presentation"
@@ -497,6 +497,7 @@ export default {
       this.innerHeaderFilter.guests[guestType] += diff
     },
     searchDestination() {
+      this.$emit('closeModal')
       this.$router.push(
         `/stay/explore?where=${
           this.innerHeaderFilter.where
@@ -516,9 +517,10 @@ export default {
   created() {
     this.acitveModalInner = this.activeModal
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
-    this.columns = mapCurrent({ lg: 2 }, 1)
+    this.columns = mapCurrent({ lg: 2 }, 2)
     // this.expanded = mapCurrent({ lg: false }, true)
   },
   components: {},
+  emits: ['closeModal'],
 }
 </script>
