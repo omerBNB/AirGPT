@@ -10,7 +10,9 @@
           <div class="ferrites-header">
             <div class="header-text">
               <h3>Entire amazing views hosted by {{ stay.host.fullname }}</h3>
-              <p>{{ guestsNum }} • {{ bedroomNum }} • {{ bedsNum }} • {{ bathsNum }}</p>
+              <p class="fs14">
+                {{ guestsNum }} • {{ bedroomNum }} • {{ bedsNum }} • {{ bathsNum }}
+              </p>
             </div>
             <img :src="stay.host.imgUrl" />
           </div>
@@ -67,16 +69,13 @@
         <DetailsOrderBox :stay="stay" />
       </section>
     </main>
-
+    <!--  -->
+    <!-- <VCalendar :columns="columns" /> -->
+    <!-- <VDatePicker :attributes="attrs" color="#000" v-model="date" /> -->
+    <!-- <VDatePicker v-model="date" /> -->
+    <!--  -->
     <DetailsReviews :stay="stay" />
-  </div>
-  <div>
-    <!-- <datepicker v-model="date"></datepicker> -->
-    <!-- <VDatePicker v-model.range="range" :columns="columns" /> -->
-    <!-- <datepicker></datepicker> -->
-    <!-- <Datepicker /> -->
-    <!-- <datepicker placeholder="Select Date" /> -->
-    <!-- <code> &lt;datepicker placeholder="Select Date"&gt;&lt;/datepicker&gt; </code> -->
+    <StayMap />
   </div>
 </template>
 
@@ -85,17 +84,23 @@ import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
 import StayHeaderInfo from '../cmps/StayHeaderInfo.vue'
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviews from '../cmps/DetailsReviews.vue'
-import { storageService } from '../services/async-storage.service.js'
-// import Datepicker from 'vuejs-datepicker'
-// import Datepicker from '../../src/src/components/Datepicker.vue'
-// import { stayService } from '../services/stay.service.local.js'
+import StayMap from '../cmps/StayMap.vue'
+// import { storageService } from '../services/async-storage.service.js'
+import { ref } from 'vue'
 
 export default {
   name: 'StayDetails',
   data() {
     return {
-      date: null,
       stay: null,
+      date: ref(new Date()),
+      // attrs: ref([
+      //   {
+      //     key: 'test',
+      //     highlight: true,
+      //     dates: { start: new Date(2019, 3, 15), end: new Date(2019, 3, 19) },
+      //   },
+      // ]),
     }
   },
 
@@ -147,7 +152,7 @@ export default {
     StayDetailsImgs,
     DetailsReviews,
     StayHeaderInfo,
-    // Datepicker,
+    StayMap,
   },
 }
 </script>

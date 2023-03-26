@@ -15,11 +15,11 @@
       <div class="btns flex">
         <div class="flex">
           <img src="../imgs/svg_symbols/share.svg" />
-          <span class="underline bold-font">Share</span>
+          <span class="underline">Share</span>
         </div>
         <div class="flex">
           <img src="../imgs/svg_symbols/heart.svg" />
-          <span class="underline bold-font">Save</span>
+          <span class="underline">Save</span>
         </div>
       </div>
     </section>

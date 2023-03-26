@@ -6,10 +6,10 @@
   padding: 25px 20px 20px 20px;
   // width: 300px;
   height: max-content;
-  width: 88%;
+  width: 83%;
   margin-left: auto;
-  margin-top: 50px;
-  box-shadow: 0 0 5px 5px #00000015;
+  margin-top: 38px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 
   span {
     padding: 0 0;
@@ -93,12 +93,15 @@ label {
 
 span.cost {
   color: black;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
-
+p.rate {
+  font-size: 14px;
+}
 span.reviews {
+  font-family: Airbnb_Cereal-Medium;
   color: #00000070;
-  font-size: 0.85em;
+  font-size: 14px;
   text-decoration: underline;
 }
 

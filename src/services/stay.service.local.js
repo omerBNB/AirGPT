@@ -35,10 +35,11 @@ const gStays = [
     capacity: 8, // guest number
     equipment: { bedroomNum: 5, bedsNum: 11, bathNum: 4 },
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Trending', 'Play', 'Tropical', 'Castles'],
     host: {
       _id: 'u101',
       fullname: 'Inon',
+      description: `Hi there, I'm Inon, a journalist who loves to write. My house has a home office and I'd be happy to share some of my writing tips with you during your stay.`,
       imgUrl: '../../src/imgs/imgs_test/inon.jpg',
       isSuperHost: true,
     },
@@ -74,7 +75,7 @@ const gStays = [
       {
         id: 'u103',
         txt: 'nice...',
-        rate: 9,
+        rate: 2,
         by: {
           _id: 'u102yuval',
           fullname: 'Yuval',
@@ -106,6 +107,7 @@ const gStays = [
     host: {
       _id: '84659731',
       fullname: 'Omer',
+      description: `Hi, I'm Omer, a film buff who loves watching movies. My house has a home theater system and I'd be happy to share some of my favorite films with you during your visit.`,
       imgUrl: '../../src/imgs/imgs_test/omer.jpg',
       isSuperHost: true,
     },
@@ -209,6 +211,7 @@ const gStays = [
     host: {
       _id: '73148925',
       fullname: 'Ido',
+      description: `Hi, I'm Ido, a musician who plays the piano and guitar. My house has a small music room and I'd be happy to give you a private concert during your stay.`,
       imgUrl: '../../src/imgs/imgs_test/ido.jpg',
       isSuperHost: true,
     },
@@ -256,6 +259,7 @@ const gStays = [
     host: {
       _id: 'u101',
       fullname: 'Inon',
+      description: `Hey, I'm Inon, a nature lover who enjoys hiking in the nearby hills. My house has a garden filled with native plants and I can recommend some great hiking trails in the area.`,
       imgUrl: '../../src/imgs/imgs_test/inon.jpg',
       isSuperHost: true,
     },
@@ -312,6 +316,7 @@ const gStays = [
     host: {
       _id: 'u101',
       fullname: 'Ido Tsehori',
+      description: `Hello, I'm Ido, a professional chef who loves experimenting with different cuisines. My house has a fully equipped kitchen and I'd be happy to cook a meal for you during your visit.`,
       imgUrl: '../../src/imgs/imgs_test/ido_test.jpg',
       isSuperHost: false,
     },
@@ -337,7 +342,7 @@ const gStays = [
       {
         id: 'madeId2',
         txt: `Shitty place, Fuck you Ido!`,
-        rate: 7,
+        rate: 1,
         by: {
           _id: 'u10inon',
           fullname: 'Inon',
@@ -347,7 +352,7 @@ const gStays = [
       {
         id: 'madeId3',
         txt: `Great place, the host Ido is very bad`,
-        rate: 8,
+        rate: 3,
         by: {
           _id: 'u10yuval',
           fullname: 'Yuval',
@@ -358,7 +363,7 @@ const gStays = [
       {
         id: 'madeId4',
         txt: `Ido is the best`,
-        rate: 10,
+        rate: 5,
         by: {
           _id: 'u10ido',
           fullname: 'Ido',
@@ -389,6 +394,7 @@ const gStays = [
     host: {
       _id: 'u201',
       fullname: 'Yuval',
+      description: `Hi there! I'm Yuval, a freelance photographer who enjoys capturing candid moments. My house is filled with my favorite photographs and I hope it will inspire you to explore the beauty of Malibu.`,
       imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
       isSuperHost: true,
     },
@@ -414,7 +420,7 @@ const gStays = [
       {
         id: 'madeId2',
         txt: `Good place`,
-        rate: 7,
+        rate: 3.5,
         by: {
           _id: 'u10inon',
           fullname: 'Inon',
@@ -424,7 +430,7 @@ const gStays = [
       {
         id: 'madeId3',
         txt: `Great place`,
-        rate: 8,
+        rate: 5,
         by: {
           _id: 'u10yuval',
           fullname: 'Yuval',
@@ -435,7 +441,7 @@ const gStays = [
       {
         id: 'madeId4',
         txt: `Ido is the best`,
-        rate: 10,
+        rate: 4,
         by: {
           _id: 'u10ido',
           fullname: 'Ido',
@@ -465,6 +471,7 @@ const gStays = [
     host: {
       _id: 'u401',
       fullname: 'Inon',
+      description: `Hi, I'm Inon, a language teacher who speaks fluent Hebrew, English and Spanish. My house is filled with books in different languages and I'd be happy to recommend some great reads during your visit.`,
       imgUrl: '../../src/imgs/imgs_test/inon.jpg',
       isSuperHost: true,
     },
@@ -487,20 +494,11 @@ const gStays = [
           imgUrl: '../../src/imgs/imgs_test/omer.jpg',
         },
       },
-      {
-        id: 'madeId2',
-        txt: `Shitty place, Fuck you Ido!`,
-        rate: 7,
-        by: {
-          _id: 'u10inon',
-          fullname: 'Inon',
-          imgUrl: '../../src/imgs/imgs_test/inon.jpg',
-        },
-      },
+
       {
         id: 'madeId3',
         txt: `Great place, the host Ido is very bad`,
-        rate: 8,
+        rate: 2.5,
         by: {
           _id: 'u10yuval',
           fullname: 'Yuval',
@@ -510,8 +508,8 @@ const gStays = [
 
       {
         id: 'madeId4',
-        txt: `Ido is the best`,
-        rate: 10,
+        txt: `Goood`,
+        rate: 4.5,
         by: {
           _id: 'u10ido',
           fullname: 'Ido',
@@ -542,8 +540,9 @@ const gStays = [
     labels: ['Nature', 'Skiing', 'Private', 'Tropical'],
     host: {
       _id: 76543,
-      fullname: 'ido',
-      imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+      fullname: 'omer',
+      description: `Hola! I'm Omer, a literature professor who loves reading. My house has a cozy reading nook and I'd be happy to recommend some great books to read during your visit.`,
+      imgUrl: '../../src/imgs/imgs_test/omer.jpg',
       isSuperHost: true,
     },
     loc: {
@@ -557,18 +556,18 @@ const gStays = [
     reviews: [
       {
         id: 98342,
-        txt: "Ido's house is wonderful. The garden is a real highlight and we enjoyed picking fresh fruit every morning. Maria is a great host and very helpful.",
-        rate: 9,
+        txt: "Omer's house is wonderful. The garden is a real highlight and we enjoyed picking fresh fruit every morning. Maria is a great host and very helpful.",
+        rate: 2,
         by: {
           _id: 12345,
-          fullname: 'omer',
-          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+          fullname: 'Ido',
+          imgUrl: '../../src/imgs/imgs_test/ido.jpg',
         },
       },
       {
         id: 98432,
         txt: 'We had a lovely stay at Garden Paradise. The house is cozy and the garden is amazing. We would definitely come back.',
-        rate: 8,
+        rate: 4.5,
         by: {
           _id: 56789,
           fullname: 'yuval',
@@ -600,6 +599,7 @@ const gStays = [
     host: {
       _id: 34562,
       fullname: 'inon',
+      description: `Hey, I'm Inon, a coffee enthusiast who loves trying new blends. My house has a coffee bar and I'd be happy to make you a cup during your stay.`,
       imgUrl: '../../src/imgs/imgs_test/inon.jpg',
       isSuperHost: true,
     },
@@ -615,7 +615,7 @@ const gStays = [
       {
         id: 34521,
         txt: 'Inon was a great host and the house was perfect for our needs. Would definitely stay again!',
-        rate: 8,
+        rate: 2,
         by: {
           _id: 23456,
           fullname: 'Inon',
@@ -625,7 +625,7 @@ const gStays = [
       {
         id: 90234,
         txt: 'Beautiful house in a great location. Highly recommended!',
-        rate: 9,
+        rate: 4,
         by: {
           _id: 56789,
           fullname: 'omer',
@@ -753,13 +753,6 @@ const gStays = [
   },
 ]
 
-// rate: this.reviews.reduce(
-//   acc,
-//   (review) => {
-//     return acc + review.rate
-//   },
-//   0
-// ),
 const orders = [
   {
     _id: 'o1225',

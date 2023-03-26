@@ -1,15 +1,19 @@
 .stay-details {
+  padding: 0;
   border-bottom: 1px solid rgba(128, 128, 128, 0.3);
-  margin-top: 0.5em;
+  margin-top: 1.2em;
   display: grid;
 
   h1 {
     font-family: Airbnb_Cereal-Book;
-    font-size: 30px;
+    font-size: 23px;
   }
 }
 
 .stay-review {
+  padding: 0;
+  gap: 0.6em;
+  margin-bottom: 0.83em;
   h1 {
     margin-bottom: 0.1em;
   }
@@ -25,9 +29,11 @@
   img {
     width: 12px;
   }
-
+  .info-bar {
+    padding: 0;
+  }
   .info {
-    gap: 0.4em;
+    gap: 0.5em;
   }
   .btns {
     gap: 1em;
@@ -37,6 +43,9 @@
       gap: 0.4em;
       img {
         width: 16px;
+      }
+      span {
+        font-family: Airbnb_Cereal-Medium;
       }
     }
   }
@@ -49,7 +58,7 @@
   padding: 0;
   max-width: 100%;
   gap: 7px;
-  height: 440px;
+  height: 465px;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas:
@@ -82,7 +91,7 @@
 
 .details-container {
   display: grid;
-  grid-gap: 30px;
+  grid-gap: 14px;
   grid-template-areas:
     'a1 a4'
     'a2 a4'
@@ -102,11 +111,12 @@
     justify-content: space-between;
     border-bottom: 1px solid rgba(128, 128, 128, 0.3);
     h3 {
-      font-family: Airbnb_Cereal-Book;
+      font-family: CircularAir-Light;
     }
+
     img {
-      width: 60px;
-      height: 60px;
+      width: 53px;
+      height: 53px;
       border-radius: 50px;
       object-fit: cover;
     }
@@ -121,6 +131,12 @@
     .line {
       display: flex;
       gap: 1em;
+      .text {
+        width: 100%;
+        p {
+          max-width: 100%;
+        }
+      }
       img {
         align-self: self-start;
         width: 25px;

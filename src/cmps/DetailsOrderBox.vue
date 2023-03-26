@@ -5,7 +5,7 @@
         <p>
           <span class="cost">{{ formatPrice }}</span> night
         </p>
-        <p class="fs14 bold-font">
+        <p class="rate bold-font">
           <img src="../imgs/svg_symbols/black_star.svg" />
           {{ stay.rate }}
           <span> • </span>

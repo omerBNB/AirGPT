@@ -1,9 +1,15 @@
 <template>
-  <section id="main-app" class="main-container" >
-    <AppHeader v-if="!this.$route.path.includes('/stay')" @onShowBackDrop="showBackDrop" :isWide="isWide" />
-    <AppHeaderDetails v-if="this.$route.path.includes('/stay')" @onShowBackDrop="showBackDrop" :isWide="isWide" />
-    <RouterView ref="test" @click="showFullScreeen" :class="showBackDropHome"/>
-    <AppFooter/>
+  <section id="main-app" class="main-container">
+    <AppHeader
+      v-if="!this.$route.path.includes('/stay')"
+      @onShowBackDrop="showBackDrop"
+      :isWide="isWide" />
+    <AppHeaderDetails
+      v-if="this.$route.path.includes('/stay')"
+      @onShowBackDrop="showBackDrop"
+      :isWide="isWide" />
+    <RouterView ref="test" @click="showFullScreeen" :class="showBackDropHome" />
+    <AppFooter />
     <UserMsg />
   </section>
 </template>
@@ -29,7 +35,7 @@ export default {
     }
   },
   created() {
-    console.log('this.$router.params',this.$route.path)
+    console.log('this.$router.params', this.$route.path)
     console.log('Vue App created')
     const user = userService.getLoggedinUser()
     if (user) store.commit({ type: 'setLoggedinUser', user })
@@ -61,7 +67,7 @@ export default {
     AppHeaderDetails,
     UserMsg,
     UserOptions,
-    AppFooter
+    AppFooter,
   },
 }
 </script>
