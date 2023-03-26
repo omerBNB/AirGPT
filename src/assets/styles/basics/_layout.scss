@@ -5,6 +5,7 @@
 
 .main-container {
   display: grid;
+  position: relative;
   // grid-template-columns: 20px 1fr 20px;
   // padding: 0;
 
@@ -61,6 +62,7 @@
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
+
 
   @include for-cards-big-layout {
     grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));

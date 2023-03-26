@@ -25,8 +25,9 @@ export default {
     }
   },
   mounted() {
-    const currRoute = this.$route.query
-    if (currRoute === '/') {
+    console.log('this.$route.name',this.$route)
+    const currRoute = this.$route.name
+    if (currRoute === 'StayExplore') {
       document.getElementById('main-app').classList.value = 'main-container'
     }
   },
