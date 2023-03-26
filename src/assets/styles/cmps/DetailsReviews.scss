@@ -54,6 +54,7 @@
 
 .guest-reviews-container {
   display: grid;
+  margin-bottom: 4em;
   grid-template-columns: repeat(2, 1fr);
   .mini-user-details {
     gap: 0.5em;
