@@ -15,6 +15,13 @@
       :userSearchSpec="this.$route.query" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess"/>
+    <AppHeader v-if="!this.$route.name?.includes('StayDetails')" @onShowBackDrop="showBackDrop" :isWide="isWide"
+      @closeActiveModal="showFullScreeen" :userSearchSpec="this.$route.query" />
+    <AppHeaderDetails v-if="this.$route.name?.includes('StayDetails')" @onShowBackDrop="showBackDrop" :isWide="isWide"
+      @closeActiveModal="showFullScreeen" :userSearchSpec="this.$route.query" />
+    <div :class="showBackDropHome" @click="showFullScreeen">
+
+    </div>
     <RouterView ref="test" />
     <AppFooter />
     <UserMsg />
