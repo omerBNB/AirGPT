@@ -5,8 +5,8 @@
     font-size: 15px;
 
     .el-carousel__button {
-        width: 4px;
-        height: 4px;
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
     }
 
@@ -24,6 +24,12 @@
 
     .el-carousel__item:nth-child(2n + 1) {
         background-color: #d3dce6;
+    }
+
+    .el-carousel__arrow {
+        background-color: $clr1;
+        color: $clr7;
+
     }
 
     .el-carousel__item {
@@ -49,6 +55,7 @@
         .rate {
             gap: 0.4em;
             align-items: center;
+            font-family: CircularAir-Light;
         }
     }
 
