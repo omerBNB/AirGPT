@@ -1,34 +1,19 @@
 <template>
   <section id="main-app" class="main-container">
-<<<<<<< HEAD
     <AppHeader
-      v-if="!this.$route.path.includes('/stay')"
+      v-if="!this.$route.name.includes('StayDetails')"
       @onShowBackDrop="showBackDrop"
-      :isWide="isWide" />
+      :isWide="isWide"
+      @closeActiveModal="showFullScreeen"
+      :userSearchSpec="this.$route.query" />
     <AppHeaderDetails
-      v-if="this.$route.path.includes('/stay')"
+      v-if="this.$route.name.includes('StayDetails')"
       @onShowBackDrop="showBackDrop"
-      :isWide="isWide" />
-    <RouterView ref="test" @click="showFullScreeen" :class="showBackDropHome" />
-=======
-        <AppHeader
-          v-if="!this.$route.name.includes('StayDetails')"
-          @onShowBackDrop="showBackDrop"
-          :isWide="isWide"
-          @closeActiveModal="showFullScreeen" 
-          :userSearchSpec="this.$route.query" 
-          />
-        <AppHeaderDetails
-          v-if="this.$route.name.includes('StayDetails')"
-          @onShowBackDrop="showBackDrop"
-          :isWide="isWide"
-          @closeActiveModal="showFullScreeen" 
-          :userSearchSpec="this.$route.query" />
-          <div :class="showBackDropHome" @click="showFullScreeen" >
-  
-          </div>
+      :isWide="isWide"
+      @closeActiveModal="showFullScreeen"
+      :userSearchSpec="this.$route.query" />
+    <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <RouterView ref="test" />
->>>>>>> aef0ba1d731d42f34c283f3f84b874bebec4d86f
     <AppFooter />
     <UserMsg />
   </section>
@@ -55,10 +40,6 @@ export default {
     }
   },
   created() {
-<<<<<<< HEAD
-    console.log('this.$router.params', this.$route.path)
-=======
->>>>>>> aef0ba1d731d42f34c283f3f84b874bebec4d86f
     console.log('Vue App created')
     const user = userService.getLoggedinUser()
     if (user) store.commit({ type: 'setLoggedinUser', user })

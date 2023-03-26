@@ -66,13 +66,11 @@
           </section>
         </div>
 
-        <DetailsOrderBox :stay="stay" />
+        <DetailsOrderBox @openCalendar="openCalendar" :stay="stay" />
       </section>
     </main>
-    <!--  -->
-    <!-- <VCalendar :columns="columns" /> -->
-    <!-- <VDatePicker :attributes="attrs" color="#000" v-model="date" /> -->
-    <!-- <VDatePicker v-model="date" /> -->
+    <DetailsCalendar />
+
     <!--  -->
     <DetailsReviews :stay="stay" />
     <StayMap />
@@ -85,22 +83,13 @@ import StayHeaderInfo from '../cmps/StayHeaderInfo.vue'
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviews from '../cmps/DetailsReviews.vue'
 import StayMap from '../cmps/StayMap.vue'
-// import { storageService } from '../services/async-storage.service.js'
-import { ref } from 'vue'
+import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 
 export default {
   name: 'StayDetails',
   data() {
     return {
       stay: null,
-      date: ref(new Date()),
-      // attrs: ref([
-      //   {
-      //     key: 'test',
-      //     highlight: true,
-      //     dates: { start: new Date(2019, 3, 15), end: new Date(2019, 3, 19) },
-      //   },
-      // ]),
     }
   },
 
@@ -146,6 +135,9 @@ export default {
       // }
       this.$store.dispatch({ type: 'getStay', stayId: stayId })
     },
+    openCalendar() {
+      console.log('open')
+    },
   },
   components: {
     DetailsOrderBox,
@@ -153,6 +145,7 @@ export default {
     DetailsReviews,
     StayHeaderInfo,
     StayMap,
+    DetailsCalendar,
   },
 }
 </script>
