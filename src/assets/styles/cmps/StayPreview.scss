@@ -4,6 +4,10 @@
     color: $clr9;
     font-size: 15px;
 
+    .mark {
+        fill: red !important;
+    }
+
     .el-carousel__button {
         width: 5px;
         height: 5px;
