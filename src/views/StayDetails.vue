@@ -100,8 +100,11 @@ export default {
       stay: null,
     }
   },
-  created() {
-    this.loadStay()
+  async created() {
+    // this.loadStay() // DONT REMOVE PLEASE
+    const { stayId } = this.$route.params
+    const stay = await this.$store.dispatch({ type: 'getStay', stayId })
+    this.stay = stay
   },
 
   mounted() {
@@ -114,10 +117,11 @@ export default {
   methods: {
     async loadStay() {
       const { stayId } = this.$route.params
-      if (stayId) {
-        const stay = await storageService.get('stay', stayId)
-        if (stay) this.stay = stay
-      }
+      // if (stayId) { // DONT REMOVE PLEASE
+      //   const stay = await storageService.get('stay', stayId)
+      //   if (stay) this.stay = stay
+      // }
+      this.$store.dispatch({ type: 'getStay', stayId: stayId })
     },
   },
   components: {

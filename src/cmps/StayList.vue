@@ -1,6 +1,6 @@
 <template>
   <div class="cards-layout grid">
-    <StayPreview v-for="stay in stays" :key="stay._id" :stay="stay" />
+    <StayPreview v-for="stay in stays" :key="stay._id" :stay="stay" @updateWishList="$emit('updateWishList', stay._id)" />
     <!-- <p>${{ stay.price?.toLocaleString() }}</p>
         <button @click="removeStay(stay._id)">x</button>
         <button @click="updateStay(stay)">Update</button>
@@ -15,15 +15,9 @@ import StayPreview from '../cmps/StayPreview.vue'
 export default {
   name: 'StayList',
   props: { stays: Array },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  created() {
-  },
   components: {
     StayPreview,
   },
+  emits: ['updateWishList'],
 }
 </script>

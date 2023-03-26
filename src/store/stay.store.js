@@ -31,95 +31,102 @@ import { stayService } from '../services/stay.service.local'
 // }
 
 export const stayStore = {
-    state: {
-        stays: [],
-        filter:''
+  state: {
+    stays: [],
+    filter: ''
+  },
+  getters: {
+    stays({ stays }) {
+      return stays
     },
-    getters: {
-        stays({ stays }) { return stays },
+  },
+  mutations: {
+    setStays(state, { stays }) {
+      state.stays = stays
     },
-    mutations: {
-        setStays(state, { stays }) {
-            state.stays = stays
-        },
-        addStay(state, { stay }) {
-            state.stays.push(stay)
-        },
-        updateStay(state, { stay }) {
-            const idx = state.stays.findIndex(c => c._id === stay._id)
-            state.stays.splice(idx, 1, stay)
-        },
-        removeStay(state, { stayId }) {
-            state.stays = state.stays.filter(stay => stay._id !== stayId)
-        },
-        addStayMsg(state, { stayId, msg }) {
-            const stay = state.stays.find(stay => stay._id === stayId)
-            if (!stay.msgs) stay.msgs = []
-            stay.msgs.push(msg)
-        },
+    addStay(state, { stay }) {
+      state.stays.push(stay)
     },
-    actions: {
-        async addStay({ commit }, { stay }) {
-            try {
-                stay = await stayService.save(stay)
-                commit(getActionAddStay(stay))
-                return stay
-            } catch (err) {
-                console.log('stayStore: Error in addStay', err)
-                throw err
-            }
-        },
-        async updateStay({ commit }, { stay }) {
-            try {
-                stay = await stayService.save(stay)
-                commit(getActionUpdateStay(stay))
-                return stay
-            } catch (err) {
-                console.log('stayStore: Error in updateStay', err)
-                throw err
-            }
-        },
-        async loadStays({ commit }) {
-            try {
-                const stays = await stayService.query()
-                commit({ type: 'setStays', stays })
-            } catch (err) {
-                console.log('stayStore: Error in loadStays', err)
-                throw err
-            }
-        },
-        async removeStay(context, { stayId }) {
-            try {
-                await stayService.remove(stayId)
-                context.commit(getActionRemoveStay(stayId))
-            } catch (err) {
-                console.log('stayStore: Error in removeStay', err)
-                throw err
-            }
-        },
-        async addStayMsg(context, { stayId, txt }) {
-            try {
-                const msg = await stayService.addStayMsg(stayId, txt)
-                context.commit({ type: 'addStayMsg', stayId, msg })
-            } catch (err) {
-                console.log('stayStore: Error in addStayMsg', err)
-                throw err
-            }
-        }, async setFilterBy({ commit }, { filter }) {
-            const stays = await stayService.query(filter)
-            commit({ type: 'setStays', stays })
-        }, 
-        async searchByUserSpecs({ commit,state }, { filterUserSpecs }){
-            try{
-                console.log('filterUserSpecs', filterUserSpecs)
-                const stays = await stayService.query(state.filter,filterUserSpecs)
-                commit({ type: 'setStays', stays })
-            }
-            catch(err){
-                console.log('stayStore: Error in addStayMsg', err)
-                throw err
-            }
-        }
-        
-    }
+    updateStay(state, { stay }) {
+      const idx = state.stays.findIndex((c) => c._id === stay._id)
+      state.stays.splice(idx, 1, stay)
+    },
+    removeStay(state, { stayId }) {
+      state.stays = state.stays.filter((stay) => stay._id !== stayId)
+    },
+    addStayMsg(state, { stayId, msg }) {
+      const stay = state.stays.find((stay) => stay._id === stayId)
+      if (!stay.msgs) stay.msgs = []
+      stay.msgs.push(msg)
+    },
+  },
+  actions: {
+    async addStay({ commit }, { stay }) {
+      try {
+        stay = await stayService.save(stay)
+        commit(getActionAddStay(stay))
+        return stay
+      } catch (err) {
+        console.log('stayStore: Error in addStay', err)
+        throw err
+      }
+    },
+    async updateStay({ commit }, { stay }) {
+      try {
+        stay = await stayService.save(stay)
+        commit(getActionUpdateStay(stay))
+        return stay
+      } catch (err) {
+        console.log('stayStore: Error in updateStay', err)
+        throw err
+      }
+    },
+    async loadStays({ commit }) {
+      try {
+        const stays = await stayService.query()
+        commit({ type: 'setStays', stays })
+      } catch (err) {
+        console.log('stayStore: Error in loadStays', err)
+        throw err
+      }
+    },
+    async removeStay({ commit }, { stayId }) {
+      try {
+        await stayService.remove(stayId)
+        commit(getActionRemoveStay(stayId))
+      } catch (err) {
+        console.log('stayStore: Error in removeStay', err)
+        throw err
+      }
+    },
+    async addStayMsg({ commit }, { stayId, txt }) {
+      try {
+        const msg = await stayService.addStayMsg(stayId, txt)
+        commit({ type: 'addStayMsg', stayId, msg })
+      } catch (err) {
+        console.log('stayStore: Error in addStayMsg', err)
+        throw err
+      }
+    },
+    async setFilterBy({ commit }, { filter }) {
+      const stays = await stayService.query(filter)
+      commit({ type: 'setStays', stays })
+    },
+
+    async getStay({ commit }, { stayId }) {
+      const stay = await stayService.getById(stayId)
+      return stay
+    },
+      async searchByUserSpecs({ commit, state }, { filterUserSpecs }) {
+          try {
+              console.log('filterUserSpecs', filterUserSpecs)
+              const stays = await stayService.query(state.filter, filterUserSpecs)
+              commit({ type: 'setStays', stays })
+          }
+          catch (err) {
+              console.log('stayStore: Error in addStayMsg', err)
+              throw err
+          }
+      }
+  },
 }
