@@ -3,12 +3,13 @@
     <section class="order-container">
       <div class="order-form-header">
         <p>
-          <span class="cost">${{ stay.price }}</span> night
+          <span class="cost">{{ formatPrice }}</span> night
         </p>
         <p class="fs14 bold-font">
           <img src="../imgs/svg_symbols/black_star.svg" />
           {{ stay.rate }}
-          <span class="reviews">({{ stay.reviews.length }} reviews)</span>
+          <span> • </span>
+          <span class="reviews">{{ reviewsNum }}</span>
         </p>
       </div>
 
@@ -26,7 +27,7 @@
 
         <div class="guest-input">
           <label>GUESTS</label>
-          <input value="2" />
+          <input :value="guestsNum" />
           <svg viewBox="0 0 320 512" width="100" title="angle-down">
             <path
               d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
@@ -163,8 +164,8 @@
       </section>
       <hr />
       <div class="total flex space-between">
-        <p>Total</p>
-        <p>$327.15</p>
+        <p class="bold-font">Total</p>
+        <p class="bold-font">$327.15</p>
       </div>
     </section>
     <!-- <p class="footer">Report this listing</p> -->
@@ -185,7 +186,25 @@ export default {
       stayId: null,
     }
   },
-
+  computed: {
+    formatPrice() {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(this.stay.price)
+    },
+    reviewsNum() {
+      if (this.stay.reviews.length === 1) return '1 review'
+      else if (!this.stay.reviews.length) return 'no reviews'
+      else return this.stay.reviews.length + ' reviews'
+    },
+    guestsNum() {
+      if (this.stay.capacity === '1') return '1 guest'
+      return this.stay.capacity + ' guests'
+    },
+  },
   created() {
     this.stayId = this.stay._id
   },

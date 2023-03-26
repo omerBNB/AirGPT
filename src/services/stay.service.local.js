@@ -3,7 +3,6 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'stay'
-const USERS_KEY = 'users'
 
 export const stayService = {
   query,
@@ -817,7 +816,10 @@ function _AddTotalRateForEachStay() {
   })
 }
 
-async function query(filterBy = { txt: '', price: 0 }, filterByUserSpecs = { where: '', guests: { adults: 0, children: 0, infants: 0, prts: 0 } }) {
+async function query(
+  filterBy = { txt: '', price: 0 },
+  filterByUserSpecs = { where: '', guests: { adults: 0, children: 0, infants: 0, prts: 0 } }
+) {
   let stays = await storageService.query(STORAGE_KEY)
   if (filterBy.label) {
     stays = stays.filter((stay) => stay.labels.includes(filterBy.label))
@@ -829,8 +831,8 @@ async function query(filterBy = { txt: '', price: 0 }, filterByUserSpecs = { whe
   // if (filterBy.price) {
   //   stays = stays.filter((stay) => stay.price <= filterBy.price)
   // }
-  console.log('filterByUserSpecs.where',filterByUserSpecs.where)
-  if (filterByUserSpecs.where){
+  console.log('filterByUserSpecs.where', filterByUserSpecs.where)
+  if (filterByUserSpecs.where) {
     stays = stays.filter((stay) => stay.loc.country.includes(filterByUserSpecs.where))
   }
   return stays
