@@ -6,10 +6,10 @@
         <img src="../imgs/svg_symbols/black_star.svg" />
         <span class="bold-font">{{ stay.rate }}</span>
         <span>•</span>
-        <span class="underline bold-font">{{ stay.reviews.length }} reviews</span>
+        <span class="underline bold-font">{{ reviewsNum }} </span>
         <span>•</span>
         <span v-if="stay.host.isSuperHost">🎖 Superhost •</span>
-        <span class="bold-font">{{ stay.loc.city }}, {{ stay.loc.country }}</span>
+        <span class="bold-font underline">{{ stay.loc.city }}, {{ stay.loc.country }}</span>
       </div>
 
       <div class="btns flex">
@@ -39,7 +39,13 @@ export default {
     return {}
   },
   methods: {},
-  computed: {},
+  computed: {
+    reviewsNum() {
+      if (this.stay.reviews.length === 1) return '1 review'
+      else if (!this.stay.reviews.length) return 'no reviews'
+      else return this.stay.reviews.length + ' reviews'
+    },
+  },
   created() {},
   components: {},
 }
