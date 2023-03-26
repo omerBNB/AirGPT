@@ -1,11 +1,12 @@
 .stay-card {
+    padding: 0;
     cursor: pointer;
     font-family: CircularAir-Light;
     color: $clr9;
     font-size: 15px;
 
     .mark {
-        fill: red !important;
+        fill: #ff385c !important;
     }
 
     .el-carousel__button {
@@ -37,8 +38,8 @@
     }
 
     .el-carousel__item {
-
         img {
+            margin-block-end: 0;
             object-fit: cover;
             width: 100%;
             height: 100%;
@@ -47,38 +48,42 @@
         border-radius: 10px;
     }
 
-    .stay-name {
-        font-family: Airbnb_Cereal-Medium;
-        color: $clr8;
-        justify-content: space-between;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        margin: 0;
-
-        .rate {
-            gap: 0.4em;
-            align-items: center;
-            font-family: CircularAir-Light;
-        }
-    }
-
-    main {
+    .info {
         padding: 0;
 
-        p {
-            margin: 0;
-            justify-content: start;
-        }
-    }
-
-    .cost {
-        font-family: AirbnbCereal-Book;
-        color: $clr8;
-
-        .price {
+        .stay-name {
             font-family: Airbnb_Cereal-Medium;
-            color: $clr7;
+            color: $clr8;
+            justify-content: space-between;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0;
+
+            .rate {
+                gap: 0.4em;
+                align-items: center;
+                font-family: CircularAir-Light;
+            }
+        }
+
+        main {
+            padding: 0;
+
+            p {
+                margin: 0;
+                justify-content: start;
+            }
+        }
+
+        .cost {
+            font-family: AirbnbCereal-Book;
+            color: $clr8;
+
+            .price {
+                font-family: Airbnb_Cereal-Medium;
+                color: $clr7;
+            }
         }
     }
 }

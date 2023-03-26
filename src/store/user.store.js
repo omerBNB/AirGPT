@@ -8,13 +8,23 @@ import { stayService } from '../services/stay.service.local'
 export const userStore = {
     state: {
         loggedinUser: null,
+        // loggedinUser: {
+        //     name: 'moshe',
+        //     wishList: [{ _id: 27783059 }, { _id: 10006546 }, { _id: 10106546 }, { _id: 10086546 }, { _id: 98425306 }],
+        // },
         users: [],
         watchedUser: null
     },
     getters: {
-        users({ users }) { return users },
-        loggedinUser({ loggedinUser }) { return loggedinUser },
-        watchedUser({ watchedUser }) { return watchedUser }
+        users({ users }) {
+            return users
+        },
+        loggedinUser({ loggedinUser }) {
+            return loggedinUser
+        },
+        watchedUser({ watchedUser }) {
+            return watchedUser
+        }
     },
     mutations: {
         setLoggedinUser(state, { user }) {
@@ -118,14 +128,13 @@ export const userStore = {
             commit(payload)
         },
         async updateWishList({ commit }, { stayId }) {
-            console.log(stayId);
-            // const stay = await stayService.getById(stayId)
-            // const user = this.loggedinUser
-            // console.log('before', user.WishList)
-            // user.wishList.push(stay)
-            // const updatedUser = await userService.update(user._id, 'wishList', user.wishList)
-            // commit({ type: 'setLoggedinUser', user: updatedUser })
-            // console.log('after', user.WishList)
+            const stay = await stayService.getById(stayId)
+            const user = this.loggedinUser
+            console.log('before', user.WishList)
+            user.wishList.push(stay)
+            const updatedUser = await userService.update(user._id, 'wishList', user.wishList)
+            commit({ type: 'setLoggedinUser', user: updatedUser })
+            console.log('after', user.WishList)
         }
     }
 }

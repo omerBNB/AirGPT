@@ -53,7 +53,8 @@
     <div class="inner-header-user">
       <a class="airgpt-your-home-link" href=""> Airgpt your home </a>
       <section class="loggedin-user" @click="toggleUserOptions">
-        <UserOptions :hidden="UserInView" />
+        <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser"/>
+        <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser"/>
         <img
           class="burger-img"
           src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png"
@@ -61,11 +62,10 @@
         <div class="user-mini-section">
           <img
             class="user-img"
-            src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" />
+            :src="loggedInUser?  loggedInUser.imgUrl : 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'" />
         </div>
       </section>
     </div>
-
     <InnerHeader
       v-if="!isWideView"
       @closeModal="closeWiderView"
@@ -76,7 +76,8 @@
   <section class="white-bgc full" v-if="!isWideView"></section>
 </template>
 <script>
-import UserOptions from './UserOptions.vue'
+import UserOptionsNoUserLogin from './UserOptionsNoUserLogin.vue'
+import UserOptionsLoggedinUser from './UserOptionsLoggedinUser.vue'
 import InnerHeader from './InnerHeader.vue'
 export default {
   props: {
@@ -89,6 +90,7 @@ export default {
       isInUserView: true,
       currChoice: 'none',
       activateModal: null,
+      isUserLogin: false
     }
   },
   created() {
@@ -108,9 +110,14 @@ export default {
     closeWiderView() {
       this.$emit('closeActiveModal')
     },
+    openLogin(){
+      this.isUserLogin = true
+      this.$emit('showLoginModal',this.isUserLogin)
+    }
   },
   computed: {
     loggedInUser() {
+      console.log('this.$store.getters.loggedinUser',this.$store.getters.loggedinUser)
       return this.$store.getters.loggedinUser
     },
     isWideView() {
@@ -124,9 +131,10 @@ export default {
     },
   },
   components: {
-    UserOptions,
+    UserOptionsNoUserLogin,
+    UserOptionsLoggedinUser,
     InnerHeader,
   },
-  emits: ['onShowBackDrop', 'closeActiveModal'],
+  emits: ['onShowBackDrop', 'closeActiveModal','showLoginModal'],
 }
 </script>

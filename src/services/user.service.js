@@ -1,11 +1,19 @@
-// import { storageService } from './async-storage.service'
-import { httpService } from './http.service'
+import { storageService } from './async-storage.service'
+// import { httpService } from './http.service'
 import { store } from '../store/store'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 import { showSuccessMsg } from './event-bus.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-
+const USER = 'user'
+const user ={
+    _id:'1234',
+    fullname: 'user1',
+    password: 123,
+    imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+    wishList: []
+}
+// _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishList: user.wishList
 export const userService = {
     login,
     logout,
@@ -18,6 +26,7 @@ export const userService = {
     update,
     changeScore
 }
+saveLocalUser(user)
 
 window.userService = userService
 
@@ -60,17 +69,17 @@ async function update(id, key, value) {
 }
 
 async function login(userCred) {
-    const users = await storageService.query('user')
-    const user = users.find(user => user.username === userCred.username)
-    // const user = await httpService.post('auth/login', userCred)
-    if (user) {
-        // socketService.login(user._id)
-        return saveLocalUser(user)
-    }
+    // const users = await storageService.query('user')
+    // let user = users.find(user => user.username === userCred.username)
+    // // const user = await httpService.post('auth/login', userCred)
+    // if (user) {
+    //     // socketService.login(user._id)
+    //     return saveLocalUser(user)
+    // }
+    return user
 }
 
 async function signup(userCred) {
-    userCred.score = 10000
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     const user = await storageService.post('user', userCred)
     // const user = await httpService.post('auth/signup', userCred)
@@ -81,7 +90,9 @@ async function signup(userCred) {
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.logout()
-    return await httpService.post('auth/logout')
+    // return await httpService.post('auth/logout')
+    const user = null
+    return user
 }
 
 async function changeScore(by) {
@@ -93,7 +104,7 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score, wishList: user.wishList }
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishList: user.wishList }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
