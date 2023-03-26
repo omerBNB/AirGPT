@@ -33,6 +33,7 @@ import { stayService } from '../services/stay.service.local'
 export const stayStore = {
     state: {
         stays: [],
+        filter:''
     },
     getters: {
         stays({ stays }) { return stays },
@@ -107,6 +108,18 @@ export const stayStore = {
         }, async setFilterBy({ commit }, { filter }) {
             const stays = await stayService.query(filter)
             commit({ type: 'setStays', stays })
-        },
+        }, 
+        async searchByUserSpecs({ commit,state }, { filterUserSpecs }){
+            try{
+                console.log('filterUserSpecs', filterUserSpecs)
+                const stays = await stayService.query(state.filter,filterUserSpecs)
+                commit({ type: 'setStays', stays })
+            }
+            catch(err){
+                console.log('stayStore: Error in addStayMsg', err)
+                throw err
+            }
+        }
+        
     }
 }

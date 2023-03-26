@@ -152,7 +152,13 @@
         @click="setActiveModalDates('checkin')"
         :class="{ isActive: acitveModalInner === 'checkin' }">
         <div>Check in</div>
-        <div>{{ innerHeaderFilter.range.start ? innerHeaderFilter.range.start.getDay() : 'Add dates' }}</div>
+        <div>
+          {{
+            innerHeaderFilter.range.start
+              ? this.innerHeaderFilter.range.start.toDateString().substring(4, 11)
+              : 'Add dates'
+          }}
+        </div>
         <section
           class="calender-container"
           v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout'">
@@ -174,7 +180,13 @@
         @click="setActiveModalDates('checkout')"
         :class="{ isActive: acitveModalInner === 'checkout' }">
         <div ref="checkout">Check out</div>
-        <div>{{ innerHeaderFilter.range.end ? innerHeaderFilter.range.end.getDay() : 'Add dates' }}</div>
+        <div>
+          {{
+            innerHeaderFilter.range.end
+              ? this.innerHeaderFilter.range.end.toDateString().substring(4, 11)
+              : 'Add dates'
+          }}
+        </div>
       </button>
       <div class="border-inner-header"></div>
       <div
@@ -183,9 +195,15 @@
         :class="{ isActive: acitveModalInner === 'search' }">
         <button class="inner-header-dates-btn-search" ref="search">
           <div>Who</div>
-          <div>{{ innerHeaderFilter.guests? innerHeaderFilter.guests : 'Add guests' }}</div>
+          <div>
+            {{
+              innerHeaderFilter.guests.adults
+                ? innerHeaderFilter.guests.adults + innerHeaderFilter.guests.children
+                : 'Add guests'
+            }}
+          </div>
         </button>
-        <button class="inner-header-search-btn big">
+        <button class="inner-header-search-btn big" @click="searchDestination">
           <div data-icon="true" data-testid="little-search-icon">
             <svg
               viewBox="0 0 32 32"
@@ -216,7 +234,10 @@
             <p class="search-inner-header-cotainer-p">Ages 13 or above</p>
           </div>
           <div class="flex-inner-search-btns">
-            <button class="add-guest-button disabled">
+            <button
+              class="add-guest-button"
+              :class="innerHeaderFilter.guests.adults ? '' : 'disabled'"
+              @click.stop="handleGuests('adults', -1)">
               <span class="_8ovatg"
                 ><svg
                   viewBox="-24 0 32 32"
@@ -237,8 +258,8 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">0</span>
-            <button class="add-guest-button">
+            <span class="add-guest-span">{{ innerHeaderFilter.guests.adults }}</span>
+            <button class="add-guest-button" @click.stop="handleGuests('adults', 1)">
               <span class="_8ovatg"
                 ><svg
                   class="svg"
@@ -266,7 +287,10 @@
             <p class="search-inner-header-cotainer-p">Ages 2-12</p>
           </div>
           <div class="flex-inner-search-btns">
-            <button class="add-guest-button disabled">
+            <button
+              class="add-guest-button"
+              :class="innerHeaderFilter.guests.children ? '' : 'disabled'"
+              @click.stop="handleGuests('children', -1)">
               <span class="_8ovatg"
                 ><svg
                   viewBox="-23 0 32 32"
@@ -287,8 +311,8 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">0</span>
-            <button class="add-guest-button">
+            <span class="add-guest-span">{{ innerHeaderFilter.guests.children }}</span>
+            <button class="add-guest-button" @click.stop="handleGuests('children', 1)">
               <span class="_8ovatg"
                 ><svg
                   class="svg"
@@ -316,7 +340,10 @@
             <p class="search-inner-header-cotainer-p">Under 2</p>
           </div>
           <div class="flex-inner-search-btns">
-            <button class="add-guest-button disabled">
+            <button
+              class="add-guest-button"
+              :class="innerHeaderFilter.guests.infants ? '' : 'disabled'"
+              @click.stop="handleGuests('infants', -1)">
               <span class="_8ovatg"
                 ><svg
                   viewBox="-23 0 32 32"
@@ -337,8 +364,8 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">0</span>
-            <button class="add-guest-button">
+            <span class="add-guest-span">{{ innerHeaderFilter.guests.infants }}</span>
+            <button class="add-guest-button" @click.stop="handleGuests('infants', 1)">
               <span class="_8ovatg"
                 ><svg
                   class="svg"
@@ -366,7 +393,10 @@
             <p class="plus-animals search-inner-header-cotainer-p">Bringing a service animal?</p>
           </div>
           <div class="flex-inner-search-btns">
-            <button class="add-guest-button disabled">
+            <button
+              class="add-guest-button"
+              :class="innerHeaderFilter.guests.pets ? '' : 'disabled'"
+              @click.stop="handleGuests('pets', -1)">
               <span class="_8ovatg"
                 ><svg
                   viewBox="-23 0 32 32"
@@ -387,8 +417,8 @@
                 </svg>
               </span>
             </button>
-            <span class="add-guest-span">0</span>
-            <button class="add-guest-button">
+            <span class="add-guest-span">{{ innerHeaderFilter.guests.pets }}</span>
+            <button class="add-guest-button" @click.stop="handleGuests('pets', 1)">
               <span class="_8ovatg"
                 ><svg
                   class="svg"
@@ -432,7 +462,11 @@ export default {
       acitveModalInner: this.activeModal,
       columns: null,
       expanded: null,
-      innerHeaderFilter: { where: '' ,range: { start: null, end: null }, guests: 0},
+      innerHeaderFilter: {
+        where: '',
+        range: { start: null, end: null },
+        guests: { adults: 0, children: 0, infants: 0, pets: 0 },
+      },
       // date:null
     }
   },
@@ -447,12 +481,35 @@ export default {
     },
     setActiveModalDates(btnName) {
       this.acitveModalInner = btnName
+      console.log(
+        ' this.innerHeaderFilter.range',
+        this.innerHeaderFilter.range.start.toDateString()
+      )
     },
     setActiveModalsearch(btnName) {
       this.acitveModalInner = btnName
     },
     filterByUserPick() {
       console.log('innerHeaderFilter', this.innerHeaderFilter)
+    },
+    handleGuests(guestType, diff) {
+      if (!this.innerHeaderFilter.guests[guestType] && diff === -1) return
+      this.innerHeaderFilter.guests[guestType] += diff
+    },
+    searchDestination() {
+      this.$router.push(
+        `/stay/explore?where=${
+          this.innerHeaderFilter.where
+        }&checkin=${this.innerHeaderFilter.range.start
+          .toDateString()
+          .substring(4, 11)}&checkout=${this.innerHeaderFilter.range.end
+          .toDateString()
+          .substring(4, 11)}&adults=${this.innerHeaderFilter.guests.adults}&children=${
+          this.innerHeaderFilter.guests.children
+        }&infants=${this.innerHeaderFilter.guests.infants}&pets=${
+          this.innerHeaderFilter.guests.pets
+        }`
+      )
     },
   },
   computed: {},
