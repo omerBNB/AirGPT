@@ -2,7 +2,8 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'stay'
+const STAY_KEY = 'stay'
+const USERS_KEY = 'users'
 
 export const stayService = {
   query,
@@ -555,7 +556,7 @@ const orders = [
   },
 ]
 
-const users = [
+const gUsers = [
   {
     _id: 'u101',
     fullname: 'User 1',
@@ -587,7 +588,7 @@ function _AddTotalRateForEachStay() {
 }
 
 async function query(filterBy = { txt: '', price: 0 }) {
-  let stays = await storageService.query(STORAGE_KEY)
+  let stays = await storageService.query(STAY_KEY)
   if (filterBy.label) {
     stays = stays.filter((stay) => stay.labels.includes(filterBy.label))
   }
@@ -602,21 +603,21 @@ async function query(filterBy = { txt: '', price: 0 }) {
 }
 
 function getById(stayId) {
-  return storageService.get(STORAGE_KEY, stayId)
+  return storageService.get(STAY_KEY, stayId)
 }
 
 async function remove(stayId) {
-  await storageService.remove(STORAGE_KEY, stayId)
+  await storageService.remove(STAY_KEY, stayId)
 }
 
 async function save(stay) {
-  var savedStay
+  let savedStay
   if (stay._id) {
-    savedStay = await storageService.put(STORAGE_KEY, stay)
+    savedStay = await storageService.put(STAY_KEY, stay)
   } else {
     // Later, owner is set by the backend
     stay.owner = userService.getLoggedinUser()
-    savedStay = await storageService.post(STORAGE_KEY, stay)
+    savedStay = await storageService.post(STAY_KEY, stay)
   }
   return savedStay
 }
@@ -632,7 +633,7 @@ async function addStayMsg(stayId, txt) {
     txt,
   }
   stay.msgs.push(msg)
-  await storageService.put(STORAGE_KEY, stay)
+  await storageService.put(STAY_KEY, stay)
 
   return msg
 }
@@ -645,8 +646,8 @@ function getEmptyStay() {
 }
 
 function _createStays() {
-  let stays = utilService.loadFromStorage(STORAGE_KEY)
-  if (!stays) utilService.saveToStorage(STORAGE_KEY, gStays)
+  let stays = utilService.loadFromStorage(STAY_KEY)
+  if (!stays) utilService.saveToStorage(STAY_KEY, gStays)
 }
 
 function labels() {

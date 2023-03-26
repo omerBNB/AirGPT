@@ -1,7 +1,7 @@
 <template>
   <div>
     <CarouselFilter @setFilterBy="setFilterBy" />
-    <StayList :stays="stays" />
+    <StayList :stays="stays" @updateWishList="updateWishList" />
     <!-- <div class="container home">
       <ul class="stay-list">
         <li v-for="stay in stays" :key="stay._id">
@@ -92,6 +92,9 @@ export default {
     setFilterBy(filter) {
       this.$store.dispatch({ type: "setFilterBy", filter });
     },
+    updateWishList(stayId) {
+      this.$store.dispatch({ type: "updateWishList", stayId });
+    }
   },
   computed: {
     loggedInUser() {

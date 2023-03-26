@@ -1,6 +1,7 @@
 .labels {
+    position: sticky;
     font-size: small;
-    margin-block-start: 1em;
+    margin-block: 1em;
 
     .label {
         opacity: 0.6;
@@ -10,6 +11,12 @@
         gap: 10px;
         cursor: pointer;
         color: $clr9;
+
+        &:hover {
+            opacity: 1;
+            color: $clr7;
+            box-shadow: inset 0 -2px #00000026 !important
+        }
 
         &.isActive {
             opacity: 1;

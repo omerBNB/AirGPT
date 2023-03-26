@@ -96,18 +96,20 @@ export const stayStore = {
                 throw err
             }
         },
-        async addStayMsg(context, { stayId, txt }) {
+        async addStayMsg({ commit }, { stayId, txt }) {
             try {
                 const msg = await stayService.addStayMsg(stayId, txt)
-                context.commit({ type: 'addStayMsg', stayId, msg })
+                commit({ type: 'addStayMsg', stayId, msg })
             } catch (err) {
                 console.log('stayStore: Error in addStayMsg', err)
                 throw err
             }
-        }, async setFilterBy({ commit }, { filter }) {
+        },
+        async setFilterBy({ commit }, { filter }) {
             const stays = await stayService.query(filter)
             commit({ type: 'setStays', stays })
-        }, async getStay({ id }) {
+        },
+        async getStay({ id }) {
             const stay = await stayService.getById(id)
             return stay
         },
