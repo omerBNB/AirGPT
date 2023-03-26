@@ -22,8 +22,9 @@
           </svg>
         </span>
         <span class="bold-font">{{ currStay.rate }}</span>
+        <span> • </span>
         <span
-          ><a class="bold-font" href="">({{ currStay.reviews.length }} reviews)</a></span
+          ><a class="bold-font" href="">{{ reviewsNum }}</a></span
         >
       </section>
 
@@ -83,7 +84,13 @@ export default {
     }
   },
   methods: {},
-  computed: {},
+  computed: {
+    reviewsNum() {
+      if (this.stay.reviews.length === 1) return '1 review'
+      else if (!this.stay.reviews.length) return 'no reviews'
+      return this.stay.reviews.length + ' reviews'
+    },
+  },
   created() {
     this.currStay = this.stay
   },

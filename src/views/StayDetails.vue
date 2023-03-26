@@ -10,13 +10,11 @@
           <div class="ferrites-header">
             <div class="header-text">
               <h3>Entire amazing views hosted by {{ stay.host.fullname }}</h3>
-              <p>
-                {{ stay.capacity }} guests • {{ stay.equipment.bedroomNum }} bedrooms •
-                {{ stay.equipment.bedsNum }} beds • {{ stay.equipment.bathNum }} baths
-              </p>
+              <p>{{ guestsNum }} • {{ bedroomNum }} • {{ bedsNum }} • {{ bathsNum }}</p>
             </div>
             <img :src="stay.host.imgUrl" />
           </div>
+
           <div class="ferrites-main">
             <div v-if="stay.host.isSuperHost" class="line">
               <img src="../../src/imgs/ferrites_imgs/superhost.svg" />
@@ -99,6 +97,26 @@ export default {
       date: null,
       stay: null,
     }
+  },
+
+  computed: {
+    guestsNum() {
+      if (this.stay.capacity === 1) return '1 guest'
+      return this.stay.capacity + ' guests'
+    },
+    bedsNum() {
+      if (this.stay.equipment.bedsNum === 1) return '1 bed'
+      return this.stay.equipment.bedsNum + ' beds'
+    },
+    bedroomNum() {
+      if (this.stay.equipment.bedroomNum === 1) return '1 bedroom'
+      return this.stay.equipment.bedroomNum + ' bedrooms'
+    },
+
+    bathsNum() {
+      if (this.stay.equipment.bathNum === 1) return '1 bath'
+      return this.stay.equipment.bathNum + ' baths'
+    },
   },
   async created() {
     // this.loadStay() // DONT REMOVE PLEASE

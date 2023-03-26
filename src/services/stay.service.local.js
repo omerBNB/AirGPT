@@ -816,7 +816,10 @@ function _AddTotalRateForEachStay() {
   })
 }
 
-async function query(filterBy = { txt: '', price: 0 }, filterByUserSpecs = { where: '', guests: { adults: 0, children: 0, infants: 0, prts: 0 } }) {
+async function query(
+  filterBy = { txt: '', price: 0 },
+  filterByUserSpecs = { where: '', guests: { adults: 0, children: 0, infants: 0, prts: 0 } }
+) {
   let stays = await storageService.query(STORAGE_KEY)
   if (filterBy.label) {
     stays = stays.filter((stay) => stay.labels.includes(filterBy.label))
