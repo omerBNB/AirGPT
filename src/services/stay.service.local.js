@@ -90,9 +90,9 @@ const gStays = [
     name: 'Cozy Cottage in the Woods',
     type: 'House',
     imgUrls: [
-      '../../src/imgs/imgs_test/ListImgsTest/b/3.webp',
       '../../src/imgs/imgs_test/ListImgsTest/b/1.webp',
       '../../src/imgs/imgs_test/ListImgsTest/b/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/b/3.webp',
       '../../src/imgs/imgs_test/ListImgsTest/b/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/b/5.webp',
     ],
@@ -146,11 +146,11 @@ const gStays = [
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
-      '../../src/imgs/imgs_test/ListImgsTest/c/1.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/c/2.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/c/3.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/c/4.webp',
-      '../../src/imgs/imgs_test/ListImgsTest/c/5.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/5.webp',
     ],
     price: 180,
     // in preview!
@@ -205,7 +205,7 @@ const gStays = [
     capacity: 2,
     equipment: { bedroomNum: 1, bedsNum: 1, bathNum: 1 },
     amenities: ['Gym', 'Pool', 'WiFi', 'Kitchen', 'TV'],
-    labels: ['Top of the world', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Play', 'Trendings'],
     host: {
       _id: '73148925',
       fullname: 'Ido',
@@ -252,7 +252,7 @@ const gStays = [
     capacity: 8, // guest number
     equipment: { bedroomNum: 4, bedsNum: 8, bathNum: 3 },
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Beachfront', 'Adapted', 'Play', 'OMG!', 'Iconic'],
     host: {
       _id: 'u101',
       fullname: 'Inon',
@@ -308,7 +308,7 @@ const gStays = [
     capacity: 3, // guest number
     equipment: { bedroomNum: 1, bedsNum: 3, bathNum: 2 },
     amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    labels: ['Top of the world', 'Campers', 'Tropical', 'Tropical'],
     host: {
       _id: 'u101',
       fullname: 'Ido Tsehori',
@@ -520,6 +520,236 @@ const gStays = [
       },
     ],
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
+  },
+  //
+  {
+    _id: '18429',
+    name: 'Garden Paradise',
+    type: 'House',
+    imgUrls: [
+      '../../src/imgs/imgs_test/ListImgsTest/d/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/d/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/d/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/d/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/d/5.webp',
+    ],
+    price: 412,
+    summary:
+      "This beautiful house has a gorgeous garden with lots of flowers and fruit trees. You'll feel like you're in paradise.",
+    capacity: 4,
+    equipment: { bedroomNum: 2, bedsNum: 2, bathNum: 1 },
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Pets allowed', 'Washer'],
+    labels: ['Nature', 'Skiing', 'Private', 'Tropical'],
+    host: {
+      _id: 76543,
+      fullname: 'ido',
+      imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+      isSuperHost: true,
+    },
+    loc: {
+      country: 'Spain',
+      countryCode: 'ES',
+      city: 'Barcelona',
+      address: 'Carrer de Sants',
+      lat: 41.377962,
+      lng: 2.134375,
+    },
+    reviews: [
+      {
+        id: 98342,
+        txt: "Ido's house is wonderful. The garden is a real highlight and we enjoyed picking fresh fruit every morning. Maria is a great host and very helpful.",
+        rate: 9,
+        by: {
+          _id: 12345,
+          fullname: 'omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 98432,
+        txt: 'We had a lovely stay at Garden Paradise. The house is cozy and the garden is amazing. We would definitely come back.',
+        rate: 8,
+        by: {
+          _id: 56789,
+          fullname: 'yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
+    ],
+    likedByUsers: ['mini-user', 'user1', 'user3'],
+  },
+  //
+  {
+    _id: '90245',
+    name: 'Green Oasis',
+    type: 'House',
+    imgUrls: [
+      '../../src/imgs/imgs_test/ListImgsTest/f/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/f/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/f/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/f/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/f/5.webp',
+    ],
+    price: 754,
+    summary:
+      'Escape the hustle and bustle of the city and enjoy a relaxing stay in this green oasis. The spacious rooms and well-equipped kitchen make it perfect for families or groups of friends.',
+    capacity: 6,
+    equipment: { bedroomNum: 3, bedsNum: 4, bathNum: 2 },
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
+    labels: ['Top of the world', 'Trending', 'Play', 'Tropical'],
+    host: {
+      _id: 34562,
+      fullname: 'inon',
+      imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+      isSuperHost: true,
+    },
+    loc: {
+      country: 'Spain',
+      countryCode: 'ES',
+      city: 'Barcelona',
+      address: 'Carrer de Balmes 68',
+      lat: 41.3933,
+      lng: 2.1636,
+    },
+    reviews: [
+      {
+        id: 34521,
+        txt: 'Inon was a great host and the house was perfect for our needs. Would definitely stay again!',
+        rate: 8,
+        by: {
+          _id: 23456,
+          fullname: 'Inon',
+          imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+        },
+      },
+      {
+        id: 90234,
+        txt: 'Beautiful house in a great location. Highly recommended!',
+        rate: 9,
+        by: {
+          _id: 56789,
+          fullname: 'omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+    ],
+
+    likedByUsers: ['mini-user'],
+  },
+  //
+  {
+    _id: '65321',
+    name: 'Cozy Retreat',
+    type: 'House',
+    imgUrls: [
+      '../../src/imgs/imgs_test/ListImgsTest/e/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/e/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/e/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/e/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/e/5.webp',
+    ],
+    price: 573,
+    summary:
+      'A lovely house located in the heart of the city, perfect for a romantic getaway or a small family vacation.',
+    capacity: 3,
+    equipment: { bedroomNum: 2, bedsNum: 2, bathNum: 1 },
+    amenities: ['TV', 'Wifi', 'Kitchen', 'No smoking', 'No pets', 'Washer'],
+    labels: ['Relax', 'City life', 'Family-friendly'],
+    host: {
+      _id: 23456,
+      fullname: 'Inon',
+      imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+      isSuperHost: true,
+    },
+    loc: {
+      country: 'Spain',
+      countryCode: 'ES',
+      city: 'Madrid',
+      address: 'Calle Mayor 32',
+      lat: 40.4154,
+      lng: -3.7074,
+    },
+    reviews: [
+      {
+        id: 45678,
+        txt: 'Great location, wonderful host, comfortable beds. Highly recommend!',
+        rate: 9,
+        by: {
+          _id: 34567,
+          fullname: 'Omer',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 78901,
+        txt: 'Lovely house, but a bit small for our family of four. Would recommend for couples or small families.',
+        rate: 7,
+        by: {
+          _id: 56789,
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
+    ],
+    likedByUsers: ['mini-user', 'user2', 'user3'],
+  },
+  //
+  {
+    _id: '28174',
+    name: 'Villa Sunshine',
+    type: 'House',
+    imgUrls: [
+      '../../src/imgs/imgs_test/ListImgsTest/h/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/h/5.webp',
+    ],
+    price: 849,
+    summary:
+      'Located in the heart of the city, Villa Sunshine offers modern amenities and a sunny balcony for a relaxing stay. Enjoy the nearby attractions and explore the city at your leisure.',
+    capacity: 6,
+    equipment: { bedroomNum: 3, bedsNum: 3, bathNum: 2 },
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Cooking basics'],
+    labels: ['Trending', 'Play', 'City', 'Modern'],
+    host: {
+      _id: 23405,
+      fullname: 'Omer',
+      imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+      isSuperHost: true,
+    },
+    loc: {
+      country: 'Italy',
+      countryCode: 'IT',
+      city: 'Rome',
+      address: 'Via del Corso 12',
+      lat: 41.8955,
+      lng: 12.4823,
+    },
+    reviews: [
+      {
+        id: 75361,
+        txt: 'Beautiful villa with everything you need for a perfect holiday. The host was friendly and helpful throughout our stay.',
+        rate: 9,
+        by: {
+          _id: 98763,
+          fullname: 'yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
+      {
+        id: 45962,
+        txt: 'The villa was even better than we expected - spacious, clean and well equipped. The location was perfect for exploring the city. Highly recommended!',
+        rate: 10,
+        by: {
+          _id: 87654,
+          fullname: 'Ido',
+          imgUrl: '../../src/imgs/imgs_test/ido.jpg',
+        },
+      },
+    ],
+
+    likedByUsers: ['mini-user', 'user2'], // for user-wishlist : use $in
   },
 ]
 
