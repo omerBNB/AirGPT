@@ -1,4 +1,4 @@
-// import { storageService } from './async-storage.service'
+import { storageService } from './async-storage.service'
 // import { httpService } from './http.service'
 import { store } from '../store/store'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
@@ -10,7 +10,8 @@ const user ={
     _id:'1234',
     fullname: 'user1',
     password: 123,
-    imgUrl: '../../src/imgs/imgs_test/omer.jpg'
+    imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+    wishList: []
 }
 // _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishList: user.wishList
 export const userService = {
@@ -68,14 +69,14 @@ async function update(id, key, value) {
 }
 
 async function login(userCred) {
-    console.log('userCred',userCred)
-    const users = await storageService.query('user')
-    let user = users.find(user => user.username === userCred.username)
-    // const user = await httpService.post('auth/login', userCred)
-    if (user) {
-        // socketService.login(user._id)
-        return saveLocalUser(user)
-    }
+    // const users = await storageService.query('user')
+    // let user = users.find(user => user.username === userCred.username)
+    // // const user = await httpService.post('auth/login', userCred)
+    // if (user) {
+    //     // socketService.login(user._id)
+    //     return saveLocalUser(user)
+    // }
+    return user
 }
 
 async function signup(userCred) {
@@ -103,7 +104,7 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl }
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishList: user.wishList }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }

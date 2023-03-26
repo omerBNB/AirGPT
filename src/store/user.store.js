@@ -7,11 +7,11 @@ import { stayService } from '../services/stay.service.local'
 
 export const userStore = {
     state: {
-        // loggedinUser: null,
-        loggedinUser: {
-            name: 'moshe',
-            wishList: [{ _id: 27783059 }, { _id: 10006546 }, { _id: 10106546 }, { _id: 10086546 }, { _id: 98425306 }],
-        },
+        loggedinUser: null,
+        // loggedinUser: {
+        //     name: 'moshe',
+        //     wishList: [{ _id: 27783059 }, { _id: 10006546 }, { _id: 10106546 }, { _id: 10086546 }, { _id: 98425306 }],
+        // },
         users: [],
         watchedUser: null
     },
