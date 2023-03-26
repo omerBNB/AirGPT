@@ -1,34 +1,21 @@
 <template>
   <section id="main-app" class="main-container">
-<<<<<<< HEAD
     <AppHeader
-      v-if="!this.$route.path.includes('/stay')"
+      v-if="!this.$route.name.includes('StayDetails')"
       @onShowBackDrop="showBackDrop"
-      :isWide="isWide" />
+      :isWide="isWide"
+      @closeActiveModal="showFullScreeen"
+      :userSearchSpec="this.$route.query"
+      @showLoginModal="showLoginModal" />
     <AppHeaderDetails
-      v-if="this.$route.path.includes('/stay')"
+      v-if="this.$route.name.includes('StayDetails')"
       @onShowBackDrop="showBackDrop"
-      :isWide="isWide" />
-    <RouterView ref="test" @click="showFullScreeen" :class="showBackDropHome" />
-=======
-        <AppHeader
-          v-if="!this.$route.name.includes('StayDetails')"
-          @onShowBackDrop="showBackDrop"
-          :isWide="isWide"
-          @closeActiveModal="showFullScreeen" 
-          :userSearchSpec="this.$route.query" 
-          />
-        <AppHeaderDetails
-          v-if="this.$route.name.includes('StayDetails')"
-          @onShowBackDrop="showBackDrop"
-          :isWide="isWide"
-          @closeActiveModal="showFullScreeen" 
-          :userSearchSpec="this.$route.query" />
-          <div :class="showBackDropHome" @click="showFullScreeen" >
-  
-          </div>
+      :isWide="isWide"
+      @closeActiveModal="showFullScreeen"
+      :userSearchSpec="this.$route.query" />
+    <div :class="showBackDropHome" @click="showFullScreeen"></div>
+    <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess"/>
     <RouterView ref="test" />
->>>>>>> aef0ba1d731d42f34c283f3f84b874bebec4d86f
     <AppFooter />
     <UserMsg />
   </section>
@@ -38,10 +25,11 @@
 import { userService } from './services/user.service'
 import { store } from './store/store'
 import AppHeader from './cmps/AppHeader.vue'
-import UserOptions from './cmps/UserOptions.vue'
+import UserOptions from './cmps/UserOptionsNoUserLogin.vue'
 import UserMsg from './cmps/UserMsg.vue'
 import AppHeaderDetails from './cmps/AppHeaderDetails.vue'
 import AppFooter from './cmps/AppFooter.vue'
+import LoginSignup from './views/LoginSignup.vue'
 //
 // import Datepicker from '../src/src/components/Datepicker.vue'
 // import * as lang from '../src/src/locale/index'
@@ -52,13 +40,10 @@ export default {
       currLayout: null,
       backDropisLive: false,
       isWide: true,
+      loginModalOpen: null,
     }
   },
   created() {
-<<<<<<< HEAD
-    console.log('this.$router.params', this.$route.path)
-=======
->>>>>>> aef0ba1d731d42f34c283f3f84b874bebec4d86f
     console.log('Vue App created')
     const user = userService.getLoggedinUser()
     if (user) store.commit({ type: 'setLoggedinUser', user })
@@ -72,6 +57,12 @@ export default {
       this.isWide = true
       this.backDropisLive = false
     },
+    showLoginModal(isUserLogin) {
+      this.loginModalOpen = isUserLogin
+    },
+    loginSuccess(){
+      this.loginModalOpen = false
+    }
   },
   computed: {
     currentLayout() {
@@ -91,6 +82,7 @@ export default {
     UserMsg,
     UserOptions,
     AppFooter,
+    LoginSignup
   },
 }
 </script>

@@ -65,7 +65,7 @@
   <section class="white-bgc full" v-if="!isWideView"></section>
 </template>
 <script>
-import UserOptions from './UserOptions.vue'
+import UserOptions from './UserOptionsNoUserLogin.vue'
 import InnerHeader from './InnerHeader.vue'
 export default {
   props: {
