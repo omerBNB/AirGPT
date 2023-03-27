@@ -127,9 +127,20 @@ export const userStore = {
         setWatchedUser({ commit }, payload) {
             commit(payload)
         },
-        async updateWishList({ commit }, { stayId }) {
+        async updateWishList({ commit, state }, { stayId }) {
             const stay = await stayService.getById(stayId)
             const updatedUser = await userService.addStayToWishList(stay)
+            commit({ type: 'setLoggedinUser', user: updatedUser })
+            // let user = { ...state.loggedinUser }
+            // user.wishList.push(stay)
+            // const updatedUser = await userService.save(user)
+            // commit({ type: 'setLoggedinUser', user: updatedUser })
+
+        },
+        async addNewStay({ commit, state }, { newStay }) {
+            let user = {...state.loggedinUser}
+            user.stayList = newStay
+            const updatedUser = await userService.save(user)
             commit({ type: 'setLoggedinUser', user: updatedUser })
         }
     }

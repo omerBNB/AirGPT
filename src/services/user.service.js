@@ -24,16 +24,12 @@ export const userService = {
     addStayToWishList,
 }
 
-createUsers()
-// login({
-//     password: 123,
-//     username: "user1"
-// })
-
 window.userService = userService
 
-function createUsers() {
+_createUsers()
+function _createUsers() {
     gUsers = utilService.loadFromStorage(USER)
+    console.log('gUsers', gUsers)
     if (!gUsers || !gUsers.length) {
         gUsers = [{
             _id: '1234',
@@ -41,7 +37,8 @@ function createUsers() {
             username: 'user1',
             password: 123,
             imgUrl: '../../src/imgs/imgs_test/omer.jpg',
-            wishList: []
+            wishList: [],
+            stayList: []
         }]
         utilService.saveToStorage(USER, gUsers)
     }

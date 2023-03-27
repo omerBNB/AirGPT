@@ -867,11 +867,76 @@ async function addStayMsg(stayId, txt) {
   return msg
 }
 
-function getEmptyStay() {
-  return {
-    vendor: 'Susita-' + (Date.now() % 1000),
-    price: utilService.getRandomIntInclusive(1000, 9000),
+function getEmptyStay(newStay = { name: '', country : '', city: '', address: ''}) {
+  let stay = {
+    _id: utilService.makeId(),
+    name: newStay.name,
+    type: 'House',
+    imgUrls: [
+      '../../src/imgs/imgs_test/ListImgsTest/a/3.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/1.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/2.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/4.webp',
+      '../../src/imgs/imgs_test/ListImgsTest/a/5.webp',
+    ],
+    price: 1634.0, // in preview!
+    summary:
+      'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
+    capacity: 8, // guest number
+    equipment: { bedroomNum: 5, bedsNum: 11, bathNum: 4 },
+    amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
+    labels: ['Top of the world', 'Trending', 'Play', 'Tropical', 'Castles'],
+    host: {
+      _id: '84659731',
+      fullname: 'Omer',
+      description: `Hi, I'm Omer, a film buff who loves watching movies. My house has a home theater system and I'd be happy to share some of my favorite films with you during your visit.`,
+      imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+      isSuperHost: true,
+    },
+    loc: {
+      country: newStay.country,
+      countryCode: 'omertest',
+      city: newStay.city,
+      address: newStay.address,
+      lat: -8.61308,
+      lng: 41.1413,
+    },
+    reviews: [
+      {
+        id: 'madeId',
+        txt: 'Very helpful hosts. Cooked traditional...',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'user2',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 'madeId',
+        txt: 'Very helpful hosts. Cooked traditional...',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'user2',
+          imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        },
+      },
+      {
+        id: 'u103',
+        txt: 'nice...',
+        rate: 2,
+        by: {
+          _id: 'u102yuval',
+          fullname: 'Yuval',
+          imgUrl: '../../src/imgs/imgs_test/yuval.jpg',
+        },
+      },
+    ],
+
+    likedByUsers: ['mini-user'], // for user-wishlist : use $in
   }
+  return stay
 }
 
 function _createStays() {

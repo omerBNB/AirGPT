@@ -40,7 +40,7 @@
       </button>
     </section>
     <div class="inner-header-user">
-      <a class="airgpt-your-home-link" href=""> Airgpt your home </a>
+      <RouterLink class="airgpt-your-home-link" to="/stay/edit"> Airgpt your home </RouterLink>
       <section class="loggedin-user" @click="toggleUserOptions">
         <UserOptions :hidden="UserInView" />
         <img
