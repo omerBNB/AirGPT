@@ -70,6 +70,7 @@ export default {
           checkin: this.innerHeaderFilter.range.start.toDateString().substring(4, 11),
         checkout: this.innerHeaderFilter.range.end.toDateString().substring(4, 11),
         adults: this.innerHeaderFilter.guests.adults,
+        children: this.innerHeaderFilter.guests.children,
         infants: this.innerHeaderFilter.guests.infants,
         pets: this.innerHeaderFilter.guests.pets,
       }

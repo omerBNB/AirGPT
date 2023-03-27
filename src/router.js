@@ -8,7 +8,7 @@ import UserDetails from './views/UserDetails.vue'
 import StayDetails from './views/StayDetails.vue'
 import StayReservation from './views/StayReservation.vue'
 import StayExplore from './views/StayExplore.vue'
-import AirgptYourHome from './views/AirgptYourHome.vue'
+import StayEdit from './views/StayEdit.vue'
 
 const routes = [
   {
@@ -30,6 +30,11 @@ const routes = [
     path: '/stay/explore',
     name: 'StayExplore',
     component: StayExplore,
+  },
+  {
+    path: '/stay/edit',
+    name: 'StayEdit',
+    component: StayEdit,
   },
   {
     path: '/review',

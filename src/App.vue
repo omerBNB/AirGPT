@@ -1,21 +1,18 @@
 <template>
   <section id="main-app" class="main-container">
-    <AppHeader
-      v-if="!this.$route.name?.includes('StayDetails')"
-      @onShowBackDrop="showBackDrop"
-      :isWide="isWide"
-      @closeActiveModal="showFullScreeen"
-      :userSearchSpec="this.$route.query"
-      @showLoginModal="showLoginModal" />
-    <AppHeaderDetails
-      v-if="this.$route.name?.includes('StayDetails')"
-      @onShowBackDrop="showBackDrop"
-      :isWide="isWide"
-      @closeActiveModal="showFullScreeen"
-      :userSearchSpec="this.$route.query" />
+    <AppHeader v-if="!this.$route.name?.includes('StayDetails')" @onShowBackDrop="showBackDrop" :isWide="isWide"
+      @closeActiveModal="showFullScreeen" :userSearchSpec="this.$route.query" @showLoginModal="showLoginModal" />
+    <AppHeaderDetails v-if="this.$route.name?.includes('StayDetails')" @onShowBackDrop="showBackDrop" :isWide="isWide"
+      @closeActiveModal="showFullScreeen" :userSearchSpec="this.$route.query" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
+<<<<<<< HEAD
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
+=======
+    <div :class="showBackDropHome" @click="showFullScreeen">
+
+    </div>
+>>>>>>> dfe40f34682cee5486b646cd844ae03944371370
     <RouterView ref="test" />
     <AppFooter />
     <UserMsg />

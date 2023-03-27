@@ -48,6 +48,7 @@ export const userStore = {
         async login({ commit }, { userCred }) {
             try {
                 const user = await userService.login(userCred)
+                console.log(user)
                 commit({ type: 'setLoggedinUser', user })
                 return user
             } catch (err) {
@@ -127,14 +128,21 @@ export const userStore = {
         setWatchedUser({ commit }, payload) {
             commit(payload)
         },
-        async updateWishList({ commit }, { stayId }) {
+        async updateWishList({ commit, state }, { stayId }) {
             const stay = await stayService.getById(stayId)
-            const user = this.loggedinUser
-            console.log('before', user.WishList)
-            user.wishList.push(stay)
-            const updatedUser = await userService.update(user._id, 'wishList', user.wishList)
+            const updatedUser = await userService.addStayToWishList(stay)
             commit({ type: 'setLoggedinUser', user: updatedUser })
-            console.log('after', user.WishList)
+            // let user = { ...state.loggedinUser }
+            // user.wishList.push(stay)
+            // const updatedUser = await userService.save(user)
+            // commit({ type: 'setLoggedinUser', user: updatedUser })
+
+        },
+        async addNewStay({ commit, state }, { newStay }) {
+            let user = {...state.loggedinUser}
+            user.stayList = newStay
+            const updatedUser = await userService.save(user)
+            commit({ type: 'setLoggedinUser', user: updatedUser })
         }
     }
 }
