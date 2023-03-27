@@ -8,7 +8,8 @@
         <span>•</span>
         <span class="underline bold-font">{{ reviewsNum }} </span>
         <span>•</span>
-        <span v-if="stay.host.isSuperHost">🎖 Superhost •</span>
+        <span><img src="../imgs/svg_symbols/superhost.png" alt="" srcset="" /></span>
+        <span v-if="stay.host.isSuperHost">Superhost •</span>
         <span class="bold-font underline">{{ stay.loc.city }}, {{ stay.loc.country }}</span>
       </div>
 

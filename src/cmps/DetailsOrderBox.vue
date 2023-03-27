@@ -18,15 +18,15 @@
         <div class="date-picker">
           <div @click="this.calendarIsShown = true" class="date-input">
             <label>CHECK IN</label>
-            <input :value="this.startDate" />
+            <input :value="this.searchDetails.checkin" />
           </div>
           <div @click="this.calendarIsShown = true" class="date-input">
             <label>CHECK OUT</label>
-            <input :value="this.endDate" />
+            <input :value="this.searchDetails.checkout" />
           </div>
         </div>
 
-        <div class="guest-input">
+        <div @click.stop="this.guestModalIsShown = true" class="guest-input">
           <label>GUESTS</label>
           <input :value="guestsNum" />
           <svg viewBox="0 0 320 512" width="100" title="angle-down">
@@ -165,25 +165,34 @@
       </section>
       <hr />
       <div class="total flex space-between">
-        <p class="bold-font">Total</p>
-        <p class="bold-font">$327.15</p>
+        <p>Total</p>
+        <p>$327.15</p>
       </div>
       <DetailsCalendar
         v-if="calendarIsShown"
         @closeModal="this.calendarIsShown = false"
         :startDate="startDate"
         :endDate="endDate" />
+      <DetailsGuestModal
+        @closeGuestModal="this.guestModalIsShown = false"
+        v-if="this.guestModalIsShown" />
     </section>
+
     <!-- <p class="footer">Report this listing</p> -->
   </main>
 </template>
 
 <script>
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
+import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
 export default {
   name: 'DetailsOrderBox',
   props: {
     stay: {
+      type: Object,
+      required: true,
+    },
+    searchDetails: {
       type: Object,
       required: true,
     },
@@ -192,6 +201,7 @@ export default {
     return {
       stayId: null,
       calendarIsShown: false,
+      guestModalIsShown: false,
       startDate: 'Add date',
       endDate: 'Add date',
     }
@@ -213,8 +223,9 @@ export default {
     },
 
     guestsNum() {
-      if (this.stay.capacity === '1') return '1 guest'
-      return this.stay.capacity + ' guests'
+      return +this.searchDetails.adults + +this.searchDetails.children + +this.searchDetails.infants
+      // if (this.stay.capacity === '1') return '1 guest'
+      // return this.stay.capacity + ' guests'
     },
   },
   created() {
@@ -251,7 +262,11 @@ export default {
 
   methods: {
     submitOrder() {
-      this.$router.push('/book/' + this.stayId)
+      const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+      this.$router.push({
+        path: '/stay/book/' + this.stayId,
+        query: { plan: where, checkin, checkout, adults, children, infants, pets },
+      })
     },
   },
   mounted() {
@@ -260,6 +275,7 @@ export default {
 
   components: {
     DetailsCalendar,
+    DetailsGuestModal,
   },
 }
 </script>

@@ -267,19 +267,19 @@ export default {
   },
   methods: {
     setActiveModalsearch(btnName) {
-        this.$emit('setActiveModalsearch',btnName)
+      this.$emit('setActiveModalsearch', btnName)
     },
     handleGuests(guestType, diff) {
       if (!this.innerHeaderFilter.guests[guestType] && diff === -1) return
       this.innerHeaderFilter.guests[guestType] += diff
     },
-    searchDestination(){
-        this.$emit('searchDestination')
-    }
+    searchDestination() {
+      this.$emit('searchDestination')
+    },
   },
   computed: {},
   created() {},
   components: {},
-  emits: ['setActiveModalsearch','searchDestination'],
+  emits: ['setActiveModalsearch', 'searchDestination'],
 }
 </script>

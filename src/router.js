@@ -21,8 +21,13 @@ const routes = [
     name: 'StayDetails',
     component: StayDetails,
   },
+  // {
+  //   path: '/book/:stayId',
+  //   name: 'StayReservation',
+  //   component: StayReservation,
+  // },
   {
-    path: '/book/:stayId',
+    path: '/stay/book/:stayId',
     name: 'StayReservation',
     component: StayReservation,
   },

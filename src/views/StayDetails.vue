@@ -64,7 +64,7 @@
           </section>
         </div>
 
-        <DetailsOrderBox :stay="stay" />
+        <DetailsOrderBox :searchDetails="searchDetails" :stay="stay" />
       </section>
     </main>
 
@@ -93,7 +93,8 @@
             <span
               ><img src="../imgs/svg_symbols/verified.svg" alt="" srcset="" /> Identity verified
             </span>
-            <span v-if="stay.host.isSuperHost">🎖Superhost </span>
+            <span><img src="../imgs/svg_symbols/superhost.png" /></span>
+            <span v-if="stay.host.isSuperHost">Superhost </span>
           </div>
           <div class="txt">
             {{ stay.host.description }}
@@ -116,7 +117,7 @@
           <div class="protect flex">
             <img src="../imgs/svg_symbols/protect_logo.svg" alt="" srcset="" />
             <p>
-              To protect your payment, never transfer money or communicate outside of the Airbnb
+              To protect your payment, never transfer money or communicate outside of the Airgpt
               website or app
             </p>
           </div>
@@ -138,6 +139,7 @@ export default {
   data() {
     return {
       stay: null,
+      searchDetails: null,
     }
   },
 
@@ -166,7 +168,6 @@ export default {
     const { stayId } = this.$route.params
     const stay = await this.$store.dispatch({ type: 'getStay', stayId })
     this.stay = stay
-    console.log('this.$route.query', this.$route.query)
   },
 
   mounted() {
@@ -174,6 +175,9 @@ export default {
     if (currRoute.includes('stay')) {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
+    this.searchDetails = this.$route.query
+    console.log('this.searchDetails:', this.searchDetails)
+    // console.log('this.$route.query', this.$route.query)
   },
 
   methods: {
