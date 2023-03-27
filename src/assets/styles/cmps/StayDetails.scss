@@ -120,6 +120,9 @@
       border-radius: 50px;
       object-fit: cover;
     }
+    p {
+      font-size: 0.9em;
+    }
   }
 
   .ferrites-main {
@@ -128,6 +131,18 @@
     padding-bottom: 32px;
     flex-direction: column;
     border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+
+    h4 {
+      font-family: AirbnbCereal-Book;
+      font-family: AirbnbCereal-Book;
+      font-size: 0.83em;
+    }
+
+    p {
+      font-size: 0.8em;
+      font-family: Quicksand;
+    }
+
     .line {
       display: flex;
       gap: 1em;

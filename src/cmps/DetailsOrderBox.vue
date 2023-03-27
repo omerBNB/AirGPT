@@ -5,6 +5,7 @@
         <p>
           <span class="cost">{{ formatPrice }}</span> night
         </p>
+
         <p class="rate bold-font">
           <img src="../imgs/svg_symbols/black_star.svg" />
           {{ stay.rate }}
@@ -204,11 +205,13 @@ export default {
         maximumFractionDigits: 0,
       }).format(this.stay.price)
     },
+
     reviewsNum() {
       if (this.stay.reviews.length === 1) return '1 review'
       else if (!this.stay.reviews.length) return 'no reviews'
       else return this.stay.reviews.length + ' reviews'
     },
+
     guestsNum() {
       if (this.stay.capacity === '1') return '1 guest'
       return this.stay.capacity + ' guests'
@@ -216,6 +219,32 @@ export default {
   },
   created() {
     this.stayId = this.stay._id
+
+    addEventListener('click', (ev) => {
+      const click = ev.target.offsetParent.classList
+      console.log('click:', click)
+      if (click.contains('order-container')) {
+        this.calendarIsShown = true
+        return
+      }
+
+      if (
+        click.contains('calendar-container') ||
+        click.contains('vc-week') ||
+        click.contains('vc-pane-container') ||
+        click.contains('vc-day') ||
+        click.contains('vc-day') ||
+        click.contains('vc-pane-header-wrapper') ||
+        click.contains('vc-weekdays')
+      ) {
+        console.log('yes')
+        this.calendarIsShown = true
+      } else {
+        console.log('no')
+        this.calendarIsShown = false
+      }
+    })
+
     //** If there's DATES in the params (from explore page) **/
     //** so set the startDate and endDate. if its null render:Add date each input **/
   },
@@ -228,7 +257,7 @@ export default {
   mounted() {
     // console.log('this.stay', this.stay)
   },
-  computed: {},
+
   components: {
     DetailsCalendar,
   },

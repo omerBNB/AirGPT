@@ -50,7 +50,9 @@ export default {
   },
   methods: {
     details() {
-      this.$router.push(`/stay/${this.stay._id}`)
+      const {where = '', checkin  = '', checkout = '', adults = '0', infants = '0', pets= '0'} = this.$route.query
+      
+      this.$router.push({ path: `/stay/${this.stay._id}`, query: {where, checkin, checkout, adults, infants, pets}})
     },
   },
   computed: {
