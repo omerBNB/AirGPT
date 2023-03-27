@@ -40,22 +40,15 @@
       </button>
     </section>
     <div class="inner-header-user">
-      <RouterLink class="airgpt-your-home-link" to="/stay/edit"> Airgpt your home </RouterLink>
-      <section class="loggedin-user" @click="toggleUserOptions">
-        <UserOptions :hidden="UserInView" />
-        <img
-          class="burger-img"
-          src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png"
-          alt="" />
-        <!-- <RouterLink :to="`/user/${loggedInUser._id}`"> -->
-        <!-- {{ loggedInUser.fullname }} -->
-        <!-- </RouterLink> -->
-        <!-- <span>{{ loggedInUser.score.toLocaleString() }}</span> -->
-        <!-- <img :src="loggedInUser.imgUrl" /> -->
+      <RouterLink class="airgpt-your-home-link" to="/dashboard/stay/edit"> Airgpt your home </RouterLink>
+      <section class="loggedin-user" @click="toggleUserOptions" >
+        <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser"/>
+        <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser" />
+        <img class="burger-img"
+          src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png" alt="" />
         <div class="user-mini-section">
-          <img
-            class="user-img"
-            src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" />
+          <img class="user-img"
+            :src="loggedInUser ? loggedInUser.imgUrl : 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'" />
         </div>
       </section>
     </div>
@@ -65,7 +58,8 @@
   <section class="white-bgc full" v-if="!isWideView"></section>
 </template>
 <script>
-import UserOptions from './UserOptionsNoUserLogin.vue'
+import UserOptionsNoUserLogin from './UserOptionsNoUserLogin.vue'
+import UserOptionsLoggedinUser from './UserOptionsLoggedinUser.vue'
 import InnerHeader from './InnerHeader.vue'
 export default {
   props: {
@@ -78,6 +72,7 @@ export default {
       isInUserView: true,
       currChoice: 'none',
       activateModal: null,
+      isUserLogin: false
     }
   },
   created() {
@@ -97,6 +92,10 @@ export default {
     closeWiderView() {
       this.$emit('closeActiveModal')
     },
+    openLogin() {
+      this.isUserLogin = true
+      this.$emit('showLoginModal', this.isUserLogin)
+    }
   },
   computed: {
     loggedInUser() {
@@ -113,8 +112,9 @@ export default {
     },
   },
   components: {
-    UserOptions,
     InnerHeader,
+    UserOptionsNoUserLogin,
+    UserOptionsLoggedinUser,
   },
   emits: ['onShowBackDrop', 'closeActiveModal'],
 }

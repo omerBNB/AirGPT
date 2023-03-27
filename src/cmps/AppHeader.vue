@@ -45,7 +45,7 @@
       </button>
     </section>
     <div class="inner-header-user">
-      <RouterLink class="airgpt-your-home-link" to="/stay/edit"> Airgpt your home </RouterLink>
+      <RouterLink class="airgpt-your-home-link" to="/dashboard/stay/edit"> Airgpt your home </RouterLink>
       <section class="loggedin-user" @click="toggleUserOptions" >
         <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser"/>
         <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser" />
