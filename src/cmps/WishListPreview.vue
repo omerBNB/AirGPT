@@ -34,5 +34,8 @@ export default {
             document.getElementById('main-app').classList.value = 'main-container wishList-grid'
         }
     },
+    created(){
+        console.log('hi')
+    }
 }
 </script>

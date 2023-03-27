@@ -1,5 +1,6 @@
 import { userService } from '../services/user.service'
 import { stayService } from '../services/stay.service.local'
+// import { json } from 'stream/consumers'
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
 
 // var localLoggedinUser = null
@@ -127,8 +128,14 @@ export const userStore = {
             commit({ type: 'setLoggedinUser', user })
         },
         async addNewStay({ commit, state }, { newStay }) {
-            let user = { ...state.loggedinUser }
-            user.stayList = newStay
+            let emptyStay = stayService.getEmptyStay()
+            let user = JSON.parse(JSON.stringify(state.loggedinUser))
+            emptyStay.loc.name = newStay.name
+            emptyStay.loc.country = newStay.country
+            emptyStay.loc.city = newStay.city
+            emptyStay.address = newStay.address
+            const stay = await stayService.save(emptyStay)
+            user.stayList.push(stay)
             const updatedUser = await userService.save(user)
             commit({ type: 'setLoggedinUser', user: updatedUser })
         }
