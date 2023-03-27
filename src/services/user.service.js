@@ -18,7 +18,6 @@ export const userService = {
     getUsers,
     getById,
     remove,
-    // update,
     changeScore,
     save,
     addStayToWishList,
@@ -70,18 +69,6 @@ function remove(userId) {
     // return storageService.remove('user', userId)
     return httpService.delete(`user/${userId}`)
 }
-
-// async function update(id, key, value) {
-//     // const user = await storageService.get('user', _id)
-//     let user = getById(id)
-//     user[key] = value
-//     await storageService.put('user', user)
-
-//     // user = await httpService.put(`user/${user._id}`, user)
-//     // Handle case in which admin updates other user's details
-//     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-//     return user
-// }
 
 function addStayToWishList(stay) {
     const user = getLoggedinUser()

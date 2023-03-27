@@ -296,7 +296,7 @@ const gStays = [
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
-    _id: 'ido123',
+    _id: '123',
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [

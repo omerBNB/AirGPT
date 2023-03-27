@@ -12,6 +12,7 @@ import StayEdit from './views/StayEdit.vue'
 import Dashboard from './views/Dashboard.vue'
 import Reservation from './views/Reservation.vue'
 import Listings from './views/Listings.vue'
+import WishList from './views/WishList.vue'
 
 const routes = [
   {
@@ -75,6 +76,11 @@ const routes = [
     path: '/user/:id',
     name: 'UserDetails',
     component: UserDetails,
+  },
+  {
+    path: '/wishList',
+    name: 'WishList',
+    component: WishList,
   },
 ]
 

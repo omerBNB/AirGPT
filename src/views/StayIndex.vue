@@ -92,8 +92,8 @@ export default {
     setFilterBy(filter) {
       this.$store.dispatch({ type: "setFilterBy", filter });
     },
-    updateWishList(stayId) {
-      this.$store.dispatch({ type: "updateWishList", stayId });
+    updateWishList(stay) {
+      this.$store.dispatch({ type: "updateWishList", stay })
     }
   },
   computed: {
