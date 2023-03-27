@@ -86,12 +86,9 @@
       <section class="flex">
         <section class="left-side">
           <div class="info">
-            <span
-              ><img src="../imgs/svg_symbols/black_star.svg" />
-              {{ stay.reviews.length }} reviews</span
-            >
-            <span
-              ><img src="../imgs/svg_symbols/verified.svg" alt="" srcset="" /> Identity verified
+            <span><img src="../imgs/svg_symbols/black_star.svg" />
+              {{ stay.reviews.length }} reviews</span>
+            <span><img src="../imgs/svg_symbols/verified.svg" alt="" srcset="" /> Identity verified
             </span>
             <span v-if="stay.host.isSuperHost">🎖Superhost </span>
           </div>
@@ -168,7 +165,6 @@ export default {
     this.stay = stay
     console.log('this.$route.query', this.$route.query)
   },
-
   mounted() {
     const currRoute = this.$route.path
     if (currRoute.includes('stay')) {

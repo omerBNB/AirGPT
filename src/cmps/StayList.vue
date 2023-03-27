@@ -1,6 +1,6 @@
 <template>
   <div class="cards-layout grid">
-    <StayPreview v-for="stay in stays" :key="stay._id" :stay="stay" @updateWishList="$emit('updateWishList', stay._id)" />
+    <StayPreview v-for="stay in stays" :key="stay._id" :stay="stay" @updateWishList="$emit('updateWishList', stay)" />
     <!-- <p>${{ stay.price?.toLocaleString() }}</p>
         <button @click="removeStay(stay._id)">x</button>
         <button @click="updateStay(stay)">Update</button>

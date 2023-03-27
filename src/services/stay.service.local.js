@@ -296,7 +296,7 @@ const gStays = [
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
-    _id: 'ido123',
+    _id: '123',
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
@@ -867,7 +867,7 @@ async function addStayMsg(stayId, txt) {
   return msg
 }
 
-function getEmptyStay(newStay = { name: '', country : '', city: '', address: ''}) {
+function getEmptyStay(newStay = { name: '', country: '', city: '', address: '' }) {
   let stay = {
     _id: utilService.makeId(),
     name: newStay.name,
