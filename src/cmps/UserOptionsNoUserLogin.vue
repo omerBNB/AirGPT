@@ -4,7 +4,7 @@
       <div class="user-options" @click="$emit('openLogin')">Login</div>
       <div class="user-options">Sign up</div>
       <span class="user-line"></span>
-      <div class="user-options" >Airgpt your home</div>
+      <RouterLink class="user-options" to="/stay/edit">Airgpt your home</RouterLink>
     </div>
   </div>
 </template>

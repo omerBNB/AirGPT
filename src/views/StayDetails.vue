@@ -169,7 +169,6 @@ export default {
     const stay = await this.$store.dispatch({ type: 'getStay', stayId })
     this.stay = stay
   },
-
   mounted() {
     const currRoute = this.$route.path
     if (currRoute.includes('stay')) {

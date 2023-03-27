@@ -9,6 +9,10 @@ import StayDetails from './views/StayDetails.vue'
 import StayReservation from './views/StayReservation.vue'
 import StayExplore from './views/StayExplore.vue'
 import StayEdit from './views/StayEdit.vue'
+import Dashboard from './views/Dashboard.vue'
+import Reservation from './views/Reservation.vue'
+import Listings from './views/Listings.vue'
+import WishList from './views/WishList.vue'
 
 const routes = [
   {
@@ -37,9 +41,26 @@ const routes = [
     component: StayExplore,
   },
   {
-    path: '/stay/edit',
-    name: 'StayEdit',
-    component: StayEdit,
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    children: [
+      {
+        path: 'stay/edit',
+        name: 'StayEdit',
+        component: StayEdit,
+      },
+      {
+        path: 'reservation',
+        name: 'Reservation',
+        component: Reservation,
+      },
+      {
+        path: 'listing',
+        name: 'Listings',
+        component: Listings,
+      },
+    ]
   },
   {
     path: '/review',
@@ -60,6 +81,11 @@ const routes = [
     path: '/user/:id',
     name: 'UserDetails',
     component: UserDetails,
+  },
+  {
+    path: '/wishList',
+    name: 'WishList',
+    component: WishList,
   },
 ]
 

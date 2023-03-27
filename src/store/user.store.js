@@ -1,5 +1,6 @@
 import { userService } from '../services/user.service'
 import { stayService } from '../services/stay.service.local'
+// import { json } from 'stream/consumers'
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
 
 // var localLoggedinUser = null
@@ -8,10 +9,6 @@ import { stayService } from '../services/stay.service.local'
 export const userStore = {
     state: {
         loggedinUser: null,
-        // loggedinUser: {
-        //     name: 'moshe',
-        //     wishList: [{ _id: 27783059 }, { _id: 10006546 }, { _id: 10106546 }, { _id: 10086546 }, { _id: 98425306 }],
-        // },
         users: [],
         watchedUser: null
     },
@@ -30,12 +27,11 @@ export const userStore = {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = (user) ? { ...user } : null
-            console.log(state.loggedinUser);
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user
         },
-        setUsers(state, { users }) {
+        setUser(state, { users }) {
             state.users = users
         },
         removeUser(state, { userId }) {
@@ -107,7 +103,7 @@ export const userStore = {
         },
         async updateUser({ commit }, { user }) {
             try {
-                user = await userService.update(user)
+                user = await userService.save(user)
                 commit({ type: 'setUser', user })
             } catch (err) {
                 console.log('userStore: Error in updateUser', err)
@@ -124,22 +120,22 @@ export const userStore = {
             }
         },
         // Keep this action for compatability with a common user.service ReactJS/VueJS
-        setWatchedUser({ commit }, payload) {
+        setWatchedUser({ commit, }, payload) {
             commit(payload)
         },
-        async updateWishList({ commit, state }, { stayId }) {
-            const stay = await stayService.getById(stayId)
-            const updatedUser = await userService.addStayToWishList(stay)
-            commit({ type: 'setLoggedinUser', user: updatedUser })
-            // let user = { ...state.loggedinUser }
-            // user.wishList.push(stay)
-            // const updatedUser = await userService.save(user)
-            // commit({ type: 'setLoggedinUser', user: updatedUser })
-
+        async updateWishList({ commit }, { stay }) {
+            const user = await userService.addStayToWishList(stay)
+            commit({ type: 'setLoggedinUser', user })
         },
         async addNewStay({ commit, state }, { newStay }) {
-            let user = {...state.loggedinUser}
-            user.stayList = newStay
+            let emptyStay = stayService.getEmptyStay()
+            let user = JSON.parse(JSON.stringify(state.loggedinUser))
+            emptyStay.loc.name = newStay.name
+            emptyStay.loc.country = newStay.country
+            emptyStay.loc.city = newStay.city
+            emptyStay.address = newStay.address
+            const stay = await stayService.save(emptyStay)
+            user.stayList.push(stay)
             const updatedUser = await userService.save(user)
             commit({ type: 'setLoggedinUser', user: updatedUser })
         }

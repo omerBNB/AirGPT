@@ -46,8 +46,8 @@
     </section>
     <div class="inner-header-user">
       <RouterLink class="airgpt-your-home-link" to="/stay/edit"> Airgpt your home </RouterLink>
-      <section class="loggedin-user" @click="toggleUserOptions">
-        <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser" />
+      <section class="loggedin-user" @click="toggleUserOptions" >
+        <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser"/>
         <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser" />
         <img class="burger-img"
           src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png" alt="" />
@@ -66,6 +66,7 @@
 import UserOptionsNoUserLogin from './UserOptionsNoUserLogin.vue'
 import UserOptionsLoggedinUser from './UserOptionsLoggedinUser.vue'
 import InnerHeader from './InnerHeader.vue'
+
 export default {
   props: {
     isWide: Boolean,
@@ -89,6 +90,7 @@ export default {
   methods: {
     toggleUserOptions() {
       this.isInUserView = !this.isInUserView
+      
     },
     showCurrModal(modalName) {
       this.$emit('onShowBackDrop')

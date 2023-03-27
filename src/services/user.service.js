@@ -18,7 +18,6 @@ export const userService = {
     getUsers,
     getById,
     remove,
-    // update,
     changeScore,
     save,
     addStayToWishList,
@@ -71,18 +70,6 @@ function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
 
-// async function update(id, key, value) {
-//     // const user = await storageService.get('user', _id)
-//     let user = getById(id)
-//     user[key] = value
-//     await storageService.put('user', user)
-
-//     // user = await httpService.put(`user/${user._id}`, user)
-//     // Handle case in which admin updates other user's details
-//     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-//     return user
-// }
-
 function addStayToWishList(stay) {
     const user = getLoggedinUser()
     if (!user.wishList.includes(stay)) user.wishList.push(stay)
@@ -132,7 +119,7 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishList: user.wishList }
+    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, wishList: user.wishList, stayList: user.stayList }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }

@@ -296,7 +296,7 @@ const gStays = [
     likedByUsers: ['mini-user'], // for user-wishlist : use $in
   },
   {
-    _id: 'ido123',
+    _id: '123',
     name: 'Ribeira Charming Duplex',
     type: 'House',
     imgUrls: [
@@ -867,10 +867,10 @@ async function addStayMsg(stayId, txt) {
   return msg
 }
 
-function getEmptyStay(newStay = { name: '', country : '', city: '', address: ''}) {
+function getEmptyStay() {
   let stay = {
-    _id: utilService.makeId(),
-    name: newStay.name,
+    _id: null,
+    name: '',
     type: 'House',
     imgUrls: [
       '../../src/imgs/imgs_test/ListImgsTest/a/3.webp',
@@ -894,10 +894,10 @@ function getEmptyStay(newStay = { name: '', country : '', city: '', address: ''}
       isSuperHost: true,
     },
     loc: {
-      country: newStay.country,
+      country: '',
       countryCode: 'omertest',
-      city: newStay.city,
-      address: newStay.address,
+      city: '',
+      address: '',
       lat: -8.61308,
       lng: 41.1413,
     },
