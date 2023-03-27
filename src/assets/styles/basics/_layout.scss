@@ -122,6 +122,20 @@
       height: 257px;
     }
   }
+
+  // @include for-wide-layout {
+  //   // background-color: rgb(148, 131, 131);
+  //   grid-template-columns: repeat(6, minmax(100px, 270px));
+  //   gap: 2.5em;
+
+  //   .stay-card {
+  //     width: 100%;
+  //   }
+
+  //   .el-carousel__container {
+  //     height: 257px;
+  //   }
+  // }
 }
 
 // .stay-card{

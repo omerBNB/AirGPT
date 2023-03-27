@@ -112,7 +112,6 @@ export const stayStore = {
       const stays = await stayService.query(filter)
       commit({ type: 'setStays', stays })
     },
-
     async getStay({ commit }, { stayId }) {
       const stay = await stayService.getById(stayId)
       return stay

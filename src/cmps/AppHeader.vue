@@ -117,7 +117,7 @@ export default {
   },
   computed: {
     loggedInUser() {
-      console.log('this.$store.getters.loggedinUser',this.$store.getters.loggedinUser)
+      // console.log('this.$store.getters.loggedinUser',this.$store.getters.loggedinUser)
       return this.$store.getters.loggedinUser
     },
     isWideView() {

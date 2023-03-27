@@ -1,40 +1,45 @@
 /* Breakpoint mixins */
 // home
 @mixin for-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint + 48px)) {
-        @content;
-    }
+  @media (max-width: calc($mobile-breakpoint + 48px)) {
+    @content;
+  }
 }
+
 @mixin for-mobile-big-layout {
-    @media (min-width: calc($mobile-big-breakpoint + 48px)) {
-        @content;
-    }
+  @media (min-width: calc($mobile-big-breakpoint + 48px)) {
+    @content;
+  }
 }
+
 @mixin for-tablet-layout {
-    @media (min-width: calc($tablet-breakpoint + 48px)) {
-        @content;
-    }
+  @media (min-width: calc($tablet-breakpoint + 48px)) {
+    @content;
+  }
 }
+
 @mixin for-narrow-layout {
-    @media (min-width: calc($narrow-breakpoint + 80px)) {
-        @content;
-    }
+  @media (min-width: calc($narrow-breakpoint + 80px)) {
+    @content;
+  }
 }
+
 @mixin for-normal-layout {
-    @media (min-width: calc($normal-breakpoint + 80px)) {
-        @content;
-    }
+  @media (min-width: calc($normal-breakpoint + 80px)) {
+    @content;
+  }
 }
+
 @mixin for-wide-layout {
-    @media (min-width: calc($wide-breakpoint + 80px)) {
-        @content;
-    }
+  @media (min-width: calc($wide-breakpoint + 80px)) {
+    @content;
+  }
 }
 
 @mixin for-full-wide-layout {
-    @media (min-width: calc($full-wide-breakpoint)) {
-        @content;
-    }
+  @media (min-width: calc($full-wide-breakpoint)) {
+    @content;
+  }
 }
 
 
@@ -45,6 +50,7 @@
     @content;
   }
 }
+
 @mixin for-details-mobile-big-layout {
   @media (max-width: calc($mobile-details-big-breakpoint + 48px)) {
     @content;
@@ -78,34 +84,39 @@
 
 // cards
 @mixin for-cards-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint + 48px)) {
-        @content;
-    }
+  @media (max-width: calc($mobile-breakpoint + 48px)) {
+    @content;
+  }
 }
+
 @mixin for-cards-big-layout {
-    @media (min-width: calc($mobile-big-breakpoint + 48px)) {
-        @content;
-    }
+  @media (min-width: calc($mobile-big-breakpoint + 48px)) {
+    @content;
+  }
 }
+
 @mixin for-cards-tablet-layout {
-    @media (min-width: calc($tablet-breakpoint + 48px)) {
-        @content;
-    }
+  @media (min-width: calc($tablet-breakpoint + 48px)) {
+    @content;
+  }
 }
+
 @mixin for-cards-narrow-layout {
-    @media (min-width: calc($narrow-breakpoint + 80px)) {
-        @content;
-    }
+  @media (min-width: calc($narrow-breakpoint + 80px)) {
+    @content;
+  }
 }
+
 @mixin for-cards-normal-layout {
-    @media (min-width: calc($normal-breakpoint + 80px)) {
-        @content;
-    }
+  @media (min-width: calc($normal-breakpoint + 80px)) {
+    @content;
+  }
 }
+
 @mixin for-cards-wide-layout {
-    @media (min-width: calc($wide-breakpoint + 80px)) {
-        @content;
-    }
+  @media (min-width: calc($wide-breakpoint + 80px)) {
+    @content;
+  }
 }
 
 
@@ -118,13 +129,15 @@
 @mixin aspect-ratio($width, $height) {
   position: relative;
   overflow: hidden;
+
   &::before {
     display: block;
     content: '';
     width: 100%;
     padding-top: calc(($height / $width) * 100%);
   }
-  > * {
+
+  >* {
     position: absolute;
     top: 0;
     left: 0;
@@ -132,7 +145,7 @@
     bottom: 0;
   }
 
-  > img {
+  >img {
     height: 100%;
     object-fit: cover;
   }
