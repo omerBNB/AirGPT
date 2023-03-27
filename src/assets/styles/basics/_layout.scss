@@ -34,8 +34,13 @@
   //   grid-template-columns: 24px minmax(1128px, $normal-breakpoint) 24px;
   // }
   @include for-wide-layout {
-    // background-color: #1C1010;
-    grid-template-columns: 80px minmax(auto, $wide-breakpoint) 80px;
+    // background-color: #473333;
+    grid-template-columns: 50px minmax(auto, $wide-breakpoint - 40px) 50px;
+  }
+
+  @include for-full-wide-layout {
+    // background-color: #dacaa8;
+    grid-template-columns: 50px minmax(auto, $full-wide-breakpoint + 50px) 50px;
   }
 
   &.details-grid {
@@ -64,12 +69,25 @@
   grid-gap: 20px;
 
 
-  @include for-cards-big-layout {
+  // @include for-cards-big-layout {
+  //   grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));
+  //   gap: 0.6em;
+
+  //   .stay-card {
+  //     width: 291px;
+  //   }
+
+  //   .el-carousel__container {
+  //     height: 264px;
+  //   }
+  // }
+
+  @include for-tablet-layout {
     grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));
     gap: 0.6em;
 
     .stay-card {
-      width: 291px;
+      width: 100%;
     }
 
     .el-carousel__container {
@@ -77,26 +95,13 @@
     }
   }
 
-  @include for-cards-tablet-layout {
-    grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));
-    gap: 0.6em;
-
-    .stay-card {
-      width: 291px;
-    }
-
-    .el-carousel__container {
-      height: 264px;
-    }
-  }
-
-  @include for-cards-normal-layout {
+  @include for-narrow-layout {
     // grid-template-columns: repeat(5, minmax(100px, 270px));
     grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));
     gap: 0.6em;
 
     .stay-card {
-      width: 291px;
+      width: 100%;
     }
 
     .el-carousel__container {
@@ -104,13 +109,13 @@
     }
   }
 
-  @include for-cards-wide-layout {
-    // background-color: rgb(148, 131, 131);
+  @include for-wide-layout {
+    background-color: rgb(148, 131, 131);
     grid-template-columns: repeat(6, minmax(100px, 270px));
     gap: 2.5em;
 
     .stay-card {
-      width: 281px;
+      width: 100%;
     }
 
     .el-carousel__container {

@@ -1,4 +1,5 @@
 .stay-card {
+    position: relative;
     padding: 0;
     cursor: pointer;
     font-family: CircularAir-Light;
@@ -43,6 +44,7 @@
             object-fit: cover;
             width: 100%;
             height: 100%;
+            aspect-ratio: 1 / 1;
         }
 
         border-radius: 10px;

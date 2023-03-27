@@ -283,22 +283,17 @@
   padding-bottom: 24px;
   border-radius: 32px;
   z-index: 8;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
   background-color: #fff;
   align-items: center;
   justify-items: left;
-  .vc-pane-layout {
-    display: flex;
-  }
 }
 
-// .calendar {
-//   flex: 1;
-//   max-width: calc(50% - 8px);
-//   margin-right: 16px;
-//   margin-bottom: 16px;
-// }
+.calendar {
+grid-column: 1/-1;
+width: 100%;
+}
 
 // .calendar:last-child {
 //   margin-right: 0;
