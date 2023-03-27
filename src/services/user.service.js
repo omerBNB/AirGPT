@@ -7,14 +7,7 @@ import { showSuccessMsg } from './event-bus.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const USER = 'user'
-const gUsers = [{
-    _id: '1234',
-    fullname: 'user1',
-    username: 'user1',
-    password: 123,
-    imgUrl: '../../src/imgs/imgs_test/omer.jpg',
-    wishList: []
-}]
+let gUsers = []
 
 export const userService = {
     login,
@@ -31,17 +24,29 @@ export const userService = {
     addStayToWishList,
 }
 
-utilService.saveToStorage(USER, gUsers)
-// login({
-//     password: 123,
-//     username: "user1"
-// })
-
 window.userService = userService
 
+_createUsers()
+function _createUsers() {
+    gUsers = utilService.loadFromStorage(USER)
+    console.log('gUsers',gUsers)
+    if (!gUsers || !gUsers.length) {
+        gUsers = [{
+            _id: '1234',
+            fullname: 'user1',
+            username: 'user1',
+            password: 123,
+            imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+            wishList: [],
+            stayList:[]
+        }]
+        utilService.saveToStorage(USER, gUsers)
+    }
+    return gUsers
+}
+
 function getUsers() {
-    if (utilService.saveToStorage(USER, gUsers))
-        return storageService.query('user')
+    return storageService.query('user')
     // return httpService.get(`user`)
 }
 
@@ -86,10 +91,6 @@ function addStayToWishList(stay) {
 
 async function save(user) {
     let savedUser
-
-    // const users = await storageService.query('user')
-    // let user = users.find(u => u.username === user.username)
-
     if (user._id) savedUser = await storageService.put(USER, user)
     else savedUser = await storageService.post(USER, user)
     saveLocalUser(savedUser)
