@@ -1,7 +1,12 @@
 <template>
-    <section>
-        <h1>WishList</h1>
-        <WishListPreview v-for="stay in loggedInUser.wishList" :key="stay._id" :stay="stay" />
+    <section class="wishlist-container">
+        <header class="wishlist-header">
+            <h1>Wishlist</h1>
+            <p v-if="!loggedInUser.wishList.length">Empty</p>
+        </header>
+        <section class="stays-wishlist-container flex">
+            <WishListPreview v-for="stay in loggedInUser.wishList" :key="stay._id" :stay="stay" />
+        </section>
     </section>
 </template>
 
