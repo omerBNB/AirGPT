@@ -19,6 +19,7 @@ export const userService = {
     changeScore
 }
 
+
 window.userService = userService
 
 function getUsers() {
