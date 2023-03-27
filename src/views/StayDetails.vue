@@ -66,10 +66,9 @@
           </section>
         </div>
 
-        <DetailsOrderBox @openCalendar="openCalendar" :stay="stay" />
+        <DetailsOrderBox :stay="stay" />
       </section>
     </main>
-    <DetailsCalendar />
 
     <!--  -->
     <DetailsReviews :stay="stay" />
@@ -83,7 +82,7 @@ import StayHeaderInfo from '../cmps/StayHeaderInfo.vue'
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviews from '../cmps/DetailsReviews.vue'
 import StayMap from '../cmps/StayMap.vue'
-import DetailsCalendar from '../cmps/DetailsCalendar.vue'
+// import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 
 export default {
   name: 'StayDetails',
@@ -113,7 +112,18 @@ export default {
     },
   },
   async created() {
+    addEventListener('click', (ev) => {
+      console.log('ev.target.offsetParent.classList', ev.target.offsetParent.classList)
+      if (
+        Array.from(ev.target.offsetParent.classList).includes(
+          'calendar-container' || 'vc-pane-container'
+        )
+      ) {
+        console.log('yesush')
+      }
+    })
     // this.loadStay() // DONT REMOVE PLEASE
+
     const { stayId } = this.$route.params
     const stay = await this.$store.dispatch({ type: 'getStay', stayId })
     this.stay = stay
@@ -145,7 +155,6 @@ export default {
     DetailsReviews,
     StayHeaderInfo,
     StayMap,
-    DetailsCalendar,
   },
 }
 </script>

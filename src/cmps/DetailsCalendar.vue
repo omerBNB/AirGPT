@@ -9,12 +9,12 @@
         <div class="check-in flex">
           <h4>CHECK IN</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input value="Add date" type="text" />
+          <input :value="this.startDate === 'Add date' ? 'Add date' : this.startDate" type="text" />
         </div>
         <div class="check-out flex">
           <h4>CHECK OUT</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input value="Add date" type="text" />
+          <input :value="this.startDate === 'Add date' ? 'Add date' : this.endDate" type="text" />
         </div>
       </div>
     </section>
@@ -28,8 +28,8 @@
       :attributes="attributes" />
 
     <div class="btns flex">
-      <button class="clear-dates">Clear dates</button>
-      <button class="close-btn">Close</button>
+      <button class="clear-dates bold-font">Clear dates</button>
+      <button @click="$emit('closeModal')" class="close-btn bold-font">Close</button>
     </div>
   </section>
 </template>
@@ -39,9 +39,18 @@ import { ref } from 'vue'
 import { useScreens } from 'vue-screen-utils'
 export default {
   name: 'DetailsCalendar',
+  props: {
+    startDate: {
+      type: null || String,
+      required: true,
+    },
+    endDate: {
+      type: null || String,
+      required: true,
+    },
+  },
   data() {
     return {
-      date1: new Date(),
       columns: null,
       range: null,
       selectedColor: ref('gray'),
@@ -53,7 +62,7 @@ export default {
           // and will most likely be derived from your data object
           // key: Any,
           // Attribute type definitions
-          content: 'red', // Boolean, String, Object
+          content: 'black', // Boolean, String, Object
           highlight: true, // Boolean, String, Object
           // dot: true, // Boolean, String, Object
           // bar: true, // Boolean, String, Object
@@ -73,6 +82,9 @@ export default {
   methods: {},
   computed: {},
   created() {
+    if (this.startDate && this.endDate) {
+    }
+
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
     this.columns = mapCurrent({ lg: 2 }, 2)
   },
@@ -83,5 +95,16 @@ export default {
 <style>
 .calendar .vc-arrow {
   width: 50px;
+}
+.vc-highlight-content-solid {
+  background-color: #222;
+  scale: 1.2;
+}
+.vc-highlight-content-solid:hover {
+  background-color: #222;
+  scale: 1.2;
+}
+.--vc-gray-200 {
+  background-color: palevioletred;
 }
 </style>

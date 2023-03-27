@@ -15,13 +15,13 @@
 
       <div class="order-data">
         <div class="date-picker">
-          <div @click="$emit('openCalendar')" class="date-input">
+          <div @click="this.calendarIsShown = true" class="date-input">
             <label>CHECK IN</label>
-            <input value="Tue Sep 07 2021" />
+            <input :value="this.startDate" />
           </div>
-          <div @click="$emit('openCalendar')" class="date-input">
+          <div @click="this.calendarIsShown = true" class="date-input">
             <label>CHECK OUT</label>
-            <input value="Tue Sep 07 2021" />
+            <input :value="this.endDate" />
           </div>
         </div>
 
@@ -138,7 +138,7 @@
         <div class="cell"></div>
         <div class="content">
           <button class="action-btn">
-            <span>Check availability</span>
+            <span>Reserve</span>
           </button>
         </div>
       </div>
@@ -167,12 +167,18 @@
         <p class="bold-font">Total</p>
         <p class="bold-font">$327.15</p>
       </div>
+      <DetailsCalendar
+        v-if="calendarIsShown"
+        @closeModal="this.calendarIsShown = false"
+        :startDate="startDate"
+        :endDate="endDate" />
     </section>
     <!-- <p class="footer">Report this listing</p> -->
   </main>
 </template>
 
 <script>
+import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 export default {
   name: 'DetailsOrderBox',
   props: {
@@ -184,6 +190,9 @@ export default {
   data() {
     return {
       stayId: null,
+      calendarIsShown: false,
+      startDate: 'Add date',
+      endDate: 'Add date',
     }
   },
   computed: {
@@ -207,12 +216,21 @@ export default {
   },
   created() {
     this.stayId = this.stay._id
+    //** If there's DATES in the params (from explore page) **/
+    //** so set the startDate and endDate. if its null render:Add date each input **/
   },
 
   methods: {
     submitOrder() {
       this.$router.push('/book/' + this.stayId)
     },
+  },
+  mounted() {
+    // console.log('this.stay', this.stay)
+  },
+  computed: {},
+  components: {
+    DetailsCalendar,
   },
 }
 </script>

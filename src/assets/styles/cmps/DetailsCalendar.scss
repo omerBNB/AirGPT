@@ -1,11 +1,15 @@
 .calendar-container {
-  margin: auto; // DELETE AFTER
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  background-color: white;
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
   border-radius: 16px;
   width: max-content;
   padding: 1em 1em 0.7em 1em;
+  z-index: 1000;
 }
 
 .calendar-header {
@@ -47,15 +51,27 @@
 
 .btns {
   justify-content: end;
-  gap: 2em;
+  gap: 0.5em;
   .clear-dates {
     color: black;
     text-decoration: underline;
+    padding: 1px 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f7f7f7;
+      border-radius: 10px;
+    }
   }
   .close-btn {
-    background-color: black;
-    border-radius: 15px;
+    background-color: #222222;
+    background-color: #222222;
+    border-radius: 10px;
     padding: 0.7em;
     width: 65px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken(#222222, 10%);
+    }
   }
 }

@@ -1,15 +1,6 @@
 <template>
   <section id="main-app" class="main-container">
     <AppHeader
-<<<<<<< HEAD
-      v-if="!this.$route.name.includes('StayDetails')"
-      @onShowBackDrop="showBackDrop"
-      :isWide="isWide"
-      @closeActiveModal="showFullScreeen"
-      :userSearchSpec="this.$route.query" />
-    <AppHeaderDetails
-      v-if="this.$route.name.includes('StayDetails')"
-=======
       v-if="!this.$route.name?.includes('StayDetails')"
       @onShowBackDrop="showBackDrop"
       :isWide="isWide"
@@ -18,19 +9,13 @@
       @showLoginModal="showLoginModal" />
     <AppHeaderDetails
       v-if="this.$route.name?.includes('StayDetails')"
->>>>>>> 2f67aaf0cc1299834d851168ee52ceb2beb6b203
       @onShowBackDrop="showBackDrop"
       :isWide="isWide"
       @closeActiveModal="showFullScreeen"
       :userSearchSpec="this.$route.query" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
-<<<<<<< HEAD
-=======
-    <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess"/>
-    <div :class="showBackDropHome" @click="showFullScreeen">
-
-    </div>
->>>>>>> 2f67aaf0cc1299834d851168ee52ceb2beb6b203
+    <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
+    <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <RouterView ref="test" />
     <AppFooter />
     <UserMsg />
@@ -76,9 +61,9 @@ export default {
     showLoginModal(isUserLogin) {
       this.loginModalOpen = isUserLogin
     },
-    loginSuccess(){
+    loginSuccess() {
       this.loginModalOpen = false
-    }
+    },
   },
   computed: {
     currentLayout() {
@@ -98,7 +83,7 @@ export default {
     UserMsg,
     UserOptions,
     AppFooter,
-    LoginSignup
+    LoginSignup,
   },
 }
 </script>
