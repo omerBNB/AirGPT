@@ -82,8 +82,8 @@ export default {
   methods: {},
   computed: {},
   created() {
-    if (this.startDate && this.endDate) {
-    }
+    // if (this.startDate && this.endDate) {
+    // }
 
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
     this.columns = mapCurrent({ lg: 2 }, 2)

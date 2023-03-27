@@ -10,9 +10,7 @@
           <div class="ferrites-header">
             <div class="header-text">
               <h3>Entire amazing views hosted by {{ stay.host.fullname }}</h3>
-              <p class="fs14">
-                {{ guestsNum }} • {{ bedroomNum }} • {{ bedsNum }} • {{ bathsNum }}
-              </p>
+              <p>{{ guestsNum }} • {{ bedroomNum }} • {{ bedsNum }} • {{ bathsNum }}</p>
             </div>
             <img :src="stay.host.imgUrl" />
           </div>
@@ -112,16 +110,6 @@ export default {
     },
   },
   async created() {
-    addEventListener('click', (ev) => {
-      console.log('ev.target.offsetParent.classList', ev.target.offsetParent.classList)
-      if (
-        Array.from(ev.target.offsetParent.classList).includes(
-          'calendar-container' || 'vc-pane-container'
-        )
-      ) {
-        console.log('yesush')
-      }
-    })
     // this.loadStay() // DONT REMOVE PLEASE
 
     const { stayId } = this.$route.params
