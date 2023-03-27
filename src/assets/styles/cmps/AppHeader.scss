@@ -5,7 +5,7 @@
   justify-content: space-between;
   transition: 1s;
   // border-bottom: solid 1px #dddddd;
-  position:relative;
+  position: relative;
   z-index: 7;
   background-color: #fff;
   .flex {
@@ -47,7 +47,7 @@
       font-weight: bold;
       font-family: CircularAir-Light;
       cursor: pointer;
-      font-size: 14.1px;
+      font-size: 13.9px;
     }
 
     .guests {
@@ -55,7 +55,7 @@
       font-weight: normal;
       font-size: 14.4px;
     }
-    .bold{
+    .bold {
       font-weight: bold;
       color: black;
     }
@@ -122,9 +122,8 @@
     .user-img {
       width: 30px;
       height: 30px;
-      justify-self: end;
-      background-color: #f7ebeb;
-      border-radius: 50%;
+      border-radius: 50px;
+      object-fit: cover;
     }
   }
 }

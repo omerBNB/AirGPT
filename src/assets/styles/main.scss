@@ -27,10 +27,13 @@
 @import 'cmps/StayDetails';
 @import 'cmps/DetailsOrderBox';
 @import 'cmps/DetailsReviews';
+@import 'cmps/DetailsCalendar';
 
 // Reservation Page
 @import 'cmps/StayReservation';
 
-
 // explore
-@import 'cmps/StayExplore'
+@import 'cmps/StayExplore';
+
+// userpages
+@import 'cmps/LoginSignUp'

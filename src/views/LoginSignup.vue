@@ -1,56 +1,37 @@
 <template>
-  <div class="container about">
-    <p>{{ msg }}</p>
-
-    <div v-if="loggedinUser">
-      <h3>
-        Loggedin User:
-        {{ loggedinUser.fullname }}
-        <button @click="doLogout">Logout</button>
-      </h3>
-    </div>
-    <div v-else>
-      <h2>Login</h2>
-      <form @submit.prevent="doLogin">
-        <select v-model="loginCred.username">
-          <option value="">Select User</option>
-          <option v-for="user in users" :key="user._id" :value="user.username">{{ user.fullname }}</option>
-        </select>
-        <!-- <input type="text" v-model="loginCred.username" placeholder="User name" />
+  <section class="login-layout">
+    <header class="login-title-cont">
+      <h2>Log in or sign up</h2>
+      <button class="exit-login-btn"><img src="/assets/close.39183323.svg" alt="" /></button>
+    </header>
+    <form class="login-main-content">
+      <h3>Welcome to Airgpt</h3>
+      <div class="login-form-cont">
         <input
-          type="text"
-          v-model="loginCred.password"
+          autocomplete="username"
+          placeholder="Username"
+          v-model="loginCred.username"
+          />
+        <div class="form-line"></div>
+        <input
           placeholder="Password"
-        /> -->
-        <button>Login</button>
-      </form>
-      <p class="mute">user1 or admin, pass:123 </p>
-      <form @submit.prevent="doSignup">
-        <h2>Signup</h2>
-        <input type="text" v-model="signupCred.fullname" placeholder="Your full name" />
-        <input type="text" v-model="signupCred.username" placeholder="Username" />
-        <input type="password" v-model="signupCred.password" placeholder="Password" />
-        <ImgUploader @uploaded="onUploaded" />
-        <button>Signup</button>
-      </form>
-    </div>
-    <hr />
-    <details>
-      <summary>
-        Admin Section
-      </summary>
-      <ul>
-        <li v-for="user in users" :key="user._id">
-          <pre>{{ user }}</pre>
-          <button @click="removeUser(user._id)">x</button>
-        </li>
-      </ul>
-    </details>
-  </div>
+          type="password"
+          autocomplete="password"
+          v-model="loginCred.password"
+           />
+      </div>
+      <button class="btn-container" @click="doLogin">Log in</button>
+      <div class="login-or-line"></div>
+      <div class="login-line-text">or</div>
+      <button class="btn-container">Continue as a guest</button>
+      <!-- <div class="move-to-signup">Don't have an acount yet? sign up</div> -->
+    </form>
+    <!---->
+  </section>
+  <section class="shadow-fullscreen"></section>
 </template>
 
 <script>
-
 import ImgUploader from '../cmps/ImgUploader.vue'
 
 export default {
@@ -58,8 +39,8 @@ export default {
   data() {
     return {
       msg: '',
-      loginCred: { username: 'user1', password: '123' },
-      signupCred: { username: '', password: '', fullname: '', imgUrl : '' },
+      loginCred: { username: 'user1', password: 123 },
+      signupCred: { username: '', password: '', fullname: '', imgUrl: '' },
     }
   },
   computed: {
@@ -80,8 +61,9 @@ export default {
         return
       }
       try {
-        await this.$store.dispatch({ type: "login", userCred: this.loginCred })
+        await this.$store.dispatch({ type: 'login', userCred: this.loginCred })
         this.$router.push('/')
+         this.$emit('loginSuccess')
       } catch (err) {
         console.log(err)
         this.msg = 'Failed to login'
@@ -97,14 +79,13 @@ export default {
       }
       await this.$store.dispatch({ type: 'signup', userCred: this.signupCred })
       this.$router.push('/')
-
     },
     loadUsers() {
-      this.$store.dispatch({ type: "loadUsers" })
+      this.$store.dispatch({ type: 'loadUsers' })
     },
     async removeUser(userId) {
       try {
-        await this.$store.dispatch({ type: "removeUser", userId })
+        await this.$store.dispatch({ type: 'removeUser', userId })
         this.msg = 'User removed'
       } catch (err) {
         this.msg = 'Failed to remove user'
@@ -112,11 +93,20 @@ export default {
     },
     onUploaded(imgUrl) {
       this.signupCred.imgUrl = imgUrl
-    }
-
+    },
   },
+  emits:['loginSuccess'],
   components: {
-    ImgUploader
-  }
+    ImgUploader,
+  },
 }
 </script>
+
+<!-- style="
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC');
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-size: 16px 18px;
+            background-position: 98% 50%;
+            cursor: auto;
+          " -->
