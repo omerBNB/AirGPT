@@ -14,8 +14,15 @@
       @closeActiveModal="showFullScreeen"
       :userSearchSpec="this.$route.query" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
+<<<<<<< HEAD
     <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
+=======
+    <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess"/>
+    <div :class="showBackDropHome" @click="showFullScreeen">
+
+    </div>
+>>>>>>> b7a80bc3d43af0fbf3be3a0f145aacb034f7dffc
     <RouterView ref="test" />
     <AppFooter />
     <UserMsg />

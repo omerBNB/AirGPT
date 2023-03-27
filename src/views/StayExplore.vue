@@ -2,7 +2,7 @@
   <div>
     <CarouselFilter @setFilterBy="setFilterBy" />
     <h5 class="stay-explore-h5" v-if="stays.length">Over {{stays.length}} homes</h5>
-    <StayList :stays="stays" />
+    <StayList :stays="stays" :detailsRouteParams="this.$route.query"/>
   </div>
 </template>
 
@@ -25,7 +25,6 @@ export default {
     }
   },
   mounted() {
-    console.log('this.$route.name',this.$route)
     const currRoute = this.$route.name
     if (currRoute === 'StayExplore') {
       document.getElementById('main-app').classList.value = 'main-container'

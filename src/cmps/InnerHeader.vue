@@ -7,15 +7,15 @@
         @setActiveModalWhere="setActiveModalWhere" />
       <div class="border-inner-header"></div>
       <InnerHeaderDateSelection
-      :acitveModalInner="acitveModalInner"
+        :acitveModalInner="acitveModalInner"
         :innerHeaderFilter="innerHeaderFilter"
-        @setActiveModalDates="setActiveModalDates"/>
+        @setActiveModalDates="setActiveModalDates" />
       <div class="border-inner-header"></div>
       <InnerHeaderSearchVue
-      :acitveModalInner="acitveModalInner"
+        :acitveModalInner="acitveModalInner"
         :innerHeaderFilter="innerHeaderFilter"
         @setActiveModalsearch="setActiveModalsearch"
-        @searchDestination="searchDestination"/>
+        @searchDestination="searchDestination" />
     </section>
   </section>
 </template>
@@ -63,19 +63,17 @@ export default {
     },
     searchDestination() {
       this.$emit('closeModal')
-      this.$router.push(
-        `/stay/explore?where=${
-          this.innerHeaderFilter.where
-        }&checkin=${this.innerHeaderFilter.range.start
-          .toDateString()
-          .substring(4, 11)}&checkout=${this.innerHeaderFilter.range.end
-          .toDateString()
-          .substring(4, 11)}&adults=${this.innerHeaderFilter.guests.adults}&children=${
-          this.innerHeaderFilter.guests.children
-        }&infants=${this.innerHeaderFilter.guests.infants}&pets=${
-          this.innerHeaderFilter.guests.pets
-        }`
-      )
+      this.$router.push({
+        path: '/stay/explore',
+        query: {
+          where: this.innerHeaderFilter.where,
+          checkin: this.innerHeaderFilter.range.start.toDateString().substring(4, 11),
+        checkout: this.innerHeaderFilter.range.end.toDateString().substring(4, 11),
+        adults: this.innerHeaderFilter.guests.adults,
+        infants: this.innerHeaderFilter.guests.infants,
+        pets: this.innerHeaderFilter.guests.pets,
+      }
+    })
     },
   },
   computed: {},
@@ -85,7 +83,7 @@ export default {
   components: {
     InnerHeaderWhere,
     InnerHeaderDateSelection,
-    InnerHeaderSearchVue
+    InnerHeaderSearchVue,
   },
   emits: ['closeModal'],
 }
