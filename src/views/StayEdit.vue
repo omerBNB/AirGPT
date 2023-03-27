@@ -1,5 +1,5 @@
 <template>
-  <section class="stay-edit-main-container">
+  <section >
     <form @submit.prevent="addNewStay" class="stay-edit-container" v-if="loggedInUser">
       <div class="stay-name-editor">
         <h2>
@@ -19,8 +19,8 @@
             background-repeat: no-repeat;
             background-size: cover;
           ">
-          <label class=""
-            ><p>Upload Image</p>
+          <label class="">
+            <p @drop.prevent="handleFile" @dragover.prevent>Upload Image</p>
             <input type="file" hidden=""
           /></label>
         </section>
@@ -80,17 +80,27 @@
 </template>
 
 <script>
+import { uploadService } from '../services/upload.service'
+
 export default {
   name: '',
   data() {
     return {
-      newStay: { name: '', country: '', city: '', address: '' },
+      newStay: { name: '', country: '', city: '', address: '', imgUrl: [] },
     }
   },
   methods: {
-    addNewStay(){
-        this.$store.dispatch({type: 'addNewStay', newStay: this.newStay})
-    }
+    addNewStay() {
+      this.$store.dispatch({ type: 'addNewStay', newStay: this.newStay })
+    },
+    async handleFile(ev) {
+        console.log('ev',ev.type)
+      const file = ev.type === 'change' ? ev.target.files[0] : ev.dataTransfer.files[0]
+
+      const { url } = await uploadService.uploadImg(file)
+      this.newStay.imgUrl.push(url)
+      console.log('this.newStay.imgUrl', this.newStay.imgUrl)
+    },
   },
   computed: {
     loggedInUser() {
