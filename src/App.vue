@@ -1,20 +1,11 @@
 <template>
   <section id="main-app" class="main-container">
-    <AppHeader
-      v-if="!this.$route.name?.includes('StayDetails')"
-      @onShowBackDrop="showBackDrop"
-      :isWide="isWide"
-      @closeActiveModal="showFullScreeen"
-      :userSearchSpec="this.$route.query"
-      @showLoginModal="showLoginModal" />
-    <AppHeaderDetails
-      v-if="this.$route.name?.includes('StayDetails')"
-      @onShowBackDrop="showBackDrop"
-      :isWide="isWide"
-      @closeActiveModal="showFullScreeen"
-      :userSearchSpec="this.$route.query" />
+    <AppHeader v-if="!this.$route.name?.includes('StayDetails')" @onShowBackDrop="showBackDrop" :isWide="isWide"
+      @closeActiveModal="showFullScreeen" :userSearchSpec="this.$route.query" @showLoginModal="showLoginModal" />
+    <AppHeaderDetails v-if="this.$route.name?.includes('StayDetails')" @onShowBackDrop="showBackDrop" :isWide="isWide"
+      @closeActiveModal="showFullScreeen" :userSearchSpec="this.$route.query" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
-    <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess"/>
+    <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
     <div :class="showBackDropHome" @click="showFullScreeen">
 
     </div>
