@@ -1,6 +1,5 @@
 <template>
-    <!-- <pre>{{ stay }}</pre> -->
-    <section class="img-container" @click="details()">
+    <section class="img-container-wishlist" @click="details()">
         <img class="main-img" :src="stay.imgUrls[0]" />
         <img :src="stay.imgUrls[1]" />
         <img :src="stay.imgUrls[2]" />
@@ -28,14 +27,7 @@ export default {
         },
     },
     mounted() {
-        console.log(this.$route.name)
-        const currRoute = this.$route.path
-        if (currRoute.includes('wishList')) {
-            document.getElementById('main-app').classList.value = 'main-container wishList-grid'
-        }
+        document.getElementById('main-app').classList.value = `main-container ${this.$route.name}-grid`
     },
-    created(){
-        console.log('hi')
-    }
 }
 </script>

@@ -60,7 +60,7 @@ const routes = [
         name: 'Listings',
         component: Listings,
       },
-    ]
+    ],
   },
   {
     path: '/review',
@@ -83,8 +83,8 @@ const routes = [
     component: UserDetails,
   },
   {
-    path: '/wishList',
-    name: 'WishList',
+    path: '/wishlist',
+    name: 'wishlist',
     component: WishList,
   },
 ]
