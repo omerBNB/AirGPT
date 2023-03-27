@@ -15,20 +15,12 @@
       <section class="row second-row flex">
         <div>
           <h1>Revenue / month</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat accusantium nobis
-            doloremque esse at libero debitis, atque vero ab sequi quis reprehenderit pariatur
-            perspiciatis mollitia?
-          </p>
+          <BarChart />
         </div>
 
         <div>
           <h1>Reservations / listing</h1>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat accusantium nobis
-            doloremque esse at libero debitis, atque vero ab sequi quis reprehenderit pariatur
-            perspiciatis mollitia?
-          </p>
+          <ChartPie />
         </div>
       </section>
 
@@ -63,6 +55,8 @@
 </template>
 
 <script>
+import ChartPie from '../cmps/ChartPie.vue'
+import BarChart from '../cmps/BarChart.vue'
 export default {
   name: 'Reservation',
   data() {
@@ -71,7 +65,10 @@ export default {
   methods: {},
   computed: {},
   created() {},
-  components: {},
+  components: {
+    ChartPie,
+    BarChart,
+  },
 }
 </script>
 
