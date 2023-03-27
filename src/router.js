@@ -60,7 +60,7 @@ const routes = [
         name: 'Listings',
         component: Listings,
       },
-    ]
+    ],
   },
   {
     path: '/review',

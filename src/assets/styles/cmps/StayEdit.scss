@@ -1,6 +1,8 @@
 .stay-edit-main-container {
   display: grid;
-  grid-template-columns: minmax(80px, 180px) 1fr minmax(80px, 180px);
+  border: 1px solid black; // Omer delete it capara
+  height: 100%;
+  grid-template-columns: minmax(24px, 50px) 1fr minmax(24px, 50px);
   > * {
     grid-column: 2;
   }
