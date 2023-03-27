@@ -17,7 +17,8 @@
 @import 'cmps/ReviewList';
 @import 'cmps/StayList';
 @import 'cmps/StayPreview';
-@import 'cmps/CarouselFilterPreview.scss';
+@import 'cmps/WishListPreview';
+@import 'cmps/CarouselFilterPreview';
 @import 'cmps/UserNav';
 @import 'cmps/InnerHeader';
 @import 'cmps/AppHeaderDetails';
@@ -42,5 +43,9 @@
 @import 'cmps/StayEdit.scss';
 
 // dashboard
+<<<<<<< HEAD
 @import 'cmps/Dashboard.scss';
 @import 'cmps/Reservation.scss';
+=======
+@import 'cmps/Dashboard.scss';
+>>>>>>> 14154d885ee35315111e41e7986bc798f2b98ab8
