@@ -34,8 +34,13 @@
   //   grid-template-columns: 24px minmax(1128px, $normal-breakpoint) 24px;
   // }
   @include for-wide-layout {
-    // background-color: #1C1010;
-    grid-template-columns: 80px minmax(auto, $wide-breakpoint) 80px;
+    // background-color: #473333;
+    grid-template-columns: 50px minmax(auto, $wide-breakpoint - 40px) 50px;
+  }
+
+  @include for-full-wide-layout {
+    // background-color: #dacaa8;
+    grid-template-columns: 50px minmax(auto, $full-wide-breakpoint + 50px) 50px;
   }
 
   &.details-grid {

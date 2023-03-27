@@ -33,6 +33,7 @@
     <!-- <el-calendar class="calendar-inner-section-1" v-model="value" />
           <el-calendar class="calendar-inner-section-2" v-model="value" /> -->
     <VDatePicker
+      class="calendar"
       :value="date2"
       @input="date2 = $event"
       v-model.range="innerHeaderFilter.range"

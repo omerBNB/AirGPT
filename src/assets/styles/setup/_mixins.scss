@@ -31,6 +31,12 @@
     }
 }
 
+@mixin for-full-wide-layout {
+    @media (min-width: calc($full-wide-breakpoint)) {
+        @content;
+    }
+}
+
 
 // details
 

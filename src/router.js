@@ -8,6 +8,7 @@ import UserDetails from './views/UserDetails.vue'
 import StayDetails from './views/StayDetails.vue'
 import StayReservation from './views/StayReservation.vue'
 import StayExplore from './views/StayExplore.vue'
+import AirgptYourHome from './views/AirgptYourHome.vue'
 
 const routes = [
   {
