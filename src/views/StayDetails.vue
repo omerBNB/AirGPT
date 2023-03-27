@@ -68,9 +68,61 @@
       </section>
     </main>
 
-    <!--  -->
     <DetailsReviews :stay="stay" />
-    <StayMap />
+    <section class="map">
+      <h3>Where you'll be</h3>
+      <GoogleMap :stay="stay" />
+      <div class="place-details-txt">
+        <h3>{{ stay.loc.city }}, {{ stay.loc.country }}</h3>
+        <p>{{ stay.summary }}</p>
+      </div>
+    </section>
+
+    <section class="host-info">
+      <div class="header">
+        <img :src="stay.host.imgUrl" />
+        <h3>Hosted by {{ stay.host.fullname }}</h3>
+      </div>
+      <section class="flex">
+        <section class="left-side">
+          <div class="info">
+            <span
+              ><img src="../imgs/svg_symbols/black_star.svg" />
+              {{ stay.reviews.length }} reviews</span
+            >
+            <span
+              ><img src="../imgs/svg_symbols/verified.svg" alt="" srcset="" /> Identity verified
+            </span>
+            <span v-if="stay.host.isSuperHost">🎖Superhost </span>
+          </div>
+          <div class="txt">
+            {{ stay.host.description }}
+            <h5>During your stay</h5>
+            <p>They can reach me anytime they want. Contact number 0536 555 55 55</p>
+            <div v-if="stay.host.isSuperHost">
+              <h5>{{ stay.host.fullname }} is a Superhost</h5>
+              <p>
+                Superhosts are experienced, highly rated hosts who are committed to providing great
+                stays for guests
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="right-side">
+          <p>Languages: English, Türkçe</p>
+          <p>Response rate: 100%</p>
+          <p>Response time: within an hour</p>
+          <div class="protect flex">
+            <img src="../imgs/svg_symbols/protect_logo.svg" alt="" srcset="" />
+            <p>
+              To protect your payment, never transfer money or communicate outside of the Airbnb
+              website or app
+            </p>
+          </div>
+        </section>
+      </section>
+    </section>
   </div>
 </template>
 
@@ -79,8 +131,7 @@ import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
 import StayHeaderInfo from '../cmps/StayHeaderInfo.vue'
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviews from '../cmps/DetailsReviews.vue'
-import StayMap from '../cmps/StayMap.vue'
-// import DetailsCalendar from '../cmps/DetailsCalendar.vue'
+import GoogleMap from '../cmps/GoogleMap.vue'
 
 export default {
   name: 'StayDetails',
@@ -115,6 +166,7 @@ export default {
     const { stayId } = this.$route.params
     const stay = await this.$store.dispatch({ type: 'getStay', stayId })
     this.stay = stay
+    console.log('this.$route.query', this.$route.query)
   },
 
   mounted() {
@@ -142,7 +194,7 @@ export default {
     StayDetailsImgs,
     DetailsReviews,
     StayHeaderInfo,
-    StayMap,
+    GoogleMap,
   },
 }
 </script>

@@ -30,22 +30,40 @@
 
       <section class="rating grid">
         <p>Cleanliness</p>
-        <progress max="5" value="4"></progress>
+        <div class="progress-bar flex">
+          <progress max="5" value="4"></progress>
+          <span>4</span>
+        </div>
 
         <p>Communication</p>
-        <progress max="5" value="4"></progress>
+        <div class="progress-bar flex">
+          <progress max="5" value="4"></progress>
+          <span>4</span>
+        </div>
 
         <p>Check-in</p>
-        <progress max="5" value="4"></progress>
+        <div class="progress-bar flex">
+          <progress max="5" value="3"></progress>
+          <span>5</span>
+        </div>
 
         <p>Accuracy</p>
-        <progress max="5" value="4"></progress>
+        <div class="progress-bar flex">
+          <progress max="5" value="2"></progress>
+          <span>2</span>
+        </div>
 
         <p>Location</p>
-        <progress max="5" value="4"></progress>
+        <div class="progress-bar flex">
+          <progress max="5" value="5"></progress>
+          <span>5</span>
+        </div>
 
         <p>Value</p>
-        <progress max="5" value="4"></progress>
+        <div class="progress-bar flex">
+          <progress max="5" value="3"></progress>
+          <span>3</span>
+        </div>
       </section>
     </section>
     <section>
@@ -56,7 +74,7 @@
             <img :src="review.by.imgUrl" />
             <div>
               <h4>{{ review.by.fullname }}</h4>
-              <span>11/5/2023</span>
+              <span>November 2022</span>
             </div>
           </div>
           <div>
