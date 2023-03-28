@@ -1,64 +1,109 @@
 .reservation {
-  border: 1px solid blueviolet;
-  height: max-content;
+  border-radius: 13px;
+  gap: 0.5em;
+  height: 75vh;
   width: 100%;
+  padding: 0;
   margin-bottom: 10em; // DELETE AFTER!
 }
 
-.left-side {
-  width: 60%;
-  //
+.left-side-reservation {
+  width: 40%;
+  height: 100%;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
-  .reservation-header {
-    align-items: center;
-    gap: 2em;
+  gap: 1em;
+  .row {
     padding: 0;
+    height: 100%;
+    gap: 0.6em;
 
-    .host-img {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
+    .box {
+      box-shadow: #0000001f 0 6px 16px;
+      padding: 0.2em;
       border-radius: 15px;
-    }
-    .host-info {
-      margin: 0;
+      width: 100%;
+      height: 100%;
+
       h1 {
-        font-size: 2.5em;
+        text-align: center;
+        font-size: 1.5em;
+        margin-block-start: 0.3em;
       }
     }
   }
-
-  .row > * {
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
-    border: 1px solid rgb(136, 36, 36);
-  }
-
-  .second-row {
-    padding: 0;
-
-    height: 60%;
-    div {
-      background-color: rgb(111, 175, 175);
-      width: 100%;
-    }
-  }
-  .third-row {
-    padding: 0;
-    height: 40%;
-    div {
-      background-color: rgb(201, 206, 117);
-      width: 100%;
-    }
-  }
+  //
 }
 
 ///////////////////////////////////////////
-.right-side {
-  width: 40%;
-  //
-  //   border: 1px solid pink;
+.right-side-reservation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  width: 60%;
+  min-width: 800px;
+  border: 1px solid rgb(223, 216, 216);
+  border-radius: 15px;
+  margin: 0;
+  padding: 0;
+
+  .subtitle {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    // position: fixed;
+    font-family: Airbnb_Cereal-Medium;
+    grid-template-columns: 15% 15% 14% 14% 14% 14% 12%;
+    background-color: rgb(255 56 92 / 27%);
+    p {
+      margin: 0;
+    }
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 14.5% 14.5% 14.5% 14.5% 14.5% 13.5% 7% 7%;
+    // grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 1.3em;
+    border-bottom: 1px solid rgb(139, 131, 131);
+
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50px;
+      object-fit: cover;
+      margin-left: 0.7em;
+    }
+
+    h3,
+    p {
+      text-align: center;
+      margin: 0;
+      margin-left: 0.3em;
+    }
+
+    .btn {
+      color: black;
+      border-radius: 15px;
+      width: max-content;
+      padding: 0.5em;
+      cursor: pointer;
+      transition: 0.3s;
+      &.approve-btn {
+        background-color: #e9edc9;
+        &:hover {
+          background-color: darken(#e9edc9, 10%);
+        }
+      }
+      &.reject-btn {
+        background-color: rgb(255, 209, 209);
+        &:hover {
+          background-color: darken(rgb(255, 209, 209), 10%);
+        }
+      }
+    }
+  }
 }

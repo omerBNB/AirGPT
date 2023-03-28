@@ -23,12 +23,12 @@
   .main-listing-h4 {
     display: grid;
     align-items: center;
-    justify-items: center;
+    justify-items: start;
     // justify-content: space-between;
     grid-template-columns: 1.5fr repeat(5,1fr);
     color: rgba(46, 46, 46, 0.5);
     border-bottom: 1px solid rgba(46, 46, 46, 0.3);
-    padding: 10px;
+    // padding: 10px;
   }
 }
 .main-listing-ul {
@@ -40,7 +40,7 @@
   .main-listing-view-container {
     display: grid;
     align-items: center;
-    justify-items: center;
+    justify-items: start;
     // justify-content: space-between;
     grid-template-columns: 1.5fr repeat(5,1fr);
     padding: 10px;
@@ -49,7 +49,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 5px;
         grid-column: 1;
         width: max-content;
     }

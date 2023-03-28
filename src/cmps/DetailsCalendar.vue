@@ -9,17 +9,18 @@
         <div class="check-in flex">
           <h4>CHECK IN</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input :value="this.startDate === 'Add date' ? 'Add date' : this.startDate" type="text" />
+          <input :value="this.checkin === 'Add date' ? 'Add date' : this.startDate" type="text" />
         </div>
         <div class="check-out flex">
           <h4>CHECK OUT</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input :value="this.startDate === 'Add date' ? 'Add date' : this.endDate" type="text" />
+          <input :value="this.checkout === 'Add date' ? 'Add date' : this.endDate" type="text" />
         </div>
       </div>
     </section>
 
     <VDatePicker
+      v-model="date"
       class="calendar"
       :step="1"
       v-model.range="range"
@@ -29,22 +30,22 @@
 
     <div class="btns flex">
       <button class="clear-dates bold-font">Clear dates</button>
-      <button @click="$emit('closeModal')" class="close-btn bold-font">Close</button>
+      <button @click="$emit('closeModal', this.date)" class="close-btn bold-font">Close</button>
     </div>
   </section>
 </template>
 
 <script>
-import { ref } from 'vue'
+//
 import { useScreens } from 'vue-screen-utils'
 export default {
   name: 'DetailsCalendar',
   props: {
-    startDate: {
+    checkin: {
       type: null || String,
       required: true,
     },
-    endDate: {
+    checkout: {
       type: null || String,
       required: true,
     },
@@ -53,8 +54,9 @@ export default {
     return {
       columns: null,
       range: null,
-      selectedColor: ref('gray'),
-      date: ref(new Date()),
+      date: null,
+      selectedColor: 'gray',
+
       attributes: [
         // This is a single attribute
         {
@@ -79,7 +81,11 @@ export default {
       ],
     }
   },
-  methods: {},
+  methods: {
+    hey() {
+      // console.log('this.date!', this.date)
+    },
+  },
   computed: {},
   created() {
     // if (this.startDate && this.endDate) {
@@ -88,6 +94,8 @@ export default {
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
     this.columns = mapCurrent({ lg: 2 }, 2)
   },
+
+  mounted() {},
   components: {},
 }
 </script>
@@ -108,3 +116,6 @@ export default {
   background-color: palevioletred;
 }
 </style>
+<!-- // Date.parse('Mar 02') -->
+<!-- // 983484000000 -->
+<!-- //  new Date(983484000000).getMonth()+'/'+new Date(983484000000).getDay() -->

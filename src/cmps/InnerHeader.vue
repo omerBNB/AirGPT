@@ -63,12 +63,13 @@ export default {
     },
     searchDestination() {
       this.$emit('closeModal')
+      console.log('this.innerHeaderFilter.range.start.toDateString().substring(4, 11)',this.innerHeaderFilter.range.start.toDateString())
       this.$router.push({
         path: '/stay/explore',
         query: {
           where: this.innerHeaderFilter.where,
-          checkin: this.innerHeaderFilter.range.start.toDateString().substring(4, 11),
-        checkout: this.innerHeaderFilter.range.end.toDateString().substring(4, 11),
+          checkin: this.innerHeaderFilter.range.start.toDateString().substring(4, 16),
+        checkout: this.innerHeaderFilter.range.end.toDateString().substring(4, 16),
         adults: this.innerHeaderFilter.guests.adults,
         children: this.innerHeaderFilter.guests.children,
         infants: this.innerHeaderFilter.guests.infants,
@@ -81,6 +82,7 @@ export default {
   created() {
     this.acitveModalInner = this.activeModal
   },
+  
   components: {
     InnerHeaderWhere,
     InnerHeaderDateSelection,

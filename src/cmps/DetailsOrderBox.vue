@@ -168,11 +168,13 @@
         <p>Total</p>
         <p>$327.15</p>
       </div>
+
       <DetailsCalendar
         v-if="calendarIsShown"
-        @closeModal="this.calendarIsShown = false"
-        :startDate="startDate"
-        :endDate="endDate" />
+        @closeModal="closeModal"
+        :checkin="info.checkin"
+        :checkout="info.checkout" />
+
       <DetailsGuestModal
         @closeGuestModal="this.guestModalIsShown = false"
         v-if="this.guestModalIsShown" />
@@ -202,8 +204,7 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      startDate: 'Add date',
-      endDate: 'Add date',
+      info: {},
     }
   },
   computed: {
@@ -228,30 +229,28 @@ export default {
       // return this.stay.capacity + ' guests'
     },
   },
+
   created() {
     this.stayId = this.stay._id
 
     addEventListener('click', (ev) => {
-      const click = ev.target.offsetParent.classList
-      console.log('click:', click)
-      if (click.contains('order-container')) {
+      const click = ev.target.offsetParent?.classList
+      if (click?.contains('order-container')) {
         this.calendarIsShown = true
         return
       }
 
       if (
-        click.contains('calendar-container') ||
-        click.contains('vc-week') ||
-        click.contains('vc-pane-container') ||
-        click.contains('vc-day') ||
-        click.contains('vc-day') ||
-        click.contains('vc-pane-header-wrapper') ||
-        click.contains('vc-weekdays')
+        click?.contains('calendar-container') ||
+        click?.contains('vc-week') ||
+        click?.contains('vc-pane-container') ||
+        click?.contains('vc-day') ||
+        click?.contains('vc-day') ||
+        click?.contains('vc-pane-header-wrapper') ||
+        click?.contains('vc-weekdays')
       ) {
-        console.log('yes')
         this.calendarIsShown = true
       } else {
-        console.log('no')
         this.calendarIsShown = false
       }
     })
@@ -268,10 +267,42 @@ export default {
         query: { plan: where, checkin, checkout, adults, children, infants, pets },
       })
     },
+    closeModal(date) {
+      console.log('close')
+      this.calendarIsShown = false // close modal
+      this.info.checkin = date.start.toDateString()
+      this.info.checkout = date.end.toDateString()
+      console.log('this.info', this.info)
+      // console.log('this.info.checkout:', this.info.checkout)
+      // http://localhost:5173/#/stay/27783059?where=United+States&checkin=Mar+18+2023&checkout=Apr+20+2023&adults=2&children=1&infants=0&pets=0
+      // http://localhost:5173/#/stay/27783059?where=United+States&checkin=Mar+18+2023&checkout=Apr+20+2023&adults=2&children=1&infants=0&pets=0
+      this.$router.push({
+        path: '/stay/' + this.stayId,
+        query: {
+          where: this.info.where,
+          checkin: this.info.checkin,
+          checkout: this.info.checkout,
+          adults: this.info.adults,
+          children: this.info.children,
+          infants: this.info.infants,
+          pets: this.info.pets,
+        },
+      })
+    },
   },
+
   mounted() {
-    // console.log('this.stay', this.stay)
+    // const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+    this.info = this.$route.query
+    console.log('this.info!:', this.info)
   },
+
+  // watch: {
+  //   info(newInfo, oldInfo) {
+  //     console.log('hey')
+  //     this.$router.push({ query: { checkin: newInfo.checkin } })
+  //   },
+  // },
 
   components: {
     DetailsCalendar,

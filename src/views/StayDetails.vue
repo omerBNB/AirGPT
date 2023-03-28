@@ -175,8 +175,6 @@ export default {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
     this.searchDetails = this.$route.query
-    console.log('this.searchDetails:', this.searchDetails)
-    // console.log('this.$route.query', this.$route.query)
   },
 
   methods: {
