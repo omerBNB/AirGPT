@@ -30,8 +30,6 @@
   <section
     class="calender-container"
     v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout'">
-    <!-- <el-calendar class="calendar-inner-section-1" v-model="value" />
-          <el-calendar class="calendar-inner-section-2" v-model="value" /> -->
     <VDatePicker
       class="calendar"
       :value="date2"
@@ -39,6 +37,15 @@
       v-model.range="innerHeaderFilter.range"
       :columns="columns"
       @click.stop="setActiveModalDates('checkout')" />
+
+      <!-- <VDatePicker
+      v-model="date"
+      class="calendar"
+      :step="1"
+      v-model.range="range"
+      :columns="columns"
+      :color="selectedColor"
+      :attributes="attributes" /> -->
   </section>
 </template>
 
@@ -72,4 +79,21 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.calendar .vc-arrow {
+  width: 50px;
+}
+.vc-highlight-content-solid {
+  background-color: #ec1515;
+  /* background-color: #222; */
+  scale: 1.2;
+}
+.vc-highlight-content-solid:hover {
+  /* background-color: #222; */
+  background-color: #e40808;
+  scale: 1.2;
+}
+.--vc-gray-200 {
+  background-color: palevioletred;
+}
+</style>
