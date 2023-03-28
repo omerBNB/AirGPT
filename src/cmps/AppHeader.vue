@@ -14,7 +14,7 @@
       <button @click="showCurrModal('checkin')" class="main-filter-btn">
         {{
           this.userSearchSpec.checkin
-          ? this.userSearchSpec.checkin + ' - ' + this.userSearchSpec.checkout.substring(4, 6)
+          ? this.userSearchSpec.checkin.substring(0, 6) + ' - ' + this.userSearchSpec.checkout.substring(3, 6)
           : 'Any week'
         }}
       </button>

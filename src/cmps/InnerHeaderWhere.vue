@@ -150,12 +150,12 @@ export default {
   name: '',
   props:{
    acitveModalInner: String,
-   innerHeaderFilter: Object
-
-    
+   innerHeaderFilter: Object    
   },
   data() {
-    return {}
+    return {
+      searchQuery: this.$route.query
+    }
   },
   methods: {
     setActiveModalWhere(btnName,whereTo) {
