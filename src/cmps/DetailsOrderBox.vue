@@ -172,8 +172,8 @@
       <DetailsCalendar
         v-if="calendarIsShown"
         @closeModal="closeModal"
-        :checkin="info.checkin"
-        :checkout="info.checkout" />
+        :checkin="order.checkin"
+        :checkout="order.checkout" />
 
       <DetailsGuestModal
         @closeGuestModal="this.guestModalIsShown = false"
@@ -205,8 +205,7 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      info: {},
-      order: orderService.getEmptyorder()
+      order: orderService.getEmptyorder(),
     }
   },
   computed: {
@@ -270,38 +269,22 @@ export default {
           checkin: this.order.checkin,
           checkout: this.order.checkout,
           adults: this.order.guests.adults,
-          children:this.order.guests.children,
-          infants:this.order.guests.infants,
-          pets:this.order.guests.pets,
+          children: this.order.guests.children,
+          infants: this.order.guests.infants,
+          pets: this.order.guests.pets,
         },
       })
-      this.$store.dispatch({type:'createNewOrder', order:this.order})
-      // 2 .move info to store, and from store to Listing - OMER
+      this.$store.dispatch({ type: 'createNewOrder', order: this.order })
     },
     closeModal(date) {
-      console.log('close')
-      this.calendarIsShown = false // close modal
-      this.info.checkin = date.start.toDateString()
-      this.info.checkout = date.end.toDateString()
-      // this.$router.push({
-      //   path: '/stay/' + this.stayId,
-      //   query: {
-      //     where: this.info.where,
-      //     checkin: this.info.checkin,
-      //     checkout: this.info.checkout,
-      //     adults: this.info.adults,
-      //     children: this.info.children,
-      //     infants: this.info.infants,
-      //     pets: this.info.pets,
-      //   },
-      // })
+      this.calendarIsShown = false
+      this.order.checkin = date.start.toDateString()
+      this.order.checkout = date.end.toDateString()
     },
   },
 
   mounted() {
     const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
-    // this.info = this.$route.query
-    // console.log('this.info!:', this.info)
     this.order.where = where
     this.order.checkin = checkin
     this.order.checkout = checkout
@@ -311,18 +294,23 @@ export default {
     this.order.guests.pets = pets
   },
 
-  // watch: {
-  //   info(newInfo, oldInfo) {
-  //     console.log('hey')
-  //     this.$router.push({ query: { checkin: newInfo.checkin } })
-  //   },
-  // },
-
   components: {
     DetailsCalendar,
     DetailsGuestModal,
   },
 }
+// this.$router.push({
+//   path: '/stay/' + this.stayId,
+//   query: {
+//     where: this.info.where,
+//     checkin: this.info.checkin,
+//     checkout: this.info.checkout,
+//     adults: this.info.adults,
+//     children: this.info.children,
+//     infants: this.info.infants,
+//     pets: this.info.pets,
+//   },
+// })
 </script>
 
 <style></style>

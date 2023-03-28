@@ -40,13 +40,13 @@
         <main class="sticky-modal">
           <section class="order-container">
             <div class="reservation-modal-header grid">
-              <img src="../imgs/imgs_test/ListImgsTest/a/1.webp" />
-              <p>Westin Kaanapali KORVN 2BR</p>
+              <img :src="stay.imgUrls[0]" />
+              <p>{{ stay.name }}</p>
               <div>
                 <img src="../imgs/svg_symbols/black_star.svg" />
-                <span>4.9</span>
+                <span>{{ stay.rate }}</span>
                 <span>•</span>
-                <span class="underline">2 reviews</span>
+                <span class="underline">{{ stay.reviews.length }} reviews</span>
               </div>
             </div>
             <hr />
@@ -89,22 +89,31 @@ export default {
     }
   },
   created() {
-    const { stayId } = this.$route.params
-    storageService.get('stay', stayId).then((stay) => {
-      this.stay = stay
-    })
+    // guestsNum() {
+    //   if (this.stay.capacity === 1) return '1 guest'
+    //   return this.stay.capacity + ' guests'
+    // },
   },
+
   mounted() {
+    // Get the Layout:
     const currRoute = this.$route.path
     if (currRoute.includes('book')) {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
+
+    this.loadStay()
+    // Get otherParams for order information:
   },
-  methods: {},
+  methods: {
+    async loadStay() {
+      const { stayId } = this.$route.params
+      const stay = await this.$store.dispatch({ type: 'getStay', stayId })
+      this.stay = stay
+    },
+  },
   computed: {},
 
-  components: {
-    DetailsOrderBox,
-  },
+  components: {},
 }
 </script>

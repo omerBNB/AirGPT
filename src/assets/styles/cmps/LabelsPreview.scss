@@ -1,0 +1,17 @@
+.labels {
+    font-size: small;
+    margin-block-start: 1em;
+    opacity: 0.6;
+
+    .label {
+        margin-block-start: 1em;
+        align-items: center;
+        min-width: 70px;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    img {
+        width: 25px;
+    }
+}
