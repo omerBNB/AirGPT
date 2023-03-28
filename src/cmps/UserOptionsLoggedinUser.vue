@@ -1,7 +1,7 @@
 <template>
   <div class="user-nav">
     <div class="user-options-container">
-      <div class="user-options">Trips</div>
+      <RouterLink class="user-options" to="/trips">Trips</RouterLink>
       <RouterLink class="user-options" to="/wishlist">Wishlist</RouterLink>
       <span class="user-line"></span>
       <RouterLink class="user-options" to="/dashboard/stay/edit">Airgpt your home</RouterLink>
