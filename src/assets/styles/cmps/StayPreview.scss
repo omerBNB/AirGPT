@@ -62,16 +62,18 @@
             .stay-header {
                 justify-content: space-between;
                 margin-block-end: 0;
+                color: $clr8;
 
                 .stay-name {
                     font-family: Airbnb_Cereal-Medium;
-                    color: $clr8;
-                    justify-content: space-between;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    width: 80%;
                     margin: 0;
+                    overflow: hidden;
+                    // width: 80%;
+
+                    span {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
                 }
 
                 .rate {

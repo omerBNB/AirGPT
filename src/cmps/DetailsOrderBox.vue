@@ -18,17 +18,17 @@
         <div class="date-picker">
           <div @click="this.calendarIsShown = true" class="date-input">
             <label>CHECK IN</label>
-            <input :value="this.searchDetails.checkin" />
+            <input :value="this.order.checkin || 'Add date'" />
           </div>
           <div @click="this.calendarIsShown = true" class="date-input">
             <label>CHECK OUT</label>
-            <input :value="this.searchDetails.checkout" />
+            <input :value="this.order.checkout || 'Add date'" />
           </div>
         </div>
 
         <div @click.stop="this.guestModalIsShown = true" class="guest-input">
           <label>GUESTS</label>
-          <input :value="guestsNum" />
+          <input :value="guestsNum || 'Add guests'" />
           <svg viewBox="0 0 320 512" width="100" title="angle-down">
             <path
               d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
@@ -149,7 +149,7 @@
 
       <section class="price-info">
         <div class="price-per-night flex space-between">
-          <p class="underline">$31 X 9 nights</p>
+          <p class="underline">${{ stay.price }} X {{ this.nightsBetween }} nights</p>
           <p>$279</p>
         </div>
 
@@ -206,6 +206,7 @@ export default {
       calendarIsShown: false,
       guestModalIsShown: false,
       order: orderService.getEmptyOrder(),
+      nightsBetween: '0',
     }
   },
   computed: {
@@ -228,6 +229,15 @@ export default {
       return +this.searchDetails.adults + +this.searchDetails.children + +this.searchDetails.infants
       // if (this.stay.capacity === '1') return '1 guest'
       // return this.stay.capacity + ' guests'
+    },
+
+    getDaysBetweenDates(checkin, checkout) {
+      if (!checkin || !checkout) return
+      console.log('checkin', checkin)
+      const date1 = Date.parse(checkin)
+      const date2 = Date.parse(checkout)
+      const diffInMs = Math.abs(date2 - date1)
+      this.nightsBetween = Math.floor(diffInMs / 86400000)
     },
   },
 
@@ -278,6 +288,7 @@ export default {
       this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
     },
     closeModal(date) {
+      console.log('date:', date)
       this.calendarIsShown = false
       this.order.checkin = date.start.toDateString()
       this.order.checkout = date.end.toDateString()
@@ -286,13 +297,8 @@ export default {
 
   mounted() {
     const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
-    console.log('pets:', pets)
-    console.log('infants:', infants)
-    console.log('children:', children)
-    console.log('adults:', adults)
     console.log('checkout:', checkout)
     console.log('checkin:', checkin)
-    console.log('where:', where)
     this.order.where = where
     this.order.checkin = checkin
     this.order.checkout = checkout
@@ -300,6 +306,9 @@ export default {
     this.order.guests.children = children
     this.order.guests.infants = infants
     this.order.guests.pets = pets
+    //////
+
+    this.getDaysBetweenDates(checkin, checkout)
   },
 
   components: {
