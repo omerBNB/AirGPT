@@ -47,10 +47,10 @@ export default {
         where = '',
         checkin = '',
         checkout = '',
-        adults = '0',
-        children = '0',
-        infants = '0',
-        pets = '0',
+        adults = '',
+        children = '',
+        infants = '',
+        pets = '',
       } = this.$route.query
 
       this.$router.push({

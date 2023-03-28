@@ -9,12 +9,12 @@
         <div class="check-in flex">
           <h4>CHECK IN</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input :value="this.checkin === 'Add date' ? 'Add date' : this.startDate" type="text" />
+          <input v-model="this.date.start" type="text" />
         </div>
         <div class="check-out flex">
           <h4>CHECK OUT</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input :value="this.checkout === 'Add date' ? 'Add date' : this.endDate" type="text" />
+          <input v-model="this.date.end" type="text" />
         </div>
       </div>
     </section>
@@ -53,7 +53,8 @@ export default {
     return {
       columns: null,
       range: null,
-      date: null,
+      date: 'Add date',
+
       selectedColor: 'gray',
 
       attributes: [
@@ -80,19 +81,17 @@ export default {
       ],
     }
   },
-  methods: {
-    hey() {},
-  },
-  computed: {},
-  created() {
-    // if (this.startDate && this.endDate) {
-    // }
 
+  created() {
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
     this.columns = mapCurrent({ lg: 2 }, 2)
   },
-
-  mounted() {},
+  methods: {},
+  computed: {},
+  mounted() {
+    // this.data.start = this.checkin || 'Add date'
+    // this.data.end = this.checkout || 'Add date'
+  },
   components: {},
 }
 </script>
