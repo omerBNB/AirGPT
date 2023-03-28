@@ -1,6 +1,5 @@
 <template>
     <section class="trips">
-        <p>Trips</p>
         <TripsPreview v-if="loggedInUser" :user="loggedInUser" />
     </section>
 </template>

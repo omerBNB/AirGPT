@@ -106,10 +106,9 @@ function _createUsers() {
                         },
                     },
                 ],
-
                 likedByUsers: ['mini-user'], // for user-wishlist : use $in
             },]
-        }]
+        },]
         utilService.saveToStorage(USER, gUsers)
     }
     return gUsers
@@ -154,7 +153,6 @@ function updateWishList(stay) {
 
 async function save(user) {
     let savedUser
-    console.log('user', user)
     if (user._id) savedUser = await storageService.put(USER, user)
     else savedUser = await storageService.post(USER, user)
     saveLocalUser(savedUser)
@@ -196,7 +194,7 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, wishList: user.wishList, stayList: user.stayList }
+    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, wishList: user.wishList, stayList: user.stayList, trips: user.trips }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
