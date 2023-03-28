@@ -4,8 +4,8 @@
       <div class="user-options">Trips</div>
       <RouterLink class="user-options" to="/wishlist">Wishlist</RouterLink>
       <span class="user-line"></span>
-      <RouterLink class="user-options" to="/stay/edit">Airgpt your home</RouterLink>
-      <div class="user-options" >My dashboard</div>
+      <RouterLink class="user-options" to="/dashboard/stay/edit">Airgpt your home</RouterLink>
+      <RouterLink class="user-options" to="/dashboard">Dashboard</RouterLink>
       <span class="user-line"></span>
       <div class="user-options" @click="doLogout" >Logout</div>
     </div>
