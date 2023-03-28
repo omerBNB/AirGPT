@@ -5,11 +5,11 @@
     :class="{ isActive: acitveModalInner === 'search' }">
     <button class="inner-header-dates-btn-search" ref="search">
       <div>Who</div>
-      <div :class="+innerHeaderFilter.guests.adults ? 'bold-inner-search' : ''">
+      <div :class="innerHeaderFilter.guests.adults ? 'bold-inner-search' : ''">
         {{
           innerHeaderFilter.guests.adults
             ? +innerHeaderFilter.guests.adults + +innerHeaderFilter.guests.children + ' guests'
-            :  'Add guests'
+            : 'Add guests'
         }}
       </div>
     </button>
@@ -46,7 +46,7 @@
       <div class="flex-inner-search-btns">
         <button
           class="add-guest-button"
-          :class="innerHeaderFilter.guests.adults? '' : 'disabled'"
+          :class="innerHeaderFilter.guests.adults ? '' : 'disabled'"
           @click.stop="handleGuests('adults', -1)">
           <span class="_8ovatg"
             ><svg
@@ -227,7 +227,7 @@
             </svg>
           </span>
         </button>
-        <span class="add-guest-span">{{ +innerHeaderFilter.guests.pets }}</span>
+        <span class="add-guest-span">{{ innerHeaderFilter.guests.pets }}</span>
         <button class="add-guest-button" @click.stop="handleGuests('pets', 1)">
           <span class="_8ovatg"
             ><svg
@@ -264,7 +264,7 @@ export default {
   },
   data() {
     return {
-      searchQuery: this.$route.query
+      searchQuery: this.$route.query,
     }
   },
   methods: {
@@ -273,7 +273,7 @@ export default {
     },
     handleGuests(guestType, diff) {
       if (!this.innerHeaderFilter.guests[guestType] && diff === -1) return
-      this.innerHeaderFilter.guests[guestType] = +this.innerHeaderFilter.guests[guestType] +diff
+      this.innerHeaderFilter.guests[guestType] = +this.innerHeaderFilter.guests[guestType] + diff
     },
     searchDestination() {
       this.$emit('searchDestination')
@@ -281,9 +281,16 @@ export default {
   },
   computed: {},
   created() {
-    if(this.$route.query){
-      const {adults,children,infants,pets} = this.$route.query
-      this.innerHeaderFilter.guests = {adults,children,infants,pets}
+    console.log('this.$route.query', this.$route.query)
+    if (this.$route.query) {
+      const { adults, children, infants, pets } = this.$route.query
+      this.innerHeaderFilter.guests = { adults, children, infants, pets }
+      if (!this.innerHeaderFilter.guests.adults) {
+        this.innerHeaderFilter.guests.adults = 0
+        this.innerHeaderFilter.guests.children = 0
+        this.innerHeaderFilter.guests.infants = 0
+        this.innerHeaderFilter.guests.pets = 0
+      }
     }
   },
   components: {},
