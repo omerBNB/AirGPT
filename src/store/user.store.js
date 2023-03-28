@@ -124,7 +124,7 @@ export const userStore = {
             commit(payload)
         },
         async updateWishList({ commit }, { stay }) {
-            const user = await userService.addStayToWishList(stay)
+            const user = await userService.updateWishList(stay)
             commit({ type: 'setLoggedinUser', user })
         },
         async addNewStay({ commit, state }, { newStay }) {

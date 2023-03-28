@@ -1,18 +1,23 @@
 .wishlist-container {
-
+    font-family: Airbnb_Cereal-Medium;
+    font-size: 1.2rem;
+    padding: 0;
+    
     .wishlist-header {
         margin-block-start: 50px;
         margin-block-end: 65px;
         font-size: 1.7rem;
         font-family: Airbnb_Cereal-Bold;
     }
-
+    
     .stays-wishlist-container {
-        cursor: pointer;
         flex-wrap: wrap;
-        margin: -5px !important;
-        padding: 0px !important;
+        margin: -5px;
         gap: 20px;
+
+        .stay-Wish-container {
+            cursor: pointer;
+        }
 
         .img-container-wishlist {
             width: 415px;
