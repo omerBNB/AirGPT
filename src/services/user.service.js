@@ -79,8 +79,10 @@ function addStayToWishList(stay) {
 
 async function save(user) {
     let savedUser
+    console.log('user',user)
     if (user._id) savedUser = await storageService.put(USER, user)
     else savedUser = await storageService.post(USER, user)
+    saveLocalUser(savedUser)    
     return savedUser
 }
 
