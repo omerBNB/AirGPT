@@ -26,7 +26,9 @@ export default {
   },
   computed: {
   },
-  created() {},
+  created() {
+    
+  },
   components: {},
 }
 </script>
