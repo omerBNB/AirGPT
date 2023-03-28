@@ -6,11 +6,7 @@
     <button class="inner-header-dates-btn-search" ref="search">
       <div>Who</div>
       <div :class="innerHeaderFilter.guests.adults ? 'bold-inner-search' : ''">
-        {{
-          innerHeaderFilter.guests.adults
-            ? +innerHeaderFilter.guests.adults + +innerHeaderFilter.guests.children + ' guests'
-            : 'Add guests'
-        }}
+        {{ guestsTxtCut }}
       </div>
     </button>
     <button class="inner-header-search-btn big" @click="searchDestination">
@@ -279,7 +275,19 @@ export default {
       this.$emit('searchDestination')
     },
   },
-  computed: {},
+  computed: {
+    guestsTxtCut() {
+      const count = 10
+      let text = this.innerHeaderFilter.guests.adults? 
+      +this.innerHeaderFilter.guests.adults +
+          +this.innerHeaderFilter.guests.children +
+          +this.innerHeaderFilter.guests.infants +
+          ' guests'
+        : 'Add guests'
+      this.innerHeaderFilter.guests.infants ? ', ' + +this.innerHeaderFilter.guests.infants + ' infants' : ''
+      return text.slice(0, count) + (text.length > count ? "..." : "");
+    },
+  },
   created() {
     console.log('this.$route.query', this.$route.query)
     if (this.$route.query) {

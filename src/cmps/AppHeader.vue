@@ -3,7 +3,7 @@
     <nav>
       <RouterLink class="flex" to="/">
         <img class="logo" src="../../src/imgs/Airbnb_logo/airbnblogo.svg" alt="logo" />
-        <h1 role="img" aria-label="logo">Airgpt</h1>
+        <h1 role="img" aria-label="logo">airgpt</h1>
       </RouterLink>
     </nav>
     <section class="main-filter-header" v-if="isWideView">
@@ -22,7 +22,7 @@
 
       <button @click="showCurrModal('search')" class="main-filter-btn guests"
         :class="this.userSearchSpec.adults ? 'bold' : ''">
-        {{ this.userSearchSpec.adults ? this.userSearchSpec.adults + ' guests' : 'Add guests' }}
+        {{ this.userSearchSpec.adults ? +this.userSearchSpec.adults + +this.userSearchSpec.children + +this.userSearchSpec.infants + ' guests' : 'Add guests' }}
       </button>
       <button class="search-btn">
         <div data-testid="little-search-icon">

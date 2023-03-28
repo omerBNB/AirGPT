@@ -46,7 +46,7 @@
                 <img src="../imgs/svg_symbols/black_star.svg" />
                 <span>{{ stay.rate }}</span>
                 <span>•</span>
-                <span class="underline">{{ stay.reviews.length }} reviews</span>
+                <span class="underline">{{ guestsNum }} </span>
               </div>
             </div>
             <hr />
@@ -88,12 +88,7 @@ export default {
       stay: null,
     }
   },
-  created() {
-    // guestsNum() {
-    //   if (this.stay.capacity === 1) return '1 guest'
-    //   return this.stay.capacity + ' guests'
-    // },
-  },
+  created() {},
 
   mounted() {
     // Get the Layout:
@@ -112,7 +107,12 @@ export default {
       this.stay = stay
     },
   },
-  computed: {},
+  computed: {
+    guestsNum() {
+      if (this.stay.capacity === 1) return '1 guest'
+      return this.stay.capacity + ' guests'
+    },
+  },
 
   components: {},
 }

@@ -879,11 +879,11 @@ function getEmptyStay() {
       '../../src/imgs/imgs_test/ListImgsTest/a/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/a/5.webp',
     ],
-    price: 0, // in preview!
+    price: '', // in preview!
     summary:
       '',
-    capacity: 0, // guest number
-    equipment: { bedroomNum: 0, bedsNum: 0, bathNum: 0 },
+    capacity: '', // guest number
+    equipment: { bedroomNum: '', bedsNum: '', bathNum: '' },
     amenities: [],
     labels: [],
     host: {
