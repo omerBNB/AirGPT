@@ -9,8 +9,8 @@ export const orderService = {
   getById,
   save,
   remove,
-  getEmptyorder,
-  addorderMsg,
+  getEmptyOrder,
+  addOrderMsg,
 }
 
 window.cs = orderService
@@ -65,7 +65,7 @@ async function save(order) {
   return order
 }
 
-async function addorderMsg(orderId, txt) {
+async function addOrderMsg(orderId, txt) {
   // Later, this is all done by the backend
   const order = await getById(orderId)
   if (!order.msgs) order.msgs = []
@@ -81,7 +81,7 @@ async function addorderMsg(orderId, txt) {
   return msg
 }
 
-function getEmptyorder() {
+function getEmptyOrder() {
   let order = {
     _id: null,
     hostId: null,
@@ -95,8 +95,8 @@ function getEmptyorder() {
     guests: {
       adults: 0,
       children: 0,
-      infants:0,
-      pets:0
+      infants: 0,
+      pets: 0
     },
     stay: {
       _id: null,

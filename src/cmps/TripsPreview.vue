@@ -1,13 +1,27 @@
 <template>
-    <p>TripsPreview</p>
+    <section class="trips-preview grid">
+        <!-- <P>{{ this.user.trips }}</P> -->
+        <section class="wishlist">Wishlist</section>
+        <section class="message">Message</section>
+        <NextStayPreview v-if="nextStays" class="mini-card next-stay flex" :nextStays="nextStays" />
+        <PrevStayPreview v-else class="prev-stay" />
+        <section class="prev-stays">Where have'ed you been</section>
+    </section>
 </template>
 
 <script>
+import NextStayPreview from '../cmps/NextStayPreview.vue'
+import PrevStayPreview from '../cmps/PrevStayPreview.vue'
 export default {
+    props: { user: Object },
     computed: {
-        loggedInUser() {
-            return this.$store.getters.loggedinUser
+        nextStays() {
+            // return this.user.trips.length ? this.user.trips.filter(stay => !stay.isDone) : null
         },
     },
+    components: {
+        NextStayPreview,
+        PrevStayPreview
+    }
 }
 </script>

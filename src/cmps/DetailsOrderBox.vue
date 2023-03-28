@@ -169,15 +169,10 @@
         <p>$327.15</p>
       </div>
 
-      <DetailsCalendar
-        v-if="calendarIsShown"
-        @closeModal="closeModal"
-        :checkin="order.checkin"
+      <DetailsCalendar v-if="calendarIsShown" @closeModal="closeModal" :checkin="order.checkin"
         :checkout="order.checkout" />
 
-      <DetailsGuestModal
-        @closeGuestModal="this.guestModalIsShown = false"
-        v-if="this.guestModalIsShown" />
+      <DetailsGuestModal @closeGuestModal="this.guestModalIsShown = false" v-if="this.guestModalIsShown" />
     </section>
 
     <!-- <p class="footer">Report this listing</p> -->
@@ -187,7 +182,7 @@
 <script>
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
-import { orderService } from '../services/order.service.loc'
+import { orderService } from '../services/order.service.local'
 export default {
   name: 'DetailsOrderBox',
   props: {
@@ -205,7 +200,7 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      order: orderService.getEmptyorder(),
+      order: orderService.getEmptyOrder(),
     }
   },
   computed: {
@@ -275,6 +270,7 @@ export default {
         },
       })
       this.$store.dispatch({ type: 'createNewOrder', order: this.order })
+      this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
     },
     closeModal(date) {
       this.calendarIsShown = false
