@@ -130,13 +130,9 @@ export const userStore = {
         async addNewStay({ commit, state }, { newStay }) {
             let user = JSON.parse(JSON.stringify(state.loggedinUser))
             const idx = user.stayList.findIndex(stay => stay._id === newStay._id)
-            console.log('idx',idx)
             let stay = await stayService.save(newStay)
-            if (idx > -1){
-                user.stayList.splice(idx,1,stay)
-            }else{
-                user.stayList.push(stay)
-            }
+            if (idx > -1) user.stayList.splice(idx, 1, stay)
+            else user.stayList.push(stay)
             const updatedUser = await userService.save(user)
             commit({ type: 'setLoggedinUser', user: updatedUser })
         }
