@@ -1,14 +1,36 @@
 <template>
-  <section >
+  <section>
     <form @submit.prevent="addNewStay" class="stay-edit-container" v-if="loggedInUser">
       <div class="stay-name-editor">
         <h2>
-          <input type="text" placeholder="Stay name" v-model="newStay.name" />
+          <input
+            class="edit-stay-first-inputs"
+            type="text"
+            placeholder="Stay name"
+            v-model="newStay.name" />
         </h2>
         <div class="stay-name-inputs">
-          <label><input type="text" placeholder="Enter Country" v-model="newStay.country" /></label>
-          <label><input type="text" placeholder="Enter City" v-model="newStay.city" /></label>
-          <label><input type="text" placeholder="Enter Address" v-model="newStay.address" /></label>
+          <label
+            ><input
+              class="edit-stay-first-inputs"
+              type="text"
+              placeholder="Enter Country"
+              v-model="newStay.loc.country"
+          /></label>
+          <label
+            ><input
+              class="edit-stay-first-inputs"
+              type="text"
+              placeholder="Enter City"
+              v-model="newStay.loc.city"
+          /></label>
+          <label
+            ><input
+              class="edit-stay-first-inputs"
+              type="text"
+              placeholder="Enter Address"
+              v-model="newStay.address"
+          /></label>
         </div>
       </div>
       <section class="add-imgs-container">
@@ -73,20 +95,89 @@
           /></label>
         </section>
       </section>
-      <button class="btn-container">Add</button>
+      <div class="el-upload-dragger"></div>
+      <div class="edit-stay-second-inputs">
+        <div>
+          <label for=""> Capacity: </label>
+          <el-input
+            v-model="newStay.capacity"
+            class="w-50 m-2"
+            size="small"
+            placeholder="Please Input" />
+        </div>
+        <div>
+          <label for=""> Bedrooms: </label>
+          <el-input
+            v-model="newStay.equipment.bedroomNum"
+            class="w-50 m-2"
+            size="small"
+            placeholder="Please Input" />
+        </div>
+        <div>
+          <label for=""> Bathrooms: </label>
+          <el-input
+            v-model="newStay.equipment.bathNum"
+            class="w-50 m-2"
+            size="small"
+            placeholder="Please Input" />
+        </div>
+      </div>
+      <div class="edit-stay-second-inputs">
+        <!-- <div>
+          <label for=""> Labels: </label>
+          <el-input v-model="input3" class="w-50 m-2" size="small" placeholder="Please Input" />
+        </div> -->
+        <div>
+          <label for=""> Property type: </label>
+          <el-input
+            v-model="newStay.type"
+            class="w-50 m-2"
+            size="small"
+            placeholder="Please Input" />
+        </div>
+        <div>
+          <label for=""> Price: </label>
+          <el-input
+            v-model="newStay.price"
+            class="w-50 m-2"
+            size="small"
+            placeholder="Please Input" />
+        </div>
+      </div>
+      <div class="m-4">
+        <el-select
+          class="edit-amaneties-selection"
+          v-model="newStay.amenities"
+          multiple
+          collapse-tags
+          placeholder="Select"
+          collapse-tags-tooltip
+          :max-collapse-tags="3">
+          <el-option v-for="item in newStay.amenities" :key="item" :label="item" :value="item" />
+        </el-select>
+      </div>
+      <div>
+        <label for=""> description: </label>
+        <textarea
+          class="edit-textarea"
+          name=""
+          id=""
+          v-model="newStay.summary"
+          style="width: 100%"></textarea>
+      </div>
+      <RouterLink class="btn-container" to="/">Add</RouterLink>
     </form>
     <h1 v-if="!loggedInUser">Please Login</h1>
   </section>
 </template>
-
 <script>
 import { uploadService } from '../services/upload.service'
-
+import { stayService } from '../services/stay.service.local'
 export default {
   name: '',
   data() {
     return {
-      newStay: { name: '', country: '', city: '', address: '', imgUrl: [] },
+      newStay: null,
     }
   },
   methods: {
@@ -94,7 +185,7 @@ export default {
       this.$store.dispatch({ type: 'addNewStay', newStay: this.newStay })
     },
     async handleFile(ev) {
-        console.log('ev',ev.type)
+      console.log('ev', ev.type)
       const file = ev.type === 'change' ? ev.target.files[0] : ev.dataTransfer.files[0]
 
       const { url } = await uploadService.uploadImg(file)
@@ -106,10 +197,31 @@ export default {
     loggedInUser() {
       return this.$store.getters.loggedinUser
     },
+    formatPrice() {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(this.newStay.price)
+    },
   },
-  created() {},
+  async created() {
+    const { stayId } = this.$route.params
+    if (stayId) {
+      try {
+        this.newStay = await stayService.getById(stayId)
+      } catch (err) {
+        console.log('err', err)
+      }
+    } else {
+      this.newStay = stayService.getEmptyStay()
+    }
+  },
   components: {},
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

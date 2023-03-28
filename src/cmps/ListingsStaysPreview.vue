@@ -1,9 +1,9 @@
 <template>
   <div class="listing-stay-preview" >
     <img class="listing-preview-img" :src="stay.imgUrls[0]" alt="" />
-    <h4>{{ stay.name }} shoko moko</h4>
+    <h4 class="listing-stay-preview-h4">{{ stay.name }}</h4>
   </div>
-  <button class="listing-preview-btn">Update Stay</button>
+  <RouterLink class="listing-preview-btn" :to="`stay/edit/${stay._id}`"> Update Stay </RouterLink>
     <h4 >{{ stay.capacity }}</h4>
     <h4 >{{ stay.equipment.bedroomNum }}</h4>
     <h4 >{{ formatPrice }}</h4>

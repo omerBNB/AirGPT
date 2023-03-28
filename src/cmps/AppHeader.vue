@@ -49,7 +49,7 @@
       <RouterLink class="airgpt-your-home-link" to="/dashboard/stay/edit"> Airgpt your home </RouterLink>
       <section class="loggedin-user" @click="toggleUserOptions" >
         <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser"/>
-        <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser" />
+        <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser"/>
         <img class="burger-img"
           src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png" alt="" />
         <div class="user-mini-section">
@@ -61,12 +61,13 @@
     <InnerHeader v-if="!isWideView" @closeModal="closeWiderView" :activeModal="activateModal" @scroll="closeWiderView" />
   </header>
   <hr class="hr" v-if="isWideView" />
-  <section class="white-bgc full" v-if="!isWideView"></section>
+  <section class="white-bgc full" v-if="!isWideView" ></section>
 </template>
 <script>
 import UserOptionsNoUserLogin from './UserOptionsNoUserLogin.vue'
 import UserOptionsLoggedinUser from './UserOptionsLoggedinUser.vue'
 import InnerHeader from './InnerHeader.vue'
+
 
 export default {
   props: {
@@ -84,6 +85,7 @@ export default {
   },
   created() {
     window.addEventListener('scroll', this.closeWiderView)
+    
   },
   unmounted() {
     window.removeEventListener('scroll', this.closeWiderView);
@@ -91,7 +93,9 @@ export default {
   methods: {
     toggleUserOptions() {
       this.isInUserView = !this.isInUserView
-      
+    },
+    onClickOutside(target) {
+     
     },
     showCurrModal(modalName) {
       this.$emit('onShowBackDrop')
@@ -103,7 +107,7 @@ export default {
     openLogin() {
       this.isUserLogin = true
       this.$emit('showLoginModal', this.isUserLogin)
-    }
+    },
   },
   computed: {
     loggedInUser() {

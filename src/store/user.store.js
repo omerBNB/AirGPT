@@ -27,7 +27,6 @@ export const userStore = {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = (user) ? { ...user } : null
-            console.log('state.loggedinUser',state.loggedinUser)
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user
@@ -129,16 +128,15 @@ export const userStore = {
             commit({ type: 'setLoggedinUser', user })
         },
         async addNewStay({ commit, state }, { newStay }) {
-            let emptyStay = stayService.getEmptyStay()
             let user = JSON.parse(JSON.stringify(state.loggedinUser))
-            emptyStay.loc.name = newStay.name
-            emptyStay.loc.country = newStay.country
-            emptyStay.loc.city = newStay.city
-            emptyStay.address = newStay.address
-            const stay = await stayService.save(emptyStay)
-            user.stayList.push(stay)
+            const idx = user.stayList.findIndex(stay => stay._id === newStay._id)
+            let stay = await stayService.save(newStay)
+            if (idx > -1){
+                user.stayList.splice(idx,1, stay)
+            }else{
+                user.stayList.push(stay)
+            }
             const updatedUser = await userService.save(user)
-            console.log('updatedUser',updatedUser)
             commit({ type: 'setLoggedinUser', user: updatedUser })
         }
     }

@@ -9,7 +9,7 @@
       {{
         innerHeaderFilter.range.start
           ? this.innerHeaderFilter.range.start.toDateString().substring(4, 11)
-          : 'Add dates'
+          : (searchQuery.checkin? searchQuery.checkin.substring(0, 6) : 'Add dates')
       }}
     </div>
   </button>
@@ -23,7 +23,7 @@
       {{
         innerHeaderFilter.range.end
           ? this.innerHeaderFilter.range.end.toDateString().substring(4, 11)
-          : 'Add dates'
+          : (searchQuery.checkout? searchQuery.checkout.substring(0, 6) : 'Add dates')
       }}
     </div>
   </button>
@@ -54,6 +54,7 @@ export default {
     return {
       date2: new Date(),
       columns: null,
+      searchQuery: this.$route.query
     }
   },
   methods: {

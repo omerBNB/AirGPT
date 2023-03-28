@@ -10,7 +10,7 @@
         class="where-to-input"
         type="search"
         placeholder="Search destination"
-        :value="innerHeaderFilter.where" />
+        :value="innerHeaderFilter.where? innerHeaderFilter.where : searchQuery.where" />
     </form>
     <section class="grid stay-where-search" v-if="acitveModalInner === 'where'">
       <div>
@@ -154,7 +154,8 @@ export default {
   },
   data() {
     return {
-      searchQuery: this.$route.query
+      searchQuery: this.$route.query,
+      filterByInnerHeader: ''
     }
   },
   methods: {

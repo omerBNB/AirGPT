@@ -16,7 +16,7 @@
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
-    <RouterView ref="test" />
+    <RouterView/>
     <AppFooter />
     <UserMsg />
   </section>

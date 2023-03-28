@@ -5,11 +5,11 @@
     :class="{ isActive: acitveModalInner === 'search' }">
     <button class="inner-header-dates-btn-search" ref="search">
       <div>Who</div>
-      <div :class="innerHeaderFilter.guests.adults ? 'bold-inner-search' : ''">
+      <div :class="+innerHeaderFilter.guests.adults ? 'bold-inner-search' : ''">
         {{
           innerHeaderFilter.guests.adults
-            ? innerHeaderFilter.guests.adults + innerHeaderFilter.guests.children + ' guests'
-            : 'Add guests'
+            ? +innerHeaderFilter.guests.adults + +innerHeaderFilter.guests.children + ' guests'
+            :  'Add guests'
         }}
       </div>
     </button>
@@ -46,7 +46,7 @@
       <div class="flex-inner-search-btns">
         <button
           class="add-guest-button"
-          :class="innerHeaderFilter.guests.adults ? '' : 'disabled'"
+          :class="innerHeaderFilter.guests.adults? '' : 'disabled'"
           @click.stop="handleGuests('adults', -1)">
           <span class="_8ovatg"
             ><svg
@@ -99,7 +99,7 @@
       <div class="flex-inner-search-btns">
         <button
           class="add-guest-button"
-          :class="innerHeaderFilter.guests.children ? '' : 'disabled'"
+          :class="+innerHeaderFilter.guests.children ? '' : 'disabled'"
           @click.stop="handleGuests('children', -1)">
           <span class="_8ovatg"
             ><svg
@@ -152,7 +152,7 @@
       <div class="flex-inner-search-btns">
         <button
           class="add-guest-button"
-          :class="innerHeaderFilter.guests.infants ? '' : 'disabled'"
+          :class="+innerHeaderFilter.guests.infants ? '' : 'disabled'"
           @click.stop="handleGuests('infants', -1)">
           <span class="_8ovatg"
             ><svg
@@ -205,7 +205,7 @@
       <div class="flex-inner-search-btns">
         <button
           class="add-guest-button"
-          :class="innerHeaderFilter.guests.pets ? '' : 'disabled'"
+          :class="+innerHeaderFilter.guests.pets ? '' : 'disabled'"
           @click.stop="handleGuests('pets', -1)">
           <span class="_8ovatg"
             ><svg
@@ -263,7 +263,9 @@ export default {
     innerHeaderFilter: Object,
   },
   data() {
-    return {}
+    return {
+      searchQuery: this.$route.query
+    }
   },
   methods: {
     setActiveModalsearch(btnName) {
@@ -271,14 +273,19 @@ export default {
     },
     handleGuests(guestType, diff) {
       if (!this.innerHeaderFilter.guests[guestType] && diff === -1) return
-      this.innerHeaderFilter.guests[guestType] += diff
+      this.innerHeaderFilter.guests[guestType] = +this.innerHeaderFilter.guests[guestType] +diff
     },
     searchDestination() {
       this.$emit('searchDestination')
     },
   },
   computed: {},
-  created() {},
+  created() {
+    if(this.$route.query){
+      const {adults,children,infants,pets} = this.$route.query
+      this.innerHeaderFilter.guests = {adults,children,infants,pets}
+    }
+  },
   components: {},
   emits: ['setActiveModalsearch', 'searchDestination'],
 }

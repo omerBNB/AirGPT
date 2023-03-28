@@ -63,7 +63,6 @@ export default {
     },
     searchDestination() {
       this.$emit('closeModal')
-      console.log('this.innerHeaderFilter.range.start.toDateString().substring(4, 11)',this.innerHeaderFilter.range.start.toDateString())
       this.$router.push({
         path: '/stay/explore',
         query: {

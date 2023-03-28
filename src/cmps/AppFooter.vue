@@ -1,5 +1,5 @@
 <template>
-    <section class="app-footer">
+    <section class="app-footer main-container">
         <section class="footer">
           <div class="coffeerights">
             <p>© 2023 Airgpt, inc</p>

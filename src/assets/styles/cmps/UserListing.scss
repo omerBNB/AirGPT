@@ -51,7 +51,14 @@
         justify-content: space-between;
         gap: 5px;
         grid-column: 1;
-        width: max-content;
+        // width: max-content;
+        h4{
+          &.listing-stay-preview-h4{
+          font-family:CircularAir-Light ;
+          overflow: hidden;
+          margin: 0;
+        }
+        }
     }
 
     .listing-preview-btn {
@@ -60,8 +67,10 @@
       border-radius: 5px;
       font-size: .7em;
       color: gray;
-      height: 35px;
+      // height: 35px;
+      padding: 8px;
       width: 114px;
+      text-align: center;
       cursor: pointer;
     }
     .listing-preview-img {

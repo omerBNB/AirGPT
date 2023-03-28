@@ -879,13 +879,13 @@ function getEmptyStay() {
       '../../src/imgs/imgs_test/ListImgsTest/a/4.webp',
       '../../src/imgs/imgs_test/ListImgsTest/a/5.webp',
     ],
-    price: 1634.0, // in preview!
+    price: 0, // in preview!
     summary:
-      'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
-    capacity: 8, // guest number
-    equipment: { bedroomNum: 5, bedsNum: 11, bathNum: 4 },
-    amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
-    labels: ['Top of the world', 'Trending', 'Play', 'Tropical', 'Castles'],
+      '',
+    capacity: 0, // guest number
+    equipment: { bedroomNum: 0, bedsNum: 0, bathNum: 0 },
+    amenities: [],
+    labels: [],
     host: {
       _id: '84659731',
       fullname: 'Omer',

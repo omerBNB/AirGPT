@@ -19,11 +19,20 @@
     margin-block-start: 50px;
     border-radius: 15px;
     padding: 20px;
-    background-color: rgb(224, 224, 224,.4);
+    background-color: rgb(224, 224, 224, 0.4);
     > * {
-    grid-column: 2;
-  }
-    input {
+      grid-column: 2;
+    }
+    .edit-amaneties-selection {
+      width: max-content;
+    }
+    .edit-stay-second-inputs{
+      display: grid;
+      grid-auto-flow: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .edit-stay-first-inputs {
       border: 0;
       outline: 0;
       font-family: inherit;
@@ -32,6 +41,11 @@
       border-radius: 15px;
       min-width: 100px;
       width: 100%;
+    }
+    .edit-textarea{
+      resize: none;
+      width: 100%;
+      height: 50px;
     }
     .stay-name-editor {
       width: 100%;

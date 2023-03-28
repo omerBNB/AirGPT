@@ -46,7 +46,7 @@ const routes = [
     component: Dashboard,
     children: [
       {
-        path: 'stay/edit',
+        path: 'stay/edit/:stayId?',
         name: 'StayEdit',
         component: StayEdit,
       },
