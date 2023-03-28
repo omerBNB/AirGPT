@@ -1,8 +1,8 @@
 <template>
   <div>
     <CarouselFilter @setFilterBy="setFilterBy" />
-    <h5 class="stay-explore-h5" v-if="stays.length">Over {{stays.length}} homes</h5>
-    <StayList :stays="stays" :detailsRouteParams="this.$route.query"/>
+    <h5 class="stay-explore-h5" v-if="stays.length">Over {{ stays.length }} homes</h5>
+    <StayList :stays="stays" :detailsRouteParams="this.$route.query" />
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       stayToAdd: stayService.getEmptyStay(),
-      filterByUserSpecs: null
+      filterByUserSpecs: null,
     }
   },
   mounted() {
@@ -74,7 +74,7 @@ export default {
       console.log('stay msgs:', stay.msgs)
     },
     setFilterBy(filter) {
-      this.$store.dispatch({ type: "setFilterBy", filter });
+      this.$store.dispatch({ type: 'setFilterBy', filter })
     },
   },
   computed: {
@@ -83,6 +83,14 @@ export default {
     },
     stays() {
       return this.$store.getters.stays
+    },
+  },
+  watch: {
+    $route() {
+      if (this.$route.query !== this.filterByUserSpecs) {
+        this.filterByUserSpecs = this.$route.query
+        this.$store.dispatch({ type: 'searchByUserSpecs', filterUserSpecs: this.filterByUserSpecs })
+      }
     },
   },
   components: {

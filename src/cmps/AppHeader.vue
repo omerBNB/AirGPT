@@ -19,6 +19,7 @@
         }}
       </button>
       <div class="border-line"></div>
+
       <button @click="showCurrModal('search')" class="main-filter-btn guests"
         :class="this.userSearchSpec.adults ? 'bold' : ''">
         {{ this.userSearchSpec.adults ? this.userSearchSpec.adults + ' guests' : 'Add guests' }}

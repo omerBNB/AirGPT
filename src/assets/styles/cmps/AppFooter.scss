@@ -1,5 +1,6 @@
 .app-footer {
     position: fixed;
+    // display: grid;
     bottom: 0px;
     width: 100%;
     z-index: 2;
@@ -9,6 +10,7 @@
     background-color: #f7f7f7;
     font-family: Airbnb_Cereal-Book;
     font-size: 1em;
+    grid-column: 2;
     .footer {
         display: flex;
         align-items: center;

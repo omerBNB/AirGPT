@@ -32,7 +32,8 @@
   }
 
   .main-filter-header {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     width: 352px;
     height: 48px;
     border-radius: 50px;
@@ -49,7 +50,6 @@
       cursor: pointer;
       font-size: 13.9px;
     }
-
     .guests {
       color: #717171;
       font-weight: normal;

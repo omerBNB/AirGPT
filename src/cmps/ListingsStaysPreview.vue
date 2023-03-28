@@ -1,5 +1,5 @@
 <template>
-  <div class="listing-stay-preview">
+  <div class="listing-stay-preview" >
     <img class="listing-preview-img" :src="stay.imgUrls[0]" alt="" />
     <h4>{{ stay.name }} shoko moko</h4>
   </div>
