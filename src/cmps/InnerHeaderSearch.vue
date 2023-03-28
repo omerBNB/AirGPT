@@ -227,7 +227,7 @@
             </svg>
           </span>
         </button>
-        <span class="add-guest-span">{{ innerHeaderFilter.guests.pets }}</span>
+        <span class="add-guest-span">{{ +innerHeaderFilter.guests.pets }}</span>
         <button class="add-guest-button" @click.stop="handleGuests('pets', 1)">
           <span class="_8ovatg"
             ><svg
