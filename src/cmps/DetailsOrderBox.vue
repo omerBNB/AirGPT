@@ -169,10 +169,15 @@
         <p>$327.15</p>
       </div>
 
-      <DetailsCalendar v-if="calendarIsShown" @closeModal="closeModal" :checkin="order.checkin"
+      <DetailsCalendar
+        v-if="calendarIsShown"
+        @closeModal="closeModal"
+        :checkin="order.checkin"
         :checkout="order.checkout" />
 
-      <DetailsGuestModal @closeGuestModal="this.guestModalIsShown = false" v-if="this.guestModalIsShown" />
+      <DetailsGuestModal
+        @closeGuestModal="this.guestModalIsShown = false"
+        v-if="this.guestModalIsShown" />
     </section>
 
     <!-- <p class="footer">Report this listing</p> -->
@@ -281,6 +286,13 @@ export default {
 
   mounted() {
     const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+    console.log('pets:', pets)
+    console.log('infants:', infants)
+    console.log('children:', children)
+    console.log('adults:', adults)
+    console.log('checkout:', checkout)
+    console.log('checkin:', checkin)
+    console.log('where:', where)
     this.order.where = where
     this.order.checkin = checkin
     this.order.checkout = checkout
