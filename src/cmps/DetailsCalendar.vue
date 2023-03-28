@@ -36,7 +36,6 @@
 </template>
 
 <script>
-//
 import { useScreens } from 'vue-screen-utils'
 export default {
   name: 'DetailsCalendar',
@@ -82,9 +81,7 @@ export default {
     }
   },
   methods: {
-    hey() {
-      // console.log('this.date!', this.date)
-    },
+    hey() {},
   },
   computed: {},
   created() {

@@ -261,33 +261,39 @@ export default {
 
   methods: {
     submitOrder() {
+      // 1. params push and move to order with new info - IDO
       const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
       this.$router.push({
         path: '/stay/book/' + this.stayId,
-        query: { plan: where, checkin, checkout, adults, children, infants, pets },
+        query: {
+          where: this.info.where,
+          checkin: this.info.checkin,
+          checkout: this.info.checkout,
+          adults: this.info.adults,
+          children,
+          infants,
+          pets,
+        },
       })
+      // 2 .move info to store, and from store to Listing - OMER
     },
     closeModal(date) {
       console.log('close')
       this.calendarIsShown = false // close modal
       this.info.checkin = date.start.toDateString()
       this.info.checkout = date.end.toDateString()
-      console.log('this.info', this.info)
-      // console.log('this.info.checkout:', this.info.checkout)
-      // http://localhost:5173/#/stay/27783059?where=United+States&checkin=Mar+18+2023&checkout=Apr+20+2023&adults=2&children=1&infants=0&pets=0
-      // http://localhost:5173/#/stay/27783059?where=United+States&checkin=Mar+18+2023&checkout=Apr+20+2023&adults=2&children=1&infants=0&pets=0
-      this.$router.push({
-        path: '/stay/' + this.stayId,
-        query: {
-          where: this.info.where,
-          checkin: this.info.checkin,
-          checkout: this.info.checkout,
-          adults: this.info.adults,
-          children: this.info.children,
-          infants: this.info.infants,
-          pets: this.info.pets,
-        },
-      })
+      // this.$router.push({
+      //   path: '/stay/' + this.stayId,
+      //   query: {
+      //     where: this.info.where,
+      //     checkin: this.info.checkin,
+      //     checkout: this.info.checkout,
+      //     adults: this.info.adults,
+      //     children: this.info.children,
+      //     infants: this.info.infants,
+      //     pets: this.info.pets,
+      //   },
+      // })
     },
   },
 

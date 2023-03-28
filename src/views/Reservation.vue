@@ -31,6 +31,7 @@
         </div>
 
         <div class="box">
+          <h1>Something</h1>
           <LineChart />
           <!-- <h1>Reviews</h1>
           <p>
@@ -43,8 +44,8 @@
       </section>
     </section>
 
-    <section class="right-side-reservation">
-      <el-scrollbar style="height: 100%">
+    <el-scrollbar style="height: 100%">
+      <section class="right-side-reservation">
         <article class="subtitle grid">
           <p>Guest</p>
           <p>Check in</p>
@@ -52,11 +53,11 @@
           <p>Stay Name</p>
           <p>Price</p>
           <p>Status</p>
-          <p>Buttons</p>
+          <p></p>
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/yuval.jpg" />
             <h3>Yuval</h3>
           </div>
@@ -70,7 +71,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/omer.jpg" />
             <h3>Omer</h3>
           </div>
@@ -84,7 +85,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/inon.jpg" />
             <h3>Inon</h3>
           </div>
@@ -98,7 +99,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/ido.jpg" />
             <h3>Ido</h3>
           </div>
@@ -112,7 +113,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/yuval.jpg" />
             <h3>Yuval</h3>
           </div>
@@ -126,7 +127,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/omer.jpg" />
             <h3>Omer</h3>
           </div>
@@ -140,7 +141,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/inon.jpg" />
             <h3>Inon</h3>
           </div>
@@ -154,7 +155,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/ido.jpg" />
             <h3>Ido</h3>
           </div>
@@ -167,7 +168,7 @@
           <button class="btn reject-btn">Reject</button>
         </article>
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/yuval.jpg" />
             <h3>Yuval</h3>
           </div>
@@ -181,7 +182,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/omer.jpg" />
             <h3>Omer</h3>
           </div>
@@ -195,7 +196,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/inon.jpg" />
             <h3>Inon</h3>
           </div>
@@ -209,7 +210,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/ido.jpg" />
             <h3>Ido</h3>
           </div>
@@ -222,7 +223,7 @@
           <button class="btn reject-btn">Reject</button>
         </article>
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/yuval.jpg" />
             <h3>Yuval</h3>
           </div>
@@ -236,7 +237,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/omer.jpg" />
             <h3>Omer</h3>
           </div>
@@ -250,7 +251,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/inon.jpg" />
             <h3>Inon</h3>
           </div>
@@ -264,7 +265,7 @@
         </article>
 
         <article class="card">
-          <div class="flex align-center">
+          <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/ido.jpg" />
             <h3>Ido</h3>
           </div>
@@ -276,8 +277,8 @@
           <button class="btn approve-btn">Approve</button>
           <button class="btn reject-btn">Reject</button>
         </article>
-      </el-scrollbar>
-    </section>
+      </section>
+    </el-scrollbar>
   </section>
 </template>
 
