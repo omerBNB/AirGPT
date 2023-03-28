@@ -1,8 +1,8 @@
 import { userService } from '../services/user.service'
 import { stayService } from '../services/stay.service.local'
-import { orderService } from '../services/order.service.local'
+import { tripService } from '../services/trip.service.local'
 
-export const orderStore = {
+export const tripsStore = {
     state: {
     },
     getters: {
@@ -10,7 +10,7 @@ export const orderStore = {
     mutations: {
     },
     actions: {
-        createNewOrder({commit},{order}){
+        createNewTrip({ commit }, { trip }) {
             console.log('example')
         }
     }

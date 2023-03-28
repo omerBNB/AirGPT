@@ -1,5 +1,6 @@
 <template>
     <section class="trips-preview grid">
+        <!-- <P>{{ this.user.trips }}</P> -->
         <section class="wishlist">Wishlist</section>
         <section class="message">Message</section>
         <NextStayPreview v-if="nextStays" class="mini-card next-stay flex" :nextStays="nextStays" />
@@ -15,7 +16,7 @@ export default {
     props: { user: Object },
     computed: {
         nextStays() {
-            return this.user.stayList.length ? this.user.stayList.filter(stay => !stay.isDone) : null
+            // return this.user.trips.length ? this.user.trips.filter(stay => !stay.isDone) : null
         },
     },
     components: {

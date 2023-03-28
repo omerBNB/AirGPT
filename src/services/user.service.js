@@ -40,6 +40,8 @@ function _createUsers() {
             stayList: [], //user stay list as a host,
             trips: [{
                 isDone: false,
+                checkIn: '2025/10/15',
+                checkOut: '2025/10/17',
                 _id: '10006546',
                 name: 'Ribeira Charming Duplex',
                 type: 'House',
