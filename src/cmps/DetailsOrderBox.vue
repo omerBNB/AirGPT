@@ -261,8 +261,10 @@ export default {
 
   methods: {
     submitOrder() {
+      // /        stay/14123456?where=United+States&checkin=Apr+10+2023&     checkout=Apr+20+2023     &adults=2&children=1&infants=0&pets=0
+      // /?#/stay/book/14123456?where=United+States&checkin=Wed+Apr+12+2023& checkout=Wed+Apr+26+2023 &adults=2&children=1&infants=0&pets=0
       // 1. params push and move to order with new info - IDO
-      const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+      // const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
       this.$router.push({
         path: '/stay/book/' + this.stayId,
         query: {
@@ -270,30 +272,17 @@ export default {
           checkin: this.info.checkin,
           checkout: this.info.checkout,
           adults: this.info.adults,
-          children,
-          infants,
-          pets,
+          children: this.info.children,
+          infants: this.info.infants,
+          pets: this.info.pets,
         },
       })
       // 2 .move info to store, and from store to Listing - OMER
     },
     closeModal(date) {
-      console.log('close')
-      this.calendarIsShown = false // close modal
+      this.calendarIsShown = false
       this.info.checkin = date.start.toDateString()
       this.info.checkout = date.end.toDateString()
-      // this.$router.push({
-      //   path: '/stay/' + this.stayId,
-      //   query: {
-      //     where: this.info.where,
-      //     checkin: this.info.checkin,
-      //     checkout: this.info.checkout,
-      //     adults: this.info.adults,
-      //     children: this.info.children,
-      //     infants: this.info.infants,
-      //     pets: this.info.pets,
-      //   },
-      // })
     },
   },
 
@@ -303,18 +292,23 @@ export default {
     console.log('this.info!:', this.info)
   },
 
-  // watch: {
-  //   info(newInfo, oldInfo) {
-  //     console.log('hey')
-  //     this.$router.push({ query: { checkin: newInfo.checkin } })
-  //   },
-  // },
-
   components: {
     DetailsCalendar,
     DetailsGuestModal,
   },
 }
+// this.$router.push({
+//   path: '/stay/' + this.stayId,
+//   query: {
+//     where: this.info.where,
+//     checkin: this.info.checkin,
+//     checkout: this.info.checkout,
+//     adults: this.info.adults,
+//     children: this.info.children,
+//     infants: this.info.infants,
+//     pets: this.info.pets,
+//   },
+// })
 </script>
 
 <style></style>
