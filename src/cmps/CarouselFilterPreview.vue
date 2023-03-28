@@ -1,5 +1,5 @@
 <template>
-    <Carousel :settings="settings" :breakpoints="breakpoints" :itemsToShow="8">
+    <Carousel :settings="settings" :breakpoints="breakpoints">
         <Slide v-for="label in labels" :key="label.key">
             <div :class="{ 'label flex flex-column': true, 'isActive': activeModalInner === label.key }" @click="$emit('setFilterBy', label.key);
             setActiveModal(label.key);">
@@ -28,22 +28,25 @@ export default {
     },
     data() {
         return {
-            // carousel settings
             settings: {
                 itemsToShow: 1,
                 snapAlign: 'center',
             },
-            // breakpoints are mobile first
-            // any settings not specified will fallback to the carousel settings
             breakpoints: {
-                // 700px and up
-                700: {
-                    itemsToShow: 3.5,
+
+                500: {
+                    itemsToShow: 5,
+                    itemsToScroll: 5,
                     snapAlign: 'center',
                 },
-                // 1024 and up
+                700: {
+                    itemsToShow: 10,
+                    itemsToScroll: 10,
+                    snapAlign: 'center',
+                },
                 1024: {
                     itemsToShow: 15,
+                    itemsToScroll: 15,
                     snapAlign: 'start',
                 },
             },

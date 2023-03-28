@@ -13,6 +13,7 @@ import Dashboard from './views/Dashboard.vue'
 import Reservation from './views/Reservation.vue'
 import Listings from './views/Listings.vue'
 import WishList from './views/WishList.vue'
+import Trips from './views/Trips.vue'
 
 const routes = [
   {
@@ -86,6 +87,11 @@ const routes = [
     path: '/wishlist',
     name: 'wishlist',
     component: WishList,
+  },
+  {
+    path: '/trips',
+    name: 'Trips',
+    component: Trips,
   },
 ]
 

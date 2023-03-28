@@ -18,6 +18,9 @@ export default {
             return this.$store.getters.loggedinUser
         },
     },
+    mounted() {
+        document.getElementById('main-app').classList.value = `main-container ${this.$route.name}-grid`
+    },
     components: { WishListPreview }
 }
 </script>

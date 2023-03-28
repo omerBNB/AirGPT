@@ -6,42 +6,7 @@
 .main-container {
   display: grid;
   position: relative;
-  // grid-template-columns: 20px 1fr 20px;
-  // padding: 0;
-
-  @include for-mobile-layout {
-    // background-color: saddlebrown;
-    grid-template-columns: 24px minmax(320px, $mobile-breakpoint) 24px;
-  }
-
-  @include for-mobile-big-layout {
-    // background-color: darkgreen;
-    grid-template-columns: 40px minmax(330px, 900px) 40px;
-  }
-
-  @include for-tablet-layout {
-    // background-color: darkgoldenrod;
-    grid-template-columns: 24px minmax(744px, 1500px) 24px;
-  }
-
-  @include for-narrow-layout {
-    // background-color: darkcyan;
-    grid-template-columns: 40px minmax(950px, $wide-breakpoint) 40px;
-  }
-
-  // @include for-normal-layout {
-  //   background-color: blue;
-  //   grid-template-columns: 24px minmax(1128px, $normal-breakpoint) 24px;
-  // }
-  @include for-wide-layout {
-    // background-color: #473333;
-    grid-template-columns: 50px minmax(auto, $wide-breakpoint - 40px) 50px;
-  }
-
-  @include for-full-wide-layout {
-    // background-color: #dacaa8;
-    grid-template-columns: 50px minmax(auto, $full-wide-breakpoint + 50px) 50px;
-  }
+  grid-template-columns: minmax(50px, 1fr) minmax(auto, 1800px) minmax(50px, 1fr);
 
   &.details-grid {
     grid-template-columns: minmax(24px, 1fr) minmax(auto, 1120px) minmax(24px, 1fr);
@@ -60,95 +25,8 @@
       grid-column: 1 /-1;
     }
   }
-
-  // @include for-normal-layout {
-  //   grid-template-columns: minmax(40px, 1fr) minmax(1128px, $normal-breakpoint) minmax(40px, 1fr);
-  // }
 }
 
 .cards-layout {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-
-
-  // @include for-cards-big-layout {
-  //   grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));
-  //   gap: 0.6em;
-
-  //   .stay-card {
-  //     width: 291px;
-  //   }
-
-  //   .el-carousel__container {
-  //     height: 264px;
-  //   }
-  // }
-
-  @include for-tablet-layout {
-    grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));
-    gap: 0.6em;
-
-    .stay-card {
-      width: 100%;
-    }
-
-    .el-carousel__container {
-      height: 264px;
-    }
-  }
-
-  @include for-narrow-layout {
-    // grid-template-columns: repeat(5, minmax(100px, 270px));
-    grid-template-columns: repeat(auto-fill, minmax(0.8fr, 1fr));
-    gap: 0.6em;
-
-    .stay-card {
-      width: 100%;
-    }
-
-    .el-carousel__container {
-      height: 264px;
-    }
-  }
-
-  @include for-wide-layout {
-    // background-color: rgb(148, 131, 131);
-    grid-template-columns: repeat(6, minmax(100px, 270px));
-    gap: 2.5em;
-
-    .stay-card {
-      width: 100%;
-    }
-
-    .el-carousel__container {
-      height: 257px;
-    }
-  }
-
-  // @include for-wide-layout {
-  //   // background-color: rgb(148, 131, 131);
-  //   grid-template-columns: repeat(6, minmax(100px, 270px));
-  //   gap: 2.5em;
-
-  //   .stay-card {
-  //     width: 100%;
-  //   }
-
-  //   .el-carousel__container {
-  //     height: 257px;
-  //   }
-  // }
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
-
-// .stay-card{
-// width: something
-// }
-
-// .el-carousel__container {
-//     position: relative;
-//     height: 250px;
-// }
-
-// mixings

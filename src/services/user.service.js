@@ -20,7 +20,7 @@ export const userService = {
     remove,
     changeScore,
     save,
-    addStayToWishList,
+    updateWishList,
 }
 
 window.userService = userService
@@ -70,9 +70,13 @@ function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
 
-function addStayToWishList(stay) {
+function updateWishList(stay) {
     const user = getLoggedinUser()
-    if (!user.wishList.includes(stay)) user.wishList.push(stay)
+    if (!user.wishList.find(s => +s._id === +stay._id)) user.wishList.push(stay)
+    else {
+        let idx = user.wishList.findIndex(s => s._id === stay._id)
+        user.wishList.splice(idx, 1)
+    }
     saveLocalUser(user)
     return save(user)
 }
