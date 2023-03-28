@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="newStay">
     <form @submit.prevent="addNewStay" class="stay-edit-container" v-if="loggedInUser">
       <div class="stay-name-editor">
         <h2>
@@ -165,7 +165,7 @@
           v-model="newStay.summary"
           style="width: 100%"></textarea>
       </div>
-      <RouterLink class="btn-container" to="/">Add</RouterLink>
+      <button class="btn-container">Add</button>
     </form>
     <h1 v-if="!loggedInUser">Please Login</h1>
   </section>
@@ -183,6 +183,7 @@ export default {
   methods: {
     addNewStay() {
       this.$store.dispatch({ type: 'addNewStay', newStay: this.newStay })
+      this.$router.push('/dashboard/listing')
     },
     async handleFile(ev) {
       console.log('ev', ev.type)

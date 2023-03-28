@@ -172,8 +172,8 @@
       <DetailsCalendar
         v-if="calendarIsShown"
         @closeModal="closeModal"
-        :checkin="info.checkin"
-        :checkout="info.checkout" />
+        :checkin="order.checkin"
+        :checkout="order.checkout" />
 
       <DetailsGuestModal
         @closeGuestModal="this.guestModalIsShown = false"
@@ -187,6 +187,7 @@
 <script>
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
+import { orderService } from '../services/order.service.loc'
 export default {
   name: 'DetailsOrderBox',
   props: {
@@ -204,7 +205,7 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      info: {},
+      order: orderService.getEmptyorder(),
     }
   },
   computed: {
@@ -261,54 +262,55 @@ export default {
 
   methods: {
     submitOrder() {
-      const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
       this.$router.push({
         path: '/stay/book/' + this.stayId,
-        query: { plan: where, checkin, checkout, adults, children, infants, pets },
-      })
-    },
-    closeModal(date) {
-      console.log('close')
-      this.calendarIsShown = false // close modal
-      this.info.checkin = date.start.toDateString()
-      this.info.checkout = date.end.toDateString()
-      console.log('this.info', this.info)
-      // console.log('this.info.checkout:', this.info.checkout)
-      // http://localhost:5173/#/stay/27783059?where=United+States&checkin=Mar+18+2023&checkout=Apr+20+2023&adults=2&children=1&infants=0&pets=0
-      // http://localhost:5173/#/stay/27783059?where=United+States&checkin=Mar+18+2023&checkout=Apr+20+2023&adults=2&children=1&infants=0&pets=0
-      this.$router.push({
-        path: '/stay/' + this.stayId,
         query: {
-          where: this.info.where,
-          checkin: this.info.checkin,
-          checkout: this.info.checkout,
-          adults: this.info.adults,
-          children: this.info.children,
-          infants: this.info.infants,
-          pets: this.info.pets,
+          where: this.order.where,
+          checkin: this.order.checkin,
+          checkout: this.order.checkout,
+          adults: this.order.guests.adults,
+          children: this.order.guests.children,
+          infants: this.order.guests.infants,
+          pets: this.order.guests.pets,
         },
       })
+      this.$store.dispatch({ type: 'createNewOrder', order: this.order })
+    },
+    closeModal(date) {
+      this.calendarIsShown = false
+      this.order.checkin = date.start.toDateString()
+      this.order.checkout = date.end.toDateString()
     },
   },
 
   mounted() {
-    // const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
-    this.info = this.$route.query
-    console.log('this.info!:', this.info)
+    const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+    this.order.where = where
+    this.order.checkin = checkin
+    this.order.checkout = checkout
+    this.order.guests.adults = adults
+    this.order.guests.children = children
+    this.order.guests.infants = infants
+    this.order.guests.pets = pets
   },
-
-  // watch: {
-  //   info(newInfo, oldInfo) {
-  //     console.log('hey')
-  //     this.$router.push({ query: { checkin: newInfo.checkin } })
-  //   },
-  // },
 
   components: {
     DetailsCalendar,
     DetailsGuestModal,
   },
 }
+// this.$router.push({
+//   path: '/stay/' + this.stayId,
+//   query: {
+//     where: this.info.where,
+//     checkin: this.info.checkin,
+//     checkout: this.info.checkout,
+//     adults: this.info.adults,
+//     children: this.info.children,
+//     infants: this.info.infants,
+//     pets: this.info.pets,
+//   },
+// })
 </script>
 
 <style></style>
