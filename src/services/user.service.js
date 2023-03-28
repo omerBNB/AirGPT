@@ -37,7 +37,7 @@ function _createUsers() {
             password: 123,
             imgUrl: '../../src/imgs/imgs_test/omer.jpg',
             wishList: [],
-            stayList: []
+            stayList: [], //user stay list as a host
         }]
         utilService.saveToStorage(USER, gUsers)
     }
@@ -83,10 +83,10 @@ function updateWishList(stay) {
 
 async function save(user) {
     let savedUser
-    console.log('user',user)
+    console.log('user', user)
     if (user._id) savedUser = await storageService.put(USER, user)
     else savedUser = await storageService.post(USER, user)
-    saveLocalUser(savedUser)    
+    saveLocalUser(savedUser)
     return savedUser
 }
 

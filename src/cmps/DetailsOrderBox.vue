@@ -187,6 +187,7 @@
 <script>
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
+import { orderService } from '../services/order.service.loc'
 export default {
   name: 'DetailsOrderBox',
   props: {
@@ -205,6 +206,7 @@ export default {
       calendarIsShown: false,
       guestModalIsShown: false,
       info: {},
+      order: orderService.getEmptyorder()
     }
   },
   computed: {
@@ -261,20 +263,19 @@ export default {
 
   methods: {
     submitOrder() {
-      // 1. params push and move to order with new info - IDO
-      const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
       this.$router.push({
         path: '/stay/book/' + this.stayId,
         query: {
-          where: this.info.where,
-          checkin: this.info.checkin,
-          checkout: this.info.checkout,
-          adults: this.info.adults,
-          children,
-          infants,
-          pets,
+          where: this.order.where,
+          checkin: this.order.checkin,
+          checkout: this.order.checkout,
+          adults: this.order.guests.adults,
+          children:this.order.guests.children,
+          infants:this.order.guests.infants,
+          pets:this.order.guests.pets,
         },
       })
+      this.$store.dispatch({type:'createNewOrder', order:this.order})
       // 2 .move info to store, and from store to Listing - OMER
     },
     closeModal(date) {
@@ -298,9 +299,16 @@ export default {
   },
 
   mounted() {
-    // const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
-    this.info = this.$route.query
-    console.log('this.info!:', this.info)
+    const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+    // this.info = this.$route.query
+    // console.log('this.info!:', this.info)
+    this.order.where = where
+    this.order.checkin = checkin
+    this.order.checkout = checkout
+    this.order.guests.adults = adults
+    this.order.guests.children = children
+    this.order.guests.infants = infants
+    this.order.guests.pets = pets
   },
 
   // watch: {
