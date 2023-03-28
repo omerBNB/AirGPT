@@ -206,7 +206,7 @@ export default {
       calendarIsShown: false,
       guestModalIsShown: false,
       order: orderService.getEmptyOrder(),
-      nightsBetween: '0',
+      nightsBetween: 0,
     }
   },
   computed: {
@@ -233,7 +233,6 @@ export default {
 
     getDaysBetweenDates(checkin, checkout) {
       if (!checkin || !checkout) return
-      console.log('checkin', checkin)
       const date1 = Date.parse(checkin)
       const date2 = Date.parse(checkout)
       const diffInMs = Math.abs(date2 - date1)
@@ -308,7 +307,7 @@ export default {
     this.order.guests.pets = pets
     //////
 
-    this.getDaysBetweenDates(checkin, checkout)
+    // this.getDaysBetweenDates(checkin, checkout)
   },
 
   components: {
