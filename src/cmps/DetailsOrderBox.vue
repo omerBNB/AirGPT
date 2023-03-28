@@ -172,8 +172,8 @@
       <DetailsCalendar
         v-if="calendarIsShown"
         @closeModal="closeModal"
-        :checkin="info.checkin"
-        :checkout="info.checkout" />
+        :checkin="order.checkin"
+        :checkout="order.checkout" />
 
       <DetailsGuestModal
         @closeGuestModal="this.guestModalIsShown = false"
@@ -187,6 +187,7 @@
 <script>
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
+import { orderService } from '../services/order.service.loc'
 export default {
   name: 'DetailsOrderBox',
   props: {
@@ -204,7 +205,7 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      info: {},
+      order: orderService.getEmptyorder(),
     }
   },
   computed: {
@@ -261,35 +262,36 @@ export default {
 
   methods: {
     submitOrder() {
-      // /        stay/14123456?where=United+States&checkin=Apr+10+2023&     checkout=Apr+20+2023     &adults=2&children=1&infants=0&pets=0
-      // /?#/stay/book/14123456?where=United+States&checkin=Wed+Apr+12+2023& checkout=Wed+Apr+26+2023 &adults=2&children=1&infants=0&pets=0
-      // 1. params push and move to order with new info - IDO
-      // const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
       this.$router.push({
         path: '/stay/book/' + this.stayId,
         query: {
-          where: this.info.where,
-          checkin: this.info.checkin,
-          checkout: this.info.checkout,
-          adults: this.info.adults,
-          children: this.info.children,
-          infants: this.info.infants,
-          pets: this.info.pets,
+          where: this.order.where,
+          checkin: this.order.checkin,
+          checkout: this.order.checkout,
+          adults: this.order.guests.adults,
+          children: this.order.guests.children,
+          infants: this.order.guests.infants,
+          pets: this.order.guests.pets,
         },
       })
-      // 2 .move info to store, and from store to Listing - OMER
+      this.$store.dispatch({ type: 'createNewOrder', order: this.order })
     },
     closeModal(date) {
       this.calendarIsShown = false
-      this.info.checkin = date.start.toDateString()
-      this.info.checkout = date.end.toDateString()
+      this.order.checkin = date.start.toDateString()
+      this.order.checkout = date.end.toDateString()
     },
   },
 
   mounted() {
-    // const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
-    this.info = this.$route.query
-    console.log('this.info!:', this.info)
+    const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+    this.order.where = where
+    this.order.checkin = checkin
+    this.order.checkout = checkout
+    this.order.guests.adults = adults
+    this.order.guests.children = children
+    this.order.guests.infants = infants
+    this.order.guests.pets = pets
   },
 
   components: {
