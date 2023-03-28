@@ -18,8 +18,8 @@ export default defineComponent({
         labels: ['sds', 'dsd'],
         datasets: [
           {
-            label: 'My First Dataset',
             data: [65, 59, 80, 81, 56, 55, 40],
+            label: 'My First Dataset',
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(255, 159, 64, 0.2)',

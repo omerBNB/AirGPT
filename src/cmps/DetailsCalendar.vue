@@ -50,6 +50,9 @@ export default {
     },
   },
   data() {
+    // Date.parse('Mar 02')
+    // 983484000000
+    //  new Date(983484000000).getMonth()+'/'+new Date(983484000000).getDay()
     return {
       columns: null,
       range: null,
