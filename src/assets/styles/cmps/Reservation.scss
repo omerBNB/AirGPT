@@ -2,14 +2,10 @@
   border-radius: 13px;
   gap: 0.5em;
   height: 75vh;
-  width: 100%;
-  margin-bottom: 10em; // DELETE AFTER!
 }
 
 .left-side-reservation {
   padding: 0;
-  width: 40%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -35,36 +31,42 @@
   //
 }
 
+.el-scrollbar {
+  overflow: visible;
+  border-radius: 15px;
+}
 ///////////////////////////////////////////
 .right-side-reservation {
   position: relative;
   display: flex;
-  // gap: 1em;
   flex-direction: column;
-  width: 60%;
-  height: 100%;
   min-width: 800px;
   border: 1px solid rgb(223, 216, 216);
   border-radius: 15px;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 
   .subtitle {
     display: grid;
     justify-items: center;
     align-content: center;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 500;
     // position: fixed;
 
     font-family: Airbnb_Cereal-Medium;
     grid-template-columns: 15% 15% 14% 14% 14% 14% 12%;
-    background-color: rgb(255 56 92 / 27%);
+    background-color: burlywood;
     p {
       margin: 0;
     }
   }
   .card {
-    padding: 0.3em;
+    padding: 0.2em;
     display: grid;
     grid-template-columns: 1fr 14.5% 14.5% 14.5% 14.5% 13.5% 7% 7%;
     align-items: center;
@@ -75,13 +77,17 @@
       background-color: #f5f7fa;
     }
     .img-guest {
-      gap: 0.5em;
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+      width: 93px; /* set a fixed width for the container */
+      height: 45px; /* set a fixed height for the container */
     }
     img {
       width: 45px;
       height: 45px;
+      object-fit: cover; /* control how the image fits inside the container */
       border-radius: 50px;
-      object-fit: cover;
     }
 
     h3,

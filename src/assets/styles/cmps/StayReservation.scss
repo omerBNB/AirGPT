@@ -1,7 +1,8 @@
 .stay-reservation {
-  // text-align: center;
+  display: flex;
+  flex-direction: column;
   margin-block-start: 1.5em;
-  padding: 2em;
+  padding: 1em;
   gap: 1em;
   .title {
     font-size: 2em;
@@ -10,32 +11,55 @@
 
 .reservation-info-container {
   display: flex;
+  gap: 3em;
 
   .info {
     grid-template-rows: repeat(4, 1fr);
-    width: 50vw;
-    height: 60vh;
-    .btn-container {
-      width: 200px;
-      padding: 1.5em;
-      button span {
-        font-size: larger;
-        font-weight: bolder;
-      }
-    }
-    .ground-rules {
-      ul li {
+    align-items: center;
+
+    .ground-rules ul {
+      margin: 0;
+      li {
         list-style-type: circle;
       }
     }
-  }
-  .info > * {
-    margin-block-start: 2.5em;
-    border-bottom: 1px solid rgb(190, 189, 194);
+    //
+    .btn-container {
+      margin: auto;
+      width: 200px;
+      height: 2.5em;
+      border: none;
+      .action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        // font-size: larger;
+        // font-weight: bolder;
+      }
+    }
   }
 
-  .sticky-modal {
-    width: 100%;
+  .info > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h3,
+    p {
+      margin: 0;
+    }
+    h3 {
+      margin-bottom: 1em;
+    }
+    border-bottom: 1px solid black;
+    height: 100%;
+  }
+
+  /////////////////////////////////////
+  .order-container {
+    width: 50%;
 
     .reservation-modal-header {
       grid-template-areas:

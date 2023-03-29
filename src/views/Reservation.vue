@@ -21,11 +21,15 @@
             <p>2</p>
           </div>
           <div class="flex space-between">
-            <p>Pending</p>
+            <p>Approved</p>
+            <p>3</p>
+          </div>
+          <div class="flex space-between">
+            <p>Rejected</p>
             <p>2</p>
           </div>
           <div class="flex space-between">
-            <p>Pending</p>
+            <p>Completed</p>
             <p>2</p>
           </div>
         </div>
@@ -111,7 +115,61 @@
           <button class="btn approve-btn">Approve</button>
           <button class="btn reject-btn">Reject</button>
         </article>
+        <article class="card">
+          <div class="img-guest flex align-center">
+            <img src="../imgs/imgs_test/yuval.jpg" />
+            <h3>Yuval</h3>
+          </div>
+          <p>03/15/2023</p>
+          <p>03/23/2023</p>
+          <p>Lemon Garden</p>
+          <p>$1,112.00</p>
+          <p>Approved</p>
+          <button class="btn approve-btn">Approve</button>
+          <button class="btn reject-btn">Reject</button>
+        </article>
 
+        <article class="card">
+          <div class="img-guest flex align-center">
+            <img src="../imgs/imgs_test/omer.jpg" />
+            <h3>Omer</h3>
+          </div>
+          <p>03/12/2023</p>
+          <p>03/11/2024</p>
+          <p>Lala Land</p>
+          <p>$1,233.00</p>
+          <p>Completed</p>
+          <button class="btn approve-btn">Approve</button>
+          <button class="btn reject-btn">Reject</button>
+        </article>
+
+        <article class="card">
+          <div class="img-guest flex align-center">
+            <img src="../imgs/imgs_test/inon.jpg" />
+            <h3>Inon</h3>
+          </div>
+          <p>03/15/2025</p>
+          <p>03/23/2026</p>
+          <p>lululu po</p>
+          <p>$2000.00</p>
+          <p>Completed</p>
+          <button class="btn approve-btn">Approve</button>
+          <button class="btn reject-btn">Reject</button>
+        </article>
+
+        <article class="card">
+          <div class="img-guest flex align-center">
+            <img src="../imgs/imgs_test/ido.jpg" />
+            <h3>Ido</h3>
+          </div>
+          <p>10/15/2022</p>
+          <p>03/23/2023</p>
+          <p>Palala</p>
+          <p>$126.00</p>
+          <p>Rejected</p>
+          <button class="btn approve-btn">Approve</button>
+          <button class="btn reject-btn">Reject</button>
+        </article>
         <article class="card">
           <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/yuval.jpg" />

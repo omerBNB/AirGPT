@@ -9,7 +9,7 @@
         <div class="check-in flex">
           <h4>CHECK IN</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input @change="sayHey" v-model="this.date.start" type="text" />
+          <input v-model="this.date.start" type="text" />
         </div>
         <div class="check-out flex">
           <h4>CHECK OUT</h4>
@@ -86,15 +86,11 @@ export default {
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
     this.columns = mapCurrent({ lg: 2 }, 2)
   },
-  methods: {
-    sayHey() {
-      console.log('heyyy')
+  methods: {},
+  watch: {
+    date() {
+      setTimeout(() => this.$emit('closeModal', this.date), 200)
     },
-  },
-  computed: {},
-  mounted() {
-    // this.data.start = this.checkin || 'Add date'
-    // this.data.end = this.checkout || 'Add date'
   },
   components: {},
 }

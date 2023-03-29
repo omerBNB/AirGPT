@@ -6,7 +6,7 @@
       <p class="search-inner-header-cotainer-p">Ages 13 or above</p>
     </div>
     <div class="flex-inner-search-btns">
-      <button @click="removeGuest('adults')" class="add-guest-button">
+      <button @click="updateGuest('adults', -1)" class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             viewBox="0 0 32 32"
@@ -27,8 +27,8 @@
           </svg>
         </span>
       </button>
-      <span class="add-guest-span">{{ guestsNum.adults || 0 }}</span>
-      <button @click="addGuest('adults')" class="add-guest-button">
+      <span class="add-guest-span">{{ this.guests.adults || 0 }}</span>
+      <button @click="updateGuest('adults', 1)" class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             class="svg"
@@ -57,7 +57,9 @@
       <p class="search-inner-header-cotainer-p">Ages 2-12</p>
     </div>
     <div class="flex-inner-search-btns">
-      <button @click="removeGuest('children')" class="add-guest-button">
+      <button
+        @click="$emit('updateGuest', { guest: 'children', diff: -1 })"
+        class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             viewBox="-0 0 32 32"
@@ -78,8 +80,10 @@
           </svg>
         </span>
       </button>
-      <span class="add-guest-span">{{ guestsNum.children || 0 }}</span>
-      <button @click="addGuest('children')" class="add-guest-button">
+      <span class="add-guest-span">{{ this.guests.children || 0 }}</span>
+      <button
+        @click="$emit('updateGuest', { guest: 'children', diff: 1 })"
+        class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             class="svg"
@@ -109,7 +113,9 @@
       <p class="search-inner-header-cotainer-p">Under 2</p>
     </div>
     <div class="flex-inner-search-btns">
-      <button @click="removeGuest('infants')" class="add-guest-button">
+      <button
+        @click="$emit('updateGuest', { guest: 'infants', diff: -1 })"
+        class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             viewBox="0 0 32 32"
@@ -130,8 +136,8 @@
           </svg>
         </span>
       </button>
-      <span class="add-guest-span">{{ guestsNum.infants || 0 }}</span>
-      <button @click="addGuest('infants')" class="add-guest-button">
+      <span class="add-guest-span">{{ this.guests.infants || 0 }}</span>
+      <button @click="$emit('updateGuest', { guest: 'infants', diff: 1 })" class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             class="svg"
@@ -161,7 +167,7 @@
       <p class="plus-animals search-inner-header-cotainer-p">Bringing a service animal?</p>
     </div>
     <div class="flex-inner-search-btns">
-      <button @click="removeGuest('pets')" class="add-guest-button">
+      <button @click="$emit('updateGuest', { guest: 'pets', diff: -1 })" class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             viewBox="0 0 32 32"
@@ -182,8 +188,8 @@
           </svg>
         </span>
       </button>
-      <span class="add-guest-span">{{ guestsNum.pets || 0 }}</span>
-      <button @click="addGuest('pets')" class="add-guest-button">
+      <span class="add-guest-span">{{ this.guests.pets || 0 }}</span>
+      <button @click="$emit('updateGuest', { guest: 'pets', diff: 1 })" class="add-guest-button">
         <span class="_8ovatg"
           ><svg
             class="svg"
@@ -226,31 +232,26 @@ export default {
     }
   },
   methods: {
-    addGuest(guest) {
-      this.guestsNum[guest]++
-    },
-    removeGuest(guest) {
-      if (!this.guestsNum[guest]) return
-      this.guestsNum[guest]--
+    updateGuest(guest, diff) {
+      this.$emit('updateGuest', { guest, diff })
     },
   },
 
-  mounted() {},
-  computed: {},
-  created() {
-    console.log('this.guests![]', this.guests)
-    this.guestsNum = this.guests
-    console.log('this.guestsNum:', this.guestsNum)
+  mounted() {
+    let total = 0
+    for (const guest in this.guests) {
+      total += this.guests[guest]
+    }
+    this.guestsNum = total
   },
-  components: {},
-  emits: ['closeGuestModal'],
+  emits: ['closeGuestModal', 'updateGuest'],
 }
 </script>
 
 <style scoped>
 .search-inner-header-cotainer {
   position: absolute;
-  top: 40%;
+  top: 15.3em;
   right: 20px;
   padding: 2px 15px;
   width: 110%;
