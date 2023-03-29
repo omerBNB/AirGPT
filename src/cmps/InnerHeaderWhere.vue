@@ -95,7 +95,7 @@
       </div>
       <div class="line-between-where-search"></div>
       <div>
-        <h2>Search by region</h2>
+        <h2 class="search-by-region-h2">Search by region</h2>
         <section class="chose-mainland">
           <div @click.stop="setActiveModalWhere('checkin', '')">
             <img
