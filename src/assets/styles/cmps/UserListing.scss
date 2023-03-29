@@ -26,15 +26,15 @@
     justify-items: start;
     // justify-content: space-between;
     grid-template-columns: 1.5fr repeat(5,1fr);
-    color: rgba(46, 46, 46, 0.5);
+    color: rgba(46, 46, 46, 0.7);
     border-bottom: 1px solid rgba(46, 46, 46, 0.3);
     // padding: 10px;
     >*{
       display: flex;
       width: 100%;
       padding: 5px;
-      border-left: 1px solid rgba(46, 46, 46, 0.3);
-      border-right: 1px solid rgba(46, 46, 46, 0.3);
+      // border-left: 1px solid rgba(46, 46, 46, 0.3);
+      // border-right: 1px solid rgba(46, 46, 46, 0.3);
     }
   }
 }
@@ -48,7 +48,7 @@
     justify-items: start;
     // justify-content: space-between;
     grid-template-columns: 1.5fr repeat(5,1fr);
-    color: rgba(46, 46, 46, 0.5);
+    color: rgba(46, 46, 46, 0.7);
     border-bottom: 1px solid rgba(46, 46, 46, 0.1);
     padding-top: 10px;
     padding-bottom: 10px;
@@ -77,7 +77,7 @@
       border: 1px solid gray;
       border-radius: 5px;
       font-size: .7em;
-      color: gray;
+      // color: gray;
       // height: 35px;
       padding: 8px;
       width: max-content;

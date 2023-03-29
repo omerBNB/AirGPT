@@ -30,14 +30,13 @@
   <section
     class="calender-container"
     v-if="acitveModalInner === 'checkin' || acitveModalInner === 'checkout'">
-    <!-- <el-calendar class="calendar-inner-section-1" v-model="value" />
-          <el-calendar class="calendar-inner-section-2" v-model="value" /> -->
     <VDatePicker
-      class="calendar"
+      class="calendar1"
       :value="date2"
       @input="date2 = $event"
       v-model.range="innerHeaderFilter.range"
       :columns="columns"
+      :color="selectedColor"
       @click.stop="setActiveModalDates('checkout')" />
   </section>
 </template>
@@ -54,7 +53,8 @@ export default {
     return {
       date2: new Date(),
       columns: null,
-      searchQuery: this.$route.query
+      searchQuery: this.$route.query,
+      selectedColor: 'gray',
     }
   },
   methods: {
@@ -72,4 +72,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style >
+
+</style>

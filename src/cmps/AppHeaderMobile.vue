@@ -1,44 +1,16 @@
 <template>
-  <header class="main-header">
-    <nav>
+  <header class="main-header-mobile">
+    <!-- <nav>
       <RouterLink class="flex" to="/">
         <img class="logo" src="../../src/imgs/Airbnb_logo/airbnblogo.svg" alt="logo" />
         <h1 role="img" aria-label="logo">airgpt</h1>
       </RouterLink>
-    </nav>
-    <section class="main-filter-header" v-if="isWideView">
-      <button @click="showCurrModal('where')" class="main-filter-btn">
-        {{ this.userSearchSpec.where ? this.userSearchSpec.where : 'Anywhere' }}
-      </button>
-      <div class="border-line"></div>
-      <button @click="showCurrModal('checkin')" class="main-filter-btn">
-        {{
-          this.userSearchSpec.checkin
-            ? this.userSearchSpec.checkin.substring(0, 6) +
-              ' - ' +
-              this.userSearchSpec.checkout.substring(3, 6)
-            : 'Any week'
-        }}
-      </button>
-      <div class="border-line"></div>
-
-      <button
-        @click="showCurrModal('search')"
-        class="main-filter-btn guests"
-        :class="this.userSearchSpec.adults ? 'bold' : ''">
-        {{
-          this.userSearchSpec.adults
-            ? +this.userSearchSpec.adults +
-              +this.userSearchSpec.children +
-              +this.userSearchSpec.infants +
-              ' guests'
-            : 'Add guests'
-        }}
-      </button>
-      <button class="search-btn">
-        <div data-testid="little-search-icon">
+    </nav> -->
+    <section class="main-filter-header-mobile" v-if="isWideView" @click="showCurrModal('where')">
+      <button class="search-btn-mobile">
+        <div data-testid="little-search-icon-mobile">
           <svg
-            viewBox="1 0 32 32"
+            viewBox="1 5 26 22"
             xmlns="https://www.w3.org/2000/svg"
             aria-hidden="true"
             role="presentation"
@@ -59,36 +31,61 @@
           </svg>
         </div>
       </button>
+      <button class="main-filter-btn-mobile">
+        <h3 class="main-filter-btn-mobile-h3">
+          {{ this.userSearchSpec.where ? this.userSearchSpec.where : 'Anywhere' }}
+        </h3>
+        <div class="main-filter-mobile-spans">
+            <span>
+              {{
+                this.userSearchSpec.checkin
+                  ? this.userSearchSpec.checkin.substring(0, 6) +
+                    ' - ' +
+                    this.userSearchSpec.checkout.substring(3, 6)
+                  : 'Any week'
+              }}
+            </span>
+            <span>
+              {{
+                this.userSearchSpec.adults
+                  ? +this.userSearchSpec.adults +
+                    +this.userSearchSpec.children +
+                    +this.userSearchSpec.infants +
+                    ' guests'
+                  : ' &#183  Add guests'
+              }}
+            </span>
+        </div>
+      </button>
+      <!-- <button @click="showCurrModal('checkin')" class="main-filter-btn"></button>
+
+      <button
+        @click="showCurrModal('search')"
+        class="main-filter-btn guests"
+        :class="this.userSearchSpec.adults ? 'bold' : ''">
+        
+      </button> -->
     </section>
-    <div class="inner-header-user">
-      <RouterLink class="airgpt-your-home-link" to="/dashboard/stay/edit">
-        Airgpt your home
-      </RouterLink>
-      <section class="loggedin-user" @click="toggleUserOptions">
-        <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser" />
-        <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser" />
-        <img
-          class="burger-img"
-          src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png"
-          alt="" />
+    <!-- <div class="inner-header-user">
+      <RouterLink class="airgpt-your-home-link" to="/dashboard/stay/edit"> Airgpt your home </RouterLink>
+      <section class="loggedin-user" @click="toggleUserOptions" >
+        <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser"/>
+        <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser"/>
+        <img class="burger-img"
+          src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png" alt="" />
         <div class="user-mini-section">
-          <img
-            class="user-img"
-            :src="
-              loggedInUser
-                ? loggedInUser.imgUrl
-                : 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-            " />
+          <img class="user-img"
+            :src="loggedInUser ? loggedInUser.imgUrl : 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'" />
         </div>
       </section>
-    </div>
+    </div> -->
     <InnerHeader
       v-if="!isWideView"
       @closeModal="closeWiderView"
       :activeModal="activateModal"
       @scroll="closeWiderView" />
   </header>
-  <hr class="hr" v-if="isWideView" />
+  <!-- <hr class="hr" v-if="isWideView" /> -->
   <section class="white-bgc full" v-if="!isWideView"></section>
 </template>
 <script>
@@ -113,7 +110,6 @@ export default {
   created() {
     window.addEventListener('scroll', this.closeWiderView)
   },
-
   unmounted() {
     window.removeEventListener('scroll', this.closeWiderView)
   },

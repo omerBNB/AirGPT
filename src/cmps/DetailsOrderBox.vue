@@ -28,7 +28,7 @@
 
         <div @click.stop="this.guestModalIsShown = true" class="guest-input">
           <label>GUESTS</label>
-          <input :value="guestsNum || 'Add guests'" />
+          <input :value="this.guestsNum || 'Add guests'" />
           <svg viewBox="0 0 320 512" width="100" title="angle-down">
             <path
               d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
@@ -150,23 +150,23 @@
       <section class="price-info">
         <div class="price-per-night flex space-between">
           <p class="underline">${{ stay.price }} X {{ this.nightsBetween }} nights</p>
-          <p>$279</p>
+          <p>${{ calcTotalPrice }}</p>
         </div>
 
         <div class="service-fee flex space-between">
           <p class="underline">Cleaning fee</p>
-          <p>$53</p>
+          <p>$10</p>
         </div>
 
         <div class="service-fee flex space-between">
           <p class="underline">Service fee</p>
-          <p>$48.15</p>
+          <p>$8.15</p>
         </div>
       </section>
       <hr />
       <div class="total flex space-between">
         <p>Total</p>
-        <p>$327.15</p>
+        <p>${{ calcTotalPrice + 10 + 8.15 }}</p>
       </div>
 
       <DetailsCalendar
@@ -176,7 +176,8 @@
         :checkout="order.checkout" />
 
       <DetailsGuestModal
-        @closeGuestModal="this.guestModalIsShown = false"
+        :guests="this.order.guests"
+        @closeGuestModal="closeGuestModalAndSave"
         v-if="this.guestModalIsShown" />
     </section>
 
@@ -188,6 +189,7 @@
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
 import { orderService } from '../services/order.service.local'
+import { eventBus } from '../services/event-bus.service.js'
 export default {
   name: 'DetailsOrderBox',
   props: {
@@ -200,15 +202,18 @@ export default {
       required: true,
     },
   },
+
   data() {
     return {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
       order: orderService.getEmptyOrder(),
-      nightsBetween: '0',
+      nightsBetween: 0,
+      guestsNum: null,
     }
   },
+
   computed: {
     formatPrice() {
       return new Intl.NumberFormat('en-US', {
@@ -231,13 +236,10 @@ export default {
       // return this.stay.capacity + ' guests'
     },
 
-    getDaysBetweenDates(checkin, checkout) {
-      if (!checkin || !checkout) return
-      console.log('checkin', checkin)
-      const date1 = Date.parse(checkin)
-      const date2 = Date.parse(checkout)
-      const diffInMs = Math.abs(date2 - date1)
-      this.nightsBetween = Math.floor(diffInMs / 86400000)
+    calcTotalPrice() {
+      console.log('this.nightsBetween:', this.nightsBetween)
+      console.log('this.order.price:', this.order.stay.price)
+      return +this.stay.price * this.nightsBetween
     },
   },
 
@@ -272,6 +274,12 @@ export default {
 
   methods: {
     submitOrder() {
+      const loggedInUser = this.$store.getters.loggedinUser
+      if (!loggedInUser) {
+        eventBus.emit('openLoginModal')
+        return
+      }
+
       this.$router.push({
         path: '/stay/book/' + this.stayId,
         query: {
@@ -288,17 +296,36 @@ export default {
       this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
     },
     closeModal(date) {
-      console.log('date:', date)
       this.calendarIsShown = false
       this.order.checkin = date.start.toDateString()
       this.order.checkout = date.end.toDateString()
+
+      this.getDaysBetweenDates(this.order.checkin, this.order.checkout)
+    },
+
+    closeGuestModalAndSave(guests) {
+      this.guestModalIsShown = false
+      let total = 0
+      for (const guest in guests) {
+        if (guests[guest] === '') guests[guest] = 0
+        total += guests[guest]
+      }
+      this.guestsNum = total + ' guests'
+    },
+
+    getDaysBetweenDates(checkin, checkout) {
+      if (!checkin || !checkout) return
+      console.log('checkin:', checkin)
+      console.log('checkin:', checkin)
+      const date1 = Date.parse(checkin)
+      const date2 = Date.parse(checkout)
+      const diffInMs = Math.abs(date2 - date1)
+      this.nightsBetween = Math.floor(diffInMs / 86400000)
     },
   },
 
   mounted() {
     const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
-    console.log('checkout:', checkout)
-    console.log('checkin:', checkin)
     this.order.where = where
     this.order.checkin = checkin
     this.order.checkout = checkout

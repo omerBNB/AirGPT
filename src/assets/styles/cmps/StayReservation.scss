@@ -2,6 +2,7 @@
   // text-align: center;
   margin-block-start: 1.5em;
   padding: 2em;
+  gap: 1em;
   .title {
     font-size: 2em;
   }
@@ -11,7 +12,9 @@
   display: flex;
 
   .info {
-    width: 90vw;
+    grid-template-rows: repeat(4, 1fr);
+    width: 50vw;
+    height: 60vh;
     .btn-container {
       width: 200px;
       padding: 1.5em;
@@ -21,7 +24,7 @@
       }
     }
     .ground-rules {
-      ul {
+      ul li {
         list-style-type: circle;
       }
     }
@@ -46,6 +49,7 @@
         grid-area: img;
         width: 100%;
         grid-row: span 2;
+        border-radius: 10px;
       }
 
       p {

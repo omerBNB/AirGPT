@@ -157,7 +157,7 @@
         </el-select>
       </div>
       <div>
-        <label for=""> description: </label>
+        <label for=""> Description: </label>
         <textarea
           class="edit-textarea"
           name=""
