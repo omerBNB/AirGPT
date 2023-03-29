@@ -3,7 +3,7 @@
     <section class="stay-reservation">
       <h1 class="title">Your order has been sent to host</h1>
       <section class="reservation-info-container">
-        <section class="info">
+        <section class="info grid">
           <div class="wont-confirm">
             <h3>Attention!</h3>
             <p>
@@ -31,9 +31,10 @@
           <div class="btn-container" @click="submitOrder">
             <div class="cell" v-for="i in 100"></div>
             <div class="content">
-              <button class="action-btn">
+              <RouterLink to="/trips" class="action-btn">
                 <span>Check your orders</span>
-              </button>
+                <!-- <RouterLink to="/trips">Check your orders</RouterLink> -->
+              </RouterLink>
             </div>
           </div>
         </section>
@@ -61,7 +62,7 @@
                 <p>$279</p>
               </div>
               <div class="price-per-night flex space-between">
-                <p>total guests</p>
+                <p>Total guests</p>
                 <p>1</p>
               </div>
             </section>
@@ -105,6 +106,7 @@ export default {
       const { stayId } = this.$route.params
       const stay = await this.$store.dispatch({ type: 'getStay', stayId })
       this.stay = stay
+      console.log('this.stay:', this.stay)
     },
   },
   computed: {

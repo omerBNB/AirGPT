@@ -9,7 +9,7 @@
         <div class="check-in flex">
           <h4>CHECK IN</h4>
           <!-- CHANGE TYPE TO DATE -->
-          <input v-model="this.date.start" type="text" />
+          <input @change="sayHey" v-model="this.date.start" type="text" />
         </div>
         <div class="check-out flex">
           <h4>CHECK OUT</h4>
@@ -86,7 +86,11 @@ export default {
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
     this.columns = mapCurrent({ lg: 2 }, 2)
   },
-  methods: {},
+  methods: {
+    sayHey() {
+      console.log('heyyy')
+    },
+  },
   computed: {},
   mounted() {
     // this.data.start = this.checkin || 'Add date'
@@ -106,10 +110,41 @@ export default {
 }
 .vc-highlight-content-solid:hover {
   background-color: #222;
-  scale: 1.2;
+  scale: 1.4;
 }
 .--vc-gray-200 {
   background-color: palevioletred;
+}
+.--vc-highlight-outline-bg {
+  background: #2e2a2a;
+}
+.--vc-highlight-outline-content-color {
+  background-color: #ffffff;
+}
+.--vc-day-content .vc-focusable .vc-focus .vc-attr .vc-attr .--vc-highlight-content-outline {
+  background-color: violet;
+}
+
+.vc-container button,
+.vc-container [role='button']:hover {
+  transition: 0.1s;
+  background-color: #161414;
+  scale: 1.3;
+  color: white;
+}
+
+.vc-container button,
+.vc-container [role='button'] {
+  cursor: pointer;
+  margin: 0.5em;
+}
+.vc-arrow.vc-prev.vc-focus {
+  background-color: #ffffff;
+  color: black;
+}
+.vc-arrow.vc-next.vc-focus {
+  background-color: #ffffff;
+  color: black;
 }
 </style>
 <!-- // Date.parse('Mar 02') -->

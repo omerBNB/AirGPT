@@ -16,7 +16,7 @@
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
-    <RouterView/>
+    <RouterView />
     <AppFooter />
     <UserMsg />
   </section>
@@ -31,6 +31,7 @@ import UserMsg from './cmps/UserMsg.vue'
 import AppHeaderDetails from './cmps/AppHeaderDetails.vue'
 import AppFooter from './cmps/AppFooter.vue'
 import LoginSignup from './views/LoginSignup.vue'
+import { eventBus } from '../src/services/event-bus.service.js'
 //
 // import Datepicker from '../src/src/components/Datepicker.vue'
 // import * as lang from '../src/src/locale/index'
@@ -64,6 +65,9 @@ export default {
     loginSuccess() {
       this.loginModalOpen = false
     },
+  },
+  mounted() {
+    eventBus.on('openLoginModal', () => (this.loginModalOpen = true))
   },
   computed: {
     currentLayout() {
