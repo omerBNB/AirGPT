@@ -175,6 +175,14 @@ export default {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
     this.searchDetails = this.$route.query
+    console.log(' this.searchDetails:', this.searchDetails)
+    const { adults, children, infants, pets } = this.$route.query
+    console.log('pets:', +pets)
+    console.log('infants:', +infants)
+    console.log('children:', +children)
+    console.log('adults:', +adults)
+    console.log('+adults + +children + +infants + +pets', +adults + +children + +infants + +pets)
+    this.searchDetails.guestNum = +adults + +children + +infants + +pets
   },
 
   methods: {
