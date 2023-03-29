@@ -1,16 +1,17 @@
 <template>
     <section class="trips-preview grid">
+
         <section class="mini-card wishlist">
-            <p>Wishlist</p>
-            <RouterLink to="/wishlist">Go to wishlist</RouterLink>
+            <RouterLink class="link" to="/wishlist">
+                <p>Wishlist</p>
+            </RouterLink>
+            <WishListCarousel :stays="user.wishList" />
         </section>
-        <section class="mini-card message">
-            <p>Message</p>
-            <RouterLink to="/message">Go to message</RouterLink>
-        </section>
+
         <NextStayPreview v-if="nextStays && nextStays.length" class="mini-card next-stay flex" :nextStays="nextStays" />
         <PrevStayPreview v-else-if="prevStays && prevStays.length" class="mini-card prev-stay flex"
             :prevStays="prevStays" />
+
         <section class="prev-stays">
             <p> Where you've been</p>
             <section class="flex">
@@ -24,6 +25,7 @@
 import NextStayPreview from '../cmps/NextStayPreview.vue'
 import PrevStayPreview from '../cmps/PrevStayPreview.vue'
 import PrevStaysPreview from '../cmps/PrevStaysPreview.vue'
+import WishListCarousel from '../cmps/WishListCarousel.vue'
 export default {
     props: { user: Object },
     computed: {
@@ -38,7 +40,8 @@ export default {
     components: {
         NextStayPreview,
         PrevStayPreview,
-        PrevStaysPreview
+        PrevStaysPreview,
+        WishListCarousel
     }
 }
 </script>

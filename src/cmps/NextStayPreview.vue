@@ -1,6 +1,13 @@
 <template>
-    <section>
-        <p>Your next stay:</p>
+    <section class="flex">
+        <section>
+            <h1 class="main-header">Your next stay</h1>
+            <section class="info flex flex-column">
+                <h1 class="header">{{ nextStay.name }}</h1>
+                <h1>{{ nextStay.loc.city }}, {{ nextStay.loc.country }}</h1>
+                <h1 class="dates">{{ nextStay.checkIn }}</h1>
+            </section>
+        </section>
         <img :src="nextStay.imgUrls[0]">
     </section>
 </template>

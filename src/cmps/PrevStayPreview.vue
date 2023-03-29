@@ -1,6 +1,13 @@
 <template>
-    <section>
-        <p>Your previous stay:</p>
+    <section class="flex">
+        <section>
+            <h1 class="main-header">Your prev stay</h1>
+            <section class="info flex flex-column">
+                <h1 class="header">{{ prevStay.name }}</h1>
+                <h1>{{ prevStay.loc.city }}, {{ prevStay.loc.country }}</h1>
+                <h1 class="dates">{{ prevStay.checkIn }}</h1>
+            </section>
+        </section>
         <img :src="prevStay.imgUrls[0]">
     </section>
 </template>

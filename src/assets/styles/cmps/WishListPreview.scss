@@ -2,16 +2,16 @@
     font-family: Airbnb_Cereal-Medium;
     font-size: 1.2rem;
     padding: 0;
-    
+
     .wishlist-header {
         margin-block-start: 50px;
         margin-block-end: 65px;
         font-size: 1.7rem;
         font-family: Airbnb_Cereal-Bold;
     }
-    
+
     .stays-wishlist-container {
-        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fill, minmax(auto, 21.63em));
         margin: -5px;
         gap: 20px;
 
@@ -20,19 +20,18 @@
         }
 
         .img-container-wishlist {
-            width: 415px;
-            height: 215px;
             display: grid;
-            border-radius: 15px;
-            overflow: hidden;
-            padding: 0;
-            max-width: 100%;
-            gap: 1px;
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
             grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
             grid-template-areas:
                 'main-img main-img img-1'
                 'main-img main-img img-2';
+            height: 11.25em;
+            border-radius: 15px;
+            padding: 0;
+            max-width: 100%;
+            gap: 1px;
+            overflow: hidden;
 
             img {
                 width: 100%;

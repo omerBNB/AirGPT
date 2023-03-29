@@ -21,6 +21,7 @@ export const userService = {
     changeScore,
     save,
     updateWishList,
+    updateTripList,
 }
 
 window.userService = userService
@@ -345,6 +346,17 @@ function updateWishList(stay) {
     else {
         let idx = user.wishList.findIndex(s => s._id === stay._id)
         user.wishList.splice(idx, 1)
+    }
+    saveLocalUser(user)
+    return save(user)
+}
+
+function updateTripList(trip) {
+    const user = getLoggedinUser()
+    if (!user.trips.find(t => +t._id === +trip._id)) user.trips.push(stay)
+    else {
+        let idx = user.trips.findIndex(t => +t._id === +trip._id)
+        user.trips.splice(idx, 1)
     }
     saveLocalUser(user)
     return save(user)

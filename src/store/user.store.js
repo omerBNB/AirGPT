@@ -135,6 +135,11 @@ export const userStore = {
             else user.stayList.push(stay)
             const updatedUser = await userService.save(user)
             commit({ type: 'setLoggedinUser', user: updatedUser })
+        },
+        async updateTripList({ commit }, { trip }) {
+            console.log(trip);
+            // const user = await userService.updateTripList(trip)
+            // commit({ type: 'setLoggedinUser', user })
         }
     }
 }
