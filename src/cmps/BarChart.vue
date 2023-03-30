@@ -1,5 +1,6 @@
 <template>
   <BarChart :chartData="testData" :options="options" />
+  <pre>{{ this.orders }}</pre>
 </template>
 
 <script lang="ts">
@@ -36,8 +37,12 @@ export default {
     }
   },
   mounted() {
-    console.log('this.orders', this.orders)
-    // get all the months in the orders
+    // get all approved orders
+    // const approvedOrders = getApprovedOrders()
+    // get the last approved month
+    // check total price in this month
+    // check total for every last 5 month (before the last month)
+    // if there's no month = write 0 money
   },
   components: { BarChart },
 }

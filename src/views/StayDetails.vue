@@ -185,10 +185,7 @@ export default {
   methods: {
     async loadStay() {
       const { stayId } = this.$route.params
-      // if (stayId) { // DONT REMOVE PLEASE
-      //   const stay = await storageService.get('stay', stayId)
-      //   if (stay) this.stay = stay
-      // }
+
       this.$store.dispatch({ type: 'getStay', stayId: stayId })
     },
     openCalendar() {},

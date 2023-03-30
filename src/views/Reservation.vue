@@ -62,8 +62,19 @@
           <p>{{ order.stay.name }}</p>
           <p>${{ order.totalPrice }}</p>
           <p>{{ order.status }}</p>
-          <button v-if="order.status !== 'Completed'" class="btn approve-btn">Approve</button>
-          <button v-if="order.status !== 'Completed'" class="btn reject-btn">Reject</button>
+
+          <button
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order._id, 'approve')"
+            class="btn approve-btn">
+            Approve
+          </button>
+          <button
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order._id, 'reject')"
+            class="btn reject-btn">
+            Reject
+          </button>
         </article>
       </el-scrollbar>
     </section>
@@ -82,11 +93,20 @@ export default {
       orders: null,
     }
   },
-  methods: {},
+  methods: {
+    changeOrderStatus(orderId, newStatus) {
+      // const idx = this.orders.findIndex((order) => order._id === orderId)
+      // this.orders[idx].status = newStatus
+      this.$store.dispatch({ type: 'updateOrder', orderId, newStatus })
+    },
+  },
+
   mounted() {
     const loggedInUser = this.$store.getters.loggedinUser
     this.loggedInUser = loggedInUser
+    console.log('this.loggedInUser:', this.loggedInUser)
     this.orders = this.loggedInUser.orders
+    console.log('this.orders:', this.orders)
   },
   created() {},
 
