@@ -116,6 +116,6 @@ export default {
     UserOptionsNoUserLogin,
     UserOptionsLoggedinUser,
   },
-  emits: ['onShowBackDrop', 'closeActiveModal'],
+  emits: ['onShowBackDrop', 'closeActiveModal',"showLoginModal"],
 }
 </script>

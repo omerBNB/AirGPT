@@ -60,11 +60,6 @@
         
       </button> -->
     </section>
-    <!-- <InnerHeader
-    v-if="!isWideView"
-      @closeModal="closeWiderView"
-      :activeModal="activateModal"
-      @scroll="closeWiderView" /> -->
   </header>
   <!-- <section class="white-bgc-mobile full" v-if="!isWideView"></section> -->
   <!-- <hr class="hr" v-if="isWideView" /> -->

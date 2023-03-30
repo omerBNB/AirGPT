@@ -200,6 +200,9 @@ import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
 import { stayService } from '../services/stay.service.local'
 import { eventBus } from '../services/event-bus.service.js'
+import { userService } from '../services/user.service'
+import {orderService} from '../services/order.service.local'
+
 export default {
   name: 'DetailsOrderBox',
   props: {
@@ -218,9 +221,10 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      order: stayService.getEmptyOrder(),
+      order: orderService.getEmptyOrder(),
       nightsBetween: 0,
       guestsNum: null,
+      currUser: userService.getLoggedinUser(),
     }
   },
 
@@ -287,7 +291,7 @@ export default {
   },
 
   methods: {
-    submitOrder() {
+   async submitOrder() {
       const loggedInUser = this.$store.getters.loggedinUser
       if (!loggedInUser) {
         eventBus.emit('openLoginModal')
@@ -329,9 +333,9 @@ export default {
 
       this.order.checkin = formattedDate1
       this.order.checkout = formattedDate2
+  
 
-      this.$store.dispatch({ type: 'createNewOrder', newOrder: this.order })
-      this.$store.dispatch({ type: 'updateTripList', trip: this.order })
+      this.$store.dispatch({type:'updateOrder', order: this.order})
     },
 
     closeModal(date) {

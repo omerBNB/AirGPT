@@ -12,7 +12,8 @@
       @onShowBackDrop="showBackDrop"
       :isWide="isWide"
       @closeActiveModal="showFullScreeen"
-      :userSearchSpec="this.$route.query" />
+      :userSearchSpec="this.$route.query"
+      @showLoginModal="showLoginModal" />
     <AppHeaderMobile
       v-if="!this.$route.name?.includes('StayDetails') && width > 320 && width < 744"
       @onShowBackDrop="showBackDrop"

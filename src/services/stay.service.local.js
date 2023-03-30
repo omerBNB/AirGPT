@@ -12,7 +12,7 @@ export const stayService = {
   getEmptyStay,
   addStayMsg,
   labels,
-  getEmptyOrder,
+  // getEmptyOrder,
 }
 
 window.cs = stayService
@@ -753,12 +753,13 @@ const gStays = [
     likedByUsers: ['mini-user', 'user2'], // for user-wishlist : use $in
   },
 ]
+
 const gOrders = [
   {
     _id: 'o1225',
-    hostId: 'u102',
+    hostId: 'omer',
     buyer: {
-      _id: 'u101',
+      _id: 'inon',
       fullname: 'User 1',
     },
     totalPrice: 160,
@@ -865,36 +866,6 @@ async function addStayMsg(stayId, txt) {
   await storageService.put(STORAGE_KEY, stay)
 
   return msg
-}
-
-function getEmptyOrder() {
-  let order = {
-    _id: utilService.makeId(), // order id
-    hostId: null, // host id
-    buyer: {
-      // the logged in user
-      _id: null,
-      fullname: '',
-    },
-    totalPrice: 0,
-    checkin: '',
-    checkout: '',
-    guests: {
-      adults: 0,
-      children: 0,
-      infants: 0,
-      pets: 0,
-    },
-    stay: {
-      // the stay
-      _id: null,
-      name: '',
-      price: 0,
-    },
-    msgs: [],
-    status: 'pending', // pending, approved
-  }
-  return order
 }
 
 function getEmptyStay() {
