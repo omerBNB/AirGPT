@@ -151,12 +151,16 @@ export const userStore = {
       else user.stayList.push(stay)
 
       const updatedUser = await userService.save(user)
-      commit({ type: 'setLoggedinUser', user: updatedUser })
     },
     async updateTripList({ commit }, { trip }) {
       console.log(trip)
       // const user = await userService.updateTripList(trip)
       // commit({ type: 'setLoggedinUser', user })
+    },
+
+    updateOrder({ commit, state }, { orderId, newStatus }) {
+      const idx = state.loggedinUser.orders.findIndex((order) => order._id === orderId)
+      state.loggedinUser.orders[idx].status === newStatus
     },
   },
 }

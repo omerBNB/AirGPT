@@ -112,7 +112,8 @@ export const stayStore = {
       const stays = await stayService.query(filter)
       commit({ type: 'setStays', stays })
     },
-    async getStay({ stayId }) {
+    async getStay({ commit }, { stayId }) {
+      console.log('stayId:', stayId)
       const stay = await stayService.getById(stayId)
       return stay
     },
@@ -120,11 +121,10 @@ export const stayStore = {
       try {
         const stays = await stayService.query(state.filter, filterUserSpecs)
         commit({ type: 'setStays', stays })
-      }
-      catch (err) {
+      } catch (err) {
         console.log('stayStore: Error in addStayMsg', err)
         throw err
       }
-    }
+    },
   },
 }
