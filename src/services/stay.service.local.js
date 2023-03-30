@@ -85,7 +85,7 @@ const gStays = [
       },
     ],
 
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '98425306',
@@ -142,7 +142,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['user1', 'user3'],
+    likedByUsers: [],
   },
   {
     _id: '10106546',
@@ -189,7 +189,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '27783059',
@@ -236,7 +236,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['user1', 'user3'],
+    likedByUsers: [],
   },
   {
     _id: '10086546',
@@ -294,7 +294,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '123',
@@ -372,7 +372,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '14123456',
@@ -450,7 +450,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '17234367',
@@ -518,7 +518,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   //
   {
@@ -576,7 +576,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user', 'user1', 'user3'],
+    likedByUsers: [],
   },
   //
   {
@@ -635,7 +635,7 @@ const gStays = [
       },
     ],
 
-    likedByUsers: ['mini-user'],
+    likedByUsers: [],
   },
   //
   {
@@ -692,7 +692,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user', 'user2', 'user3'],
+    likedByUsers: [],
   },
   //
   {
@@ -750,7 +750,7 @@ const gStays = [
       },
     ],
 
-    likedByUsers: ['mini-user', 'user2'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
 ]
 const gOrders = [
@@ -840,6 +840,7 @@ async function remove(stayId) {
 }
 
 async function save(stay) {
+  console.log(stay);
   let savedStay
   if (stay._id) {
     savedStay = await storageService.put(STORAGE_KEY, stay)

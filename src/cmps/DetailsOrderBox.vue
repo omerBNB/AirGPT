@@ -148,13 +148,12 @@
       </div>
 
       <!-- if -->
-      <section
-        v-if="
-          this.order.checkin &&
-          this.order.checkout &&
-          this.order.guests.guestNum !== 'Add guest' &&
-          this.order.guests.guestNum
-        ">
+      <section v-if="
+        this.order.checkin &&
+        this.order.checkout &&
+        this.order.guests.guestNum !== 'Add guest' &&
+        this.order.guests.guestNum
+      ">
         <section class="price-info">
           <div class="price-per-night flex space-between">
             <p class="underline">${{ stay.price }} X {{ this.nightsBetween }} nights</p>
@@ -178,16 +177,10 @@
         </div>
       </section>
 
-      <DetailsCalendar
-        v-if="calendarIsShown"
-        @closeModal="closeModal"
-        :checkin="order.checkin"
+      <DetailsCalendar v-if="calendarIsShown" @closeModal="closeModal" :checkin="order.checkin"
         :checkout="order.checkout" />
 
-      <DetailsGuestModal
-        :guests="this.order.guests"
-        @updateGuest="updateGuest"
-        @closeGuestModal="closeGuestModalAndSave"
+      <DetailsGuestModal :guests="this.order.guests" @updateGuest="updateGuest" @closeGuestModal="closeGuestModalAndSave"
         v-if="this.guestModalIsShown" />
     </section>
 
@@ -329,7 +322,7 @@ export default {
 
       this.order.checkin = formattedDate1
       this.order.checkout = formattedDate2
-
+      
       this.$store.dispatch({ type: 'createNewOrder', newOrder: this.order })
       this.$store.dispatch({ type: 'updateTripList', trip: this.order })
     },

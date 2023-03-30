@@ -33,7 +33,7 @@ export const userStore = {
     setWatchedUser(state, { user }) {
       state.watchedUser = user
     },
-    setUser(state, { users }) {
+    setUsers(state, { users }) {
       state.users = users
     },
     removeUser(state, { userId }) {
@@ -124,11 +124,6 @@ export const userStore = {
     setWatchedUser({ commit }, payload) {
       commit(payload)
     },
-    async updateWishList({ commit }, { stay }) {
-      const user = await userService.updateWishList(stay)
-      commit({ type: 'setLoggedinUser', user })
-    },
-
     async createNewOrder({ commit }, { newOrder }) {
       try {
         let user = await userService.getById(newOrder.hostId)
@@ -149,14 +144,11 @@ export const userStore = {
       let stay = await stayService.save(newStay)
       if (idx > -1) user.stayList.splice(idx, 1, stay)
       else user.stayList.push(stay)
-
-      const updatedUser = await userService.save(user)
-      commit({ type: 'setLoggedinUser', user: updatedUser })
+      userService.save(user)
     },
     async updateTripList({ commit }, { trip }) {
-      console.log(trip)
-      // const user = await userService.updateTripList(trip)
-      // commit({ type: 'setLoggedinUser', user })
+      const user = await userService.updateTripList(trip)
+      commit({ type: 'setLoggedinUser', user })
     },
   },
 }

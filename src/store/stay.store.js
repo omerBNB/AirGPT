@@ -74,7 +74,7 @@ export const stayStore = {
     async updateStay({ commit }, { stay }) {
       try {
         stay = await stayService.save(stay)
-        commit(getActionUpdateStay(stay))
+        commit({ type: 'updateStay', stay })
         return stay
       } catch (err) {
         console.log('stayStore: Error in updateStay', err)
@@ -112,7 +112,7 @@ export const stayStore = {
       const stays = await stayService.query(filter)
       commit({ type: 'setStays', stays })
     },
-    async getStay({ stayId }) {
+    async getStay({ commit }, { stayId }) {
       const stay = await stayService.getById(stayId)
       return stay
     },
