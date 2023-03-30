@@ -81,9 +81,9 @@ export const stayStore = {
         throw err
       }
     },
-    async loadStays({ commit }) {
+    async loadStays({ commit }, { filter }) {
       try {
-        const stays = await stayService.query()
+        const stays = await stayService.query(filter)
         commit({ type: 'setStays', stays })
       } catch (err) {
         console.log('stayStore: Error in loadStays', err)

@@ -132,23 +132,11 @@ export const userStore = {
         if (idx > -1) user.orders.splice(idx, 1, newOrder)
         else user.orders.push(newOrder)
 
-        const updatedUser = await userService.save(user)
+        // const updatedUser = await userService.save(user)
         // commit({ type: 'setLoggedinUser', user: updatedUser })
       } catch (error) {
         console.log('error', error)
       }
-    },
-    async addNewStay({ commit, state }, { newStay }) {
-      let user = JSON.parse(JSON.stringify(state.loggedinUser))
-      const idx = user.stayList.findIndex((stay) => stay._id === newStay._id)
-      let stay = await stayService.save(newStay)
-      if (idx > -1) user.stayList.splice(idx, 1, stay)
-      else user.stayList.push(stay)
-      userService.save(user)
-    },
-    async updateTripList({ commit }, { trip }) {
-      const user = await userService.updateTripList(trip)
-      commit({ type: 'setLoggedinUser', user })
     },
   },
 }
