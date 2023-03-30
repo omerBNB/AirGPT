@@ -147,7 +147,7 @@
         <p class="text-center fs14">You won't be charged yet</p>
       </div>
 
-      <!-- iffff -->
+      <!-- if -->
       <section
         v-if="
           this.order.checkin &&
