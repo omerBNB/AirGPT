@@ -2,7 +2,7 @@
   display: grid;
   // border: 1px solid black; // Omer delete it capara
   height: 100%;
-  grid-template-columns: minmax(24px, 50px) 1fr minmax(24px, 50px);
+  grid-template-columns: minmax(10px, 30px) 1fr minmax(10px, 30px);
   > * {
     grid-column: 2;
   }

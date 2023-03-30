@@ -4,7 +4,7 @@
             <h1>Wishlist</h1>
             <p v-if="!loggedInUser.wishList.length">Empty</p>
         </header>
-        <section class="stays-wishlist-container flex">
+        <section class="stays-wishlist-container grid">
             <WishListPreview v-for="stay in loggedInUser.wishList" :key="stay._id" :stay="stay" />
         </section>
     </section>

@@ -38,41 +38,40 @@
             </div>
           </div>
         </section>
-        <main class="sticky-modal">
-          <section class="order-container">
-            <div class="reservation-modal-header grid">
-              <img :src="stay.imgUrls[0]" />
-              <p>{{ stay.name }}</p>
-              <div>
-                <img src="../imgs/svg_symbols/black_star.svg" />
-                <span>{{ stay.rate }}</span>
-                <span>•</span>
-                <span class="underline">{{ guestsNum }} </span>
-              </div>
+
+        <section class="order-container">
+          <div class="reservation-modal-header grid">
+            <img :src="stay.imgUrls[0]" />
+            <p>{{ stay.name }}</p>
+            <div>
+              <img src="../imgs/svg_symbols/black_star.svg" />
+              <span>{{ stay.rate }}</span>
+              <span>•</span>
+              <span class="underline">{{ guestsNum }} </span>
             </div>
-            <hr />
-            <div class="order-protected">
-              Your booking is protected by
-              <img src="../imgs/aircover_logo/aircover_logo.webp" alt="" srcset="" />
+          </div>
+          <hr />
+          <div class="order-protected">
+            Your booking is protected by
+            <img src="../imgs/aircover_logo/aircover_logo.webp" alt="" srcset="" />
+          </div>
+          <hr />
+          <section class="price-info">
+            <div>
+              <p>$595 x 4 nights</p>
+              <p>$279</p>
             </div>
-            <hr />
-            <section class="price-info">
-              <div>
-                <p>$595 x 4 nights</p>
-                <p>$279</p>
-              </div>
-              <div class="price-per-night flex space-between">
-                <p>Total guests</p>
-                <p>1</p>
-              </div>
-            </section>
-            <hr />
-            <div class="total flex space-between">
-              <p>Total after fees</p>
-              <p>$327.15</p>
+            <div class="price-per-night flex space-between">
+              <p>Total guests</p>
+              <p>1</p>
             </div>
           </section>
-        </main>
+          <hr />
+          <div class="total flex space-between">
+            <p>Total after fees</p>
+            <p>$327.15</p>
+          </div>
+        </section>
       </section>
     </section>
   </div>

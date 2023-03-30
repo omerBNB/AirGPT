@@ -28,7 +28,7 @@
 
         <div @click.stop="this.guestModalIsShown = true" class="guest-input">
           <label>GUESTS</label>
-          <input :value="this.guestsNum || 'Add guests'" />
+          <input :value="guestsNum" />
           <svg viewBox="0 0 320 512" width="100" title="angle-down">
             <path
               d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" />
@@ -147,27 +147,36 @@
         <p class="text-center fs14">You won't be charged yet</p>
       </div>
 
-      <section class="price-info">
-        <div class="price-per-night flex space-between">
-          <p class="underline">${{ stay.price }} X {{ this.nightsBetween }} nights</p>
-          <p>${{ calcTotalPrice }}</p>
-        </div>
+      <!-- iffff -->
+      <section
+        v-if="
+          this.order.checkin &&
+          this.order.checkout &&
+          this.order.guests.guestNum !== 'Add guest' &&
+          this.order.guests.guestNum
+        ">
+        <section class="price-info">
+          <div class="price-per-night flex space-between">
+            <p class="underline">${{ stay.price }} X {{ this.nightsBetween }} nights</p>
+            <p>${{ calcTotalPrice }}</p>
+          </div>
 
-        <div class="service-fee flex space-between">
-          <p class="underline">Cleaning fee</p>
-          <p>$10</p>
-        </div>
+          <div class="service-fee flex space-between">
+            <p class="underline">Cleaning fee</p>
+            <p>$10</p>
+          </div>
 
-        <div class="service-fee flex space-between">
-          <p class="underline">Service fee</p>
-          <p>$8.15</p>
+          <div class="service-fee flex space-between">
+            <p class="underline">Service fee</p>
+            <p>$8.15</p>
+          </div>
+        </section>
+        <hr />
+        <div class="total flex space-between">
+          <p>Total</p>
+          <p>${{ calcTotalPrice + 10 + 8.15 }}</p>
         </div>
       </section>
-      <hr />
-      <div class="total flex space-between">
-        <p>Total</p>
-        <p>${{ calcTotalPrice + 10 + 8.15 }}</p>
-      </div>
 
       <DetailsCalendar
         v-if="calendarIsShown"
@@ -177,6 +186,7 @@
 
       <DetailsGuestModal
         :guests="this.order.guests"
+        @updateGuest="updateGuest"
         @closeGuestModal="closeGuestModalAndSave"
         v-if="this.guestModalIsShown" />
     </section>
@@ -231,7 +241,12 @@ export default {
     },
 
     guestsNum() {
-      return +this.searchDetails.adults + +this.searchDetails.children + +this.searchDetails.infants
+      const guestsCount =
+        +this.order.guests.adults + +this.order.guests.children + +this.order.guests.infants
+      if (!guestsCount) return 'Add guest'
+      if (guestsCount === 1) return guestsCount + ' guest'
+      return guestsCount + ' guests'
+
       // if (this.stay.capacity === '1') return '1 guest'
       // return this.stay.capacity + ' guests'
     },
@@ -293,8 +308,10 @@ export default {
         },
       })
       this.$store.dispatch({ type: 'createNewOrder', order: this.order })
-      this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
+      // this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
+      this.$store.dispatch({ type: 'updateTripList', trip: this.order })
     },
+
     closeModal(date) {
       this.calendarIsShown = false
       this.order.checkin = date.start.toDateString()
@@ -303,14 +320,19 @@ export default {
       this.getDaysBetweenDates(this.order.checkin, this.order.checkout)
     },
 
+    updateGuest({ guest, diff }) {
+      if (!this.order.guests[guest] && diff === -1) return
+
+      this.order.guests[guest] += +diff
+      //
+      // this.guestsNum += +diff
+      this.order.guests.guestNum += +diff
+
+      console.log('this.order', this.order)
+    },
+
     closeGuestModalAndSave(guests) {
       this.guestModalIsShown = false
-      let total = 0
-      for (const guest in guests) {
-        if (guests[guest] === '') guests[guest] = 0
-        total += guests[guest]
-      }
-      this.guestsNum = total + ' guests'
     },
 
     getDaysBetweenDates(checkin, checkout) {
@@ -329,12 +351,13 @@ export default {
     this.order.where = where
     this.order.checkin = checkin
     this.order.checkout = checkout
-    this.order.guests.adults = adults
-    this.order.guests.children = children
-    this.order.guests.infants = infants
-    this.order.guests.pets = pets
-    //////
+    this.order.guests.adults = +adults || 0
+    this.order.guests.children = +children || 0
+    this.order.guests.infants = +infants || 0
+    this.order.guests.pets = +pets || 0
+    this.order.guests.guestNum = +adults + +children + +infants + +pets
 
+    ///////////////
     this.getDaysBetweenDates(checkin, checkout)
   },
 
@@ -343,18 +366,6 @@ export default {
     DetailsGuestModal,
   },
 }
-// this.$router.push({
-//   path: '/stay/' + this.stayId,
-//   query: {
-//     where: this.info.where,
-//     checkin: this.info.checkin,
-//     checkout: this.info.checkout,
-//     adults: this.info.adults,
-//     children: this.info.children,
-//     infants: this.info.infants,
-//     pets: this.info.pets,
-//   },
-// })
 </script>
 
 <style></style>
