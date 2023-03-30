@@ -33,7 +33,7 @@ import { stayService } from '../services/stay.service.local'
 export const stayStore = {
   state: {
     stays: [],
-    filter: ''
+    filter: '',
   },
   getters: {
     stays({ stays }) {
@@ -112,7 +112,7 @@ export const stayStore = {
       const stays = await stayService.query(filter)
       commit({ type: 'setStays', stays })
     },
-    async getStay({ commit }, { stayId }) {
+    async getStay({ stayId }) {
       const stay = await stayService.getById(stayId)
       return stay
     },

@@ -1,5 +1,5 @@
 <template>
-    <section class="flex">
+    <section v-if="prevStay" class="flex">
         <section>
             <h1 class="main-header">Your prev stay</h1>
             <section class="info flex flex-column">
@@ -13,7 +13,10 @@
 </template>
 <script>
 export default {
-    props: { prevStays: Array },
+    props: {
+        prevStays: Array,
+        stays: Object
+    },
     computed: {
         time() {
             return new Intl.DateTimeFormat('en-GB',
@@ -21,7 +24,8 @@ export default {
                 .format(+this.nextStays[0].checkOut)
         },
         prevStay() {
-            return this.prevStays.reduce((prev, current) => (prev.checkOut < current.checkOut) ? prev : current)
+            let prevStay = this.prevStays.reduce((prev, current) => (prev.checkOut < current.checkOut) ? prev : current)
+            return this.stays.find(stay => +stay._id === +prevStay.stay._id)
         },
     },
 }

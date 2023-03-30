@@ -1,5 +1,5 @@
 <template>
-    <section class="flex">
+    <section v-if="nextStay" class="flex">
         <section>
             <h1 class="main-header">Your next stay</h1>
             <section class="info flex flex-column">
@@ -13,7 +13,10 @@
 </template>
 <script>
 export default {
-    props: { nextStays: Array },
+    props: {
+        nextStays: Array,
+        stays: Object
+    },
     computed: {
         time() {
             return new Intl.DateTimeFormat('en-GB',
@@ -21,7 +24,8 @@ export default {
                 .format(+this.nextStays[0].checkOut)
         },
         nextStay() {
-            return this.nextStays.reduce((prev, current) => (prev.checkOut < current.checkOut) ? prev : current)
+            let nextStay = this.nextStays.reduce((prev, current) => (prev.checkOut < current.checkOut) ? prev : current)
+            return this.stays.find(stay => +stay._id === +nextStay.stay._id)
         },
     },
 }

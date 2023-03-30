@@ -90,8 +90,8 @@ function getEmptyOrder() {
       fullname: '',
     },
     totalPrice: 0,
-    startDate: '',
-    endDate: '',
+    checkin: '',
+    checkout: '',
     guests: {
       adults: 0,
       children: 0,
