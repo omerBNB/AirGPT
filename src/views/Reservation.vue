@@ -37,29 +37,21 @@
         <div class="box">
           <h1>Something</h1>
           <LineChart />
-          <!-- <h1>Reviews</h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione quibusdam rerum itaque
-            obcaecati asperiores dolorum tenetur consequatur accusantium cum commodi optio sapiente
-            aliquam doloribus nesciunt quas unde, voluptatibus incidunt quisquam pariatur harum
-            consequuntur illum. Asperiores facere at pariatur dicta hic!
-          </p> -->
         </div>
       </section>
     </section>
 
-    <el-scrollbar style="height: 100%">
-      <section class="right-side-reservation">
-        <article class="subtitle grid">
-          <p>Guest</p>
-          <p>Check in</p>
-          <p>Check out</p>
-          <p>Stay Name</p>
-          <p>Price</p>
-          <p>Status</p>
-          <p></p>
-        </article>
-
+    <section class="right-side-reservation">
+      <article class="subtitle grid">
+        <p>Guest</p>
+        <p>Check in</p>
+        <p>Check out</p>
+        <p>Stay Name</p>
+        <p>Price</p>
+        <p>Status</p>
+        <p></p>
+      </article>
+      <el-scrollbar style="height: 100%">
         <article class="card">
           <div class="img-guest flex align-center">
             <img src="../imgs/imgs_test/yuval.jpg" />
@@ -335,8 +327,8 @@
           <button class="btn approve-btn">Approve</button>
           <button class="btn reject-btn">Reject</button>
         </article>
-      </section>
-    </el-scrollbar>
+      </el-scrollbar>
+    </section>
   </section>
 </template>
 
@@ -351,6 +343,10 @@ export default {
   },
   methods: {},
   computed: {},
+  mounted() {
+    const loggedInUser = this.$store.getters.loggedinUser
+    console.log('loggedInUser:', loggedInUser)
+  },
   created() {},
   components: {
     ChartPie,
@@ -372,15 +368,14 @@ export default {
       </section> -->
 
 <style scoped>
-.scrollbar-demo-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  margin: 10px;
-  text-align: center;
-  border-radius: 4px;
-  background: var(--el-color-primary-light-9);
-  color: var(--el-color-primary);
+.el-scrollbar {
+  --el-scrollbar-opacity: 0.3;
+  --el-scrollbar-bg-color: #8e957d;
+  --el-scrollbar-hover-opacity: 0.7;
+  --el-scrollbar-hover-bg-color: var(--el-text-color-secondary);
+}
+
+.el-scrollbar__view {
+  background-color: pink;
 }
 </style>

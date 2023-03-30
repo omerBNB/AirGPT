@@ -152,8 +152,8 @@
         v-if="
           this.order.checkin &&
           this.order.checkout &&
-          this.guestNum !== 'Add guest' &&
-          this.order.guests.guestsNum
+          this.order.guests.guestNum !== 'Add guest' &&
+          this.order.guests.guestNum
         ">
         <section class="price-info">
           <div class="price-per-night flex space-between">
@@ -326,7 +326,9 @@ export default {
       this.order.guests[guest] += +diff
       //
       // this.guestsNum += +diff
-      this.order.guests.guestsNum += +diff
+      this.order.guests.guestNum += +diff
+
+      console.log('this.order', this.order)
     },
 
     closeGuestModalAndSave(guests) {
@@ -345,7 +347,6 @@ export default {
   },
 
   mounted() {
-    console.log(' this.order.guests.guestsNumIDO', this.order.guests.guestNum)
     const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
     this.order.where = where
     this.order.checkin = checkin
@@ -357,7 +358,6 @@ export default {
     this.order.guests.guestNum = +adults + +children + +infants + +pets
 
     ///////////////
-    console.log('this.order', this.order)
     this.getDaysBetweenDates(checkin, checkout)
   },
 
