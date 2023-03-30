@@ -1,5 +1,5 @@
 <template>
-  <section class="reservation flex">
+  <section v-if="this.loggedInUser" class="reservation flex">
     <section class="left-side-reservation">
       <section class="row flex">
         <div class="box">
@@ -52,280 +52,18 @@
         <p></p>
       </article>
       <el-scrollbar style="height: 100%">
-        <article class="card">
+        <article v-for="order in this.loggedInUser.orders" class="card">
           <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/yuval.jpg" />
-            <h3>Yuval</h3>
+            <img :src="order.buyer.imgUrl" />
+            <h3>{{ order.buyer.fullname }}</h3>
           </div>
-          <p>03/15/2023</p>
-          <p>03/23/2023</p>
-          <p>Lemon Garden</p>
-          <p>$1,112.00</p>
-          <p>Approved</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/omer.jpg" />
-            <h3>Omer</h3>
-          </div>
-          <p>03/12/2023</p>
-          <p>03/11/2024</p>
-          <p>Lala Land</p>
-          <p>$1,233.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/inon.jpg" />
-            <h3>Inon</h3>
-          </div>
-          <p>03/15/2025</p>
-          <p>03/23/2026</p>
-          <p>lululu po</p>
-          <p>$2000.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/ido.jpg" />
-            <h3>Ido</h3>
-          </div>
-          <p>10/15/2022</p>
-          <p>03/23/2023</p>
-          <p>Palala</p>
-          <p>$126.00</p>
-          <p>Rejected</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/yuval.jpg" />
-            <h3>Yuval</h3>
-          </div>
-          <p>03/15/2023</p>
-          <p>03/23/2023</p>
-          <p>Lemon Garden</p>
-          <p>$1,112.00</p>
-          <p>Approved</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/omer.jpg" />
-            <h3>Omer</h3>
-          </div>
-          <p>03/12/2023</p>
-          <p>03/11/2024</p>
-          <p>Lala Land</p>
-          <p>$1,233.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/inon.jpg" />
-            <h3>Inon</h3>
-          </div>
-          <p>03/15/2025</p>
-          <p>03/23/2026</p>
-          <p>lululu po</p>
-          <p>$2000.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/ido.jpg" />
-            <h3>Ido</h3>
-          </div>
-          <p>10/15/2022</p>
-          <p>03/23/2023</p>
-          <p>Palala</p>
-          <p>$126.00</p>
-          <p>Rejected</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/yuval.jpg" />
-            <h3>Yuval</h3>
-          </div>
-          <p>03/15/2023</p>
-          <p>03/23/2023</p>
-          <p>Lemon Garden</p>
-          <p>$1,112.00</p>
-          <p>Approved</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/omer.jpg" />
-            <h3>Omer</h3>
-          </div>
-          <p>03/12/2023</p>
-          <p>03/11/2024</p>
-          <p>Lala Land</p>
-          <p>$1,233.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/inon.jpg" />
-            <h3>Inon</h3>
-          </div>
-          <p>03/15/2025</p>
-          <p>03/23/2026</p>
-          <p>lululu po</p>
-          <p>$2000.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/ido.jpg" />
-            <h3>Ido</h3>
-          </div>
-          <p>10/15/2022</p>
-          <p>03/23/2023</p>
-          <p>Palala</p>
-          <p>$126.00</p>
-          <p>Rejected</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/yuval.jpg" />
-            <h3>Yuval</h3>
-          </div>
-          <p>03/15/2023</p>
-          <p>03/23/2023</p>
-          <p>Lemon Garden</p>
-          <p>$1,112.00</p>
-          <p>Approved</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/omer.jpg" />
-            <h3>Omer</h3>
-          </div>
-          <p>03/12/2023</p>
-          <p>03/11/2024</p>
-          <p>Lala Land</p>
-          <p>$1,233.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/inon.jpg" />
-            <h3>Inon</h3>
-          </div>
-          <p>03/15/2025</p>
-          <p>03/23/2026</p>
-          <p>lululu po</p>
-          <p>$2000.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/ido.jpg" />
-            <h3>Ido</h3>
-          </div>
-          <p>10/15/2022</p>
-          <p>03/23/2023</p>
-          <p>Palala</p>
-          <p>$126.00</p>
-          <p>Rejected</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/yuval.jpg" />
-            <h3>Yuval</h3>
-          </div>
-          <p>03/15/2023</p>
-          <p>03/23/2023</p>
-          <p>Lemon Garden</p>
-          <p>$1,112.00</p>
-          <p>Approved</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/omer.jpg" />
-            <h3>Omer</h3>
-          </div>
-          <p>03/12/2023</p>
-          <p>03/11/2024</p>
-          <p>Lala Land</p>
-          <p>$1,233.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/inon.jpg" />
-            <h3>Inon</h3>
-          </div>
-          <p>03/15/2025</p>
-          <p>03/23/2026</p>
-          <p>lululu po</p>
-          <p>$2000.00</p>
-          <p>Completed</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
-        </article>
-
-        <article class="card">
-          <div class="img-guest flex align-center">
-            <img src="../imgs/imgs_test/ido.jpg" />
-            <h3>Ido</h3>
-          </div>
-          <p>10/15/2022</p>
-          <p>03/23/2023</p>
-          <p>Palala</p>
-          <p>$126.00</p>
-          <p>Rejected</p>
-          <button class="btn approve-btn">Approve</button>
-          <button class="btn reject-btn">Reject</button>
+          <p>{{ order.checkin }}</p>
+          <p>{{ order.checkout }}</p>
+          <p>{{ order.stay.name }}</p>
+          <p>${{ order.totalPrice }}</p>
+          <p>{{ order.status }}</p>
+          <button v-if="order.status !== 'Completed'" class="btn approve-btn">Approve</button>
+          <button v-if="order.status !== 'Completed'" class="btn reject-btn">Reject</button>
         </article>
       </el-scrollbar>
     </section>
@@ -339,13 +77,15 @@ import LineChart from '../cmps/LineChart.vue'
 export default {
   name: 'Reservation',
   data() {
-    return {}
+    return {
+      loggedInUser: null,
+    }
   },
   methods: {},
   computed: {},
   mounted() {
     const loggedInUser = this.$store.getters.loggedinUser
-    console.log('loggedInUser:', loggedInUser)
+    this.loggedInUser = loggedInUser
   },
   created() {},
   components: {

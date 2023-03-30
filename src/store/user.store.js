@@ -12,6 +12,7 @@ export const userStore = {
     users: [],
     watchedUser: null,
   },
+
   getters: {
     users({ users }) {
       return users
@@ -23,6 +24,7 @@ export const userStore = {
       return watchedUser
     },
   },
+
   mutations: {
     setLoggedinUser(state, { user }) {
       // Yaron: needed this workaround as for score not reactive from birth
@@ -41,6 +43,7 @@ export const userStore = {
       state.loggedinUser.score = score
     },
   },
+
   actions: {
     async login({ commit }, { userCred }) {
       try {
@@ -125,17 +128,17 @@ export const userStore = {
       const user = await userService.updateWishList(stay)
       commit({ type: 'setLoggedinUser', user })
     },
+
     async createNewOrder({ commit }, { newOrder }) {
       try {
-        let user = JSON.parse(JSON.stringify(state.loggedinUser))
-        const savedOrder = await orderService.save(newOrder)
+        let user = await userService.getById(newOrder.hostId)
+        console.log('user:', user)
         const idx = user.orders.findIndex((order) => order._id === newOrder._id)
-        let stay = await stayService.save(newOrder)
-        if (idx > -1) user.orders.splice(idx, 1, stay)
-        else user.orders.push(stay)
+        if (idx > -1) user.orders.splice(idx, 1, newOrder)
+        else user.orders.push(newOrder)
+
         const updatedUser = await userService.save(user)
-        commit({ type: 'setLoggedinUser', user: updatedUser })
-        return savedOrder
+        // commit({ type: 'setLoggedinUser', user: updatedUser })
       } catch (error) {
         console.log('error', error)
       }
@@ -146,6 +149,7 @@ export const userStore = {
       let stay = await stayService.save(newStay)
       if (idx > -1) user.stayList.splice(idx, 1, stay)
       else user.stayList.push(stay)
+
       const updatedUser = await userService.save(user)
       commit({ type: 'setLoggedinUser', user: updatedUser })
     },

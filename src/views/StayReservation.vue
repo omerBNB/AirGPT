@@ -105,7 +105,6 @@ export default {
       const { stayId } = this.$route.params
       const stay = await this.$store.dispatch({ type: 'getStay', stayId })
       this.stay = stay
-      console.log('this.stay:', this.stay)
     },
   },
   computed: {
