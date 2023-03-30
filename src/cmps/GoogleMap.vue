@@ -27,9 +27,7 @@ export default {
     }
   },
   methods: {
-    sayHi() {
-      console.log('Hi')
-    },
+    sayHi() {},
   },
 }
 </script>

@@ -147,7 +147,7 @@
         <p class="text-center fs14">You won't be charged yet</p>
       </div>
 
-      <!-- iffff -->
+      <!-- if -->
       <section
         v-if="
           this.order.checkin &&
@@ -252,8 +252,6 @@ export default {
     },
 
     calcTotalPrice() {
-      console.log('this.nightsBetween:', this.nightsBetween)
-      console.log('this.order.price:', this.order.stay.price)
       this.order.totalPrice = +this.stay.price * this.nightsBetween
       return this.order.totalPrice
     },
@@ -308,8 +306,31 @@ export default {
           pets: this.order.guests.pets,
         },
       })
+      this.order.buyer.fullname = loggedInUser.fullname
+      this.order.buyer._id = loggedInUser._id
+      this.order.buyer.imgUrl = loggedInUser.imgUrl
+      this.order.stay._id = this.stay._id
+      this.order.stay.name = this.stay.name
+      this.order.stay.price = this.stay.price
+      this.order.hostId = this.stay.host._id
+
+      //make this code better:!!
+      const date1 = new Date(this.order.checkin)
+      const month1 = date1.getMonth() + 1
+      const day1 = date1.getDate()
+      const year1 = date1.getFullYear()
+      const formattedDate1 = `${month1}/${day1}/${year1}`
+
+      const date2 = new Date(this.order.checkout)
+      const month2 = date2.getMonth() + 1
+      const day2 = date2.getDate()
+      const year2 = date2.getFullYear()
+      const formattedDate2 = `${month2}/${day2}/${year2}`
+
+      this.order.checkin = formattedDate1
+      this.order.checkout = formattedDate2
+
       this.$store.dispatch({ type: 'createNewOrder', newOrder: this.order })
-      // this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
       this.$store.dispatch({ type: 'updateTripList', trip: this.order })
     },
 
@@ -328,8 +349,6 @@ export default {
       //
       // this.guestsNum += +diff
       this.order.guests.guestNum += +diff
-
-      console.log('this.order', this.order)
     },
 
     closeGuestModalAndSave(guests) {
@@ -338,8 +357,6 @@ export default {
 
     getDaysBetweenDates(checkin, checkout) {
       if (!checkin || !checkout) return
-      console.log('checkin:', checkin)
-      console.log('checkin:', checkin)
       const date1 = Date.parse(checkin)
       const date2 = Date.parse(checkout)
       const diffInMs = Math.abs(date2 - date1)

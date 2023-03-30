@@ -12,7 +12,7 @@ export const stayService = {
   getEmptyStay,
   addStayMsg,
   labels,
-  getEmptyOrder
+  getEmptyOrder,
 }
 
 window.cs = stayService
@@ -824,7 +824,7 @@ async function query(
   // if (filterBy.price) {
   //   stays = stays.filter((stay) => stay.price <= filterBy.price)
   // }
-  console.log('filterByUserSpecs.where', filterByUserSpecs.where)
+  // console.log('filterByUserSpecs.where', filterByUserSpecs.where)
   if (filterByUserSpecs.where) {
     stays = stays.filter((stay) => stay.loc.country.includes(filterByUserSpecs.where))
   }
@@ -867,12 +867,12 @@ async function addStayMsg(stayId, txt) {
   return msg
 }
 
-
 function getEmptyOrder() {
   let order = {
-    _id: null, // order id
+    _id: utilService.makeId(), // order id
     hostId: null, // host id
-    buyer: { // the logged in user
+    buyer: {
+      // the logged in user
       _id: null,
       fullname: '',
     },
@@ -883,9 +883,10 @@ function getEmptyOrder() {
       adults: 0,
       children: 0,
       infants: 0,
-      pets: 0
+      pets: 0,
     },
-    stay: { // the stay
+    stay: {
+      // the stay
       _id: null,
       name: '',
       price: 0,
@@ -895,7 +896,6 @@ function getEmptyOrder() {
   }
   return order
 }
-
 
 function getEmptyStay() {
   let stay = {
@@ -910,8 +910,7 @@ function getEmptyStay() {
       '../../src/imgs/imgs_test/ListImgsTest/a/5.webp',
     ],
     price: '', // in preview!
-    summary:
-      '',
+    summary: '',
     capacity: '', // guest number
     equipment: { bedroomNum: '', bedsNum: '', bathNum: '' },
     amenities: [],
