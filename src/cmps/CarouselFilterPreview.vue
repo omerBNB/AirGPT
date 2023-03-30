@@ -61,3 +61,9 @@ export default {
     emits: ['setFilterBy']
 }
 </script>
+
+<style>
+.carousel__slide.carousel__slide--visible {
+    width: 0;
+}
+</style>

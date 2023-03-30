@@ -1,12 +1,13 @@
-.screen-shadow {
-  position: absolute;
-  top: 155px;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.208);
-  z-index: 3;
-}
+// .screen-shadow {
+//   position: absolute;
+//   top: 155px;
+//   right: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background-color: rgba(0, 0, 0, 0.208);
+//   z-index: 3;
+// }
+
 @media (max-width: 744px) {
   .main-header-mobile {
     position: fixed;

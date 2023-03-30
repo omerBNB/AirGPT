@@ -14,9 +14,15 @@
             fill: #ff385c !important;
         }
 
+        .el-carousel__arrow {
+            height: 2.6em;
+            width: 2.6em;
+            opacity: 0.9;
+        }
+
         .el-carousel__button {
-            width: 5px;
-            height: 5px;
+            width: 0.45em;
+            height: 0.45em;
             border-radius: 50%;
         }
 

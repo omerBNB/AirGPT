@@ -1,7 +1,20 @@
 .labels {
+    position: sticky;
+    top: 80px;
     font-size: 12px;
     margin-block: 1em;
     width: 92vw;
+    z-index: 4;
+    background-color: $clr1;
+
+    .carousel__slide {
+        width: 80px !important;
+    }
+
+    .carousel__prev.carousel__prev--disabled,
+    .carousel__next.carousel__next--disabled {
+        display: none;
+    }
 
     button .carousel__icon {
         font-family: Airbnb_Cereal-Bold;
@@ -11,20 +24,24 @@
         height: 27px;
         width: 27px;
     }
-
+    
     .label {
         margin-block-start: 1em;
         align-items: center;
-        min-width: 70px;
         gap: 10px;
         cursor: pointer;
         color: $clr9;
+        transition: 0.1s;
 
         &:hover {
             opacity: 1;
             color: $clr7;
             box-shadow: inset 0 -2px #00000026 !important;
             font-family: Airbnb_Cereal-Bold;
+
+            img {
+                opacity: 01;
+            }
         }
 
         &.isActive {
@@ -32,6 +49,10 @@
             color: $clr7;
             box-shadow: inset 0 -2px #000 !important;
             font-family: Airbnb_Cereal-Bold;
+
+            img {
+                opacity: 01;
+            }
         }
     }
 

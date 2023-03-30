@@ -277,7 +277,6 @@ export default {
   },
   computed: {
     guestsTxtCut() {
-      console.log('this.innerHeaderFilter.guests.infants',this.innerHeaderFilter.guests.infants)
       const count = 10
       let text
       const textAdults = this.innerHeaderFilter.guests.adults? 
@@ -292,7 +291,6 @@ export default {
     },
   },
   created() {
-    console.log('this.$route.query', this.$route.query)
     if (this.$route.query) {
       const { adults, children, infants, pets } = this.$route.query
       this.innerHeaderFilter.guests = { adults, children, infants, pets }

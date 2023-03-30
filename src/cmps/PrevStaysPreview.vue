@@ -1,5 +1,5 @@
 <template>
-    <section class="stay-in-prev-stays">
+    <section v-if="stay" class="stay-in-prev-stays">
         <img :src="stay.imgUrls[0]" />
         <section class="info">
             <h1 class="header"> {{ stay.loc.city }}, {{ stay.loc.country }}</h1>
@@ -12,6 +12,14 @@
 </template>
 <script>
 export default {
-    props: { stay: Object },
+    props: {
+        stayToPreview: Object,
+        stays: Object
+    },
+    computed: {
+        stay() {
+            return this.stays.find(stay => +stay._id === +this.stayToPreview.stay._id)
+        },
+    }
 }
 </script>
