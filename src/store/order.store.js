@@ -17,23 +17,23 @@ export const orderStore = {
     }
   },
   actions: {
-    async createNewOrder({ commit }, { order }) {
-      try {
-        const savedOrder = await orderService.save(order)
-        commit({ type: 'updateOrdes', savedOrder })
-        return savedOrder
-      } catch (error) {
-        console.log('error', error)
-      }
-    },
-    async getOrders({ commit }) {
-      try {
-        const orders = await orderService.query()
-        commit({ type: 'setOrdes', orders })
-      }
-      catch (err) {
-        console.log('err', err)
-      }
-    },
+  //   async createNewOrder({ commit }, { order }) {
+  //     try {
+  //       const savedOrder = await orderService.save(order)
+  //       commit({ type: 'updateOrdes', savedOrder })
+  //       return savedOrder
+  //     } catch (error) {
+  //       console.log('error', error)
+  //     }
+  //   },
+  //   async getOrders({ commit }) {
+  //     try {
+  //       const orders = await orderService.query()
+  //       commit({ type: 'setOrdes', orders })
+  //     }
+  //     catch (err) {
+  //       console.log('err', err)
+  //     }
+  //   },
   },
 }

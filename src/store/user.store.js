@@ -127,6 +127,21 @@ export const userStore = {
             const user = await userService.updateWishList(stay)
             commit({ type: 'setLoggedinUser', user })
         },
+        async createNewOrder({ commit }, { newOrder }) {
+            try {
+                let user = JSON.parse(JSON.stringify(state.loggedinUser))
+                const savedOrder = await orderService.save(newOrder)
+                const idx = user.orders.findIndex(order => order._id === newOrder._id)
+                let stay = await stayService.save(newOrder)
+                if (idx > -1) user.orders.splice(idx, 1, stay)
+                else user.orders.push(stay)
+                const updatedUser = await userService.save(user)
+                commit({ type: 'setLoggedinUser', user: updatedUser })
+                return savedOrder
+            } catch (error) {
+                console.log('error', error)
+            }
+        },
         async addNewStay({ commit, state }, { newStay }) {
             let user = JSON.parse(JSON.stringify(state.loggedinUser))
             const idx = user.stayList.findIndex(stay => stay._id === newStay._id)

@@ -254,7 +254,8 @@ export default {
     calcTotalPrice() {
       console.log('this.nightsBetween:', this.nightsBetween)
       console.log('this.order.price:', this.order.stay.price)
-      return +this.stay.price * this.nightsBetween
+      this.order.totalPrice = +this.stay.price * this.nightsBetween
+      return this.order.totalPrice
     },
   },
 
@@ -307,7 +308,7 @@ export default {
           pets: this.order.guests.pets,
         },
       })
-      this.$store.dispatch({ type: 'createNewOrder', order: this.order })
+      this.$store.dispatch({ type: 'createNewOrder', newOrder: this.order })
       // this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
       this.$store.dispatch({ type: 'updateTripList', trip: this.order })
     },

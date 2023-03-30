@@ -24,8 +24,8 @@ const gOrders = [
       fullname: 'User 1',
     },
     totalPrice: 160,
-    startDate: '2025/10/15',
-    endDate: '2025/10/17',
+    checkin: '2025/10/15',
+    checkout: '2025/10/17',
     guests: {
       adults: 2,
       kids: 1,
@@ -83,22 +83,22 @@ async function addOrderMsg(orderId, txt) {
 
 function getEmptyOrder() {
   let order = {
-    _id: null,
-    hostId: null,
-    buyer: {
+    _id: null, // order id
+    hostId: null, // host id
+    buyer: { // the logged in user
       _id: null,
       fullname: '',
     },
     totalPrice: 0,
-    startDate: '',
-    endDate: '',
+    checkin: '',
+    checkout: '',
     guests: {
       adults: 0,
       children: 0,
       infants: 0,
       pets: 0
     },
-    stay: {
+    stay: { // the stay
       _id: null,
       name: '',
       price: 0,
@@ -115,31 +115,3 @@ function _createOrders() {
 }
 
 
-// ;(async () => {
-//   await storageService.post(ORDER_KEY, { vendor: 'Subali Karov 1', price: 180 })
-//   await storageService.post(ORDER_KEY, { vendor: 'Subali Rahok 2', price: 240 })
-// })()
-
-// Homepage: TOP categories: Best Rate / Houses / Kitchen  - show all - link to Explore
-// Renders a <orderList> with <orderPreview> with Link to <orderDetails>   url: /order/123
-// See More => /explore?topRate=true
-// See More => /explore?type=House
-// See More => /explore?amenities=Kitchen
-// Explore page:
-// orderService.query({type: 'House'})
-
-// UserDetails
-//  basic info
-//  visitedorders => .query({userId: 'u101'})
-//  myorderOrders => .query({hostId: 'u101'})
-//  ownedorders => orderService.query({hostId: 'u103'})
-
-// orderEdit - make it super easy to add order for development
-// orderList, orderPreview
-// Order, confirm Order
-// Lastly: orderExplore, Filtering
-
-// Example - figuring up if the user is an owner:
-// userService.login()
-//  const userorders = orderService.query({ownerId: loggeinUser._id})
-//  loggeinUser.isOwner = userorders.length > 0
