@@ -178,11 +178,17 @@ export default {
   data() {
     return {
       newStay: null,
+      currUser: null
     }
   },
   methods: {
     addNewStay() {
-      this.$store.dispatch({ type: 'addNewStay', newStay: this.newStay })
+      const idx = currUser.stayList.findIndex((stay) => stay._id === newStay._id)
+      if (idx > -1) currUser.stayList.splice(idx, 1, newStay)
+      else currUser.stayList.push(newStay)
+      
+      this.$store.dispatch({type:'updateStay',newStay: this.newStay })
+      this.$store.dispatch({ type: 'updateUser', currUser: this.currUser})
       this.$router.push('/dashboard/listing')
     },
     async handleFile(ev) {
@@ -196,6 +202,7 @@ export default {
   },
   computed: {
     loggedInUser() {
+      this.currUser = this.$store.getters.loggedinUser
       return this.$store.getters.loggedinUser
     },
     formatPrice() {

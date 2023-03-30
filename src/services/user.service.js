@@ -101,9 +101,9 @@ function updateWishList(stay) {
 
 function updateTripList(trip) {
   const user = getLoggedinUser()
-  if (!user.trips.find((t) => +t._id === +trip._id)) user.trips.push(stay)
+  if (!user.trips.find((t) => +t.stay._id === +trip.stay._id)) user.trips.push(trip)
   else {
-    let idx = user.trips.findIndex((t) => +t._id === +trip._id)
+    let idx = user.trips.findIndex((t) => +t.stay._id === +trip.stay._id)
     user.trips.splice(idx, 1)
   }
   saveLocalUser(user)

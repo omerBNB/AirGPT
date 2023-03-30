@@ -74,16 +74,16 @@ export const stayStore = {
     async updateStay({ commit }, { stay }) {
       try {
         stay = await stayService.save(stay)
-        commit(getActionUpdateStay(stay))
+        commit({ type: 'updateStay', stay })
         return stay
       } catch (err) {
         console.log('stayStore: Error in updateStay', err)
         throw err
       }
     },
-    async loadStays({ commit }) {
+    async loadStays({ commit }, { filter }) {
       try {
-        const stays = await stayService.query()
+        const stays = await stayService.query(filter)
         commit({ type: 'setStays', stays })
       } catch (err) {
         console.log('stayStore: Error in loadStays', err)
@@ -113,7 +113,6 @@ export const stayStore = {
       commit({ type: 'setStays', stays })
     },
     async getStay({ commit }, { stayId }) {
-      console.log('stayId:', stayId)
       const stay = await stayService.getById(stayId)
       return stay
     },

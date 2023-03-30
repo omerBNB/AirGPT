@@ -33,7 +33,7 @@ export const userStore = {
     setWatchedUser(state, { user }) {
       state.watchedUser = user
     },
-    setUser(state, { users }) {
+    setUsers(state, { users }) {
       state.users = users
     },
     removeUser(state, { userId }) {
@@ -124,11 +124,6 @@ export const userStore = {
     setWatchedUser({ commit }, payload) {
       commit(payload)
     },
-    async updateWishList({ commit }, { stay }) {
-      const user = await userService.updateWishList(stay)
-      commit({ type: 'setLoggedinUser', user })
-    },
-
     async createNewOrder({ commit }, { newOrder }) {
       try {
         let user = await userService.getById(newOrder.hostId)
@@ -137,30 +132,11 @@ export const userStore = {
         if (idx > -1) user.orders.splice(idx, 1, newOrder)
         else user.orders.push(newOrder)
 
-        const updatedUser = await userService.save(user)
+        // const updatedUser = await userService.save(user)
         // commit({ type: 'setLoggedinUser', user: updatedUser })
       } catch (error) {
         console.log('error', error)
       }
-    },
-    async addNewStay({ commit, state }, { newStay }) {
-      let user = JSON.parse(JSON.stringify(state.loggedinUser))
-      const idx = user.stayList.findIndex((stay) => stay._id === newStay._id)
-      let stay = await stayService.save(newStay)
-      if (idx > -1) user.stayList.splice(idx, 1, stay)
-      else user.stayList.push(stay)
-
-      const updatedUser = await userService.save(user)
-    },
-    async updateTripList({ commit }, { trip }) {
-      console.log(trip)
-      // const user = await userService.updateTripList(trip)
-      // commit({ type: 'setLoggedinUser', user })
-    },
-
-    updateOrder({ commit, state }, { orderId, newStatus }) {
-      const idx = state.loggedinUser.orders.findIndex((order) => order._id === orderId)
-      state.loggedinUser.orders[idx].status === newStatus
     },
   },
 }

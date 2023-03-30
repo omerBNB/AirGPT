@@ -12,7 +12,7 @@ export const stayService = {
   getEmptyStay,
   addStayMsg,
   labels,
-  getEmptyOrder,
+  // getEmptyOrder,
 }
 
 window.cs = stayService
@@ -85,7 +85,7 @@ const gStays = [
       },
     ],
 
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '98425306',
@@ -142,7 +142,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['user1', 'user3'],
+    likedByUsers: [],
   },
   {
     _id: '10106546',
@@ -189,7 +189,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '27783059',
@@ -236,7 +236,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['user1', 'user3'],
+    likedByUsers: [],
   },
   {
     _id: '10086546',
@@ -294,7 +294,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '123',
@@ -372,7 +372,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '14123456',
@@ -450,7 +450,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   {
     _id: '17234367',
@@ -518,7 +518,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
   //
   {
@@ -576,7 +576,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user', 'user1', 'user3'],
+    likedByUsers: [],
   },
   //
   {
@@ -635,7 +635,7 @@ const gStays = [
       },
     ],
 
-    likedByUsers: ['mini-user'],
+    likedByUsers: [],
   },
   //
   {
@@ -692,7 +692,7 @@ const gStays = [
         },
       },
     ],
-    likedByUsers: ['mini-user', 'user2', 'user3'],
+    likedByUsers: [],
   },
   //
   {
@@ -750,15 +750,16 @@ const gStays = [
       },
     ],
 
-    likedByUsers: ['mini-user', 'user2'], // for user-wishlist : use $in
+    likedByUsers: [], // for user-wishlist : use $in
   },
 ]
+
 const gOrders = [
   {
     _id: 'o1225',
-    hostId: 'u102',
+    hostId: 'omer',
     buyer: {
-      _id: 'u101',
+      _id: 'inon',
       fullname: 'User 1',
     },
     totalPrice: 160,
@@ -840,6 +841,7 @@ async function remove(stayId) {
 }
 
 async function save(stay) {
+  console.log(stay);
   let savedStay
   if (stay._id) {
     savedStay = await storageService.put(STORAGE_KEY, stay)
@@ -865,36 +867,6 @@ async function addStayMsg(stayId, txt) {
   await storageService.put(STORAGE_KEY, stay)
 
   return msg
-}
-
-function getEmptyOrder() {
-  let order = {
-    _id: utilService.makeId(), // order id
-    hostId: null, // host id
-    buyer: {
-      // the logged in user
-      _id: null,
-      fullname: '',
-    },
-    totalPrice: 0,
-    checkin: '',
-    checkout: '',
-    guests: {
-      adults: 0,
-      children: 0,
-      infants: 0,
-      pets: 0,
-    },
-    stay: {
-      // the stay
-      _id: null,
-      name: '',
-      price: 0,
-    },
-    msgs: [],
-    status: 'pending', // pending, approved
-  }
-  return order
 }
 
 function getEmptyStay() {

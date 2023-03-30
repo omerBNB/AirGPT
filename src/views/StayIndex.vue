@@ -93,7 +93,17 @@ export default {
       this.$store.dispatch({ type: "setFilterBy", filter });
     },
     updateWishList(stay) {
-      this.$store.dispatch({ type: "updateWishList", stay })
+      let stayToUpdate = JSON.parse(JSON.stringify(stay))
+      const user = {
+        _id: this.loggedInUser._id,
+        fullname: this.loggedInUser.fullname
+      }
+      if (!stayToUpdate.likedByUsers.find((u) => +u._id === +user._id)) stayToUpdate.likedByUsers.push(user)
+      else {
+        let idx = stayToUpdate.likedByUsers.findIndex((u) => +u._id === +user._id)
+        stayToUpdate.likedByUsers.splice(idx, 1)
+      }
+      this.$store.dispatch({ type: "updateStay", stay: stayToUpdate })
     }
   },
   computed: {
