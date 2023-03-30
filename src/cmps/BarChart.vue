@@ -10,7 +10,12 @@ Chart.register(...registerables)
 
 export default {
   name: 'Chart',
-  components: { BarChart },
+  props: {
+    orders: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       testData: {
@@ -30,5 +35,10 @@ export default {
       },
     }
   },
+  mounted() {
+    console.log('this.orders', this.orders)
+    // get all the months in the orders
+  },
+  components: { BarChart },
 }
 </script>

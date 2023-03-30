@@ -4,7 +4,7 @@
       <section class="row flex">
         <div class="box">
           <h1>Revenue / month</h1>
-          <BarChart />
+          <BarChart :orders="this.orders" />
         </div>
 
         <div class="box">
@@ -18,20 +18,20 @@
           <h1>Reservations status</h1>
           <div class="flex space-between">
             <p>Pending</p>
-            <p>2</p>
+            <p>{{ pendingCount }}</p>
           </div>
           <div class="flex space-between">
             <p>Approved</p>
-            <p>3</p>
+            <p>{{ approvedCount }}</p>
           </div>
           <div class="flex space-between">
             <p>Rejected</p>
-            <p>2</p>
+            <p>{{ rejectedCount }}</p>
           </div>
-          <div class="flex space-between">
+          <!-- <div class="flex space-between">
             <p>Completed</p>
             <p>2</p>
-          </div>
+          </div> -->
         </div>
 
         <div class="box">
@@ -79,15 +79,37 @@ export default {
   data() {
     return {
       loggedInUser: null,
+      orders: null,
     }
   },
   methods: {},
-  computed: {},
   mounted() {
     const loggedInUser = this.$store.getters.loggedinUser
     this.loggedInUser = loggedInUser
+    this.orders = this.loggedInUser.orders
   },
   created() {},
+
+  computed: {
+    pendingCount() {
+      const pending = this.orders.filter((order) => order.status === 'pending')
+      return pending.length
+    },
+
+    approvedCount() {
+      const approved = this.orders.filter((order) => order.status === 'approved')
+      return approved.length
+    },
+
+    rejectedCount() {
+      const rejected = this.orders.filter((order) => order.status === 'rejected')
+      return rejected.length
+    },
+    // completedCount() {
+    //   const completed = this.orders.filter((order) => order.status === 'completed')
+    //   return completed.length
+    // },
+  },
   components: {
     ChartPie,
     BarChart,
