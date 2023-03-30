@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header">
+  <header class="main-header details">
     <nav>
       <RouterLink class="flex" to="/">
         <img class="logo" src="../../src/imgs/Airbnb_logo/airbnblogo.svg" alt="logo" />

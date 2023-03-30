@@ -7,6 +7,7 @@
     <form action="">
       <div>Where</div>
       <input
+      @input="searchBy"
         class="where-to-input"
         type="search"
         placeholder="Search destination"
@@ -155,12 +156,16 @@ export default {
   data() {
     return {
       searchQuery: this.$route.query,
-      filterByInnerHeader: ''
+      filterByInnerHeader: '',
+      searchQuery: ''
     }
   },
   methods: {
     setActiveModalWhere(btnName,whereTo) {
       this.$emit('setActiveModalWhere',btnName,whereTo)
+    },
+    searchBy(ev){
+      // console.log('searchQuery',innerHeaderFilter.where)
     },
   },
   computed: {},
