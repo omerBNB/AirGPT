@@ -130,9 +130,7 @@ export const userStore = {
         async createNewOrder({ commit }, { newOrder }) {
             try {
                 let user = JSON.parse(JSON.stringify(state.loggedinUser))
-                const savedOrder = await orderService.save(newOrder)
                 const idx = user.orders.findIndex(order => order._id === newOrder._id)
-                let stay = await stayService.save(newOrder)
                 if (idx > -1) user.orders.splice(idx, 1, stay)
                 else user.orders.push(stay)
                 const updatedUser = await userService.save(user)

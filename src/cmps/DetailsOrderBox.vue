@@ -198,7 +198,7 @@
 <script>
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
-import { orderService } from '../services/order.service.local'
+import { stayService } from '../services/stay.service.local'
 import { eventBus } from '../services/event-bus.service.js'
 export default {
   name: 'DetailsOrderBox',
@@ -218,7 +218,7 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      order: orderService.getEmptyOrder(),
+      order: stayService.getEmptyOrder(),
       nightsBetween: 0,
       guestsNum: null,
     }
