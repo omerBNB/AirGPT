@@ -147,13 +147,13 @@
         <p class="text-center fs14">You won't be charged yet</p>
       </div>
 
-      <!-- iffff -->
+      <!-- if -->
       <section
         v-if="
           this.order.checkin &&
           this.order.checkout &&
-          this.guestNum !== 'Add guest' &&
-          this.order.guests.guestsNum
+          this.order.guests.guestNum !== 'Add guest' &&
+          this.order.guests.guestNum
         ">
         <section class="price-info">
           <div class="price-per-night flex space-between">
@@ -198,7 +198,7 @@
 <script>
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
-import { orderService } from '../services/order.service.local'
+import { stayService } from '../services/stay.service.local'
 import { eventBus } from '../services/event-bus.service.js'
 export default {
   name: 'DetailsOrderBox',
@@ -218,7 +218,7 @@ export default {
       stayId: null,
       calendarIsShown: false,
       guestModalIsShown: false,
-      order: orderService.getEmptyOrder(),
+      order: stayService.getEmptyOrder(),
       nightsBetween: 0,
       guestsNum: null,
     }
@@ -252,9 +252,8 @@ export default {
     },
 
     calcTotalPrice() {
-      console.log('this.nightsBetween:', this.nightsBetween)
-      console.log('this.order.price:', this.order.stay.price)
-      return +this.stay.price * this.nightsBetween
+      this.order.totalPrice = +this.stay.price * this.nightsBetween
+      return this.order.totalPrice
     },
   },
 
@@ -307,8 +306,31 @@ export default {
           pets: this.order.guests.pets,
         },
       })
-      this.$store.dispatch({ type: 'createNewOrder', order: this.order })
-      // this.$store.dispatch({ type: 'createNewTrip', trip: this.order })
+      this.order.buyer.fullname = loggedInUser.fullname
+      this.order.buyer._id = loggedInUser._id
+      this.order.buyer.imgUrl = loggedInUser.imgUrl
+      this.order.stay._id = this.stay._id
+      this.order.stay.name = this.stay.name
+      this.order.stay.price = this.stay.price
+      this.order.hostId = this.stay.host._id
+
+      //make this code better:!!
+      const date1 = new Date(this.order.checkin)
+      const month1 = date1.getMonth() + 1
+      const day1 = date1.getDate()
+      const year1 = date1.getFullYear()
+      const formattedDate1 = `${month1}/${day1}/${year1}`
+
+      const date2 = new Date(this.order.checkout)
+      const month2 = date2.getMonth() + 1
+      const day2 = date2.getDate()
+      const year2 = date2.getFullYear()
+      const formattedDate2 = `${month2}/${day2}/${year2}`
+
+      this.order.checkin = formattedDate1
+      this.order.checkout = formattedDate2
+
+      this.$store.dispatch({ type: 'createNewOrder', newOrder: this.order })
       this.$store.dispatch({ type: 'updateTripList', trip: this.order })
     },
 
@@ -326,7 +348,7 @@ export default {
       this.order.guests[guest] += +diff
       //
       // this.guestsNum += +diff
-      this.order.guests.guestsNum += +diff
+      this.order.guests.guestNum += +diff
     },
 
     closeGuestModalAndSave(guests) {
@@ -335,8 +357,6 @@ export default {
 
     getDaysBetweenDates(checkin, checkout) {
       if (!checkin || !checkout) return
-      console.log('checkin:', checkin)
-      console.log('checkin:', checkin)
       const date1 = Date.parse(checkin)
       const date2 = Date.parse(checkout)
       const diffInMs = Math.abs(date2 - date1)
@@ -345,7 +365,6 @@ export default {
   },
 
   mounted() {
-    console.log(' this.order.guests.guestsNumIDO', this.order.guests.guestNum)
     const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
     this.order.where = where
     this.order.checkin = checkin
@@ -357,7 +376,6 @@ export default {
     this.order.guests.guestNum = +adults + +children + +infants + +pets
 
     ///////////////
-    console.log('this.order', this.order)
     this.getDaysBetweenDates(checkin, checkout)
   },
 

@@ -1,18 +1,19 @@
 .reservation {
   border-radius: 13px;
   gap: 0.5em;
-  height: 75vh;
+  // height: 70vh;
+  justify-content: center;
 }
 
 .left-side-reservation {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  height: 100%;
+
   .row {
     padding: 0;
     height: 100%;
-    gap: 0.6em;
 
     .box {
       box-shadow: #0000001f 0 6px 16px;
@@ -24,16 +25,13 @@
       h1 {
         text-align: center;
         font-size: 1.5em;
-        margin-block-start: 0.3em;
       }
     }
   }
-  //
 }
 
 .el-scrollbar {
-  overflow: visible;
-  border-radius: 15px;
+  overflow: hidden;
 }
 ///////////////////////////////////////////
 .right-side-reservation {
@@ -45,6 +43,7 @@
   border-radius: 15px;
   margin: 0;
   padding: 0;
+  height: 500px;
 
   .subtitle {
     display: grid;

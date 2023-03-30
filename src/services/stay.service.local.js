@@ -12,6 +12,7 @@ export const stayService = {
   getEmptyStay,
   addStayMsg,
   labels,
+  getEmptyOrder,
 }
 
 window.cs = stayService
@@ -752,8 +753,7 @@ const gStays = [
     likedByUsers: ['mini-user', 'user2'], // for user-wishlist : use $in
   },
 ]
-
-const orders = [
+const gOrders = [
   {
     _id: 'o1225',
     hostId: 'u102',
@@ -762,8 +762,8 @@ const orders = [
       fullname: 'User 1',
     },
     totalPrice: 160,
-    startDate: '2025/10/15',
-    endDate: '2025/10/17',
+    checkin: '2025/10/15',
+    checkout: '2025/10/17',
     guests: {
       adults: 2,
       kids: 1,
@@ -824,7 +824,7 @@ async function query(
   // if (filterBy.price) {
   //   stays = stays.filter((stay) => stay.price <= filterBy.price)
   // }
-  console.log('filterByUserSpecs.where', filterByUserSpecs.where)
+  // console.log('filterByUserSpecs.where', filterByUserSpecs.where)
   if (filterByUserSpecs.where) {
     stays = stays.filter((stay) => stay.loc.country.includes(filterByUserSpecs.where))
   }
@@ -867,6 +867,36 @@ async function addStayMsg(stayId, txt) {
   return msg
 }
 
+function getEmptyOrder() {
+  let order = {
+    _id: utilService.makeId(), // order id
+    hostId: null, // host id
+    buyer: {
+      // the logged in user
+      _id: null,
+      fullname: '',
+    },
+    totalPrice: 0,
+    checkin: '',
+    checkout: '',
+    guests: {
+      adults: 0,
+      children: 0,
+      infants: 0,
+      pets: 0,
+    },
+    stay: {
+      // the stay
+      _id: null,
+      name: '',
+      price: 0,
+    },
+    msgs: [],
+    status: 'pending', // pending, approved
+  }
+  return order
+}
+
 function getEmptyStay() {
   let stay = {
     _id: null,
@@ -880,8 +910,7 @@ function getEmptyStay() {
       '../../src/imgs/imgs_test/ListImgsTest/a/5.webp',
     ],
     price: '', // in preview!
-    summary:
-      '',
+    summary: '',
     capacity: '', // guest number
     equipment: { bedroomNum: '', bedsNum: '', bathNum: '' },
     amenities: [],

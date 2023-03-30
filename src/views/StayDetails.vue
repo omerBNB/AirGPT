@@ -163,11 +163,13 @@ export default {
     },
   },
   async created() {
-    // this.loadStay() // DONT REMOVE PLEASE
-
     const { stayId } = this.$route.params
     const stay = await this.$store.dispatch({ type: 'getStay', stayId })
     this.stay = stay
+    const { where } = this.$route.query
+    if (!where) {
+      this.searchDetails.where = this.stay.loc.country
+    }
   },
   mounted() {
     const currRoute = this.$route.path
@@ -175,13 +177,8 @@ export default {
       document.getElementById('main-app').classList.value = 'main-container details-grid'
     }
     this.searchDetails = this.$route.query
-    console.log(' this.searchDetails:', this.searchDetails)
     const { adults, children, infants, pets } = this.$route.query
-    console.log('pets:', +pets)
-    console.log('infants:', +infants)
-    console.log('children:', +children)
-    console.log('adults:', +adults)
-    console.log('+adults + +children + +infants + +pets', +adults + +children + +infants + +pets)
+
     this.searchDetails.guestNum = +adults + +children + +infants + +pets
   },
 
@@ -194,9 +191,7 @@ export default {
       // }
       this.$store.dispatch({ type: 'getStay', stayId: stayId })
     },
-    openCalendar() {
-      console.log('open')
-    },
+    openCalendar() {},
   },
   components: {
     DetailsOrderBox,

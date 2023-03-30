@@ -10,239 +10,167 @@ const USER = 'user'
 let gUsers
 
 export const userService = {
-    login,
-    logout,
-    signup,
-    getLoggedinUser,
-    saveLocalUser,
-    getUsers,
-    getById,
-    remove,
-    changeScore,
-    save,
-    updateWishList,
-    updateTripList,
+  login,
+  logout,
+  signup,
+  getLoggedinUser,
+  saveLocalUser,
+  getUsers,
+  getById,
+  remove,
+  changeScore,
+  save,
+  updateWishList,
+  updateTripList,
 }
 
 window.userService = userService
 
 _createUsers()
 function _createUsers() {
-    gUsers = utilService.loadFromStorage(USER)
-    console.log('gUsers', gUsers)
-    if (!gUsers || !gUsers.length) {
-        gUsers = [{
-            _id: '1234',
-            fullname: 'user1',
-            username: 'user1',
-            password: 123,
-            imgUrl: '../../src/imgs/imgs_test/omer.jpg',
-            wishList: [],
-            stayList: [], //user stay list as a host,
-            trips: [
-                {
-                    _id: null,
-                    hostId: null,
-                    buyer: {
-                        _id: 1234,
-                        fullname: 'user1',
-                    },
-                    totalPrice: 200,
-                    checkin: 1640954400000,
-                    checkout: 1640884400000,
-                    guests: {
-                        adults: 2,
-                        children: 1,
-                        infants: 0,
-                        pets: 0
-                    },
-                    stay: {
-                        _id: '14123456',
-                        name: 'Oceanfront Beach House',
-                        price: 200
-                    },
-                    msgs: [],
-                    status: 'approved',
-                },
-                {
-                    _id: null,
-                    hostId: null,
-                    buyer: {
-                        _id: 1234,
-                        fullname: 'user1',
-                    },
-                    totalPrice: 412,
-                    checkin: 1540954400000,
-                    checkout: 1540884400000,
-                    guests: {
-                        adults: 2,
-                        children: 1,
-                        infants: 0,
-                        pets: 0
-                    },
-                    stay: {
-                        _id: '18429',
-                        name: 'Garden Paradise',
-                        price: 412,
-                    },
-                    msgs: [],
-                    status: 'approved',
-                },
-                {
-                    _id: null,
-                    hostId: null,
-                    buyer: {
-                        _id: 1234,
-                        fullname: 'user1',
-                    },
-                    totalPrice: 80.0,
-                    checkin: 1680954400000,
-                    checkout: 1680884400000,
-                    guests: {
-                        adults: 2,
-                        children: 1,
-                        infants: 0,
-                        pets: 0
-                    },
-                    stay: {
-                        _id: '14123456',
-                        name: 'Ribeira Charming Duplex',
-                        price: 80.0,
-                    },
-                    msgs: [],
-                    status: 'approved',
-                },
-                {
-                    _id: null,
-                    hostId: null,
-                    buyer: {
-                        _id: 1234,
-                        fullname: 'user1',
-                    },
-                    totalPrice: 1200,
-                    checkin: 1681954400000,
-                    checkout: 1681874400000,
-                    guests: {
-                        adults: 2,
-                        children: 1,
-                        infants: 0,
-                        pets: 0
-                    },
-                    stay: {
-                        _id: '14123456',
-                        name: 'Cozy Cottage in the Woods',
-                        price: '1200',
-                    },
-                    msgs: [],
-                    status: 'approved',
-                }
-            ]
-        },]
-        utilService.saveToStorage(USER, gUsers)
-    }
-    return gUsers
+  gUsers = utilService.loadFromStorage(USER)
+  console.log('gUsers', gUsers)
+  if (!gUsers || !gUsers.length) {
+    gUsers = [
+      {
+        _id: '1234',
+        fullname: 'user1',
+        username: 'user1',
+        password: 123,
+        imgUrl: '../../src/imgs/imgs_test/omer.jpg',
+        wishList: [],
+        stayList: [], //user stay list as a host,
+        orders: [],
+        trips: [],
+      },
+      {
+        _id: 'u101',
+        fullname: 'inon',
+        username: 'inon',
+        password: 123,
+        imgUrl: '../../src/imgs/imgs_test/inon.jpg',
+        wishList: [],
+        stayList: [], //user stay list as a host,
+        orders: [],
+        trips: [],
+      },
+    ]
+    utilService.saveToStorage(USER, gUsers)
+  }
+  return gUsers
 }
 
 function getUsers() {
-    return storageService.query('user')
-    // return httpService.get(`user`)
+  return storageService.query('user')
+  // return httpService.get(`user`)
 }
 
 function onUserUpdate(user) {
-    showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
-    store.dispatch({ type: 'setWatchedUser', user })
+  showSuccessMsg(
+    `This user ${user.fullname} just got updated from socket, new score: ${user.score}`
+  )
+  store.dispatch({ type: 'setWatchedUser', user })
 }
 
 async function getById(userId) {
-    const user = await storageService.get('user', userId)
-    // const user = await httpService.get(`user/${userId}`)
+  const user = await storageService.get('user', userId)
+  // const user = await httpService.get(`user/${userId}`)
 
-    // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
-    // socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
-    // socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
+  // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
+  // socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
+  // socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
 
-    return user
+  return user
 }
 
 function remove(userId) {
-    // return storageService.remove('user', userId)
-    return httpService.delete(`user/${userId}`)
+  // return storageService.remove('user', userId)
+  return httpService.delete(`user/${userId}`)
 }
 
 function updateWishList(stay) {
-    const user = getLoggedinUser()
-    if (!user.wishList.find(s => +s._id === +stay._id)) user.wishList.push(stay)
-    else {
-        let idx = user.wishList.findIndex(s => s._id === stay._id)
-        user.wishList.splice(idx, 1)
-    }
-    saveLocalUser(user)
-    return save(user)
+  const user = getLoggedinUser()
+  if (!user.wishList.find((s) => +s._id === +stay._id)) user.wishList.push(stay)
+  else {
+    let idx = user.wishList.findIndex((s) => s._id === stay._id)
+    user.wishList.splice(idx, 1)
+  }
+  saveLocalUser(user)
+  return save(user)
 }
 
 function updateTripList(trip) {
-    const user = getLoggedinUser()
-    if (!user.trips.find(t => +t._id === +trip._id)) user.trips.push(stay)
-    else {
-        let idx = user.trips.findIndex(t => +t._id === +trip._id)
-        user.trips.splice(idx, 1)
-    }
-    saveLocalUser(user)
-    return save(user)
+  const user = getLoggedinUser()
+  if (!user.trips.find((t) => +t._id === +trip._id)) user.trips.push(stay)
+  else {
+    let idx = user.trips.findIndex((t) => +t._id === +trip._id)
+    user.trips.splice(idx, 1)
+  }
+  saveLocalUser(user)
+  return save(user)
 }
 
 async function save(user) {
-    let savedUser
-    if (user._id) savedUser = await storageService.put(USER, user)
-    else savedUser = await storageService.post(USER, user)
-    saveLocalUser(savedUser)
-    return savedUser
+  let savedUser
+  if (user._id) savedUser = await storageService.put(USER, user)
+  else savedUser = await storageService.post(USER, user)
+  saveLocalUser(savedUser)
+  return savedUser
 }
 
 async function login(userCred) {
-    const users = await storageService.query('user')
-    let user = users.find(user => user.username === userCred.username)
-    // const user = await httpService.post('auth/login', userCred)
-    if (user) {
-        // socketService.login(user._id)
-        return saveLocalUser(user)
-    }
+  const users = await storageService.query('user')
+  let user = users.find((user) => user.username === userCred.username)
+  // const user = await httpService.post('auth/login', userCred)
+  if (user) {
+    // socketService.login(user._id)
+    return saveLocalUser(user)
+  }
 }
 
 async function signup(userCred) {
-    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    const user = await storageService.post('user', userCred)
-    // const user = await httpService.post('auth/signup', userCred)
-    // socketService.login(user._id)
-    return saveLocalUser(user)
+  if (!userCred.imgUrl)
+    userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+  const user = await storageService.post('user', userCred)
+  // const user = await httpService.post('auth/signup', userCred)
+  // socketService.login(user._id)
+  return saveLocalUser(user)
 }
 
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    // socketService.logout()
-    // return await httpService.post('auth/logout')
-    const user = null
-    return user
+  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+  // socketService.logout()
+  // return await httpService.post('auth/logout')
+  const user = null
+  return user
 }
 
 async function changeScore(by) {
-    const user = getLoggedinUser()
-    if (!user) throw new Error('Not loggedin')
-    user.score = user.score + by || by
-    await update(user)
-    return user.score
+  const user = getLoggedinUser()
+  if (!user) throw new Error('Not loggedin')
+  user.score = user.score + by || by
+  await update(user)
+  return user.score
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, wishList: user.wishList, stayList: user.stayList, trips: user.trips }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
+  user = {
+    _id: user._id,
+    fullname: user.fullname,
+    username: user.username,
+    imgUrl: user.imgUrl,
+    wishList: user.wishList,
+    stayList: user.stayList,
+    trips: user.trips,
+    orders: user.orders,
+  }
+  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+  return user
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
-
 
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
