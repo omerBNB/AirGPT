@@ -38,6 +38,7 @@ function _createUsers() {
             imgUrl: '../../src/imgs/imgs_test/omer.jpg',
             wishList: [],
             stayList: [], //user stay list as a host,
+            orders:[],
             trips: [
                 {
                     checkIn: '2025/10/15',
@@ -393,7 +394,7 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, wishList: user.wishList, stayList: user.stayList, trips: user.trips }
+    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, wishList: user.wishList, stayList: user.stayList, trips: user.trips, orders: user.orders }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }

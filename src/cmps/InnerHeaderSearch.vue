@@ -277,14 +277,17 @@ export default {
   },
   computed: {
     guestsTxtCut() {
+      console.log('this.innerHeaderFilter.guests.infants',this.innerHeaderFilter.guests.infants)
       const count = 10
-      let text = this.innerHeaderFilter.guests.adults? 
+      let text
+      const textAdults = this.innerHeaderFilter.guests.adults? 
       +this.innerHeaderFilter.guests.adults +
           +this.innerHeaderFilter.guests.children +
           +this.innerHeaderFilter.guests.infants +
           ' guests'
         : 'Add guests'
-      this.innerHeaderFilter.guests.infants ? ', ' + +this.innerHeaderFilter.guests.infants + ' infants' : ''
+      const textInfants = this.innerHeaderFilter.guests.infants? ', ' + +this.innerHeaderFilter.guests.infants + ' infants' : ''
+      text = textAdults + textInfants
       return text.slice(0, count) + (text.length > count ? "..." : "");
     },
   },

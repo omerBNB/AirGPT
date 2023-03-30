@@ -3,7 +3,7 @@
     <nav>
       <RouterLink class="flex" to="/">
         <img class="logo" src="../../src/imgs/Airbnb_logo/airbnblogo.svg" alt="logo" />
-        <h1 role="img" aria-label="logo">Airgpt</h1>
+        <h1 role="img" aria-label="logo">airgpt</h1>
       </RouterLink>
     </nav>
     <section class="main-filter-header-details" v-if="isWideView">

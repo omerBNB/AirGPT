@@ -8,15 +8,32 @@ export const orderStore = {
   },
   getters: {},
   mutations: {
-    async setOrders({ state }) {
-      state.orders = await orderService.query()
+    setOrdes(state, { orders }) {
+      state.orders = orders
     },
+    updateOrders(state,{savedOrder}){
+      state.orders.findIndex(order => order._id === savedOrder._id)
+
+    }
   },
   actions: {
     async createNewOrder({ commit }, { order }) {
-      const savedOrder = await orderService.save(order)
-      commit('setOrders')
-      return savedOrder
+      try {
+        const savedOrder = await orderService.save(order)
+        commit({ type: 'updateOrdes', savedOrder })
+        return savedOrder
+      } catch (error) {
+        console.log('error', error)
+      }
+    },
+    async getOrders({ commit }) {
+      try {
+        const orders = await orderService.query()
+        commit({ type: 'setOrdes', orders })
+      }
+      catch (err) {
+        console.log('err', err)
+      }
     },
   },
 }
