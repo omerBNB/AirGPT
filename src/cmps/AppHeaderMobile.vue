@@ -1,11 +1,5 @@
 <template>
   <header class="main-header-mobile">
-    <!-- <nav>
-      <RouterLink class="flex" to="/">
-        <img class="logo" src="../../src/imgs/Airbnb_logo/airbnblogo.svg" alt="logo" />
-        <h1 role="img" aria-label="logo">airgpt</h1>
-      </RouterLink>
-    </nav> -->
     <section class="main-filter-header-mobile" v-if="isWideView" @click="showCurrModal('where')">
       <button class="search-btn-mobile">
         <div data-testid="little-search-icon-mobile">
@@ -66,32 +60,21 @@
         
       </button> -->
     </section>
-    <!-- <div class="inner-header-user">
-      <RouterLink class="airgpt-your-home-link" to="/dashboard/stay/edit"> Airgpt your home </RouterLink>
-      <section class="loggedin-user" @click="toggleUserOptions" >
-        <UserOptionsNoUserLogin :hidden="UserInView" @openLogin="openLogin" v-if="!loggedInUser"/>
-        <UserOptionsLoggedinUser :hidden="UserInView" @openLogin="openLogin" v-if="loggedInUser"/>
-        <img class="burger-img"
-          src="https://res.cloudinary.com/dht4wwjwe/image/upload/v1669794047/airbnb/dgxtegsrfyrdcywi0vij.png" alt="" />
-        <div class="user-mini-section">
-          <img class="user-img"
-            :src="loggedInUser ? loggedInUser.imgUrl : 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'" />
-        </div>
-      </section>
-    </div> -->
-    <InnerHeader
-      v-if="!isWideView"
+    <!-- <InnerHeader
+    v-if="!isWideView"
       @closeModal="closeWiderView"
       :activeModal="activateModal"
-      @scroll="closeWiderView" />
+      @scroll="closeWiderView" /> -->
   </header>
+  <!-- <section class="white-bgc-mobile full" v-if="!isWideView"></section> -->
   <!-- <hr class="hr" v-if="isWideView" /> -->
-  <section class="white-bgc full" v-if="!isWideView"></section>
 </template>
 <script>
 import UserOptionsNoUserLogin from './UserOptionsNoUserLogin.vue'
 import UserOptionsLoggedinUser from './UserOptionsLoggedinUser.vue'
 import InnerHeader from './InnerHeader.vue'
+// import LabelsPreview from './LabelsPreview.vue'
+import { stayService } from '../services/stay.service.local'
 
 export default {
   props: {
@@ -105,6 +88,7 @@ export default {
       currChoice: 'none',
       activateModal: null,
       isUserLogin: false,
+      labels: stayService.labels(), 
     }
   },
   created() {

@@ -20,8 +20,6 @@
       @closeActiveModal="showFullScreeen"
       :userSearchSpec="this.$route.query"
       @showLoginModal="showLoginModal" />
-
-    <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <RouterView />
@@ -67,6 +65,7 @@ export default {
   },
   methods: {
     showBackDrop() {
+      console.log('this.backDropisLive',this.backDropisLive)
       this.isWide = false
       this.backDropisLive = true
     },

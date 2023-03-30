@@ -6,7 +6,7 @@
 }
 
 .screen-shadow {
-  position: absolute;
+  position: fixed;
   top: 155px;
   right: 0;
   width: 100vw;
@@ -22,9 +22,11 @@
     justify-content: space-between;
     transition: 1s;
     // border-bottom: solid 1px #dddddd;
-    position: relative;
+    position: sticky;
+    top:0;
     z-index: 7;
     background-color: #fff;
+    // grid-column: 1/-1;
     .flex {
       align-items: center;
       // justify-content: space-between;
