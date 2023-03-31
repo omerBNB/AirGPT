@@ -18,7 +18,7 @@ export default {
     },
     computed: {
         stay() {
-            return this.stays.find(stay => +stay._id === +this.stayToPreview.stay._id)
+            return this.stays.find(s => s._id === this.stayToPreview.stay._id)
         },
     }
 }

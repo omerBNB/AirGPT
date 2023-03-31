@@ -51,15 +51,9 @@ function _createOrders() {
 }
 
 
-async function query() {
-    var orders = await storageService.query(ORDER_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     orders = orders.filter(order => regex.test(order.vendor) || regex.test(order.description))
-    // }
-    // if (filterBy.price) {
-    //     orders = orders.filter(order => order.price <= filterBy.price)
-    // }
+async function query(filterBy = { buyerId: null }) {
+    let orders = await storageService.query(ORDER_KEY)
+    if (filterBy.buyerId) orders = orders.filter(order => order.buyer._id === filterBy.buyerId)
     return orders
 }
 

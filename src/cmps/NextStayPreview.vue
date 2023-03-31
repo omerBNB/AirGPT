@@ -14,7 +14,7 @@
 <script>
 export default {
     props: {
-        nextStays: Array,
+        nextStay: Object,
         stays: Object
     },
     computed: {
@@ -22,10 +22,6 @@ export default {
             return new Intl.DateTimeFormat('en-GB',
                 { dateStyle: 'short', timeStyle: 'short', timeZone: 'Israel' })
                 .format(+this.nextStays[0].checkOut)
-        },
-        nextStay() {
-            let nextStay = this.nextStays.reduce((prev, current) => (prev.checkOut < current.checkOut) ? prev : current)
-            return this.stays.find(stay => +stay._id === +nextStay.stay._id)
         },
     },
 }
