@@ -34,9 +34,19 @@ export default {
             },
             breakpoints: {
 
-                500: {
+                0: {
+                    itemsToShow: 3,
+                    itemsToScroll: 5,
+                    snapAlign: 'center',
+                },
+                300: {
                     itemsToShow: 5,
                     itemsToScroll: 5,
+                    snapAlign: 'center',
+                },
+                500: {
+                    itemsToShow: 7,
+                    itemsToScroll: 10,
                     snapAlign: 'center',
                 },
                 700: {

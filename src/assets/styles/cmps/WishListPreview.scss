@@ -12,6 +12,7 @@
 
     .stays-wishlist-container {
         grid-template-columns: repeat(auto-fill, minmax(auto, 21.63em));
+        justify-content: center;
         margin: -5px;
         gap: 20px;
 
