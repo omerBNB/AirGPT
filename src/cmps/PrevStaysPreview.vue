@@ -1,12 +1,10 @@
 <template>
-    <section v-if="stay" class="stay-in-prev-stays">
-        <img :src="stay.imgUrls[0]" />
+    <section v-if="stayToPreview" class="stay-in-prev-stays">
+        <img :src="stayToPreview.imgUrls[0]" />
         <section class="info">
-            <h1 class="header"> {{ stay.loc.city }}, {{ stay.loc.country }}</h1>
-            <h1>{{ stay.name }}</h1>
-            <h1 class="dates">{{ stay.checkIn }} - {{ new Intl.DateTimeFormat('en-GB',
-                { dateStyle: 'short', timeZone: 'Israel' })
-                .format(stay.checkOut) }}</h1>
+            <h1 class="header"> {{ stayToPreview.loc.city }}, {{ stayToPreview.loc.country }}</h1>
+            <h1>{{ stayToPreview.name }}</h1>
+            <!-- <h1 class="dates">{{ nextStay.checkin }} - {{ nextStay.checkout }}</h1> -->
         </section>
     </section>
 </template>
@@ -14,12 +12,6 @@
 export default {
     props: {
         stayToPreview: Object,
-        stays: Object
     },
-    computed: {
-        stay() {
-            return this.stays.find(s => s._id === this.stayToPreview.stay._id)
-        },
-    }
 }
 </script>

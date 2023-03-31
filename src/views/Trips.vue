@@ -32,7 +32,8 @@ export default {
             return stays.filter(s => this.orders.find(o => o.stay._id === s._id))
         },
         wishlist() {
-            return (this.stays.filter((s) => s.likedByUsers.find((u) => +u._id === +this.loggedInUser._id)))
+            const stays = this.$store.getters.stays
+            return (stays.filter((s) => s.likedByUsers.find((u) => + u._id === +this.loggedInUser._id)))
         }
     },
     components: { TripsPreview }
