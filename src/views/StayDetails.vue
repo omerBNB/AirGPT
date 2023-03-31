@@ -180,6 +180,7 @@ export default {
     const { adults, children, infants, pets } = this.$route.query
 
     this.searchDetails.guestNum = +adults + +children + +infants + +pets
+    console.log('this.searchDetails', this.searchDetails)
   },
 
   methods: {
@@ -188,7 +189,6 @@ export default {
 
       this.$store.dispatch({ type: 'getStay', stayId: stayId })
     },
-    openCalendar() {},
   },
   components: {
     DetailsOrderBox,

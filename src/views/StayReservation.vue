@@ -28,13 +28,12 @@
               <li>Treat your Host's home like your own</li>
             </ul>
           </div>
+
           <div class="btn-container" @click="submitOrder">
-            <div class="cell" v-for="i in 100"></div>
-            <div class="content">
-              <RouterLink to="/trips" class="action-btn">
-                <span>Check your orders</span>
-                <!-- <RouterLink to="/trips">Check your orders</RouterLink> -->
-              </RouterLink>
+            <div class="cell" v-for="i in 100">
+              <div class="content">
+                <RouterLink class="action-btn" to="/trips"> Check your orders </RouterLink>
+              </div>
             </div>
           </div>
         </section>
@@ -47,7 +46,7 @@
               <img src="../imgs/svg_symbols/black_star.svg" />
               <span>{{ stay.rate }}</span>
               <span>•</span>
-              <span class="underline">{{ guestsNum }} </span>
+              <span class="underline">{{ this.stay.reviews.length || 'No' }} reviews </span>
             </div>
           </div>
           <hr />
@@ -63,7 +62,7 @@
             </div>
             <div class="price-per-night flex space-between">
               <p>Total guests</p>
-              <p>1</p>
+              <p>{{ guestsNum }}</p>
             </div>
           </section>
           <hr />
@@ -86,6 +85,7 @@ export default {
   data() {
     return {
       stay: null,
+      details: null,
     }
   },
   created() {},
@@ -98,6 +98,8 @@ export default {
     }
 
     this.loadStay()
+    this.details = this.$route.query
+    console.log('this.details:', this.details)
     // Get otherParams for order information:
   },
   methods: {
@@ -109,8 +111,8 @@ export default {
   },
   computed: {
     guestsNum() {
-      if (this.stay.capacity === 1) return '1 guest'
-      return this.stay.capacity + ' guests'
+      const { adults, children, infants, pets } = this.details
+      return +adults + +children + +infants + +pets
     },
   },
 
