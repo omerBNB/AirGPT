@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <CarouselFilter @setFilterBy="setFilterBy" />
     <StayList :stays="stays" @updateWishList="updateWishList" />
     <!-- <div class="container home">
@@ -22,7 +22,7 @@
     <input type="text" v-model="stayToAdd.vendor" />
     <button>Save</button>
   </form> -->
-  </div>
+  </section>
 </template>
 
 <script>
