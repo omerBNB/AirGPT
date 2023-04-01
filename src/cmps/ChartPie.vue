@@ -6,11 +6,11 @@
 import { defineComponent } from 'vue'
 import { DoughnutChart } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
-
 Chart.register(...registerables)
+// import Chart from 'chart.js/auto'
 
 export default {
-  name: 'PieChart',
+  name: 'ChartPie',
 
   props: {
     orders: {
@@ -28,6 +28,11 @@ export default {
             backgroundColor: ['#FFBFA9', '#FFACAC', '#FFEBB4', '#97B0C4', '#FBFFB1'],
           },
         ],
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+        },
       },
     }
   },
@@ -54,11 +59,7 @@ export default {
       this.testData.datasets[0].data = vals
     },
   },
-  computed: {
-    // getAllToys() {
-    //   return this.$store.getters.getAllToys
-    // },
-  },
+  computed: {},
   watch: {
     orders: {
       handler() {
