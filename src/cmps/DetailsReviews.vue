@@ -74,7 +74,11 @@
             <img :src="review.by.imgUrl" />
             <div>
               <h4>{{ review.by.fullname }}</h4>
-              <span>November 2022</span>
+              <span>{{
+                new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(
+                  new Date(review.at)
+                )
+              }}</span>
             </div>
           </div>
           <div>
@@ -108,6 +112,8 @@ export default {
       else if (!this.stay.reviews.length) return 'no reviews'
       return this.stay.reviews.length + ' reviews'
     },
+
+    formatReviewDate(review) {},
   },
   created() {
     this.currStay = this.stay
