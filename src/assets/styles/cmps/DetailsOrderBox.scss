@@ -49,9 +49,6 @@
 .date-picker {
   display: flex;
   justify-content: space-between;
-  label {
-    color: black;
-  }
 }
 
 .date-input {
@@ -91,11 +88,13 @@ input {
   padding: 0 0;
   width: 50%;
   outline: none;
+  font-size: 1em;
 }
 
 label {
   font-weight: 600;
   font-size: 0.75em;
+  color: black;
 }
 
 span.cost {

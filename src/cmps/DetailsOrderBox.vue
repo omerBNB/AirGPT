@@ -295,12 +295,14 @@ export default {
 
   methods: {
     async submitOrder() {
+      if (this.order.checkin === 'NaN/NaN/NaN' || this.order.checkout === 'NaN/NaN/NaN') return
+      if (!this.order.guests.adults) return
+
       const loggedInUser = this.$store.getters.loggedinUser
       if (!loggedInUser) {
         eventBus.emit('openLoginModal')
         return
       }
-      console.log('this.order', this.order)
       this.$router.push({
         path: '/stay/book/' + this.stayId,
         query: {
@@ -332,7 +334,7 @@ export default {
       const month2 = date2.getMonth() + 1
       const day2 = date2.getDate()
       const year2 = date2.getFullYear()
-      const formattedDate2 = `${day2}/${month1}/${year2}`
+      const formattedDate2 = `${day2}/${month2}/${year2}`
 
       this.order.checkin = formattedDate1
       this.order.checkout = formattedDate2

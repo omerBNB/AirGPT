@@ -1,15 +1,15 @@
 <template>
-  <section v-if="this.loggedInUser" class="reservation flex">
+  <section v-if="this.loggedInUser && this.currUserOrders" class="reservation flex">
     <section class="left-side-reservation">
       <section class="row flex">
         <div class="box">
           <h1>Revenue / month</h1>
-          <BarChart :orders="this.orders" />
+          <BarChart style="height: 50%" :total="total" :orders="this.currUserOrders" />
         </div>
 
         <div class="box">
           <h1>Reservations / listing</h1>
-          <ChartPie />
+          <ChartPie style="height: 50%" :orders="this.currUserOrders" />
         </div>
       </section>
 
@@ -18,25 +18,24 @@
           <h1>Reservations status</h1>
           <div class="flex space-between">
             <p>Pending</p>
-            <p>{{ pendingCount }}</p>
+            <p style="color: orange">{{ pendingCount }}</p>
           </div>
           <div class="flex space-between">
             <p>Approved</p>
-            <p>{{ approvedCount }}</p>
+            <p style="color: green">{{ approvedCount }}</p>
           </div>
           <div class="flex space-between">
             <p>Rejected</p>
-            <p>{{ rejectedCount }}</p>
+            <p style="color: red">{{ rejectedCount }}</p>
           </div>
-          <!-- <div class="flex space-between">
-            <p>Completed</p>
-            <p>2</p>
-          </div> -->
         </div>
 
         <div class="box">
-          <h1>Something</h1>
-          <LineChart />
+          <h1>Reviews avarge pre year</h1>
+          <LineChart
+            v-if="this.currUserStays"
+            :currUserStays="this.currUserStays"
+            style="height: 70%" />
         </div>
       </section>
     </section>
@@ -52,7 +51,7 @@
         <p></p>
       </article>
       <el-scrollbar style="height: 100%">
-        <article v-for="order in this.loggedInUser.orders" class="card">
+        <article v-for="order in this.currUserOrders" class="card">
           <div class="img-guest flex align-center">
             <img :src="order.buyer.imgUrl" />
             <h3>{{ order.buyer.fullname }}</h3>
@@ -65,13 +64,13 @@
 
           <button
             v-if="order.status === 'pending'"
-            @click="changeOrderStatus(order._id, 'approve')"
+            @click="changeOrderStatus(order, 'approve')"
             class="btn approve-btn">
             Approve
           </button>
           <button
             v-if="order.status === 'pending'"
-            @click="changeOrderStatus(order._id, 'reject')"
+            @click="changeOrderStatus(order, 'reject')"
             class="btn reject-btn">
             Reject
           </button>
@@ -89,46 +88,59 @@ export default {
   name: 'Reservation',
   data() {
     return {
+      total: {},
       loggedInUser: null,
-      orders: null,
+      currUserOrders: null,
+      currUserStays: null,
     }
   },
+
+  async created() {
+    this.loggedInUser = this.$store.getters.loggedinUser
+
+    const orders = await this.$store.dispatch({ type: 'loadOrders', filterBy: '' })
+    this.currUserOrders = orders.filter((order) => order.hostId === this.loggedInUser._id)
+
+    const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: '' })
+    this.currUserStays = stays.filter((stay) => stay.host._id === this.loggedInUser._id)
+  },
+
+  mounted() {},
+
   methods: {
-    changeOrderStatus(orderId, newStatus) {
-      // const idx = this.orders.findIndex((order) => order._id === orderId)
-      // this.orders[idx].status = newStatus
-      this.$store.dispatch({ type: 'updateOrder', orderId, newStatus })
+    async changeOrderStatus(order, newStatus) {
+      const currOrder = JSON.parse(JSON.stringify(order))
+      currOrder.status = newStatus
+      const newOrder = await this.$store.dispatch({ type: 'updateOrder', order: currOrder })
+      console.log('newOrder:', newOrder)
+      const targetOrder = this.currUserOrders.find((order) => order._id === newOrder._id)
+      targetOrder.status = newOrder.status
     },
   },
 
-  mounted() {
-    const loggedInUser = this.$store.getters.loggedinUser
-    this.loggedInUser = loggedInUser
-    console.log('this.loggedInUser:', this.loggedInUser)
-    this.orders = this.loggedInUser.orders
-    console.log('this.orders:', this.orders)
-  },
-  created() {},
-
   computed: {
     pendingCount() {
-      const pending = this.orders.filter((order) => order.status === 'pending')
+      const pending = this.currUserOrders.filter((order) => order.status === 'pending')
+      console.log('pending', pending)
       return pending.length
     },
 
     approvedCount() {
-      const approved = this.orders.filter((order) => order.status === 'approved')
+      const approved = this.currUserOrders.filter((order) => order.status === 'approve')
       return approved.length
     },
 
     rejectedCount() {
-      const rejected = this.orders.filter((order) => order.status === 'rejected')
+      const rejected = this.currUserOrders.filter((order) => order.status === 'reject')
       return rejected.length
     },
-    // completedCount() {
-    //   const completed = this.orders.filter((order) => order.status === 'completed')
-    //   return completed.length
-    // },
+
+    getAllUserOrders() {
+      return (this.currUserOrders = this.$store.getters.orders.filter(
+        (order) => order.hostId === this.loggedInUser._id
+      ))
+      // this.currUserOrders = this.$store.getters.orders
+    },
   },
   components: {
     ChartPie,
@@ -152,12 +164,8 @@ export default {
 <style scoped>
 .el-scrollbar {
   --el-scrollbar-opacity: 0.3;
-  --el-scrollbar-bg-color: #8e957d;
+  --el-scrollbar-bg-color: #f4305482;
   --el-scrollbar-hover-opacity: 0.7;
   --el-scrollbar-hover-bg-color: var(--el-text-color-secondary);
-}
-
-.el-scrollbar__view {
-  background-color: pink;
 }
 </style>
