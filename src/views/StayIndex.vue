@@ -27,7 +27,7 @@
 
 <script>
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { stayService } from '../services/stay.service.local'
+import { stayService } from '../services/stay.service'
 // import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 import StayList from '../cmps/StayList.vue'
 import CarouselFilter from '../views/CarouselFilter.vue'
@@ -90,7 +90,7 @@ export default {
       console.log('stay msgs:', stay.msgs)
     },
     setFilterBy(filter) {
-      this.$store.dispatch({ type: "setFilterBy", filter });
+      this.$store.dispatch({ type: "loadStays", filter });
     },
     updateWishList(stay) {
       let stayToUpdate = JSON.parse(JSON.stringify(stay))

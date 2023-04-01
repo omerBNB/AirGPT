@@ -1,3 +1,4 @@
+// import { userService } from '../services/user.service.local'
 import { userService } from '../services/user.service'
 import { stayService } from '../services/stay.service.local'
 // import { json } from 'stream/consumers'
@@ -18,6 +19,7 @@ export const userStore = {
       return users
     },
     loggedinUser({ loggedinUser }) {
+      console.log('loggedinUser',loggedinUser)
       return loggedinUser
     },
     watchedUser({ watchedUser }) {
@@ -27,7 +29,6 @@ export const userStore = {
 
   mutations: {
     setLoggedinUser(state, { user }) {
-      // Yaron: needed this workaround as for score not reactive from birth
       state.loggedinUser = user ? { ...user } : null
     },
     setWatchedUser(state, { user }) {
@@ -48,6 +49,7 @@ export const userStore = {
     async login({ commit }, { userCred }) {
       try {
         const user = await userService.login(userCred)
+        console.log('user',user)
         commit({ type: 'setLoggedinUser', user })
         return user
       } catch (err) {
@@ -123,20 +125,6 @@ export const userStore = {
     // Keep this action for compatability with a common user.service ReactJS/VueJS
     setWatchedUser({ commit }, payload) {
       commit(payload)
-    },
-    async createNewOrder({ commit }, { newOrder }) {
-      try {
-        let user = await userService.getById(newOrder.hostId)
-        console.log('user:', user)
-        const idx = user.orders.findIndex((order) => order._id === newOrder._id)
-        if (idx > -1) user.orders.splice(idx, 1, newOrder)
-        else user.orders.push(newOrder)
-
-        // const updatedUser = await userService.save(user)
-        // commit({ type: 'setLoggedinUser', user: updatedUser })
-      } catch (error) {
-        console.log('error', error)
-      }
     },
   },
 }

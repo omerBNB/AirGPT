@@ -5,7 +5,7 @@
 </template>
   
 <script>
-import { stayService } from '../services/stay.service.local'
+import { stayService } from '../services/stay.service'
 import CarouselFilterPreview from '../cmps/CarouselFilterPreview.vue'
 
 export default {
@@ -14,7 +14,8 @@ export default {
         return {
             labels: stayService.labels(),
             filter: {
-                label: ''
+                label: '',
+                where: ''
             }
         }
     },

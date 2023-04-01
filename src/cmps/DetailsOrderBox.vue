@@ -194,7 +194,9 @@ import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
 import { stayService } from '../services/stay.service.local'
 import { eventBus } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service'
-import {orderService} from '../services/order.service.local'
+// import { userService } from '../services/user.service.local'
+// import {orderService} from '../services/order.service.local'
+import {orderService} from '../services/order.service'
 
 export default {
   name: 'DetailsOrderBox',

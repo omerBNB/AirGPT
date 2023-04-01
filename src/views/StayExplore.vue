@@ -8,20 +8,23 @@
 
 <script>
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { stayService } from '../services/stay.service.local'
+import { stayService } from '../services/stay.service'
 // import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 import StayList from '../cmps/StayList.vue'
 import CarouselFilter from './CarouselFilter.vue'
 
 export default {
   created() {
-    this.filterByUserSpecs = this.$route.query
-    this.$store.dispatch({ type: 'searchByUserSpecs', filterUserSpecs: this.filterByUserSpecs })
+    this.filter.where = this.$route.query.where
+    this.$store.dispatch({ type: 'loadStays', filter: this.filter })
   },
   data() {
     return {
       stayToAdd: stayService.getEmptyStay(),
-      filterByUserSpecs: null,
+      filter: {
+                label: '',
+                where: ''
+            }
     }
   },
   mounted() {
@@ -74,7 +77,7 @@ export default {
       console.log('stay msgs:', stay.msgs)
     },
     setFilterBy(filter) {
-      this.$store.dispatch({ type: 'setFilterBy', filter })
+      this.$store.dispatch({ type: 'loadStays', filter })
     },
   },
   computed: {
@@ -87,9 +90,9 @@ export default {
   },
   watch: {
     $route() {
-      if (this.$route.query !== this.filterByUserSpecs) {
-        this.filterByUserSpecs = this.$route.query
-        this.$store.dispatch({ type: 'searchByUserSpecs', filterUserSpecs: this.filterByUserSpecs })
+      if (this.$route.query !== this.filter.userSpecs) {
+        this.filter.userSpecs = this.$route.query
+        this.$store.dispatch({ type: 'loadStays', filter: {label: '', where: this.filter.userSpecs.where} })
       }
     },
   },

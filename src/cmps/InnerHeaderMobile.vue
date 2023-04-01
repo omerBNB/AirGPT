@@ -1,30 +1,29 @@
 <template>
-  <section class="flex-inner-header">
-    <section class="inner-header-container">
-      <InnerHeaderWhere
+  <section class="inner-header-container-mobile">
+    <button class="go-back-mobile" @click="onCloseModal">X</button>
+    <section class="all-inner-header-mobile-btns">
+    <InnerHeaderWhereMobile
         :acitveModalInner="acitveModalInner"
         :innerHeaderFilter="innerHeaderFilter"
         @setActiveModalWhere="setActiveModalWhere" />
-      <div class="border-inner-header"></div>
-      <InnerHeaderDateSelection
+      <InnerHeaderDateSelectionMobile
         :acitveModalInner="acitveModalInner"
         :innerHeaderFilter="innerHeaderFilter"
         @setActiveModalDates="setActiveModalDates" />
-      <div class="border-inner-header"></div>
-      <InnerHeaderSearchVue
+      <InnerHeaderSearchMobile
         :acitveModalInner="acitveModalInner"
         :innerHeaderFilter="innerHeaderFilter"
         @setActiveModalsearch="setActiveModalsearch"
-        @searchDestination="searchDestination" />
+        @searchDestination="searchDestination" /> 
     </section>
-  </section>
+    </section>  
 </template>
 
 <script>
 import { ref } from 'vue'
-import InnerHeaderWhere from './InnerHeaderWhere.vue'
-import InnerHeaderDateSelection from './InnerHeaderDateSelection.vue'
-import InnerHeaderSearchVue from './InnerHeaderSearch.vue'
+import InnerHeaderWhereMobile from './InnerHeaderWhereMobile.vue'
+import InnerHeaderDateSelectionMobile from './InnerHeaderDateSelectionMobile.vue'
+import InnerHeaderSearchMobile from './InnerHeaderSearchMobile.vue'
 export default {
   name: '',
   props: {
@@ -48,6 +47,9 @@ export default {
     showWhere() {
       this.isActive = true
     },
+    onCloseModal(){
+      this.$emit('closeModal')
+    },
     setActiveModalWhere(btnName, whereto) {
       this.acitveModalInner = btnName
       this.innerHeaderFilter.where = whereto
@@ -68,24 +70,24 @@ export default {
         query: {
           where: this.innerHeaderFilter.where,
           checkin: this.innerHeaderFilter.range.start.toDateString().substring(4, 16),
-        checkout: this.innerHeaderFilter.range.end.toDateString().substring(4, 16),
-        adults: this.innerHeaderFilter.guests.adults,
-        children: this.innerHeaderFilter.guests.children,
-        infants: this.innerHeaderFilter.guests.infants,
-        pets: this.innerHeaderFilter.guests.pets,
-      }
-    })
+          checkout: this.innerHeaderFilter.range.end.toDateString().substring(4, 16),
+          adults: this.innerHeaderFilter.guests.adults,
+          children: this.innerHeaderFilter.guests.children,
+          infants: this.innerHeaderFilter.guests.infants,
+          pets: this.innerHeaderFilter.guests.pets,
+        },
+      })
     },
   },
   computed: {},
   created() {
     this.acitveModalInner = this.activeModal
   },
-  
+
   components: {
-    InnerHeaderWhere,
-    InnerHeaderDateSelection,
-    InnerHeaderSearchVue,
+    InnerHeaderWhereMobile,
+    InnerHeaderDateSelectionMobile,
+    InnerHeaderSearchMobile,
   },
   emits: ['closeModal'],
 }

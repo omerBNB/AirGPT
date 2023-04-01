@@ -123,10 +123,10 @@
         </div>
       </div>
       <div class="edit-stay-second-inputs">
-        <!-- <div>
+        <div>
           <label for=""> Labels: </label>
           <el-input v-model="input3" class="w-50 m-2" size="small" placeholder="Please Input" />
-        </div> -->
+        </div>
         <div>
           <label for=""> Property type: </label>
           <el-input
@@ -172,23 +172,26 @@
 </template>
 <script>
 import { uploadService } from '../services/upload.service'
-import { stayService } from '../services/stay.service.local'
+import { stayService } from '../services/stay.service'
 export default {
   name: '',
   data() {
     return {
       newStay: null,
-      currUser: null
+      currUser: null,
     }
   },
   methods: {
     addNewStay() {
-      const idx = currUser.stayList.findIndex((stay) => stay._id === newStay._id)
-      if (idx > -1) currUser.stayList.splice(idx, 1, newStay)
-      else currUser.stayList.push(newStay)
-      
-      this.$store.dispatch({type:'updateStay',newStay: this.newStay })
-      this.$store.dispatch({ type: 'updateUser', currUser: this.currUser})
+      if (!this.currUser.stayList) {
+        this.currUser.stayList = []
+      }
+      const idx = this.currUser.stayList.findIndex((stay) => stay._id === this.newStay._id)
+      if (idx > -1) this.currUser.stayList.splice(idx, 1, this.newStay)
+      else this.currUser.stayList.push(this.newStay)
+
+      this.$store.dispatch({ type: 'updateStay', newStay: this.newStay })
+      this.$store.dispatch({ type: 'updateUser', currUser: this.currUser })
       this.$router.push('/dashboard/listing')
     },
     async handleFile(ev) {
@@ -202,7 +205,7 @@ export default {
   },
   computed: {
     loggedInUser() {
-      this.currUser = this.$store.getters.loggedinUser
+      this.currUser = JSON.parse(JSON.stringify(this.$store.getters.loggedinUser))
       return this.$store.getters.loggedinUser
     },
     formatPrice() {
@@ -230,6 +233,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

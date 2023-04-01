@@ -40,6 +40,7 @@
               }}
             </span>
             <span>
+              
               {{
                 this.userSearchSpec.adults
                   ? +this.userSearchSpec.adults +
@@ -60,16 +61,21 @@
         
       </button> -->
     </section>
+    <InnerHeaderMobile
+      v-if="!isWideView"
+      @closeModal="closeWiderView"
+      :activeModal="activateModal"
+      @scroll="closeWiderView" />
   </header>
-  <!-- <section class="white-bgc-mobile full" v-if="!isWideView"></section> -->
+  <section class="white-bgc-mobile full" v-if="!isWideView"></section>
   <!-- <hr class="hr" v-if="isWideView" /> -->
 </template>
 <script>
 import UserOptionsNoUserLogin from './UserOptionsNoUserLogin.vue'
 import UserOptionsLoggedinUser from './UserOptionsLoggedinUser.vue'
-import InnerHeader from './InnerHeader.vue'
+import InnerHeaderMobile from './InnerHeaderMobile.vue'
 // import LabelsPreview from './LabelsPreview.vue'
-import { stayService } from '../services/stay.service.local'
+import { stayService } from '../services/stay.service'
 
 export default {
   props: {
@@ -126,7 +132,7 @@ export default {
   components: {
     UserOptionsNoUserLogin,
     UserOptionsLoggedinUser,
-    InnerHeader,
+    InnerHeaderMobile,
   },
   emits: ['onShowBackDrop', 'closeActiveModal', 'showLoginModal'],
 }

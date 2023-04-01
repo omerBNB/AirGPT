@@ -1,5 +1,5 @@
+import { stayService } from '../services/stay.service'
 // import { stayService } from '../services/stay.service.local'
-import { stayService } from '../services/stay.service.local'
 
 // export function getActionRemoveStay(stayId) {
 //     return {
@@ -83,6 +83,7 @@ export const stayStore = {
     },
     async loadStays({ commit }, { filter }) {
       try {
+        console.log('filter',filter)
         const stays = await stayService.query(filter)
         commit({ type: 'setStays', stays })
       } catch (err) {
@@ -108,22 +109,10 @@ export const stayStore = {
         throw err
       }
     },
-    async setFilterBy({ commit }, { filter }) {
-      const stays = await stayService.query(filter)
-      commit({ type: 'setStays', stays })
-    },
     async getStay({ commit }, { stayId }) {
       const stay = await stayService.getById(stayId)
       return stay
     },
-    async searchByUserSpecs({ commit, state }, { filterUserSpecs }) {
-      try {
-        const stays = await stayService.query(state.filter, filterUserSpecs)
-        commit({ type: 'setStays', stays })
-      } catch (err) {
-        console.log('stayStore: Error in addStayMsg', err)
-        throw err
-      }
-    },
+  
   },
 }

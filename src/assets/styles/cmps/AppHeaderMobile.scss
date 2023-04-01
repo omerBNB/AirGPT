@@ -7,13 +7,12 @@
 //   background-color: rgba(0, 0, 0, 0.208);
 //   z-index: 3;
 // }
-
 @media (max-width: 744px) {
   .main-header-mobile {
     position: fixed;
-    display: flex;
-    height: 80px;
-    align-items: center;
+    // display: flex;
+    // height: 100%;
+    align-items: start;
     justify-content: space-between;
     transition: 1s;
     // border-bottom: solid 1px #dddddd;
@@ -72,6 +71,9 @@
       .main-filter-mobile-spans{
         color: #717171;
         font-size: 1em;
+        span{
+          margin-inline-end: 10px;
+        }
       }
     }
   }
