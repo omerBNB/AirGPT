@@ -53,7 +53,10 @@ export default {
     return {
       columns: null,
       range: null,
-      date: 'Add date',
+      date: {
+        start: null,
+        end: null,
+      },
 
       selectedColor: 'gray',
 
@@ -85,20 +88,26 @@ export default {
   created() {
     const { mapCurrent } = useScreens({ xs: '0px', sm: '640px', md: '768px', lg: '1024px' })
     this.columns = mapCurrent({ lg: 2 }, 2)
+
+    if (this.checkin && this.checkout) {
+      this.date.start = this.checkin
+      this.date.end = this.checkout
+    }
   },
-  methods: {},
+
   watch: {
     date() {
+      console.log('this.date', this.date)
       setTimeout(() => this.$emit('closeModal', this.date), 200)
     },
   },
-  components: {},
 }
 </script>
 
 <style>
 .calendar .vc-arrow {
-  width: 50px;
+  width: 45px;
+  height: 10px;
 }
 .vc-highlight-content-solid {
   background-color: #222;
@@ -143,6 +152,3 @@ export default {
   color: black;
 }
 </style>
-<!-- // Date.parse('Mar 02') -->
-<!-- // 983484000000 -->
-<!-- //  new Date(983484000000).getMonth()+'/'+new Date(983484000000).getDay() -->

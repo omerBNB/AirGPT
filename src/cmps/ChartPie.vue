@@ -6,23 +6,33 @@
 import { defineComponent } from 'vue'
 import { DoughnutChart } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
-
 Chart.register(...registerables)
+// import Chart from 'chart.js/auto'
 
 export default {
-  name: 'PieChart',
-  components: { DoughnutChart },
+  name: 'ChartPie',
+
+  props: {
+    orders: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
-      //testData.labels = labels, testData.datasets[0].data = data
       testData: {
-        labels: ['ds', 'ds'],
+        labels: [],
         datasets: [
           {
-            data: [100, 200],
+            data: [],
             backgroundColor: ['#FFBFA9', '#FFACAC', '#FFEBB4', '#97B0C4', '#FBFFB1'],
           },
         ],
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+        },
       },
     }
   },
@@ -31,27 +41,33 @@ export default {
   },
   methods: {
     setData() {
-      // const toys = this.getAllToys
-      // console.log('this.getAllToys', this.$store.getters.getAllToys)
-      // const labelsMap = toys.reduce((acc, toy) => {
-      // console.log('toy', toy)
-      // toy.labels.forEach((label) => {
-      // console.log('label:', label)
-      // if (acc[label]) return (acc[label] = toy.price)
-      // return (acc[label] = acc[label] + toy.price)
-      // })
-      // }, {})
-      // labelAvgPriceMap {baby:25,outdoor:35,barbie:80,art:5}
-      // Object.keys(labelAvgPriceMap) labels ['baby','outdoot','barbie','art']
-      // Object.values(labelAvgPriceMap) data [25,35,80,5]
-      // const labels =
-      // const data =
+      const names = []
+      const vals = []
+      this.orders.forEach((order) => {
+        console.log('order', order.stay.name)
+        if (names.includes(order.stay.name)) {
+          // find the idx and count it ++
+          const idx = names.findIndex((name) => order.stay.name === name)
+          vals[idx]++
+        } else {
+          // add it and push count=1
+          names.push(order.stay.name)
+          vals.push(1)
+        }
+      })
+      this.testData.labels = names
+      this.testData.datasets[0].data = vals
     },
   },
-  computed: {
-    // getAllToys() {
-    //   return this.$store.getters.getAllToys
-    // },
+  computed: {},
+  watch: {
+    orders: {
+      handler() {
+        this.setData()
+      },
+      deep: true,
+    },
   },
+  components: { DoughnutChart },
 }
 </script>

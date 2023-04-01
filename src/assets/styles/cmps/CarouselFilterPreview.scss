@@ -3,17 +3,21 @@
     top: 80px;
     font-size: 12px;
     margin-block: 1em;
-    width: 92vw;
+    width: 91vw;
     z-index: 4;
     background-color: $clr1;
-
-    // .carousel__slide {
-        // width: 80px !important;
-    // }
 
     .carousel__prev.carousel__prev--disabled,
     .carousel__next.carousel__next--disabled {
         display: none;
+    }
+
+    @include for-mobile-layout {
+
+        .carousel__prev,
+        .carousel__next {
+            display: none;
+        }
     }
 
     button .carousel__icon {
@@ -24,7 +28,7 @@
         height: 27px;
         width: 27px;
     }
-    
+
     .label {
         margin-block-start: 1em;
         align-items: center;

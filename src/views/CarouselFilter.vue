@@ -1,7 +1,7 @@
 <template>
-    <div class="labels">
+    <section class="labels">
         <CarouselFilterPreview :labels="labels" @setFilterBy="setFilterBy" />
-    </div>
+    </section>
 </template>
   
 <script>

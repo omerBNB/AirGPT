@@ -12,13 +12,25 @@
     grid-template-columns: minmax(24px, 1fr) minmax(auto, 1120px) minmax(24px, 1fr);
   }
 
+  &.details-grid-mobile {
+    grid-template-columns: 13px 1fr 13px;
+
+    // & :first-child() {
+    //   grid-column: 1/-1;
+    // }
+
+    // & .imgs-details-carusell {
+    //   grid-column: 1/-1;
+    // }
+  }
+
   &.wishlist-grid {
     grid-template-columns: minmax(24px, 1fr) minmax(auto, 1295px) minmax(24px, 1fr);
   }
 
   padding: 0;
 
-  >* {
+  > * {
     grid-column: 2;
 
     &.full {

@@ -1,6 +1,6 @@
 .order-container {
   position: sticky;
-  top: 32px;
+  top: 78px;
   border: 1px solid #00000030;
   border-radius: 13px;
   padding: 25px 20px 0px 20px;
@@ -69,7 +69,7 @@
   flex-direction: column;
   gap: 5px;
   border-top: 1px solid #00000050;
-  padding: 13px 12px;
+  padding: 7px 12px;
   color: gray;
   font-size: 0.75rem;
 
@@ -88,11 +88,13 @@ input {
   padding: 0 0;
   width: 50%;
   outline: none;
+  font-size: 1em;
 }
 
 label {
   font-weight: 600;
   font-size: 0.75em;
+  color: black;
 }
 
 span.cost {
@@ -195,3 +197,6 @@ p.footer {
   width: 100%;
   text-align: center;
 }
+// .order-container hr {
+//   color: aliceblue;
+// }

@@ -30,24 +30,37 @@ export default {
         return {
             settings: {
                 itemsToShow: 1,
-                snapAlign: 'center',
+                snapAlign: 'start',
             },
             breakpoints: {
 
-                500: {
+                0: {
+                    itemsToShow: 3,
+                    itemsToScroll: 5,
+                    snapAlign: 'start',
+                    wrapAround: true
+                },
+                300: {
                     itemsToShow: 5,
                     itemsToScroll: 5,
-                    snapAlign: 'center',
+                    snapAlign: 'start',
+                    wrapAround: true
+                },
+                500: {
+                    itemsToShow: 7,
+                    itemsToScroll: 10,
+                    snapAlign: 'start',
                 },
                 700: {
                     itemsToShow: 10,
                     itemsToScroll: 10,
-                    snapAlign: 'center',
+                    snapAlign: 'start',
                 },
                 1024: {
                     itemsToShow: 15,
                     itemsToScroll: 15,
                     snapAlign: 'start',
+
                 },
             },
             activeModalInner: null,
@@ -64,6 +77,7 @@ export default {
 
 <style>
 .carousel__slide.carousel__slide--visible {
-    width: 0;
+    /* width: 0; */
+    width: 92vw;
 }
 </style>

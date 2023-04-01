@@ -17,12 +17,14 @@
       <div class="order-data">
         <div class="date-picker">
           <div @click="this.calendarIsShown = true" class="date-input">
-            <label>CHECK IN</label>
-            <input :value="this.order.checkin || 'Add date'" />
+            <label>CHECK-IN</label>
+            <input
+              :value="this.order.checkin === 'NaN/NaN/NaN' ? 'Add date' : this.order.checkin" />
           </div>
           <div @click="this.calendarIsShown = true" class="date-input">
-            <label>CHECK OUT</label>
-            <input :value="this.order.checkout || 'Add date'" />
+            <label>CHECK-OUT</label>
+            <input
+              :value="this.order.checkout === 'NaN/NaN/NaN' ? 'Add date' : this.order.checkout" />
           </div>
         </div>
 
@@ -148,12 +150,13 @@
       </div>
 
       <!-- if -->
-      <section v-if="
-        this.order.checkin &&
-        this.order.checkout &&
-        this.order.guests.guestNum !== 'Add guest' &&
-        this.order.guests.guestNum
-      ">
+      <section
+        v-if="
+          this.order.checkin &&
+          this.order.checkout &&
+          this.order.guests.guestNum !== 'Add guest' &&
+          this.order.guests.guestNum
+        ">
         <section class="price-info">
           <div class="price-per-night flex space-between">
             <p class="underline">${{ stay.price }} X {{ this.nightsBetween }} nights</p>
@@ -177,10 +180,16 @@
         </div>
       </section>
 
-      <DetailsCalendar v-if="calendarIsShown" @closeModal="closeModal" :checkin="order.checkin"
-        :checkout="order.checkout" />
+      <DetailsCalendar
+        v-if="calendarIsShown"
+        @closeModal="closeModal"
+        :checkin="this.searchDetails.checkin"
+        :checkout="this.searchDetails.checkout" />
 
-      <DetailsGuestModal :guests="this.order.guests" @updateGuest="updateGuest" @closeGuestModal="closeGuestModalAndSave"
+      <DetailsGuestModal
+        :guests="this.order.guests"
+        @updateGuest="updateGuest"
+        @closeGuestModal="closeGuestModalAndSave"
         v-if="this.guestModalIsShown" />
     </section>
 
@@ -195,7 +204,7 @@ import { stayService } from '../services/stay.service.local'
 import { eventBus } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service'
 // import { userService } from '../services/user.service.local'
-// import {orderService} from '../services/order.service.local'
+// import { orderService } from '../services/order.service.local'
 import {orderService} from '../services/order.service'
 
 export default {
@@ -254,6 +263,10 @@ export default {
       this.order.totalPrice = +this.stay.price * this.nightsBetween
       return this.order.totalPrice
     },
+
+    checkindate() {
+      // if (this.order.checkin === 'NaN/NaN/NaN') return 'a'
+    },
   },
 
   created() {
@@ -280,19 +293,18 @@ export default {
         this.calendarIsShown = false
       }
     })
-
-    //** If there's DATES in the params (from explore page) **/
-    //** so set the startDate and endDate. if its null render:Add date each input **/
   },
 
   methods: {
-   async submitOrder() {
+    async submitOrder() {
+      if (this.order.checkin === 'NaN/NaN/NaN' || this.order.checkout === 'NaN/NaN/NaN') return
+      if (!this.order.guests.adults) return
+
       const loggedInUser = this.$store.getters.loggedinUser
       if (!loggedInUser) {
         eventBus.emit('openLoginModal')
         return
       }
-
       this.$router.push({
         path: '/stay/book/' + this.stayId,
         query: {
@@ -318,19 +330,18 @@ export default {
       const month1 = date1.getMonth() + 1
       const day1 = date1.getDate()
       const year1 = date1.getFullYear()
-      const formattedDate1 = `${month1}/${day1}/${year1}`
+      const formattedDate1 = `${day1}/${month1}/${year1}`
 
       const date2 = new Date(this.order.checkout)
       const month2 = date2.getMonth() + 1
       const day2 = date2.getDate()
       const year2 = date2.getFullYear()
-      const formattedDate2 = `${month2}/${day2}/${year2}`
+      const formattedDate2 = `${day2}/${month2}/${year2}`
 
       this.order.checkin = formattedDate1
       this.order.checkout = formattedDate2
-  
 
-      this.$store.dispatch({type:'updateOrder', order: this.order})
+      this.$store.dispatch({ type: 'updateOrder', order: this.order })
     },
 
     closeModal(date) {
@@ -339,6 +350,21 @@ export default {
       this.order.checkout = date.end.toDateString()
 
       this.getDaysBetweenDates(this.order.checkin, this.order.checkout)
+      const checkin = this.order.checkin
+      const date1 = new Date(checkin)
+      const day1 = date1.getDate()
+      const month1 = date1.getMonth() + 1
+      const year1 = date1.getFullYear()
+      const formattedDate1 = `${month1}/${day1}/${year1}`
+      this.order.checkin = formattedDate1
+
+      const checkout = this.order.checkout
+      const date2 = new Date(checkout)
+      const day2 = date2.getDate()
+      const month2 = date2.getMonth() + 1
+      const year2 = date2.getFullYear()
+      const formattedDate2 = `${month2}/${day2}/${year2}`
+      this.order.checkout = formattedDate2
     },
 
     updateGuest({ guest, diff }) {
@@ -364,16 +390,30 @@ export default {
   },
 
   mounted() {
-    const { where, checkin, checkout, adults, children, infants, pets } = this.$route.query
+    const { where, adults, children, infants, pets } = this.$route.query
     this.order.where = where
-    this.order.checkin = checkin
-    this.order.checkout = checkout
     this.order.guests.adults = +adults || 0
     this.order.guests.children = +children || 0
     this.order.guests.infants = +infants || 0
     this.order.guests.pets = +pets || 0
     this.order.guests.guestNum = +adults + +children + +infants + +pets
+    const checkin = this.searchDetails.checkin
+    const date1 = new Date(checkin)
+    const day1 = date1.getDate()
+    const month1 = date1.getMonth() + 1
+    const year1 = date1.getFullYear()
+    const formattedDate1 = `${month1}/${day1}/${year1}`
 
+    const checkout = this.searchDetails.checkout
+    const date2 = new Date(checkin)
+    const day2 = date2.getDate()
+    const month2 = date2.getMonth() + 1
+    const year2 = date2.getFullYear()
+    const formattedDate2 = `${month2}/${day2}/${year2}`
+
+    this.order.checkin = formattedDate1
+    this.order.checkout = formattedDate2
+    console.log('this.order', this.order)
     ///////////////
     this.getDaysBetweenDates(checkin, checkout)
   },
