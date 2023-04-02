@@ -33,7 +33,7 @@ export default {
         },
         wishlist() {
             const stays = this.$store.getters.stays
-            return (stays.filter((s) => s.likedByUsers.find((u) => + u._id === +this.loggedInUser._id)))
+            return (stays.filter((s) => s.likedByUsers.find((u) => u._id === this.loggedInUser._id)))
         }
     },
     components: { TripsPreview }
