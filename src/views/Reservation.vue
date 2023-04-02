@@ -100,7 +100,9 @@ export default {
     this.loggedInUser = this.$store.getters.loggedinUser
 
     const orders = await this.$store.dispatch({ type: 'loadOrders', filterBy: '' })
-    this.currUserOrders = orders.filter((order) => order.hostId === this.loggedInUser._id)
+    // this.currUserOrders = orders.filter((order) => order.hostId === this.loggedInUser._id)
+    this.currUserOrders = orders
+    // console.log('this.currUserOrders:', this.currUserOrders)
 
     const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: '' })
     this.currUserStays = stays.filter((stay) => stay.host._id === this.loggedInUser._id)
