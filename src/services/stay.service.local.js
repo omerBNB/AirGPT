@@ -824,7 +824,7 @@ const gUsers = [
   },
 ]
 
-_AddTotalRateForEachStay()
+// _AddTotalRateForEachStay()
 _createStays()
 
 function _AddTotalRateForEachStay() {
@@ -837,8 +837,7 @@ function _AddTotalRateForEachStay() {
   })
 }
 
-async function query( filterBy = { label: '', userSpecs: '' }) {
-  
+async function query(filterBy = { label: '', userSpecs: '' }) {
   let stays = await storageService.query(STORAGE_KEY)
   if (filterBy.label) {
     stays = stays.filter((stay) => stay.labels.includes(filterBy.label))

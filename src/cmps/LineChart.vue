@@ -47,12 +47,13 @@ export default {
   methods: {
     getYearsAndAvgs() {
       const years = []
-      const vals = []
-
-      // First, let's create an object where the keys are the years and the values are arrays of review values for that year.
-      const yearlyAvgs = this.userStays.reduce((acc, stay) => {
-        const year = new Date(stay.reviews[0].at).getFullYear()
+      const reviewsRate = []
+      console.log('this.userStay', this.userStay)
+      const yearsRateAvg = this.userStays.reduce((acc, stay) => {
+        const year = new Date(stay.reviews[0].at).getFullYear() //15/10/2023
         const reviews = stay.reviews.map((review) => review.rate)
+
+        // Short if
         if (!acc[year]) {
           acc[year] = reviews
         } else {
@@ -61,30 +62,25 @@ export default {
         return acc
       }, {})
 
-      // Now, let's loop through the yearlyAvgs object and calculate the average review for each year.
-      for (const year in yearlyAvgs) {
+      ////////////////////////////////////////////
+      for (const year in yearsRateAvg) {
         years.push(parseInt(year))
         const sum = yearlyAvgs[year].reduce((a, b) => a + b, 0)
         const avg = sum / yearlyAvgs[year].length
         vals.push(avg)
       }
-      // Finally, let's sort the arrays by year.
       // const sortedIndices = years.map((_, i) => i).sort((a, b) => years[a] - years[b])
-      console.log('years', years)
-      console.log('vals', vals)
-      this.testData.labels = years
-      this.testData.datasets[0].data = vals
 
-      // update the chart
-      // this.$nextTick(() => {
-      // this.renderChart()
-      // })
+      console.log('years', years)
+      console.log('reviewsRate', reviewsRate)
+
+      //  years [2015,2018]
+      // reviewsRate [4.4,2.8]
+
+      // Set in Chart
+      this.testData.labels = years
+      this.testData.datasets[0].data = reviewsRate
     },
-    // renderChart() {
-    //   if (this.$refs.chart) {
-    //     this.$refs.chart.render()
-    //   }
-    // },
   },
 }
 </script>

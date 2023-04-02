@@ -7,7 +7,7 @@
       <p>Location</p>
     </section>
     <section v-if="showReserveBtn" class="flex">
-      <div class="right btn-container" @click="submitOrder">
+      <div class="right btn-container" @click="$emit('submitOrder')">
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
@@ -142,7 +142,7 @@ export default {
       }
     },
   },
-  components: {},
+  emits: ['submitOrder'],
 }
 </script>
 <style scoped>

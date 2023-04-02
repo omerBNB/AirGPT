@@ -13,14 +13,13 @@ export const stayService = {
   remove,
   getEmptyStay,
   addStayMsg,
-  labels
+  labels,
 }
 window.cs = stayService
 
 async function query(filterBy = { labels: '', where: '' }) {
   console.log('filterBy', filterBy)
   return httpService.get(STORAGE_KEY, filterBy)
-
 }
 
 function getById(stayId) {
