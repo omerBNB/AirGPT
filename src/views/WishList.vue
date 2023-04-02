@@ -24,7 +24,7 @@ export default {
             return this.$store.getters.stays
         },
         wishlist() {
-            return (this.stays.filter((s) => s.likedByUsers.find((u) => +u._id === +this.loggedInUser._id)))
+            return (this.stays.filter((s) => s.likedByUsers.find((u) => u._id === this.loggedInUser._id)))
         }
     },
     mounted() {

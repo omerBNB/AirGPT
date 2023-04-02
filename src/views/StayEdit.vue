@@ -3,123 +3,82 @@
     <form @submit.prevent="addNewStay" class="stay-edit-container" v-if="loggedInUser">
       <div class="stay-name-editor">
         <h2>
-          <input
-            class="edit-stay-first-inputs"
-            type="text"
-            placeholder="Stay name"
-            v-model="newStay.name" />
+          <input class="edit-stay-first-inputs" type="text" placeholder="Stay name" v-model="newStay.name" />
         </h2>
         <div class="stay-name-inputs">
-          <label
-            ><input
-              class="edit-stay-first-inputs"
-              type="text"
-              placeholder="Enter Country"
-              v-model="newStay.loc.country"
-          /></label>
-          <label
-            ><input
-              class="edit-stay-first-inputs"
-              type="text"
-              placeholder="Enter City"
-              v-model="newStay.loc.city"
-          /></label>
-          <label
-            ><input
-              class="edit-stay-first-inputs"
-              type="text"
-              placeholder="Enter Address"
-              v-model="newStay.address"
-          /></label>
+          <label><input class="edit-stay-first-inputs" type="text" placeholder="Enter Country"
+              v-model="newStay.loc.country" /></label>
+          <label><input class="edit-stay-first-inputs" type="text" placeholder="Enter City"
+              v-model="newStay.loc.city" /></label>
+          <label><input class="edit-stay-first-inputs" type="text" placeholder="Enter Address"
+              v-model="newStay.address" /></label>
         </div>
       </div>
       <section class="add-imgs-container">
-        <section
-          class="add-big-img-upload"
-          style="
-            background-image: url('undefined');
-            background-repeat: no-repeat;
-            background-size: cover;
-          ">
+        <section class="add-big-img-upload" style="
+              background-image: url('undefined');
+              background-repeat: no-repeat;
+              background-size: cover;
+            ">
           <label class="">
             <p @drop.prevent="handleFile" @dragover.prevent>Upload Image</p>
-            <input type="file" hidden=""
-          /></label>
+            <input type="file" hidden="" />
+          </label>
         </section>
-        <section
-          class="add-img-upload"
-          style="
-            background-image: url('undefined');
-            background-repeat: no-repeat;
-            background-size: cover;
-          ">
-          <label class=""
-            ><p>Upload Image</p>
-            <input type="file" hidden=""
-          /></label>
+        <section class="add-img-upload" style="
+              background-image: url('undefined');
+              background-repeat: no-repeat;
+              background-size: cover;
+            ">
+          <label class="">
+            <p>Upload Image</p>
+            <input type="file" hidden="" />
+          </label>
         </section>
-        <section
-          class="add-img-upload"
-          style="
-            background-image: url('undefined');
-            background-repeat: no-repeat;
-            background-size: cover;
-          ">
-          <label class=""
-            ><p>Upload Image</p>
-            <input type="file" hidden=""
-          /></label>
+        <section class="add-img-upload" style="
+              background-image: url('undefined');
+              background-repeat: no-repeat;
+              background-size: cover;
+            ">
+          <label class="">
+            <p>Upload Image</p>
+            <input type="file" hidden="" />
+          </label>
         </section>
-        <section
-          class="add-img-upload"
-          style="
-            background-image: url('undefined');
-            background-repeat: no-repeat;
-            background-size: cover;
-          ">
-          <label class=""
-            ><p>Upload Image</p>
-            <input type="file" hidden=""
-          /></label>
+        <section class="add-img-upload" style="
+              background-image: url('undefined');
+              background-repeat: no-repeat;
+              background-size: cover;
+            ">
+          <label class="">
+            <p>Upload Image</p>
+            <input type="file" hidden="" />
+          </label>
         </section>
-        <section
-          class="add-img-upload"
-          style="
-            background-image: url('undefined');
-            background-repeat: no-repeat;
-            background-size: cover;
-          ">
-          <label class=""
-            ><p>Upload Image</p>
-            <input type="file" hidden=""
-          /></label>
+        <section class="add-img-upload" style="
+              background-image: url('undefined');
+              background-repeat: no-repeat;
+              background-size: cover;
+            ">
+          <label class="">
+            <p>Upload Image</p>
+            <input type="file" hidden="" />
+          </label>
         </section>
       </section>
       <div class="el-upload-dragger"></div>
       <div class="edit-stay-second-inputs">
         <div>
           <label for=""> Capacity: </label>
-          <el-input
-            v-model="newStay.capacity"
-            class="w-50 m-2"
-            size="small"
-            placeholder="Please Input" />
+          <el-input v-model="newStay.capacity" class="w-50 m-2" size="small" placeholder="Please Input" />
         </div>
         <div>
           <label for=""> Bedrooms: </label>
-          <el-input
-            v-model="newStay.equipment.bedroomNum"
-            class="w-50 m-2"
-            size="small"
-            placeholder="Please Input" />
+          <el-input v-model="newStay.equipment.bedroomNum" class="w-50 m-2" size="small" placeholder="Please Input" />
         </div>
         <div>
           <label for=""> Bathrooms: </label>
-          <el-input
-            v-model="newStay.equipment.bathNum"
-            class="w-50 m-2"
-            size="small"
-            placeholder="Please Input" />
+          <el-input v-model="newStay.equipment.bathNum" class="w-50 m-2" size="small" placeholder="Please Input" />
         </div>
       </div>
       <div class="edit-stay-second-inputs">
@@ -129,41 +88,22 @@
         </div>
         <div>
           <label for=""> Property type: </label>
-          <el-input
-            v-model="newStay.type"
-            class="w-50 m-2"
-            size="small"
-            placeholder="Please Input" />
+          <el-input v-model="newStay.type" class="w-50 m-2" size="small" placeholder="Please Input" />
         </div>
         <div>
           <label for=""> Price: </label>
-          <el-input
-            v-model="newStay.price"
-            class="w-50 m-2"
-            size="small"
-            placeholder="Please Input" />
+          <el-input v-model="newStay.price" class="w-50 m-2" size="small" placeholder="Please Input" />
         </div>
       </div>
       <div class="m-4">
-        <el-select
-          class="edit-amaneties-selection"
-          v-model="newStay.amenities"
-          multiple
-          collapse-tags
-          placeholder="Select"
-          collapse-tags-tooltip
-          :max-collapse-tags="3">
+        <el-select class="edit-amaneties-selection" v-model="newStay.amenities" multiple collapse-tags
+          placeholder="Select" collapse-tags-tooltip :max-collapse-tags="3">
           <el-option v-for="item in newStay.amenities" :key="item" :label="item" :value="item" />
         </el-select>
       </div>
       <div>
         <label for=""> Description: </label>
-        <textarea
-          class="edit-textarea"
-          name=""
-          id=""
-          v-model="newStay.summary"
-          style="width: 100%"></textarea>
+        <textarea class="edit-textarea" name="" id="" v-model="newStay.summary" style="width: 100%"></textarea>
       </div>
       <button class="btn-container">Add</button>
     </form>
@@ -190,7 +130,7 @@ export default {
       if (idx > -1) this.currUser.stayList.splice(idx, 1, this.newStay)
       else this.currUser.stayList.push(this.newStay)
 
-      this.$store.dispatch({ type: 'updateStay', newStay: this.newStay })
+      this.$store.dispatch({ type: 'saveStay', newStay: this.newStay })
       this.$store.dispatch({ type: 'updateUser', currUser: this.currUser })
       this.$router.push('/dashboard/listing')
     },

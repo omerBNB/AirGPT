@@ -18,7 +18,7 @@ export const stayService = {
 window.cs = stayService
 
 async function query(filterBy = { labels: '', where: '' }) {
-  console.log('filterBy',filterBy)
+  console.log('filterBy', filterBy)
   return httpService.get(STORAGE_KEY, filterBy)
 
 }
@@ -34,17 +34,13 @@ async function remove(stayId) {
 }
 
 async function save(stay) {
-  var savedstay
+  var savedStay
   if (stay._id) {
-    // savedstay = await storageService.put(STORAGE_KEY, stay)
-    savedstay = await httpService.put(`stay/${stay._id}`, stay)
+    savedStay = await httpService.put(`stay/${stay._id}`, stay)
   } else {
-    // Later, owner is set by the backend
-    stay.owner = userService.getLoggedinUser()
-    // savedstay = await storageService.post(STORAGE_KEY, stay)
-    savedstay = await httpService.post('stay', stay)
+    savedStay = await httpService.post('stay', stay)
   }
-  return savedstay
+  return savedStay
 }
 
 async function addStayMsg(stayId, txt) {

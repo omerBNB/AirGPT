@@ -18,6 +18,8 @@
             height: 2.6em;
             width: 2.6em;
             opacity: 0.9;
+            background-color: $clr1;
+            color: $clr7;
         }
 
         .el-carousel__button {
@@ -32,12 +34,6 @@
             line-height: 300px;
             margin: 0;
             text-align: center;
-        }
-
-        .el-carousel__arrow {
-            background-color: $clr1;
-            color: $clr7;
-
         }
 
         .el-carousel__item {
@@ -74,7 +70,7 @@
                     font-family: Airbnb_Cereal-Medium;
                     margin: 0;
                     overflow: hidden;
-                    // width: 80%;
+                    width: 90%;
 
                     span {
                         white-space: nowrap;

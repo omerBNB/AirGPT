@@ -2,33 +2,12 @@
   <section>
     <CarouselFilter @setFilterBy="setFilterBy" />
     <StayList :stays="stays" @updateWishList="updateWishList" />
-    <!-- <div class="container home">
-      <ul class="stay-list">
-        <li v-for="stay in stays" :key="stay._id">
-          <p>
-            {{ stay.vendor }}
-          </p>
-          <p>${{ stay.price?.toLocaleString() }}</p>
-          <button @click="removeStay(stay._id)">x</button>
-          <button @click="updateStay(stay)">Update</button>
-          <hr />
-          <button @click="addStayMsg(stay._id)">Add stay msg</button>
-        <button @click="printStayToConsole(stay)">Print msgs to console</button>
-      </li>
-    </ul>
-  </div> -->
-    <!-- <form @submit.prevent="addStay()">
-    <h2>Add stay</h2>
-    <input type="text" v-model="stayToAdd.vendor" />
-    <button>Save</button>
-  </form> -->
   </section>
 </template>
 
 <script>
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service'
-// import { getActionRemoveStay, getActionUpdateStay, getActionAddStayMsg } from '../store/stay.store'
 import StayList from '../cmps/StayList.vue'
 import CarouselFilter from '../views/CarouselFilter.vue'
 export default {
@@ -98,12 +77,12 @@ export default {
         _id: this.loggedInUser._id,
         fullname: this.loggedInUser.fullname
       }
-      if (!stayToUpdate.likedByUsers.find((u) => +u._id === +user._id)) stayToUpdate.likedByUsers.push(user)
+      if (!stayToUpdate.likedByUsers.find((u) => u._id === user._id)) stayToUpdate.likedByUsers.push(user)
       else {
         let idx = stayToUpdate.likedByUsers.findIndex((u) => +u._id === +user._id)
         stayToUpdate.likedByUsers.splice(idx, 1)
       }
-      this.$store.dispatch({ type: "updateStay", stay: stayToUpdate })
+      this.$store.dispatch({ type: "saveStay", stay: stayToUpdate })
     }
   },
   computed: {
