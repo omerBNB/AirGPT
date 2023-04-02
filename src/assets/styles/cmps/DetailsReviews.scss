@@ -1,9 +1,11 @@
 .reviews-container {
   grid-column-start: span 2;
   display: grid;
+  // grid-column: 2;
   // grid-template-columns: repeat(2, 1fr);
   row-gap: 40px;
   padding: 0;
+  margin-block-start: 0.5em;
   border-bottom: 1px solid #dddddd;
   .review {
     // border: 1px solid palegreen;
@@ -78,6 +80,9 @@
   p {
     font-family: Quicksand;
     font-size: 0.89em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100px;
   }
   span {
     font-size: 0.8em;

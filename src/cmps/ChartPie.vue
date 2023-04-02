@@ -44,7 +44,6 @@ export default {
       const names = []
       const vals = []
       this.orders.forEach((order) => {
-        console.log('order', order.stay.name)
         if (names.includes(order.stay.name)) {
           // find the idx and count it ++
           const idx = names.findIndex((name) => order.stay.name === name)

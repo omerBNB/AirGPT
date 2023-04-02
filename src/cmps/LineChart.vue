@@ -17,6 +17,7 @@ export default {
       required: true,
     },
   },
+
   data() {
     return {
       userStays: null,
@@ -39,21 +40,25 @@ export default {
   },
 
   mounted() {
-    if (this.currUserStays && this.currUserStays.length > 0) {
-      this.userStays = this.currUserStays
-      this.getYearsAndAvgs()
-    }
+    // if (this.currUserStays && this.currUserStays.length > 0) {
+    // console.log('this.currUserStays:', this.currUserStays)
+    // this.userStays = this.currUserStays
+    // this.getYearsAndAvgs()
+    // }
   },
+
   methods: {
     getYearsAndAvgs() {
       const years = []
       const reviewsRate = []
-      console.log('this.userStay', this.userStay)
+
+      console.log('this.userStay', this.userStays)
+
       const yearsRateAvg = this.userStays.reduce((acc, stay) => {
         const year = new Date(stay.reviews[0].at).getFullYear() //15/10/2023
         const reviews = stay.reviews.map((review) => review.rate)
 
-        // Short if
+        // Short if that shit
         if (!acc[year]) {
           acc[year] = reviews
         } else {
@@ -62,24 +67,27 @@ export default {
         return acc
       }, {})
 
+      //  year:2015 rate:4.6 | year:2020 rate :3 .... }
       ////////////////////////////////////////////
       for (const year in yearsRateAvg) {
         years.push(parseInt(year))
-        const sum = yearlyAvgs[year].reduce((a, b) => a + b, 0)
-        const avg = sum / yearlyAvgs[year].length
-        vals.push(avg)
+        const sum = yearsRateAvg[year].reduce((a, b) => a + b, 0)
+        const avg = sum / yearsRateAvg[year].length
+        reviewsRate.push(avg)
       }
-      // const sortedIndices = years.map((_, i) => i).sort((a, b) => years[a] - years[b])
 
       console.log('years', years)
       console.log('reviewsRate', reviewsRate)
 
-      //  years [2015,2018]
-      // reviewsRate [4.4,2.8]
+      // result  years [2015,2018]
+      // result reviewsRate [4.4,2.8]
 
       // Set in Chart
       this.testData.labels = years
       this.testData.datasets[0].data = reviewsRate
+
+      //////////////////////////////////////////
+      // const sortedIndices = years.map((_, i) => i).sort((a, b) => years[a] - years[b])
     },
   },
 }
