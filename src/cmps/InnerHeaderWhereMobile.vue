@@ -12,13 +12,13 @@
       :class="{ isActive: acitveModalInner === 'where' }">
       <form action="" class="where-to-form-mobile">
         <label>Where to?</label>
-        <el-input
+        <input
           @input="searchBy"
           class="w-50 m-2"
           size="large"
           type="search"
           placeholder="Search destination"
-          :value="innerHeaderFilter.where ? innerHeaderFilter.where : searchQuery.where" />
+          :v-model="innerHeaderFilter.where ? innerHeaderFilter.where : searchQuery.where" />
       </form>
       <section class="grid stay-where-search">
         <div>
