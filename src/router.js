@@ -90,7 +90,7 @@ const routes = [
   },
   {
     path: '/trips',
-    name: 'Trips',
+    name: 'trips',
     component: Trips,
   },
 ]

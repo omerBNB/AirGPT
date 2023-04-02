@@ -33,10 +33,7 @@
 
       <div class="box reviews">
         <h1>Reviews avarge pre year</h1>
-        <LineChart
-          v-if="this.currUserStays"
-          :currUserStays="this.currUserStays"
-          style="height: 70%" />
+        <LineChart v-if="this.currUserStays" :currUserStays="this.currUserStays" style="height: 70%" />
       </div>
     </section>
 
@@ -62,16 +59,10 @@
           <p>${{ order.totalPrice }}</p>
           <p>{{ order.status }}</p>
 
-          <button
-            v-if="order.status === 'pending'"
-            @click="changeOrderStatus(order, 'approve')"
-            class="btn approve-btn">
+          <button v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'approve')" class="btn approve-btn">
             Approve
           </button>
-          <button
-            v-if="order.status === 'pending'"
-            @click="changeOrderStatus(order, 'reject')"
-            class="btn reject-btn">
+          <button v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'reject')" class="btn reject-btn">
             Reject
           </button>
         </article>
@@ -100,15 +91,15 @@ export default {
     this.loggedInUser = this.$store.getters.loggedinUser
 
     const orders = await this.$store.dispatch({ type: 'loadOrders', filterBy: '' })
-    this.currUserOrders = orders.filter((order) => order.hostId === this.loggedInUser._id)
-
+    // this.currUserOrders = orders.filter((order) => order.hostId === this.loggedInUser._id)
+    this.currUserOrders = orders
     const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: '' })
     this.currUserStays = stays.filter((stay) => stay.host._id === this.loggedInUser._id)
 
     this.calcTotalMoney()
   },
 
-  mounted() {},
+  mounted() { },
 
   methods: {
     calcTotalMoney() {

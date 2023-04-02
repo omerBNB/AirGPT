@@ -2,6 +2,10 @@
     justify-content: center;
     grid-gap: 20px;
 
+    @include for-mobile-layout {
+        margin-block-start: 3em;
+    }
+
     .stay-card {
         position: relative;
         padding: 0;

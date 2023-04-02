@@ -20,6 +20,9 @@ export default {
             }
         }
     },
+    mounted() {
+        document.getElementById('main-app').classList.value = `main-container ${this.$route.name}-grid`
+    },
     computed: {
         loggedInUser() {
             return this.$store.getters.loggedinUser

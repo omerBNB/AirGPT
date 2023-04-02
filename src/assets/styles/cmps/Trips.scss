@@ -31,6 +31,7 @@
                         font-family: Airbnb_Cereal-Bold;
                         font-size: 1rem;
                         margin-block-start: 0;
+                        color: $clr7;
                     }
 
                     .dates {
@@ -94,7 +95,6 @@
                     }
                 }
             }
-
         }
 
         @include for-tablet-layout {
