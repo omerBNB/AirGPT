@@ -1,5 +1,5 @@
 <template>
-  <DetailsHeader v-if="showDetailsHeader" />
+  <DetailsHeader v-if="showDetailsHeader" @submitOrder="submitOrder" />
 
   <div v-if="stay">
     <main class="stay-details">
