@@ -15,7 +15,7 @@
               <h3>Entire amazing views hosted by {{ stay.host.fullname }}</h3>
               <p>{{ guestsNum }} • {{ bedroomNum }} • {{ bedsNum }} • {{ bathsNum }}</p>
             </div>
-            <img :src="stay.host.imgUrl" />
+            <img :src="stay.host.thumbnailUrl" />
           </div>
 
           <div class="ferrites-main">
@@ -61,6 +61,7 @@
             <div class="offers grid">
               <div v-for="amenitie in stay.amenities" class="offer">
                 <img :src="'../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'" />
+                <!-- <img :src="getAmemitie(amenitie)" /> -->
                 <p>{{ amenitie }}</p>
               </div>
             </div>
@@ -140,6 +141,12 @@ import GoogleMap from '../cmps/GoogleMap.vue'
 
 export default {
   name: 'StayDetailsDesktop',
+  props: {
+    labels: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       showDetailsHeader: false,
@@ -168,6 +175,7 @@ export default {
       return this.stay.equipment.bathNum + ' baths'
     },
   },
+
   async created() {
     const { stayId } = this.$route.params
     const stay = await this.$store.dispatch({ type: 'getStay', stayId })
@@ -195,6 +203,16 @@ export default {
   },
 
   methods: {
+    getAmemitie(amenitie) {
+      // return '../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'
+      console.log('this.labels', this.labels)
+      console.log('amenitie', amenitie)
+      // const label = this.labels.find((label) => {
+      //   return label.key === amenitie
+      // })
+      // console.log('label!!!', label)
+      // return label.url
+    },
     async loadStay() {
       const { stayId } = this.$route.params
 
