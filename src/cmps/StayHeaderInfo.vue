@@ -1,5 +1,5 @@
 <template>
-  <section class="stay-review flex column">
+  <section v-if="stay" class="stay-review flex column">
     <h1>{{ stay.name }}</h1>
     <section class="info-bar flex space-between align-center">
       <div class="info flex">
@@ -36,10 +36,7 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {}
-  },
-  methods: {},
+
   computed: {
     reviewsNum() {
       if (this.stay.reviews.length === 1) return '1 review'
@@ -47,7 +44,7 @@ export default {
       else return this.stay.reviews.length + ' reviews'
     },
   },
-  created() {},
+  mounted() {},
   components: {},
 }
 </script>
