@@ -60,9 +60,8 @@
           <section class="ameneties">
             <h3>What this place offers</h3>
             <div class="offers grid">
-              <div v-for="(amenitie, index) in displayedAmenities" class="offer">
-                <!-- <img :src="'../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'" /> -->
-                <img :src="getAmemitie(amenitie)" />
+              <div v-for="amenitie in this.stay.amenities" class="offer">
+                <img :src="'../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'" />
                 <p>{{ amenitie }}</p>
               </div>
               <p
@@ -90,7 +89,7 @@
 
     <section class="host-info">
       <div class="header">
-        <img :src="stay.host.imgUrl" />
+        <img :src="stay.host.thumbnailUrl" />
         <h3>Hosted by {{ stay.host.fullname }}</h3>
       </div>
       <section class="flex">
@@ -183,6 +182,7 @@ export default {
     const { stayId } = this.$route.params
     const stay = await this.$store.dispatch({ type: 'getStay', stayId })
     this.stay = stay
+    console.log('this.stay', this.stay)
     const { where } = this.$route.query
     if (!where) {
       this.searchDetails.where = this.stay.loc.country

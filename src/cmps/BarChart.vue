@@ -77,7 +77,7 @@ export default {
         if (months.length >= 5) break
       }
 
-      const names = [] //['January  ,March]'
+      const names = [] //['1  ,3]'
       const vals = [] // [  200    ,  435]
 
       for (const month in total) {
@@ -91,47 +91,6 @@ export default {
       //  labels and data outside the loop
       this.testData.labels = names
       this.testData.datasets[0].data = vals
-    },
-
-    calcRevenueMonth() {
-      const approvedOrdersList = this.orders.filter((order) => order.status === 'approve')
-
-      approvedOrdersList.sort(
-        (orderA, orderB) => new Date(orderA.checkout) - new Date(orderB.checkout)
-      )
-
-      const lastFiveMonths = new Set()
-      const monthData = {}
-
-      approvedOrdersList.slice(0, 5).forEach((order) => {
-        const [_, month, year] = order.checkout.split('/')
-        const monthKey = `${year}-${month}`
-
-        lastFiveMonths.add(monthKey)
-
-        if (!monthData[monthKey]) {
-          monthData[monthKey] = { totalPrice: 0, orderCount: 0 }
-        }
-
-        monthData[monthKey].totalPrice += order.totalPrice
-        monthData[monthKey].orderCount += 1
-      })
-
-      const data = Array.from(lastFiveMonths)
-        .sort()
-        .map((monthKey) => {
-          const [year, month] = monthKey.split('-')
-          const monthName = new Date(year, month - 1).toLocaleString('default', { month: 'long' })
-          const { totalPrice } = monthData[monthKey]
-
-          return { monthName, totalPrice }
-        })
-
-      const labels = data.map((item) => item.monthName)
-      const values = data.map((item) => item.totalPrice)
-
-      this.testData.labels = labels
-      this.testData.datasets[0].data = values
     },
   },
   watch: {

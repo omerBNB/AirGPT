@@ -33,7 +33,10 @@
 
       <div class="box reviews">
         <h1>Reviews avarge pre year</h1>
-        <LineChart v-if="this.currUserStays" :currUserStays="this.currUserStays" style="height: 100%" />
+        <LineChart
+          v-if="this.currUserStays"
+          :currUserStays="this.currUserStays"
+          style="height: 100%" />
       </div>
     </section>
 
@@ -58,7 +61,15 @@
           <p class="stay-name">{{ order.stay.name }}</p>
           <p>${{ order.totalPrice }}</p>
           <p>{{ order.status }}</p>
+<<<<<<< HEAD
           <el-button type="success" plain v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'approve')"
+=======
+          <el-button
+            type="success"
+            plain
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order, 'approve')"
+>>>>>>> a6571c71e26e0bc00a90131aace499f2fc0d00bd
             class="btn approve-btn">
             Approve
           </el-button>
@@ -101,7 +112,7 @@ export default {
     this.calcTotalMoney()
   },
 
-  mounted() { },
+  mounted() {},
 
   methods: {
     calcTotalMoney() {

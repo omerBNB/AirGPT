@@ -22,6 +22,7 @@ async function query(filterBy = { labels: '', where: '' }) {
 }
 
 function getById(stayId) {
+  console.log('stayId:', stayId)
   // return storageService.get(STORAGE_KEY, stayId)
   return httpService.get(`stay/${stayId}`)
 }
