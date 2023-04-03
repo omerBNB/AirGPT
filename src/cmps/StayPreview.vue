@@ -63,7 +63,7 @@ export default {
   },
   computed: {
     isMark() {
-      return (this.stay.likedByUsers.find((u) => u._id === this.loggedInUser._id)) ? 'mark' : ''
+      return (this.stay.likedByUsers.find((u) => u._id === this.loggedInUser?._id)) ? 'mark' : ''
     },
     formatPrice() {
       return new Intl.NumberFormat('en-US', {

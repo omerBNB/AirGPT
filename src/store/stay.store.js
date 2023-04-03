@@ -83,6 +83,5 @@ export const stayStore = {
       const stay = await stayService.getById(stayId)
       return stay
     },
-
   },
 }

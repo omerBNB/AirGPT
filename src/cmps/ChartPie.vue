@@ -1,5 +1,5 @@
 <template>
-  <DoughnutChart :chartData="testData" />
+  <DoughnutChart :chartData="testData" :options="options" />
 </template>
 
 <script lang="ts">
@@ -21,17 +21,22 @@ export default {
   data() {
     return {
       testData: {
-        labels: [],
+        // labels: [],
         datasets: [
           {
-            data: [],
+            // data: [],
             backgroundColor: ['#FFBFA9', '#FFACAC', '#FFEBB4', '#97B0C4', '#FBFFB1'],
           },
         ],
       },
       options: {
         plugins: {
-          legend: { display: false },
+          legend: {
+            display: false,
+          },
+          // tooltip: {
+          //   display: false,
+          // },
         },
       },
     }
@@ -55,10 +60,10 @@ export default {
         }
       })
       this.testData.labels = names
+      // this.testData.datasets[0].data = vals
       this.testData.datasets[0].data = vals
     },
   },
-  computed: {},
   watch: {
     orders: {
       handler() {
