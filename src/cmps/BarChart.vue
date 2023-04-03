@@ -1,5 +1,5 @@
 <template>
-  <BarChart :chartData="testData" :options="options" />
+  <BarChart :chartData="chartData" :options="options" />
   <!-- <pre>{{ this.orders }}</pre> -->
 </template>
 
@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      testData: {
+      chartData: {
         labels: [],
         datasets: [
           {
@@ -48,8 +48,8 @@ export default {
 
   methods: {
     calcRevenueMonth() {
+      /// Get the current user's orders
       const approvedOrders = this.orders.filter((order) => order.status === 'approved')
-      console.log('approvedOrders:', approvedOrders)
 
       approvedOrders.sort((orderA, orderB) => {
         if (new Date(orderA.checkout) > new Date(orderB.checkout)) return 1
@@ -57,43 +57,35 @@ export default {
         return 0
       })
 
-      /// orders
-      const total = {}
-      const months = []
+      const totalPerMonth = approvedOrders.reduce((result, order) => {
+        const month = this.getMonthFromDate(order.checkout)
+        console.log('month:', month)
+        result[month] = result[month] || { totalPrice: 0 }
+        result[month].totalPrice += order.totalPrice
+        return result
+      }, {})
 
-      for (let i = 0; i < approvedOrders.length; i++) {
-        const dateParts = approvedOrders[i].checkout.split('/')
-        // day/month/year
-        let month = parseInt(dateParts[1]) // make it num
+      const monthNames = [] //['January  ,'March']'
+      const revenues = [] //  [  200    ,  435]
 
-        if (!total[month]) {
-          // if month doesnt exicited make it
-          total[month] = {
-            totalPrice: approvedOrders[i].totalPrice,
-            orderCount: 1,
-          }
-          months.push(month)
-        } else {
-          total[month].totalPrice += approvedOrders[i].totalPrice
-          total[month].orderCount++
-        }
-        if (months.length >= 5) break
+      for (const month in totalPerMonth) {
+        const monthName = this.getFormattedMonthName(month)
+        monthNames.push(monthName)
+        revenues.push(totalPerMonth[month].totalPrice)
       }
 
-      const names = [] //['1  ,3]'
-      const vals = [] // [  200    ,  435]
+      //  Set Month names and revenues in the Chart:
+      this.chartData.labels = monthNames
+      this.chartData.datasets[0].data = revenues
+    },
 
-      for (const month in total) {
-        // set name
-        const monthName = new Date(2000, +month - 1).toLocaleString('default', { month: 'long' })
-        names.push(monthName)
-        // set val
-        vals.push(total[month].totalPrice)
-      }
+    getFormattedMonthName(monthNum) {
+      return new Date(2000, +monthNum - 1).toLocaleString('default', { month: 'long' })
+    },
 
-      //  labels and data outside the loop
-      this.testData.labels = names
-      this.testData.datasets[0].data = vals
+    getMonthFromDate(dateString) {
+      const date = new Date(dateString)
+      return date.getMonth() + 1 // add 1 to convert from 0-based index to 1-based index
     },
   },
   watch: {
