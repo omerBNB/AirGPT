@@ -49,26 +49,28 @@
               <span class="underline">{{ this.stay.reviews.length || 'No' }} reviews </span>
             </div>
           </div>
-          <hr />
-          <div class="order-protected">
-            Your booking is protected by
-            <img src="../imgs/aircover_logo/aircover_logo.webp" alt="" srcset="" />
-          </div>
-          <hr />
-          <section class="price-info">
-            <div>
-              <p>$595 x 4 nights</p>
-              <p>$279</p>
+
+          <div class="divush">
+            <div class="order-protected">
+              Your booking is protected by
+              <img src="../imgs/aircover_logo/aircover_logo.webp" alt="" srcset="" />
             </div>
-            <div class="price-per-night flex space-between">
-              <p>Total guests</p>
-              <p>{{ guestsNum }}</p>
+            <!-- <hr /> -->
+            <section class="price-info">
+              <div>
+                <p>$595 x 4 nights</p>
+                <p>$279</p>
+              </div>
+              <div class="price-per-night flex space-between">
+                <p>Total guests</p>
+                <p>{{ guestsNum }}</p>
+              </div>
+            </section>
+            <!-- <hr /> -->
+            <div class="total flex space-between">
+              <p>Total after fees</p>
+              <p>$327.15</p>
             </div>
-          </section>
-          <hr />
-          <div class="total flex space-between">
-            <p>Total after fees</p>
-            <p>$327.15</p>
           </div>
         </section>
       </section>
