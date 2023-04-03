@@ -2,7 +2,7 @@
   border-radius: 13px;
   gap: 0.5em;
   // flex-wrap: wrap;
-  height: 60vh;
+  height: 73vh;
   justify-content: center;
 }
 
@@ -11,21 +11,21 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  gap: 1em;
+  gap: 0.8em;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     'total pie'
+    'line pie'
     'line status'
     'reviews status';
   height: 100%;
-
   .box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     box-shadow: #0000001f 0 6px 16px;
-    padding: 0em 0.5em;
+    padding: 0.3em 1.2em;
     border-radius: 15px;
     height: 100%;
     width: 100%;
@@ -37,20 +37,27 @@
       grid-area: total;
       justify-content: center;
       align-items: center;
-      height: 60%;
       padding: 0.75em;
+      // height: 80%;
+      font-size: 1.2em;
       margin-block-start: 0;
     }
     &.line {
       grid-area: line;
-      margin-bottom: 1em;
+      // align-items: center;
+      // margin-bottom: 1em;
     }
     &.pie {
       grid-area: pie;
     }
     &.status {
+      width: 90%;
       grid-area: status;
       justify-content: space-around;
+      & > * {
+        justify-content: center;
+        gap: 2em;
+      }
     }
     &.reviews {
       grid-area: reviews;
@@ -62,35 +69,55 @@
   overflow: hidden;
 }
 ///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
 .right-side-reservation {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 800px;
+  width: 90%;
   border: 1px solid rgb(223, 216, 216);
   border-radius: 15px;
   margin: 0;
   padding: 0;
-  // height: 50%;
   height: 100%;
+  // min-width: 900px;
 
   .subtitle {
     display: grid;
     justify-items: center;
-    align-content: center;
+    // align-content: center;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 500;
-    // position: fixed;
-
+    height: 4em;
     font-family: Airbnb_Cereal-Medium;
-    grid-template-columns: 15% 15% 14% 14% 14% 14% 12%;
-    background-color: #ff385d6e;
+    // grid-template-columns: 13% 17% 14% 14% 14% 14% 12%;
+    grid-template-columns: 1fr 14.5% 14.5% 14.5% 14.5% 13.5% 7% 7%;
+    // background-color: #ff385d6e;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.188) 20%,
+      rgba(255, 173, 188, 0.449) 71%
+    );
     p {
       margin: 0;
+      text-decoration: underline;
     }
   }
   .card {
@@ -111,6 +138,15 @@
       width: 93px; /* set a fixed width for the container */
       height: 45px; /* set a fixed height for the container */
     }
+
+    .stay-name {
+      // background-color: #e9edc9;
+      // white-space: nowrap;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     img {
       width: 45px;
       height: 45px;
@@ -127,24 +163,12 @@
     }
 
     .btn {
-      color: black;
+      // color: black;
       border-radius: 15px;
       width: max-content;
       padding: 0.5em;
-      cursor: pointer;
+      // cursor: pointer;
       transition: 0.3s;
-      &.approve-btn {
-        background-color: #e9edc9;
-        &:hover {
-          background-color: darken(#e9edc9, 10%);
-        }
-      }
-      &.reject-btn {
-        background-color: rgb(255, 209, 209);
-        &:hover {
-          background-color: darken(rgb(255, 209, 209), 10%);
-        }
-      }
     }
   }
 }

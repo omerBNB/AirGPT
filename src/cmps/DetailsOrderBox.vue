@@ -201,11 +201,11 @@
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
 import { stayService } from '../services/stay.service.local'
-import { eventBus } from '../services/event-bus.service.js'
+import { eventBus,showErrorMsg,showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service'
 // import { userService } from '../services/user.service.local'
 // import { orderService } from '../services/order.service.local'
-import {orderService} from '../services/order.service'
+import { orderService } from '../services/order.service'
 
 export default {
   name: 'DetailsOrderBox',
@@ -297,14 +297,21 @@ export default {
 
   methods: {
     async submitOrder() {
-      if (this.order.checkin === 'NaN/NaN/NaN' || this.order.checkout === 'NaN/NaN/NaN') return
-      if (!this.order.guests.adults) return
+      if (this.order.checkin === 'NaN/NaN/NaN' || this.order.checkout === 'NaN/NaN/NaN') {
+        showErrorMsg('Please Add Dates')
+        return
+      }
+      if (!this.order.guests.adults) {
+        showErrorMsg('Please Add Guests')
+        return
+      }
 
       const loggedInUser = this.$store.getters.loggedinUser
       if (!loggedInUser) {
         eventBus.emit('openLoginModal')
         return
       }
+      showSuccessMsg('Order Received !')
       this.$router.push({
         path: '/stay/book/' + this.stayId,
         query: {

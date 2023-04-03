@@ -2,38 +2,45 @@
   <section v-if="this.loggedInUser && this.currUserOrders" class="reservation flex">
     <section class="left-side-reservation">
       <div class="box total">
-        <h1>Total</h1>
-        <p>{{ this.totalMoney }}$</p>
+        <h1 class="underline">Total Revenue</h1>
+        <p>{{ formatPrice }}</p>
       </div>
       <div class="box line">
         <h1>Revenue / month</h1>
-        <BarChart style="height: 50%" :total="total" :orders="this.currUserOrders" />
+        <BarChart style="height: 100%" :total="total" :orders="this.currUserOrders" />
       </div>
 
       <div class="box pie">
         <h1>Reservations / listing</h1>
-        <ChartPie style="height: 80%" :orders="this.currUserOrders" />
+        <ChartPie style="height: 100%" :orders="this.currUserOrders" />
       </div>
 
       <div class="box status">
         <h1>Reservations status</h1>
-        <div class="flex space-between">
+        <div class="flex">
           <p>Pending</p>
-          <p style="color: orange">{{ pendingCount }}</p>
+          <p style="color: orange; font-weight: bold">{{ pendingCount }}</p>
         </div>
-        <div class="flex space-between">
+        <div class="flex">
           <p>Approved</p>
-          <p style="color: green">{{ approvedCount }}</p>
+          <p style="color: green; font-weight: bold">{{ approvedCount }}</p>
         </div>
-        <div class="flex space-between">
+        <div class="flex">
           <p>Rejected</p>
-          <p style="color: red">{{ rejectedCount }}</p>
+          <p style="color: red; font-weight: bold">{{ rejectedCount }}</p>
         </div>
       </div>
 
       <div class="box reviews">
         <h1>Reviews avarge pre year</h1>
+<<<<<<< HEAD
+        <LineChart
+          v-if="this.currUserStays"
+          :currUserStays="this.currUserStays"
+          style="height: 100%" />
+=======
         <LineChart v-if="this.currUserStays" :currUserStays="this.currUserStays" style="height: 70%" />
+>>>>>>> f5299c19ebbfa1a38b1629d37bd759b4dbd3037c
       </div>
     </section>
 
@@ -55,16 +62,33 @@
           </div>
           <p>{{ order.checkin }}</p>
           <p>{{ order.checkout }}</p>
-          <p>{{ order.stay.name }}</p>
+          <p class="stay-name">{{ order.stay.name }}</p>
           <p>${{ order.totalPrice }}</p>
           <p>{{ order.status }}</p>
+<<<<<<< HEAD
+          <el-button
+            type="success"
+            plain
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order, 'approve')"
+            class="btn approve-btn">
+            Approve
+          </el-button>
+          <el-button
+            type="danger"
+            plain
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order, 'reject')"
+            class="btn reject-btn">
+=======
 
           <button v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'approve')" class="btn approve-btn">
             Approve
           </button>
           <button v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'reject')" class="btn reject-btn">
+>>>>>>> f5299c19ebbfa1a38b1629d37bd759b4dbd3037c
             Reject
-          </button>
+          </el-button>
         </article>
       </el-scrollbar>
     </section>
@@ -122,6 +146,15 @@ export default {
   },
 
   computed: {
+    formatPrice() {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(this.totalMoney)
+    },
+
     pendingCount() {
       const pending = this.currUserOrders.filter((order) => order.status === 'pending')
       console.log('pending', pending)
@@ -177,73 +210,3 @@ export default {
   --el-scrollbar-hover-bg-color: var(--el-text-color-secondary);
 }
 </style>
-
-<!-- past html: -->
-<!-- 
-<section class="right-side-reservation">
-  <article class="subtitle grid">
-    <p>Guest</p>
-    <p>Check in</p>
-    <p>Check out</p>
-    <p>Stay Name</p>
-    <p>Price</p>
-    <p>Status</p>
-    <p></p>
-  </article>
-  <el-scrollbar style="height: 100%">
-    <article v-for="order in this.currUserOrders" class="card">
-      <div class="img-guest flex align-center">
-        <img :src="order.buyer.imgUrl" />
-        <h3>{{ order.buyer.fullname }}</h3>
-      </div>
-      <p>{{ order.checkin }}</p>
-      <p>{{ order.checkout }}</p>
-      <p>{{ order.stay.name }}</p>
-      <p>${{ order.totalPrice }}</p>
-      <p>{{ order.status }}</p>
-
-      <button
-        v-if="order.status === 'pending'"
-        @click="changeOrderStatus(order, 'approve')"
-        class="btn approve-btn">
-        Approve
-      </button>
-      <button
-        v-if="order.status === 'pending'"
-        @click="changeOrderStatus(order, 'reject')"
-        class="btn reject-btn">
-        Reject
-      </button>
-    </article>
-  </el-scrollbar>
-</section>
-</section> -->
-
-<!-- past css: -->
-<!-- .left-side-reservation {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-
-  height: 100%;
-  .row {
-    padding: 0;
-    height: 100%;
-
-    .box {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: #0000001f 0 6px 16px;
-      padding: 0em 0.5em;
-      border-radius: 15px;
-      width: 100%;
-      height: 100%;
-
-      h1 {
-        text-align: center;
-        font-size: 1em;
-      }
-    }
-  }
-} -->

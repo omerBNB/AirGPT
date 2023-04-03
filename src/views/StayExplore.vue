@@ -2,7 +2,7 @@
   <div>
     <CarouselFilter @setFilterBy="setFilterBy" />
     <h5 class="stay-explore-h5" v-if="stays.length">Over {{ stays.length }} homes</h5>
-    <StayList :stays="stays" :detailsRouteParams="this.$route.query" />
+    <StayList :stays="stays" :detailsRouteParams="this.$route.query" @updateWishList="updateWishList"/>
   </div>
 </template>
 
@@ -72,6 +72,19 @@ export default {
         console.log(err)
         showErrorMsg('Cannot add stay msg')
       }
+    },
+    updateWishList(stay) {
+      let stayToUpdate = JSON.parse(JSON.stringify(stay))
+      const user = {
+        _id: this.loggedInUser._id,
+        fullname: this.loggedInUser.fullname
+      }
+      if (!stayToUpdate.likedByUsers.find((u) => u._id === user._id)) stayToUpdate.likedByUsers.push(user)
+      else {
+        let idx = stayToUpdate.likedByUsers.findIndex((u) => +u._id === +user._id)
+        stayToUpdate.likedByUsers.splice(idx, 1)
+      }
+      this.$store.dispatch({ type: "saveStay", stay: stayToUpdate })
     },
     printStayToConsole(stay) {
       console.log('stay msgs:', stay.msgs)

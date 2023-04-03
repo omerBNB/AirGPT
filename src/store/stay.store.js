@@ -8,6 +8,7 @@ export const stayStore = {
   },
   getters: {
     stays({ stays }) {
+      // console.log(stays)
       return stays
     },
   },
@@ -82,6 +83,5 @@ export const stayStore = {
       const stay = await stayService.getById(stayId)
       return stay
     },
-
   },
 }

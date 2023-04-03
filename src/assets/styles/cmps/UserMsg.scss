@@ -1,16 +1,25 @@
-
-
-.alert {
+@media (min-width: 340px) {
+  .alert {
     background-color: lightgray;
     position: fixed;
-    top: 0;
-    right: 0.5em;
+    bottom: 5em;
+    left: 0.5em;
     padding: 1em;
+    width: 160px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 15px;
+    font-family: Airbnb_Cereal-Medium;
     &.alert-success {
-        background-color: lightgreen;
+      background-color: rgb(187, 240, 174);
     }
     &.alert-error {
-        background-color: lightcoral;
+      background-color: rgb(245, 183, 183);
     }
+  }
 }
-
+@media (min-width: 744px) {
+  .alert {
+    bottom: 2.5em;
+  }
+}

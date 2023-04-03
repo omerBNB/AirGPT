@@ -55,15 +55,21 @@
             </p>
             <a href="">Learn more</a>
           </section>
+
           <!-- ameneties -->
           <section class="ameneties">
             <h3>What this place offers</h3>
             <div class="offers grid">
-              <div v-for="amenitie in stay.amenities" class="offer">
-                <img :src="'../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'" />
-                <!-- <img :src="getAmemitie(amenitie)" /> -->
+              <div v-for="(amenitie, index) in displayedAmenities" class="offer">
+                <!-- <img :src="'../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'" /> -->
+                <img :src="getAmemitie(amenitie)" />
                 <p>{{ amenitie }}</p>
               </div>
+              <p
+                v-if="displayedAmenities.length < stay.amenities.length"
+                @click="showMoreAmenities">
+                Show more
+              </p>
             </div>
           </section>
         </div>
@@ -141,18 +147,15 @@ import GoogleMap from '../cmps/GoogleMap.vue'
 
 export default {
   name: 'StayDetailsDesktop',
-  props: {
-    labels: {
-      type: Array,
-      required: true,
-    },
-  },
+
   data() {
     return {
       showDetailsHeader: false,
       stay: null,
       searchDetails: null,
       scrollPositionToShowDetailsHeader: 750,
+      displayedAmenities: [],
+      maxAmenities: 6,
     }
   },
 
@@ -183,6 +186,8 @@ export default {
     const { where } = this.$route.query
     if (!where) {
       this.searchDetails.where = this.stay.loc.country
+
+      this.displayedAmenities = this.stay.amenities.slice(0, this.maxAmenities)
     }
   },
   mounted() {
@@ -203,21 +208,21 @@ export default {
   },
 
   methods: {
+    showMoreAmenities() {
+      this.maxAmenities += 6
+      this.displayedAmenities = this.stay.amenities.slice(0, this.maxAmenities)
+    },
+
     getAmemitie(amenitie) {
-      // return '../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'
-      console.log('this.labels', this.labels)
-      console.log('amenitie', amenitie)
-      // const label = this.labels.find((label) => {
-      //   return label.key === amenitie
-      // })
-      // console.log('label!!!', label)
-      // return label.url
+      console.log('amenitie:', amenitie)
+      return `../../src/imgs/amenities/${amenitie.toLowerCase()}.svg/>`
     },
     async loadStay() {
       const { stayId } = this.$route.params
 
       this.$store.dispatch({ type: 'getStay', stayId: stayId })
     },
+
     handleScroll() {
       const scrollPosition = window.scrollY
       if (scrollPosition > this.scrollPositionToShowDetailsHeader) {

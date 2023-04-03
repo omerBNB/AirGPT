@@ -1,10 +1,10 @@
 <template>
   <ul class="header-details">
     <section class="left">
-      <p>Photos</p>
-      <p>Ameneties</p>
-      <p>Reviews</p>
-      <p>Location</p>
+      <a>Photos</a>
+      <a>Ameneties</a>
+      <a>Reviews</a>
+      <a>Location</a>
     </section>
     <section v-if="showReserveBtn" class="flex">
       <div class="right btn-container" @click="$emit('submitOrder')">
