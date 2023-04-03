@@ -14,7 +14,7 @@
             <h4>Price</h4>
             <h4>Location</h4>
         </div>
-      <li v-for="stay in loggedInUser.stayList" :key=stay._id class="main-listing-view-container" >
+      <li v-for="stay in specStays" :key=stay._id class="main-listing-view-container" >
         <ListingsStaysPreview :stay="stay" v-if="stay"/>
       </li>
     </ul>
@@ -26,7 +26,9 @@ import ListingsStaysPreview from '../cmps/ListingsStaysPreview.vue'
 export default {
   name: '',
   data() {
-    return {}
+    return {
+      specStays:  null
+    }
   },
   methods: {},
   computed: {
@@ -34,7 +36,10 @@ export default {
       return this.$store.getters.loggedinUser
     },
   },
-  created() {},
+  async created() {
+    const stays = await this.$store.dispatch({type:'loadStays'})
+    this.specStays = stays.filter(stay => stay.host._id === this.loggedInUser._id)
+  },
   components: {
     ListingsStaysPreview,
   },

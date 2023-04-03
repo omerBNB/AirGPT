@@ -69,21 +69,24 @@ export default {
       console.log('stay msgs:', stay.msgs)
     },
     setFilterBy(filter) {
-      this.$store.dispatch({ type: "loadStays", filter });
+      this.$store.dispatch({ type: 'loadStays', filter })
     },
     updateWishList(stay) {
       let stayToUpdate = JSON.parse(JSON.stringify(stay))
       const user = {
         _id: this.loggedInUser._id,
-        fullname: this.loggedInUser.fullname
+        fullname: this.loggedInUser.fullname,
       }
-      if (!stayToUpdate.likedByUsers.find((u) => u._id === user._id)) stayToUpdate.likedByUsers.push(user)
-      else {
+      if (!stayToUpdate.likedByUsers.find((u) => u._id === user._id)) {
+        stayToUpdate.likedByUsers.push(user)
+        showSuccessMsg('Added To Wishlist')
+      } else {
         let idx = stayToUpdate.likedByUsers.findIndex((u) => +u._id === +user._id)
         stayToUpdate.likedByUsers.splice(idx, 1)
+        showErrorMsg('Removed From Wishlist')
       }
-      this.$store.dispatch({ type: "saveStay", stay: stayToUpdate })
-    }
+      this.$store.dispatch({ type: 'saveStay', stay: stayToUpdate })
+    },
   },
   computed: {
     loggedInUser() {

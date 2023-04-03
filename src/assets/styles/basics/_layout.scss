@@ -28,9 +28,13 @@
     grid-template-columns: minmax(24px, 1fr) minmax(auto, 1295px) minmax(24px, 1fr);
   }
 
+  &.trips-grid {
+    grid-template-columns: minmax(24px, 1fr) minmax(auto, 1120px) minmax(24px, 1fr);
+  }
+
   padding: 0;
 
-  > * {
+  >* {
     grid-column: 2;
 
     &.full {

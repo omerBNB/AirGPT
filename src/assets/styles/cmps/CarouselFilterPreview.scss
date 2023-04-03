@@ -3,7 +3,6 @@
     top: 80px;
     font-size: 12px;
     margin-block: 1em;
-    width: 92vw;
     z-index: 4;
     background-color: $clr1;
 
@@ -12,7 +11,17 @@
         display: none;
     }
 
+    @include for-details-normal-layout {
+        width: 100vw;
+    }
+
+    @include for-details-wide-layout {
+        width: 92vw;
+    }
+
     @include for-mobile-layout {
+        width: 76vw;
+        top: 4.7em;
 
         .carousel__prev,
         .carousel__next {
@@ -36,6 +45,10 @@
         cursor: pointer;
         color: $clr9;
         transition: 0.1s;
+        overflow: hidden;
+        width: 78%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
 
         &:hover {
             opacity: 1;
