@@ -8,6 +8,7 @@ export const stayStore = {
   },
   getters: {
     stays({ stays }) {
+      // console.log(stays)
       return stays
     },
   },
