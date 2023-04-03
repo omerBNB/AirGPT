@@ -82,11 +82,11 @@ export default {
       }
       if (!stayToUpdate.likedByUsers.find((u) => u._id === user._id)) {
         stayToUpdate.likedByUsers.push(user)
-        showSuccessMsg('Added To Wishlist')
+        // showSuccessMsg('Added To Wishlist')
       } else {
         let idx = stayToUpdate.likedByUsers.findIndex((u) => +u._id === +user._id)
         stayToUpdate.likedByUsers.splice(idx, 1)
-        showErrorMsg('Removed From Wishlist')
+        // showErrorMsg('Removed From Wishlist')
       }
       this.$store.dispatch({ type: 'saveStay', stay: stayToUpdate })
     },
