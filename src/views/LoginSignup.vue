@@ -2,7 +2,6 @@
   <section class="login-layout">
     <header class="login-title-cont">
       <h2>Log in or sign up</h2>
-      <button class="exit-login-btn"><img src="/assets/close.39183323.svg" alt="" /></button>
     </header>
     <form class="login-main-content">
       <h3>Welcome to Airgpt</h3>
