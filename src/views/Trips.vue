@@ -1,10 +1,13 @@
 <template>
-    <section v-if="stays && stays.length" class="trips">
-        <TripsPreview v-if="loggedInUser" :user="loggedInUser" :stays="stays" :orders="orders" :wishlist="wishlist" />
+    <section class="trips">
+        <TripsPreview v-if="loggedInUser && stays && stays.length" :user="loggedInUser" :stays="stays" :orders="orders"
+            :wishlist="wishlist" />
+        <p v-else v-loading="loading" class="loading"></p>
     </section>
 </template>
 
 <script>
+import { ref } from 'vue'
 import TripsPreview from '../cmps/TripsPreview.vue'
 export default {
     async created() {
@@ -19,6 +22,7 @@ export default {
                 buyerId: '',
             },
             stays: null,
+            loading: ref(true)
         }
     },
     mounted() {

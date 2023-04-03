@@ -73,10 +73,10 @@
                 .stay-name {
                     font-family: Airbnb_Cereal-Medium;
                     margin: 0;
-                    overflow: hidden;
                     width: 90%;
 
                     span {
+                        overflow: hidden;
                         white-space: nowrap;
                         text-overflow: ellipsis;
                     }

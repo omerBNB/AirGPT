@@ -63,3 +63,8 @@ a {
 li {
   list-style: none;
 }
+
+.loading.el-loading-parent--relative {
+  margin: auto;
+  margin-block-start: 25vh;
+}

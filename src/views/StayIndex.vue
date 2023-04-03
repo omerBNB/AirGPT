@@ -1,11 +1,13 @@
 <template>
   <section>
     <CarouselFilter @setFilterBy="setFilterBy" />
-    <StayList :stays="stays" @updateWishList="updateWishList" />
+    <StayList v-if="stays && stays.length" :stays="stays" @updateWishList="updateWishList" />
+    <p v-else v-loading="loading" class="loading"></p>
   </section>
 </template>
 
 <script>
+import { ref } from 'vue'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay.service'
 import StayList from '../cmps/StayList.vue'
@@ -17,6 +19,7 @@ export default {
   data() {
     return {
       stayToAdd: stayService.getEmptyStay(),
+      loading: ref(true)
     }
   },
   mounted() {

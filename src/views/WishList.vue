@@ -2,19 +2,25 @@
     <section class="wishlist-container">
         <header class="wishlist-header">
             <h1>Wishlist</h1>
-            <p v-if="!wishlist.length">Empty</p>
         </header>
-        <section class="stays-wishlist-container grid">
+        <section class="stays-wishlist-container grid" v-if="wishlist && wishlist.length">
             <WishListPreview v-for="stay in wishlist" :key="stay._id" :stay="stay" />
         </section>
+        <p v-else v-loading="loading" class="loading"></p>
     </section>
 </template>
 
 <script>
 import WishListPreview from '../cmps/WishListPreview.vue'
+import { ref } from 'vue'
 export default {
     created() {
         this.$store.dispatch({ type: 'loadStays' })
+    },
+    data() {
+        return {
+            loading: ref(true)
+        }
     },
     computed: {
         loggedInUser() {

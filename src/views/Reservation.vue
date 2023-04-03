@@ -33,10 +33,7 @@
 
       <div class="box reviews">
         <h1>Reviews avarge pre year</h1>
-        <LineChart
-          v-if="this.currUserStays"
-          :currUserStays="this.currUserStays"
-          style="height: 100%" />
+        <LineChart v-if="this.currUserStays" :currUserStays="this.currUserStays" style="height: 100%" />
       </div>
     </section>
 
@@ -61,11 +58,7 @@
           <p class="stay-name">{{ order.stay.name }}</p>
           <p>${{ order.totalPrice }}</p>
           <p>{{ order.status }}</p>
-          <el-button
-            type="success"
-            plain
-            v-if="order.status === 'pending'"
-            @click="changeOrderStatus(order, 'approve')"
+          <el-button type="success" plain v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'approve')"
             class="btn approve-btn">
             Approve
           </el-button>
@@ -77,9 +70,11 @@
       </el-scrollbar>
     </section>
   </section>
+  <p v-else v-loading="loading" class="loading"></p>
 </template>
 
 <script>
+import { ref } from 'vue'
 import ChartPie from '../cmps/ChartPie.vue'
 import BarChart from '../cmps/BarChart.vue'
 import LineChart from '../cmps/LineChart.vue'
@@ -92,6 +87,7 @@ export default {
       currUserOrders: null,
       currUserStays: null,
       totalMoney: 0,
+      loading: ref(true)
     }
   },
 
@@ -108,7 +104,7 @@ export default {
     this.calcTotalMoney()
   },
 
-  mounted() {},
+  mounted() { },
 
   methods: {
     calcTotalMoney() {
