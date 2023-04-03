@@ -1,5 +1,5 @@
 <template>
-  <section v-if="nextStay" class="flex">
+  <section class="flex">
     <section>
       <h1 class="main-header">Your next stay</h1>
       <section class="info flex flex-column">
@@ -16,9 +16,6 @@ export default {
   props: {
     nextStay: Object,
     stays: Object,
-  },
-  created() {
-    console.log(' this.nextStay', this.nextStay)
   },
 }
 </script>

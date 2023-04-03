@@ -1,5 +1,5 @@
 <template>
-    <section v-if="stays" class="trips">
+    <section v-if="stays && stays.length" class="trips">
         <TripsPreview v-if="loggedInUser" :user="loggedInUser" :stays="stays" :orders="orders" :wishlist="wishlist" />
     </section>
 </template>
