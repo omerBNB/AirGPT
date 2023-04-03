@@ -112,7 +112,7 @@ export default {
     this.calcTotalMoney()
   },
 
-  mounted() { },
+  mounted() {},
 
   methods: {
     calcTotalMoney() {

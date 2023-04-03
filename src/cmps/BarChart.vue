@@ -77,7 +77,7 @@ export default {
         if (months.length >= 5) break
       }
 
-      const names = [] //['January  ,March]'
+      const names = [] //['1  ,3]'
       const vals = [] // [  200    ,  435]
 
       for (const month in total) {
