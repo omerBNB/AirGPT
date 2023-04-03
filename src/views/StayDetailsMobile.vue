@@ -57,7 +57,7 @@
           <h3>What this place offers</h3>
           <div class="offers grid">
             <div v-for="amenitie in stay.amenities" class="offer">
-              <img :src="'../../src/imgs/amenities/' + amenitie.toLowerCase() + '.svg'" />
+              <img :src="`../imgs/amenities/${amenitie}.svg`" />
               <p>{{ amenitie }}</p>
             </div>
           </div>
