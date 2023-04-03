@@ -44,8 +44,10 @@ export default {
             //     checkin: nextOrders[0].checkin,
             //     checkout: nextOrders[0].checkout,
             // }
+
             let nextStay = {
-                nextStay: this.stays[0],
+                // nextStay: this.stays[0],
+                nextStay: this.stays[this.stays.findIndex(s => s._id === '642a98d1194a683b4080f1aa')],
                 checkin: this.orders[0].checkin,
                 checkout: this.orders[0].checkout,
             }
