@@ -61,7 +61,8 @@
             <h3>What this place offers</h3>
             <div class="offers grid">
               <div v-for="amenitie in this.stay.amenities" class="offer">
-                <img :src="'../../src/imgs/amenities/' + amenitie + '.svg'" />
+                <!-- <img :src="'../../src/imgs/amenities/' + amenitie + '.svg'" /> -->
+                <img :src="'../../src/imgs/amenities/tv.svg'" />
                 <p>{{ amenitie }}</p>
               </div>
               <p
