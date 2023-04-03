@@ -95,7 +95,7 @@
 import UserOptionsNoUserLogin from './UserOptionsNoUserLogin.vue'
 import UserOptionsLoggedinUser from './UserOptionsLoggedinUser.vue'
 import InnerHeader from './InnerHeader.vue'
-import { uploadImg } from '../services/upload.service'
+// import { uploadImg } from '../services/upload.service'
 
 export default {
   props: {
