@@ -34,8 +34,8 @@ function _createUsers() {
     gUsers = [
       {
         _id: '1234',
-        fullname: 'user1',
-        username: 'user1',
+        fullname: 'omer',
+        username: 'omer',
         password: 123,
         imgUrl: '../../src/imgs/imgs_test/omer.jpg',
         wishList: [],

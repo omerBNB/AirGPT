@@ -2,7 +2,7 @@
   <section>
     <CarouselFilter @setFilterBy="setFilterBy" />
     <StayList v-if="stays && stays.length" :stays="stays" @updateWishList="updateWishList" />
-    <p v-else v-loading="loading" class="loading"></p>
+    <StayList v-else v-loading="loading" class="loading" />
   </section>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       stayToAdd: stayService.getEmptyStay(),
-      loading: ref(true)
+      loading: ref(true),
     }
   },
   mounted() {
@@ -82,11 +82,11 @@ export default {
       }
       if (!stayToUpdate.likedByUsers.find((u) => u._id === user._id)) {
         stayToUpdate.likedByUsers.push(user)
-        showSuccessMsg('Added To Wishlist')
+        // showSuccessMsg('Added To Wishlist')
       } else {
         let idx = stayToUpdate.likedByUsers.findIndex((u) => +u._id === +user._id)
         stayToUpdate.likedByUsers.splice(idx, 1)
-        showErrorMsg('Removed From Wishlist')
+        // showErrorMsg('Removed From Wishlist')
       }
       this.$store.dispatch({ type: 'saveStay', stay: stayToUpdate })
     },

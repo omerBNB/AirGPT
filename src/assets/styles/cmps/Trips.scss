@@ -23,17 +23,17 @@
 
                 .main-header {
                     font-size: 1.3rem;
-                    height: 10px;
+                    height: 0.5em;
                     margin-block-end: 20px;
                     z-index: 0;
                 }
 
                 .info {
+                    font-family: Airbnb_Cereal-Book;
                     .header {
-                        font-family: Airbnb_Cereal-Bold;
                         font-size: 1rem;
                         margin-block-start: 0;
-                        color: $clr7;
+                        color: $clr9;
                     }
 
                     .dates {
@@ -131,6 +131,7 @@
 
                     .main-header {
                         font-size: 1.35rem;
+                        height: 3em;
                     }
 
                     .info {
