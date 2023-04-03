@@ -33,14 +33,10 @@
 
       <div class="box reviews">
         <h1>Reviews avarge pre year</h1>
-<<<<<<< HEAD
         <LineChart
           v-if="this.currUserStays"
           :currUserStays="this.currUserStays"
           style="height: 100%" />
-=======
-        <LineChart v-if="this.currUserStays" :currUserStays="this.currUserStays" style="height: 70%" />
->>>>>>> f5299c19ebbfa1a38b1629d37bd759b4dbd3037c
       </div>
     </section>
 
@@ -65,7 +61,6 @@
           <p class="stay-name">{{ order.stay.name }}</p>
           <p>${{ order.totalPrice }}</p>
           <p>{{ order.status }}</p>
-<<<<<<< HEAD
           <el-button
             type="success"
             plain
@@ -80,13 +75,6 @@
             v-if="order.status === 'pending'"
             @click="changeOrderStatus(order, 'reject')"
             class="btn reject-btn">
-=======
-
-          <button v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'approve')" class="btn approve-btn">
-            Approve
-          </button>
-          <button v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'reject')" class="btn reject-btn">
->>>>>>> f5299c19ebbfa1a38b1629d37bd759b4dbd3037c
             Reject
           </el-button>
         </article>

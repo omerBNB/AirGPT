@@ -25,7 +25,7 @@ export default {
     props: {
         user: Object,
         stays: Array,
-        orders: Object,
+        orders: Array,
         wishlist: Object
     },
     computed: {
