@@ -412,7 +412,7 @@ export default {
     const formattedDate1 = `${month1}/${day1}/${year1}`
 
     const checkout = this.searchDetails.checkout
-    const date2 = new Date(checkin)
+    const date2 = new Date(checkout)
     const day2 = date2.getDate()
     const month2 = date2.getMonth() + 1
     const year2 = date2.getFullYear()
@@ -420,7 +420,6 @@ export default {
 
     this.order.checkin = formattedDate1
     this.order.checkout = formattedDate2
-    console.log('this.order', this.order)
     ///////////////
     this.getDaysBetweenDates(checkin, checkout)
   },
@@ -431,5 +430,3 @@ export default {
   },
 }
 </script>
-
-<style></style>
