@@ -2,7 +2,7 @@
   <section>
     <CarouselFilter @setFilterBy="setFilterBy" />
     <StayList v-if="stays && stays.length" :stays="stays" @updateWishList="updateWishList" />
-    <p v-else v-loading="loading" class="loading"></p>
+    <StayList v-else v-loading="loading" class="loading" />
   </section>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       stayToAdd: stayService.getEmptyStay(),
-      loading: ref(true)
+      loading: ref(true),
     }
   },
   mounted() {
