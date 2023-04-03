@@ -201,7 +201,7 @@
 import DetailsCalendar from '../cmps/DetailsCalendar.vue'
 import DetailsGuestModal from '../cmps/DetailsGuestModal.vue'
 import { stayService } from '../services/stay.service.local'
-import { eventBus,showErrorMsg,showSuccessMsg } from '../services/event-bus.service.js'
+import { eventBus, showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service'
 // import { userService } from '../services/user.service.local'
 // import { orderService } from '../services/order.service.local'
@@ -348,7 +348,7 @@ export default {
       this.order.checkin = formattedDate1
       this.order.checkout = formattedDate2
 
-      this.$store.dispatch({ type: 'updateOrder', order: this.order })
+      this.$store.dispatch({ type: 'addOrder', order: this.order })
     },
 
     closeModal(date) {

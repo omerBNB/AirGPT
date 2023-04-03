@@ -23,7 +23,7 @@
         </div>
         <div class="flex">
           <p>Approved</p>
-          <p style="color: green; font-weight: bold">{{ approvedCount }}</p>
+          <p style="color: green; font-weight: bold">{{ approveddCount }}</p>
         </div>
         <div class="flex">
           <p>Rejected</p>
@@ -65,11 +65,15 @@
             type="success"
             plain
             v-if="order.status === 'pending'"
-            @click="changeOrderStatus(order, 'approve')"
-            class="btn approve-btn">
+            @click="changeOrderStatus(order, 'approved')"
+            class="btn approved-btn">
             Approve
           </el-button>
-          <el-button type="danger" plain v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'reject')"
+          <el-button
+            type="danger"
+            plain
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order, 'reject')"
             class="btn reject-btn">
             Reject
           </el-button>
@@ -99,9 +103,11 @@ export default {
     this.loggedInUser = this.$store.getters.loggedinUser
 
     const orders = await this.$store.dispatch({ type: 'loadOrders', filterBy: '' })
+    // const orders = this.$store.getters.orders
     // this.currUserOrders = orders.filter((order) => order.hostId === this.loggedInUser._id)
+
     this.currUserOrders = orders
-    // console.log('this.currUserOrders:', this.currUserOrders)
+
     const stays = await this.$store.dispatch({ type: 'loadStays', filterBy: '' })
     this.currUserStays = stays.filter((stay) => stay.host._id === this.loggedInUser._id)
 
@@ -112,8 +118,8 @@ export default {
 
   methods: {
     calcTotalMoney() {
-      const approvedOrder = this.currUserOrders.filter((order) => order.status === 'approve')
-      this.totalMoney = approvedOrder.reduce((acc, order) => {
+      const approveddOrder = this.currUserOrders.filter((order) => order.status === 'approved')
+      this.totalMoney = approveddOrder.reduce((acc, order) => {
         return acc + order.totalPrice
       }, 0)
     },
@@ -145,9 +151,9 @@ export default {
       return pending.length
     },
 
-    approvedCount() {
-      const approved = this.currUserOrders.filter((order) => order.status === 'approve')
-      return approved.length
+    approveddCount() {
+      const approvedd = this.currUserOrders.filter((order) => order.status === 'approved')
+      return approvedd.length
     },
 
     rejectedCount() {
@@ -174,17 +180,6 @@ export default {
   // },
 }
 </script>
-
-<!-- <section class="reservation-header flex">
-        <img class="host-img" src="../imgs/imgs_test/ido_test.jpg" alt="profile-img" />
-        <div class="host-info">
-          <h1 class="fullname">Ido Tsehori</h1>
-          <p class="description">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam ullam blanditiis sequi,
-            impedit sint aliquid consequuntur qui ratione illum ab!
-          </p>
-        </div>
-      </section> -->
 
 <style scoped>
 .el-scrollbar {

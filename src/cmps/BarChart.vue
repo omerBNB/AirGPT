@@ -48,13 +48,15 @@ export default {
 
   methods: {
     calcRevenueMonth() {
-      const approvedOrders = this.orders.filter((order) => order.status === 'approve')
+      const approvedOrders = this.orders.filter((order) => order.status === 'approved')
+      console.log('approvedOrders:', approvedOrders)
 
       approvedOrders.sort((orderA, orderB) => {
         if (new Date(orderA.checkout) > new Date(orderB.checkout)) return 1
         if (new Date(orderA.checkout) < new Date(orderB.checkout)) return -1
         return 0
       })
+
       /// orders
       const total = {}
       const months = []
@@ -63,8 +65,9 @@ export default {
         const dateParts = approvedOrders[i].checkout.split('/')
         // day/month/year
         let month = parseInt(dateParts[1]) // make it num
+
         if (!total[month]) {
-          // if month doesnt excited make it
+          // if month doesnt exicited make it
           total[month] = {
             totalPrice: approvedOrders[i].totalPrice,
             orderCount: 1,

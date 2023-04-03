@@ -34,7 +34,8 @@ export const orderStore = {
     async addOrder({ commit }, { order }) {
       try {
         order = await orderService.save(order)
-        commit(getActionAddOrder(order))
+        // commit(getActionAddOrder(order))
+        commit({ type: 'addOrder', order })
         return order
       } catch (err) {
         console.log('orderStore: Error in addOrder', err)
