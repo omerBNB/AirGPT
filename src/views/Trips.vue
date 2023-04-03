@@ -12,7 +12,6 @@ export default {
         this.$store.dispatch({ type: 'loadStays' })
         this.$store.dispatch({ type: 'loadOrders', filterBy: this.filterBy })
     },
-
     data() {
         return {
             filterBy: {

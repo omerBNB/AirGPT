@@ -18,7 +18,6 @@ export const stayService = {
 window.cs = stayService
 
 async function query(filterBy = { labels: '', where: '' }) {
-  console.log('filterBy', filterBy)
   return httpService.get(STORAGE_KEY, filterBy)
 }
 

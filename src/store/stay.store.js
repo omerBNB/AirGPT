@@ -52,7 +52,6 @@ export const stayStore = {
     },
     async loadStays({ commit }, { filter }) {
       try {
-        console.log('filter', filter)
         const stays = await stayService.query(filter)
         commit({ type: 'setStays', stays })
         return stays
