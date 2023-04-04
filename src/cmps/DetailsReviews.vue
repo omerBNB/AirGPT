@@ -74,7 +74,7 @@
             <img :src="review.by.imgUrl" />
             <div>
               <h4>{{ review.by.fullname }}</h4>
-              <span>{{
+              <span style="color: gray">{{
                 new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(
                   new Date(review.at)
                 )

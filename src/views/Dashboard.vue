@@ -16,7 +16,7 @@ export default {
     return {}
   },
   mounted() {
-    document.getElementById('main-app').classList.value = `main-container-grid`
+    document.getElementById('main-app').classList.value = `main-container`
   },
 }
 </script>

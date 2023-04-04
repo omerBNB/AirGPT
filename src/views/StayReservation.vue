@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <div class="divush">
+          <div class="order-info">
             <div class="order-protected">
               Your booking is protected by
               <img src="../imgs/aircover_logo/aircover_logo.webp" alt="" srcset="" />
@@ -58,8 +58,8 @@
             <!-- <hr /> -->
             <section class="price-info">
               <div>
-                <p>$595 x 4 nights</p>
-                <p>$279</p>
+                <p>$345 x 21 nights</p>
+                <p>$7230</p>
               </div>
               <div class="price-per-night flex space-between">
                 <p>Total guests</p>
@@ -69,7 +69,7 @@
             <!-- <hr /> -->
             <div class="total flex space-between">
               <p>Total after fees</p>
-              <p>$327.15</p>
+              <p>$7263.15</p>
             </div>
           </div>
         </section>

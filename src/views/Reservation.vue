@@ -33,7 +33,10 @@
 
       <div class="box reviews">
         <h1>Reviews avarge pre year</h1>
-        <LineChart v-if="this.currUserStays" :currUserStays="this.currUserStays" style="height: 100%" />
+        <LineChart
+          v-if="this.currUserStays"
+          :currUserStays="this.currUserStays"
+          style="height: 100%" />
       </div>
     </section>
 
@@ -58,11 +61,19 @@
           <p class="stay-name">{{ order.stay.name }}</p>
           <p>${{ order.totalPrice }}</p>
           <p>{{ order.status }}</p>
-          <el-button type="success" plain v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'approved')"
+          <el-button
+            type="success"
+            plain
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order, 'approved')"
             class="btn approved-btn">
             Approve
           </el-button>
-          <el-button type="danger" plain v-if="order.status === 'pending'" @click="changeOrderStatus(order, 'reject')"
+          <el-button
+            type="danger"
+            plain
+            v-if="order.status === 'pending'"
+            @click="changeOrderStatus(order, 'rejected')"
             class="btn reject-btn">
             Reject
           </el-button>
@@ -87,7 +98,7 @@ export default {
       currUserOrders: null,
       currUserStays: null,
       totalMoney: 0,
-      loading: ref(true)
+      loading: ref(true),
     }
   },
 
@@ -105,8 +116,6 @@ export default {
 
     this.calcTotalMoney()
   },
-
-  mounted() { },
 
   methods: {
     calcTotalMoney() {
@@ -149,7 +158,7 @@ export default {
     },
 
     rejectedCount() {
-      const rejected = this.currUserOrders.filter((order) => order.status === 'reject')
+      const rejected = this.currUserOrders.filter((order) => order.status === 'rejected')
       return rejected.length
     },
 
