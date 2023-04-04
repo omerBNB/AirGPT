@@ -26,10 +26,18 @@
                     height: 0.5em;
                     margin-block-end: 20px;
                     z-index: 0;
+                    justify-content: start;
+
+                    .fa-circle-check {
+                        color: greenyellow;
+                        margin-inline-start: 0.3em;
+                        align-items: center;
+                    }
                 }
 
                 .info {
                     font-family: Airbnb_Cereal-Book;
+
                     .header {
                         font-size: 1rem;
                         margin-block-start: 0;
