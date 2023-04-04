@@ -92,14 +92,16 @@
         }
       }
     }
-    .divush {
-      // display: flex;
-      // flex-direction: column;
-      // gap: 2em;
+    .order-info {
       > * {
-        padding: 1em 0em 0em 0em;
-        margin-bottom: 1em;
+        padding: 0em 0em 0em 0em;
+        margin-bottom: 0em;
         border-top: 1px solid rgb(205, 199, 199);
+        padding-top: 1em;
+        padding-bottom: 1em;
+        p {
+          margin: 0;
+        }
       }
     }
     .order-protected {

@@ -26,8 +26,5 @@ export default {
       pos1: { lat: this.stay.loc.lat, lng: this.stay.loc.lan },
     }
   },
-  methods: {
-    sayHi() {},
-  },
 }
 </script>

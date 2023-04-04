@@ -439,6 +439,7 @@
     .offers {
       grid-template-columns: repeat(2, 1fr);
       padding-top: 0.5em;
+      align-items: center;
       grid-area: a2;
       gap: 0.7em;
       .offer {
