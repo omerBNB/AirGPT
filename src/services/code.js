@@ -1,45 +1,40 @@
 function calcRevenueMonth() {
-    const approvedOrders = this.orders.filter((order) => order.status === 'approve')
 
+    /// Get the current user's orders
+    const approvedOrders = this.orders.filter((order) => order.status === 'approved')
+
+    // Sorting the dates from new to old
     approvedOrders.sort((orderA, orderB) => {
         if (new Date(orderA.checkout) > new Date(orderB.checkout)) return 1
         if (new Date(orderA.checkout) < new Date(orderB.checkout)) return -1
         return 0
     })
-    /// orders
-    const total = {}
-    const months = []
 
-    for (let i = 0; i < approvedOrders.length; i++) {
-        const dateParts = approvedOrders[i].checkout.split('/')
-        // day/month/year
-        let month = parseInt(dateParts[1]) // make it num
-        if (!total[month]) {
-            // if month doesnt excited make it
-            total[month] = {
-                totalPrice: approvedOrders[i].totalPrice,
-                orderCount: 1,
-            }
-            months.push(month)
-        } else {
-            total[month].totalPrice += approvedOrders[i].totalPrice
-            total[month].orderCount++
-        }
-        if (months.length >= 5) break
+    const totalPerMonth = approvedOrders.reduce((result, order) => {
+        const month = this.getMonthFromDate(order.checkout)
+        result[month] = result[month] || { totalPrice: 0 }
+        result[month].totalPrice += order.totalPrice
+        return result
+    }, {})
+
+    const monthNames = [] //['January  ,'March']'
+    const revenues = [] //  [  200    ,  435]
+
+    for (const month in totalPerMonth) {
+        const monthName = this.getFormattedMonthName(month)
+        monthNames.push(monthName)
+        revenues.push(totalPerMonth[month].totalPrice)
     }
 
-    const names = [] //['January  ,March]'
-    const vals = [] // [  200    ,  435]
+    //  Set Month names and revenues in the Chart:
+     this.chartData.datasets[0].data = revenues
+}
 
-    for (const month in total) {
-        // set name
-        const monthName = new Date(2000, +month - 1).toLocaleString('default', { month: 'long' })
-        names.push(monthName)
-        // set val
-        vals.push(total[month].totalPrice)
-    }
+function getFormattedMonthName(monthNum) {
+    return new Date(2000, +monthNum - 1).toLocaleString('default', { month: 'long' })
+}
 
-    //  labels and data outside the loop
-    this.testData.labels = names
-    this.testData.datasets[0].data = vals
+function getMonthFromDate(dateString) {
+    const date = new Date(dateString)
+    return date.getMonth() + 1 // add 1 to convert from 0-based index to 1-based index
 }
