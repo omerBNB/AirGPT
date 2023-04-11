@@ -29,7 +29,14 @@
                     justify-content: start;
 
                     .fa-circle-check {
-                        color: greenyellow;
+                        &.gray {
+                            color: $clr4;
+                        }
+
+                        &.green {
+                            color: $clr10;
+                        }
+
                         margin-inline-start: 0.3em;
                         align-items: center;
                     }

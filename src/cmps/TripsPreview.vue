@@ -37,25 +37,23 @@ export default {
                 return checkout > new Date()
             })
             // sort them from new to old
-            // if (nextOrders.length) {
-            nextOrders.sort((a, b) => new Date(a.checkin) - new Date(b.checkin))
-            // let nextStay = {
-            //     nextStay: this.stays.find(s => s._id === nextOrders[0].stay._id),
-            //     checkin: nextOrders[0].checkin,
-            //     checkout: nextOrders[0].checkout,
-            // }
+            if (nextOrders.length) {
+                nextOrders.sort((a, b) => {
+                    if (String(new Date(a.checkin)) > String(new Date(b.checkin))) return -1
+                    if (String(new Date(a.checkin)) < String(new Date(b.checkin))) return 1
+                    return 0
+                })
 
-            let nextStay = {
-                // nextStay: this.stays[0],
-                nextStay: this.stays[this.stays.findIndex(s => s._id === '642a98d1194a683b4080f1aa')],
-                checkin: this.orders[0].checkin,
-                checkout: this.orders[0].checkout,
+                if (this.stays.length) return {
+                    nextStay: this.stays.find(s => s._id === nextOrders[0].stay._id),
+                    checkin: nextOrders[0].checkin,
+                    checkout: nextOrders[0].checkout,
+                    status: nextOrders[0].status
+                }
             }
-            return nextStay
-            // }
-            // else return null
+            else return null
         },
-        prevStay() {
+        prevOrders() {
             // get all the past dates
             const prevOrders = this.orders.filter((o) => {
                 const [day, month, year,] = o.checkout.split('/')
@@ -69,32 +67,43 @@ export default {
                     if (String(new Date(a.checkout)) < String(new Date(b.checkout))) return -1
                     return 0
                 })
-                const prevStay = {
-                    // prevStay: this.stays.find(s => s._id === prevOrders[0].stay._id),
-                    prevStay: this.stays[8],
-                    checkin: prevOrders[0].checkin,
-                    checkout: prevOrders[0].checkout,
-                }
-                return prevStay
+                return prevOrders
             }
             else return null
         },
         prevStays() {
-            // get all the past dates
-            const prevOrders = this.orders.filter((o) => {
-                const [day, month, year,] = o.checkout.split('/')
-                const checkout = new Date(`${year}-${month}-${day}`)
-                return checkout < new Date()
-            })
-            // sort them from old to new 
-            prevOrders.sort((a, b) => {
-                if (String(new Date(a.checkout)) > String(new Date(b.checkout))) return 1
-                if (String(new Date(a.checkout)) < String(new Date(b.checkout))) return -1
-                return 0
-            })
-            return this.stays.slice(0, 4)
-            return this.stays.filter(s => prevOrders.find(o => o.stay._id === s._id))
-            return prevOrders.filter(currStay => this.stays.find(s => s._id === currStay.stay._id))
+            let prevOrders = this.prevOrders
+            if (this.nextStay) prevOrders = prevOrders.slice(0, 4)
+            else prevOrders = prevOrders.slice(1, 5)
+
+            let prevStays = this.stays.filter(s => prevOrders.find(o => o.stay._id === s._id))
+            if (prevStays.length) {
+                let prevStaysToPreview = prevStays.map(stay => {
+                    let idx = prevOrders.findIndex(o => o.stay._id === stay._id)
+                    return {
+                        prevStay: stay,
+                        checkin: prevOrders[idx].checkin,
+                        checkout: prevOrders[idx].checkout,
+                    }
+                })
+                prevStaysToPreview.sort((a, b) => {
+                    if (String(new Date(a.checkout)) > String(new Date(b.checkout))) return 1
+                    if (String(new Date(a.checkout)) < String(new Date(b.checkout))) return -1
+                    return 0
+                })
+                return prevStaysToPreview
+            }
+            else return null
+        },
+        prevStay() {
+            if (this.prevOrders.length) {
+                if (this.stays.length) return {
+                    prevStay: this.stays.find(s => s._id === this.prevOrders[0].stay._id),
+                    checkin: this.prevOrders[0].checkin,
+                    checkout: this.prevOrders[0].checkout,
+                }
+            }
+            else return null
         },
     },
     components: {

@@ -18,9 +18,8 @@ export const orderService = {
 window.cs = orderService
 
 
-async function query() {
-    // filterBy = { _id: '' }
-    return httpService.get(ORDER_KEY)
+async function query(filterBy) {
+    return httpService.get(ORDER_KEY, filterBy)
 }
 
 function getById(orderId) {
