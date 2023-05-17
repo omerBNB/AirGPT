@@ -47,6 +47,47 @@ export default {
   mounted() {},
 
   methods: {
+    // calcRevenueMonth() {
+    //   /// Get the current user's orders
+    //   const approvedOrders = this.orders.filter((order) => order.status === 'approved')
+
+    //   approvedOrders.sort((orderA, orderB) => {
+    //     if (new Date(orderA.checkout) > new Date(orderB.checkout)) return 1
+    //     if (new Date(orderA.checkout) < new Date(orderB.checkout)) return -1
+    //     return 0
+    //   })
+
+    //   const totalPerMonth = approvedOrders.reduce((result, order) => {
+    //     const month = this.getMonthFromDate(order.checkout)
+    //     console.log('month:', month)
+    //     result[month] = result[month] || { totalPrice: 0 }
+    //     result[month].totalPrice += order.totalPrice
+    //     return result
+    //   }, {})
+
+    //   const monthNames = [] //['January  ,'March']'
+    //   const revenues = [] //  [  200    ,  435]
+
+    //   for (const month in totalPerMonth) {
+    //     const monthName = this.getFormattedMonthName(month)
+    //     monthNames.push(monthName)
+    //     revenues.push(totalPerMonth[month].totalPrice)
+    //   }
+
+    //   //  Set Month names and revenues in the Chart:
+    //   this.chartData.labels = monthNames
+    //   this.chartData.datasets[0].data = revenues
+    // },
+
+    // getFormattedMonthName(monthNum) {
+    //   return new Date(2000, +monthNum - 1).toLocaleString('default', { month: 'long' })
+    // },
+
+    // getMonthFromDate(dateString) {
+    //   const date = new Date(dateString)
+    //   return date.getMonth() + 1 // add 1 to convert from 0-based index to 1-based index
+    // },
+
     calcRevenueMonth() {
       /// Get the current user's orders
       const approvedOrders = this.orders.filter((order) => order.status === 'approved')
@@ -59,7 +100,6 @@ export default {
 
       const totalPerMonth = approvedOrders.reduce((result, order) => {
         const month = this.getMonthFromDate(order.checkout)
-        console.log('month:', month)
         result[month] = result[month] || { totalPrice: 0 }
         result[month].totalPrice += order.totalPrice
         return result
@@ -84,8 +124,9 @@ export default {
     },
 
     getMonthFromDate(dateString) {
-      const date = new Date(dateString)
-      return date.getMonth() + 1 // add 1 to convert from 0-based index to 1-based index
+      const dateParts = dateString.split('/')
+      const month = dateParts[1]
+      return month
     },
   },
   watch: {

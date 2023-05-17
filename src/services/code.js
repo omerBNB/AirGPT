@@ -1,9 +1,7 @@
 function calcRevenueMonth() {
-
     /// Get the current user's orders
     const approvedOrders = this.orders.filter((order) => order.status === 'approved')
 
-    // Sorting the dates from new to old
     approvedOrders.sort((orderA, orderB) => {
         if (new Date(orderA.checkout) > new Date(orderB.checkout)) return 1
         if (new Date(orderA.checkout) < new Date(orderB.checkout)) return -1
@@ -27,7 +25,8 @@ function calcRevenueMonth() {
     }
 
     //  Set Month names and revenues in the Chart:
-     this.chartData.datasets[0].data = revenues
+    this.chartData.labels = monthNames
+    this.chartData.datasets[0].data = revenues
 }
 
 function getFormattedMonthName(monthNum) {
@@ -35,6 +34,7 @@ function getFormattedMonthName(monthNum) {
 }
 
 function getMonthFromDate(dateString) {
-    const date = new Date(dateString)
-    return date.getMonth() + 1 // add 1 to convert from 0-based index to 1-based index
+    const dateParts = dateString.split('/')
+    const month = dateParts[1]
+    return month
 }
