@@ -61,8 +61,9 @@
             <h3>What this place offers</h3>
             <div class="offers grid">
               <div v-for="amenitie in this.stay.amenities" class="offer">
-                <img :src="'../src/imgs/amenities/' + amenitie + '.svg'" />
-                <!-- <img :src="'../imgs/svg_symbols/tv.svg'" /> -->
+                <!-- <img :src="'../src/imgs/amenities/' + amenitie + '.svg'" /> -->
+                <!-- <img :src="`../../src/imgs/amenities/${amenitie}.svg`" /> -->
+                <img :src="`https://res.cloudinary.com/dvah7ijav/image/upload/v1684671529/${amenitie}.svg`" />
                 <p>{{ amenitie }}</p>
               </div>
               <p
