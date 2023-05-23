@@ -1,95 +1,106 @@
-.login-layout {
-  background-color: #fff;
-  position: fixed;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-  box-shadow: #00000047 0 8px 28px;
-  border-radius: 12px;
-  overflow: hidden;
-  z-index: 11;
-  width: 551px;
-  padding-inline: 24px;
-  .login-title-cont {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid rgb(235, 235, 235);
-    height: 64px;
-  }
-  .login-main-content {
-    padding-block: 24px;
-    .login-form-cont {
-      height: 112px;
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid rgba(27, 27, 27, 0.34);
+@media (min-width: 330px) {
+  .login-layout {
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    box-shadow: #00000047 0 8px 28px;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 11;
+    width: 350px;
+    padding-inline: 24px;
+    .login-title-cont {
+      position: relative;
       display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: start;
-      input {
-        font-size: 16px;
-        padding-left: 12px;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid rgb(235, 235, 235);
+      height: 64px;
+    }
+    .login-main-content {
+      padding-block: 24px;
+      .login-form-cont {
+        height: 112px;
         width: 100%;
-        border: 0;
         border-radius: 8px;
-        outline: none;
+        border: 1px solid rgba(27, 27, 27, 0.34);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: start;
+        input {
+          font-size: 16px;
+          padding-left: 12px;
+          width: 100%;
+          border: 0;
+          border-radius: 8px;
+          outline: none;
+        }
+        .form-line {
+          height: 0.5px;
+          width: 100%;
+          background-color: #1b1b1b57;
+        }
       }
-      .form-line {
+      .btn-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        color: #fff;
+        border: none;
+        background: radial-gradient(
+          circle at left,
+          #ff385c 0%,
+          #e61e4d 27.5%,
+          #e31c5f 40%,
+          #d70466 57.5%,
+          #bd1e59 75%,
+          #bd1e59 100%
+        );
+        border-radius: 10px;
+        font-weight: 600;
+        height: 50px;
+        transition: 1s;
+        margin: 20px 0 24px;
+        font-size: 16px;
+      }
+      .login-or-line {
         height: 0.5px;
         width: 100%;
-        background-color: #1b1b1b57;
+        background-color: #ddd !important;
       }
-    }
-    .btn-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      color: #fff;
-      border: none;
-      background: radial-gradient(
-        circle at left,
-        #ff385c 0%,
-        #e61e4d 27.5%,
-        #e31c5f 40%,
-        #d70466 57.5%,
-        #bd1e59 75%,
-        #bd1e59 100%
-      );
-      border-radius: 10px;
-      font-weight: 600;
-      height: 50px;
-      transition: 1s;
-      margin: 20px 0 24px;
-      font-size: 16px;
-    }
-    .login-or-line {
-      height: 0.5px;
-      width: 100%;
-      background-color: #ddd !important;
-    }
-    .login-line-text {
-      cursor: default;
-      width: fit-content;
-      margin: 0px auto auto;
-      padding: 0 12px;
-      background-color: #fff;
-      font-size: 12px;
-      color: #484848;
-    }
-    .move-to-signup {
-      cursor: pointer;
-      color: #000;
-      font-family: CircularLight;
-      margin: 15px auto auto;
-      width: fit-content;
-      text-decoration: underline;
+      .login-line-text {
+        cursor: default;
+        width: fit-content;
+        margin: 0px auto auto;
+        padding: 0 12px;
+        background-color: #fff;
+        font-size: 12px;
+        color: #484848;
+      }
+      .move-to-signup {
+        cursor: pointer;
+        color: #000;
+        font-family: CircularLight;
+        margin: 15px auto auto;
+        width: fit-content;
+        text-decoration: underline;
+      }
     }
   }
 }
+
+@media (min-width: 744px) {
+  .login-layout {
+    width: 551px;
+    top: 50%;
+    right: 50%;
+  }
+}
+
 .shadow-fullscreen {
   position: fixed;
   inset: 0;
