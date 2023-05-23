@@ -46,7 +46,7 @@ export default {
                     snapAlign: 'start',
                     wrapAround: true
                 },
-                500: {
+                550: {
                     itemsToShow: 7,
                     itemsToScroll: 10,
                     snapAlign: 'start',
