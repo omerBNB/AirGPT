@@ -1,8 +1,7 @@
 <template>
+  <StayImgPreview class="imgs-details-carusell full" :imgs="stay.imgUrls" />
   <main v-if="stay" class="stay-details-mobile">
-    <StayImgPreview class="imgs-details-carusell" :imgs="stay.imgUrls" />
     <StayHeaderInfoMobile :stay="stay" />
-    <!-- <StayDetailsImgs :stay="stay" /> -->
     <!-- Details-container -->
     <section class="details-container-mobile">
       <!-- ferrites -->
@@ -12,7 +11,7 @@
             <h3>Entire amazing views hosted by {{ stay.host.fullname }}</h3>
             <p>{{ guestsNum }} • {{ bedroomNum }} • {{ bedsNum }} • {{ bathsNum }}</p>
           </div>
-          <img :src="stay.host.imgUrl" />
+          <img :src="stay.host.thumbnailUrl" />
         </div>
 
         <div class="ferrites-main">
@@ -44,7 +43,6 @@
 
         <!-- aircover -->
         <section class="aircover">
-          <!-- <img src="../../imgs_test/aircover_logo.webp" alt="" srcset="" /> -->
           <img src="../../src/imgs/aircover_logo/aircover_logo.webp" alt="aircover" />
           <p>
             Every booking includes free protection from Host cancellations, listing inaccuracies,
@@ -52,77 +50,56 @@
           </p>
           <a href="">Learn more</a>
         </section>
+
         <!-- ameneties -->
         <section class="ameneties">
           <h3>What this place offers</h3>
           <div class="offers grid">
-            <div v-for="amenitie in stay.amenities" class="offer">
-              <img :src="'../../src/imgs/amenities/' + amenitie + '.svg'" />
+            <div v-for="amenitie in stay.amenities" class="offer" style="align-items: center">
+              <img
+                :src="`https://res.cloudinary.com/dvah7ijav/image/upload/v1684671529/${amenitie}.svg`" />
               <p>{{ amenitie }}</p>
             </div>
           </div>
         </section>
       </div>
 
-      <!-- <DetailsOrderBox :searchDetails="searchDetails" :stay="stay" /> -->
+      <DetailsOrderBox
+        style="
+          position: fixed;
+          z-index: 900;
+          top: 0;
+          right: 5%;
+          background-color: white;
+
+          width: 100%;
+        "
+        v-if="reverveClicked"
+        :searchDetails="searchDetails"
+        :stay="stay" />
     </section>
   </main>
-  <DetailsReviewsMobile :stay="stay" />
+
+  <!-- <DetailsReviewsMobile :stay="stay" /> -->
+
   <section style="margin: 0" class="map">
-    <h3 style="margin: 4px">Where you'll be</h3>
+    <h3 style="margin: 15px">Where you'll be</h3>
     <GoogleMap style="width: 85%; height: 85%; margin: auto" :stay="stay" />
+
     <div class="place-details-txt">
       <h3>{{ stay.loc.city }}, {{ stay.loc.country }}</h3>
       <p>{{ stay.summary }}</p>
     </div>
   </section>
 
-  <section style="margin-top: 10em" class="host-info-mobile">
-    <div class="header-mobile">
-      <h3>Hosted by {{ stay.host.fullname }}</h3>
-      <img :src="stay.host.imgUrl" />
-    </div>
-    <section class="left-side-mobile">
-      <div class="info-mobile">
-        <span
-          ><img src="../imgs/svg_symbols/black_star.svg" /> {{ stay.reviews.length }} reviews</span
-        >
-        <span
-          ><img src="../imgs/svg_symbols/verified.svg" alt="" srcset="" /> Identity verified
-        </span>
-        <span v-if="stay.host.isSuperHost"
-          ><img src="../imgs/svg_symbols/superhost.png" />Superhost</span
-        >
-      </div>
-      <div class="txt-mobile">
-        {{ stay.host.description }}
-        <h5>During your stay</h5>
-        <p>They can reach me anytime they want. Contact number 0536 555 55 55</p>
-        <div v-if="stay.host.isSuperHost">
-          <h5>{{ stay.host.fullname }} is a Superhost</h5>
-          <p>
-            Superhosts are experienced, highly rated hosts who are committed to providing great
-            stays for guests
-          </p>
-        </div>
-      </div>
-      <p>Languages: English, Türkçe</p>
-      <p>Response rate: 100%</p>
-      <p>Response time: within an hour</p>
-      <div class="protect-mobile flex">
-        <img src="../imgs/svg_symbols/protect_logo.svg" alt="" srcset="" />
-        <p>
-          To protect your payment, never transfer money or communicate outside of the Airgpt website
-          or app
-        </p>
-      </div>
-    </section>
-  </section>
+  <StayDetailsMobileFooter @openReserve="openReserve" />
 </template>
 
 <script>
 import DetailsOrderBox from '../cmps/DetailsOrderBox.vue'
 import StayHeaderInfoMobile from '../cmps/StayHeaderInfoMobile.vue'
+import StayDetailsMobileFooter from '../cmps/StayDetailsMobileFooter.vue'
+
 import StayDetailsImgs from '../cmps/StayDetailsImgs.vue'
 import DetailsReviewsMobile from '../cmps/DetailsReviewsMobile.vue'
 import GoogleMap from '../cmps/GoogleMap.vue'
@@ -134,6 +111,7 @@ export default {
     return {
       stay: null,
       searchDetails: null,
+      reverveClicked: false,
     }
   },
 
@@ -165,6 +143,7 @@ export default {
       this.searchDetails.where = this.stay.loc.country
     }
   },
+
   mounted() {
     const currRoute = this.$route.path
     if (currRoute.includes('stay')) {
@@ -174,14 +153,22 @@ export default {
     const { adults, children, infants, pets } = this.$route.query
 
     this.searchDetails.guestNum = +adults + +children + +infants + +pets
-    console.log('this.searchDetails', this.searchDetails)
   },
 
   methods: {
     async loadStay() {
       const { stayId } = this.$route.params
-
       this.$store.dispatch({ type: 'getStay', stayId: stayId })
+    },
+
+    openReserve() {
+      this.reverveClicked = !this.reverveClicked
+    },
+  },
+
+  watch: {
+    stay() {
+      console.log('stay', this.stay)
     },
   },
   components: {
@@ -191,6 +178,7 @@ export default {
     StayHeaderInfoMobile,
     GoogleMap,
     StayImgPreview,
+    StayDetailsMobileFooter,
   },
 }
 </script>

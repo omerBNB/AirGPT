@@ -47,7 +47,6 @@
 
           <!-- aircover -->
           <section class="aircover">
-            <!-- <img src="../../imgs_test/aircover_logo.webp" alt="" srcset="" /> -->
             <img src="../../src/imgs/aircover_logo/aircover_logo.webp" alt="aircover" />
             <p>
               Every booking includes free protection from Host cancellations, listing inaccuracies,
@@ -61,9 +60,8 @@
             <h3>What this place offers</h3>
             <div class="offers grid">
               <div v-for="amenitie in this.stay.amenities" class="offer">
-                <!-- <img :src="'../src/imgs/amenities/' + amenitie + '.svg'" /> -->
-                <!-- <img :src="`../../src/imgs/amenities/${amenitie}.svg`" /> -->
-                <img :src="`https://res.cloudinary.com/dvah7ijav/image/upload/v1684671529/${amenitie}.svg`" />
+                <img
+                  :src="`https://res.cloudinary.com/dvah7ijav/image/upload/v1684671529/${amenitie}.svg`" />
                 <p>{{ amenitie }}</p>
               </div>
               <p

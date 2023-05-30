@@ -7,6 +7,7 @@
       @closeActiveModal="showFullScreeen"
       :userSearchSpec="this.$route.query"
       @showLoginModal="showLoginModal" />
+
     <AppHeaderDetails
       v-if="this.$route.name?.includes('StayDetails') && width > 744"
       @onShowBackDrop="showBackDrop"
@@ -14,6 +15,7 @@
       @closeActiveModal="showFullScreeen"
       :userSearchSpec="this.$route.query"
       @showLoginModal="showLoginModal" />
+
     <AppHeaderMobile
       v-if="!this.$route.name?.includes('StayDetails') && width > 320 && width < 744"
       @onShowBackDrop="showBackDrop"
@@ -21,11 +23,15 @@
       @closeActiveModal="showFullScreeen"
       :userSearchSpec="this.$route.query"
       @showLoginModal="showLoginModal" />
+
     <LoginSignup v-if="loginModalOpen" @loginSuccess="loginSuccess" />
     <div :class="showBackDropHome" @click="showFullScreeen"></div>
     <RouterView />
     <AppFooter v-if="width > 744" />
-    <AppFooterMobile v-if="width > 320 && width < 744" />
+
+    <AppFooterMobile
+      v-if="!this.$route.name?.includes('StayDetails') && width > 320 && width < 744" />
+
     <UserMsg />
   </section>
 </template>
@@ -67,7 +73,7 @@ export default {
   },
   methods: {
     showBackDrop() {
-      console.log('this.backDropisLive',this.backDropisLive)
+      console.log('this.backDropisLive', this.backDropisLive)
       this.isWide = false
       this.backDropisLive = true
     },
@@ -85,9 +91,13 @@ export default {
       this.width = document.documentElement.clientWidth
     },
   },
+
   mounted() {
     eventBus.on('openLoginModal', () => (this.loginModalOpen = true))
+
+    console.log('this.$route', this.$route)
   },
+
   computed: {
     currentLayout() {
       return {
@@ -100,6 +110,7 @@ export default {
       }
     },
   },
+
   components: {
     AppHeader,
     AppHeaderDetails,

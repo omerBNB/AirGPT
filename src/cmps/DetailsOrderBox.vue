@@ -145,6 +145,7 @@
           </button>
         </div>
       </div>
+
       <div>
         <p class="text-center fs14">You won't be charged yet</p>
       </div>
